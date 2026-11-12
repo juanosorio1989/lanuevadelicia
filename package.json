@@ -1,0 +1,41 @@
+{
+  "name": "lanuevadelicia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "serve:out": "serve out -l 4173 -c ../serve.json",
+    "check:out": "node scripts/check-out.mjs",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "^1.72.0",
+    "next": "16.4.6",
+    "next-intl": "^4.15.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.12",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "serve": "^14.2.7",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5",
+    "vitest": "^4.1.12"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}
