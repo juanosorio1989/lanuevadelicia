@@ -50,7 +50,7 @@ export const restaurant: Restaurant = {
       url: "https://www.grubhub.com/restaurant/la-nueva-delicia-9316-37th-ave-suite-b-jackson-heights/3157876",
     },
   ],
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://lanuevadelicia.com",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://lanuevadelicia.com",
   timeZone: "America/New_York",
   foundedClaim: { es: "más de 30 años", en: "30+ years" },
 };

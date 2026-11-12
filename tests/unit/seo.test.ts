@@ -1,5 +1,9 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { menuItems } from "@/data/menu";
 import { buildMetadata, menuJsonLd, pageUrl, restaurantJsonLd } from "@/lib/seo";
 
 describe("seo", () => {
@@ -44,6 +48,19 @@ describe("seo", () => {
     expect(s).toContain('"@type":"MenuSection"');
     expect(s).toContain('"priceCurrency":"USD"');
     expect(s).not.toContain("aggregateRating");
+  });
+
+  it("JsonLd escapes a closing script tag in data", () => {
+    const html = renderToStaticMarkup(createElement(JsonLd, { data: { name: "x</script><b>" } }));
+    const inner = html.replace(/^<script[^>]*>/, "").replace(/<\/script>$/, "");
+    expect(inner).not.toContain("</script");
+    expect(inner).not.toContain("<");
+  });
+
+  it("menu JSON-LD gives jugos-naturales two offers", () => {
+    const menu = menuJsonLd("es") as { hasMenuSection: { hasMenuItem: { name: string; offers?: { price: string }[] }[] }[] };
+    const item = menu.hasMenuSection.flatMap((s) => s.hasMenuItem).find((i) => i.name === menuItems.find((m) => m.id === "jugos-naturales")!.name.es);
+    expect(item?.offers?.map((o) => o.price)).toEqual(["7.00", "6.00"]);
   });
 
   it("sitemap lists 14 pages with es/en alternates", () => {

@@ -173,7 +173,7 @@
     },
     "visit": {
       "title": "Visit us | Address and hours, La Nueva Delicia",
-      "description": "We are at 93-16B 37th Ave, Jackson Heights, NY 11372. Hours, phone, directions and delivery."
+      "description": "We are at {address}. Hours, phone, directions and delivery."
     },
     "privacy": {
       "title": "Privacy | La Nueva Delicia",

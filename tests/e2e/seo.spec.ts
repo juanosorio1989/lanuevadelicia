@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 
 const paths = ["", "menu/", "specials/", "our-story/", "gallery/", "visit/", "privacy/"];
 const urls = ["es", "en"].flatMap((l) => paths.map((p) => `/${l}/${p}`));
+// ORIGIN assumes the default site URL (NEXT_PUBLIC_SITE_URL unset at build).
 const ORIGIN = "https://lanuevadelicia.com";
 
 test("every page has unique title, description, canonical, hreflang and OG", async ({ page }) => {
@@ -51,5 +52,7 @@ test("robots.txt and sitemap.xml", async ({ request }) => {
 
 test("404 is noindex", async ({ request }) => {
   const html = await (await request.get("/404.html")).text();
+  expect(html.match(/<meta name="robots"/g)).toHaveLength(1);
   expect(html).toMatch(/<meta name="robots" content="noindex/);
+  expect(html).not.toContain("nofollow");
 });

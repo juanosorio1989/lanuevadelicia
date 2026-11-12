@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale: raw } = await params;
   const locale = raw as "es" | "en";
   const t = await getTranslations({ locale, namespace: "meta.visit" });
-  return buildMetadata({ locale, path: "visit", title: t("title"), description: t("description") });
+  return buildMetadata({ locale, path: "visit", title: t("title"), description: t("description", { address: restaurant.address.oneLine }) });
 }
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
