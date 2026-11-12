@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { Leaf, MapPin } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TrackedLink } from "@/components/layout/TrackedLink";
@@ -7,6 +9,13 @@ import { Img } from "@/components/ui/Img";
 import { directionsUrl } from "@/lib/links";
 import { getPhoto } from "@/lib/photo";
 import type { Locale } from "@/types/content";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as "es" | "en";
+  const t = await getTranslations({ locale, namespace: "meta.story" });
+  return buildMetadata({ locale, path: "our-story", title: t("title"), description: t("description") });
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;

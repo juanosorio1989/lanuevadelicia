@@ -66,6 +66,15 @@ async function main() {
   header.writeUInt32LE(22, 18); // image offset
   fs.writeFileSync(path.join(publicDir, "favicon.ico"), Buffer.concat([header, png32]));
 
+  // Open Graph image: 1200x630 crop of the committed bandeja paisa master (works without assets-inbox).
+  const ogSrc = path.join(publicDir, "images/dishes/bandeja-paisa.jpg");
+  fs.mkdirSync(path.join(publicDir, "og"), { recursive: true });
+  await sharp(ogSrc)
+    .resize(1200, 630, { fit: "cover", position: "attention" })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join(publicDir, "og/home.jpg"));
+  console.log("og/home.jpg 1200x630");
+
   const body = JSON.stringify(out, null, 2);
   fs.writeFileSync(
     path.join(root, "src/data/photos.ts"),

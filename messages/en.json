@@ -149,5 +149,35 @@
     "ads": "This site shows no ads and does no remarketing.",
     "contactTitle": "Contact",
     "contact": "If you have questions, write to us at <email></email>."
+  },
+  "meta": {
+    "home": {
+      "title": "La Nueva Delicia | Colombian Restaurant in Jackson Heights, Queens",
+      "description": "Home-style Colombian food in Jackson Heights, Queens: bandeja paisa, Colombian breakfast and 30+ years of flavor. Find us on 37th Ave."
+    },
+    "menu": {
+      "title": "Menu | La Nueva Delicia, Colombian food in Jackson Heights",
+      "description": "Full menu in English and Spanish: breakfast, appetizers, bandeja paisa, fish and seafood, juices and cocktails, with prices."
+    },
+    "specials": {
+      "title": "Weekly specials | La Nueva Delicia, Queens",
+      "description": "Each day's Colombian special at La Nueva Delicia in Jackson Heights, with its price."
+    },
+    "story": {
+      "title": "Our story | La Nueva Delicia, Jackson Heights",
+      "description": "30+ years of home-style Colombian food in Jackson Heights, Queens: our roots in Caldas and what to expect when you visit."
+    },
+    "gallery": {
+      "title": "Gallery | La Nueva Delicia, Colombian food in Queens",
+      "description": "Photos of our Colombian dishes and drinks: bandeja paisa, picadas, juices and more, in Jackson Heights, Queens."
+    },
+    "visit": {
+      "title": "Visit us | Address and hours, La Nueva Delicia",
+      "description": "We are at 93-16B 37th Ave, Jackson Heights, NY 11372. Hours, phone, directions and delivery."
+    },
+    "privacy": {
+      "title": "Privacy | La Nueva Delicia",
+      "description": "What data this site collects and why: anonymous usage statistics, no ads and no remarketing."
+    }
   }
 }

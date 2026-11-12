@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SpecialDayCard } from "@/components/specials/SpecialDayCard";
 import { TodayHighlighter } from "@/components/specials/TodayHighlighter";
@@ -6,6 +8,13 @@ import { specials } from "@/data/specials";
 import { capitalize, formatPrice, weekdayName } from "@/lib/format";
 import { getPhoto } from "@/lib/photo";
 import type { Locale } from "@/types/content";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as "es" | "en";
+  const t = await getTranslations({ locale, namespace: "meta.specials" });
+  return buildMetadata({ locale, path: "specials", title: t("title"), description: t("description") });
+}
 
 export default async function Page({
   params,

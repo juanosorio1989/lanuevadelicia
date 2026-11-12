@@ -1,8 +1,18 @@
+import { JsonLd } from "@/components/seo/JsonLd";
+import type { Metadata } from "next";
+import { buildMetadata, menuJsonLd } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CategoryChips } from "@/components/menu/CategoryChips";
 import { MenuCategorySection } from "@/components/menu/MenuCategorySection";
 import { categories, menuItems } from "@/data/menu";
 import type { Locale } from "@/types/content";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as "es" | "en";
+  const t = await getTranslations({ locale, namespace: "meta.menu" });
+  return buildMetadata({ locale, path: "menu", title: t("title"), description: t("description") });
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -17,6 +27,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     // --menu-header-h: the shrunken sticky header (3rem; 3.75rem below 360px where it wraps);
     // --menu-sticky-offset: header + chip bar (3.75rem + 1px border) + 0.25rem of air (scroll-margin for sections).
     <div className="[--menu-header-h:3rem] [--menu-sticky-offset:calc(var(--menu-header-h)+4rem+1px)] max-[22.4375rem]:[--menu-header-h:3.75rem]">
+      <JsonLd data={menuJsonLd(locale)} />
       <div className="mx-auto max-w-6xl px-4 pt-6 pb-3 md:px-8 md:pt-8">
         <h1 className="text-[1.75rem] md:text-4xl">{t("title")}</h1>
         <p className="mt-1.5 text-muted-600">{t("priceNote")}</p>

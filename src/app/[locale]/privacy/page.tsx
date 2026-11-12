@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { restaurant } from "@/data/restaurant";
 import type { Locale } from "@/types/content";
 
 // COPY-REVIEW: the whole privacy text is Claude's draft; the owner should confirm it.
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as "es" | "en";
+  const t = await getTranslations({ locale, namespace: "meta.privacy" });
+  return buildMetadata({ locale, path: "privacy", title: t("title"), description: t("description") });
+}
+
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
   setRequestLocale(raw);

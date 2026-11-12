@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { fontVariables } from "@/lib/fonts";
 import "./globals.css";
@@ -6,6 +7,8 @@ const linkClass =
   "inline-flex min-h-11 items-center justify-center rounded-full px-6 py-2 font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-green-900";
 const primary = `${linkClass} bg-terra-700 text-white hover:bg-green-900`;
 const outline = `${linkClass} border-2 border-green-900 text-green-900 hover:bg-green-900 hover:text-cream-50`;
+
+export const metadata: Metadata = { title: "404 | La Nueva Delicia", robots: { index: false, follow: false } };
 
 // COPY-REVIEW: the 404 copy is Claude's draft.
 // Single bilingual 404 (Spanish first). Next writes it to out/404.html.

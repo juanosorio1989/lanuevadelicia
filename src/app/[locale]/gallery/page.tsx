@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { GalleryGrid, type GalleryGroup } from "@/components/gallery/GalleryGrid";
 import { photos } from "@/data/photos";
 import type { Locale, Photo } from "@/types/content";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as "es" | "en";
+  const t = await getTranslations({ locale, namespace: "meta.gallery" });
+  return buildMetadata({ locale, path: "gallery", title: t("title"), description: t("description") });
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;

@@ -1,3 +1,6 @@
+import { JsonLd } from "@/components/seo/JsonLd";
+import type { Metadata } from "next";
+import { buildMetadata, restaurantJsonLd } from "@/lib/seo";
 import { MapPin, Phone } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TrackedLink } from "@/components/layout/TrackedLink";
@@ -10,6 +13,13 @@ import { capitalize, weekdayName } from "@/lib/format";
 import { formatTime } from "@/lib/hours";
 import { directionsUrl, telHref } from "@/lib/links";
 import type { IsoWeekday, Locale } from "@/types/content";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as "es" | "en";
+  const t = await getTranslations({ locale, namespace: "meta.visit" });
+  return buildMetadata({ locale, path: "visit", title: t("title"), description: t("description") });
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -27,6 +37,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   return (
     <div className="mx-auto grid max-w-6xl gap-8 px-4 pt-6 pb-10 md:grid-cols-[1fr_1.3fr] md:px-8 md:pt-8">
+      <JsonLd data={restaurantJsonLd(locale)} />
       <div>
         <h1 className="text-[1.75rem] md:text-4xl">{t("title")}</h1>
         <p className="mt-2 text-lg font-bold">{restaurant.address.oneLine}</p>

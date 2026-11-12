@@ -63,6 +63,13 @@ First time: `npm install && npx playwright install chromium`.
 - Owner proof list for the menu: [docs/content/menu-review.md](docs/content/menu-review.md).
 - Types in `src/types/content.ts`; Zod schemas and `validateContent()` in `src/data/schemas.ts`; link builders in `src/lib/links.ts`.
 
+## SEO
+
+- `src/lib/seo.ts`: `pageUrl`, `buildMetadata` (canonical, `hreflang` es/en/x-default to the Spanish page, Open Graph `es_US`/`en_US`, Twitter card), `restaurantJsonLd` (Home and Visit) and `menuJsonLd` (Menu). No `aggregateRating`, `review` or `geo` (add `geo` only once the owner gives coordinates).
+- Titles and descriptions live in `messages/{es,en}.json` under `meta.*`; each page's `generateMetadata` reads them. `src/app/sitemap.ts` and `src/app/robots.ts` are `force-static` and written to `out/`. `check:out` requires them. The 404 page is `noindex`.
+- The share image `public/og/home.jpg` (1200x630) is generated from the committed bandeja paisa master by `npm run photos`.
+- The site origin comes from `NEXT_PUBLIC_SITE_URL` (default `https://lanuevadelicia.com`).
+
 ## Docs
 
 - Spec: [docs/superpowers/specs/2026-11-12-website-design/](docs/superpowers/specs/2026-11-12-website-design/README.md)
