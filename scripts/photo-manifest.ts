@@ -1,4 +1,5 @@
 import type { L10n, Photo, PhotoId } from "../src/types/content";
+import { menuItems } from "../src/data/menu";
 
 /** One approved photo. `source` is relative to `assets-inbox/`. */
 export interface ManifestEntry {
@@ -19,15 +20,20 @@ export function slug(name: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-/** A dish or drink that is one menu item: id and itemId come from the Spanish name. */
-function item(group: "dishes" | "drinks", source: string, es: string, en: string): ManifestEntry {
-  const s = slug(es);
+/**
+ * A dish or drink photo of one menu item. The photo id is `<group>/<itemId>` and the alt text is derived from the
+ * item's name in src/data/menu.ts (spec 06), so the menu is the single source for names. The item's `image` must
+ * point back to this id (tests/unit/menu-content.test.ts checks both sides).
+ */
+function item(group: "dishes" | "drinks", source: string, itemId: string): ManifestEntry {
+  const m = menuItems.find((i) => i.id === itemId);
+  if (!m) throw new Error(`photo-manifest: no menu item "${itemId}" for ${source}`);
   return {
     source,
-    id: `${group}/${s}`,
+    id: `${group}/${itemId}`,
     group,
-    itemId: s,
-    alt: { es: `${es} en La Nueva Delicia`, en: `${en} at La Nueva Delicia` },
+    itemId,
+    alt: { es: `${m.name.es} en La Nueva Delicia`, en: `${m.name.en} at La Nueva Delicia` },
   };
 }
 
@@ -52,54 +58,54 @@ function flyer(day: string, es: string, en: string, esDay: string, enDay: string
 
 export const entries: ManifestEntry[] = [
   // ANTOJITOS
-  item("dishes", "ANTOJITOS/Chicharron con arepa con queso.jpg", "Chicharrón con arepa con queso", "Fried pork skin with corn cake with cheese"),
-  item("dishes", "ANTOJITOS/Chorizo con arepita.jpg", "Chorizo con arepita", "Sausage with little corn cake"),
-  item("dishes", "ANTOJITOS/Maduro con queso.jpg", "Maduro con queso", "Sweet plantain with cheese"),
-  item("dishes", "ANTOJITOS/Picada Doble.jpg", "Picada doble", "Double picada platter"),
+  item("dishes", "ANTOJITOS/Chicharron con arepa con queso.jpg", "chicharron-con-arepa-con-queso"),
+  item("dishes", "ANTOJITOS/Chorizo con arepita.jpg", "chorizo-con-arepita"),
+  item("dishes", "ANTOJITOS/Maduro con queso.jpg", "maduro-con-queso"),
+  item("dishes", "ANTOJITOS/Picada Doble.jpg", "picada-doble"),
   // BEBIDAS
-  item("drinks", "BEBIDAS/cafe.jpg", "Café", "Coffee"),
-  item("drinks", "BEBIDAS/Chocolate con queso.jpg", "Chocolate con queso", "Chocolate with cheese"),
-  item("drinks", "BEBIDAS/MILO.jpg", "Milo", "Milo"),
+  item("drinks", "BEBIDAS/cafe.jpg", "cafe"),
+  item("drinks", "BEBIDAS/Chocolate con queso.jpg", "chocolate-con-queso"),
+  item("drinks", "BEBIDAS/MILO.jpg", "milo"),
   // Cocteles y cervezas
-  item("drinks", "Cocteles y cervezas/Alexander.jpg", "Alexander", "Alexander"),
+  item("drinks", "Cocteles y cervezas/Alexander.jpg", "alexander"),
   bar("Cocteles y cervezas/Cervezas1.jpg", "cervezas", "Cervezas", "Beers"),
-  item("drinks", "Cocteles y cervezas/Expresso Martini.jpg", "Expresso Martini", "Espresso Martini"),
-  item("drinks", "Cocteles y cervezas/Jarra de refajo Envenenado.jpg", "Jarra de refajo envenenado", "Pitcher of poisoned refajo"),
-  item("drinks", "Cocteles y cervezas/Jarra de sangria.jpg", "Jarra de sangría", "Pitcher of sangria"),
-  item("drinks", "Cocteles y cervezas/Margarita.jpg", "Margarita", "Margarita"),
+  item("drinks", "Cocteles y cervezas/Expresso Martini.jpg", "expresso-martini"),
+  item("drinks", "Cocteles y cervezas/Jarra de refajo Envenenado.jpg", "jarra-de-refajo-envenenado"),
+  item("drinks", "Cocteles y cervezas/Jarra de sangria.jpg", "jarra-de-sangria"),
+  item("drinks", "Cocteles y cervezas/Margarita.jpg", "margarita"),
   bar("Cocteles y cervezas/Margaritas.jpg", "margaritas", "Margaritas", "Margaritas"),
-  item("drinks", "Cocteles y cervezas/Mojito.jpg", "Mojito", "Mojito"),
-  item("drinks", "Cocteles y cervezas/Pina Colada.jpg", "Piña colada", "Piña colada"),
-  item("drinks", "Cocteles y cervezas/Q delicia.jpg", "Q' Delicia", "Q' Delicia"),
+  item("drinks", "Cocteles y cervezas/Mojito.jpg", "mojito"),
+  item("drinks", "Cocteles y cervezas/Pina Colada.jpg", "pina-colada"),
+  item("drinks", "Cocteles y cervezas/Q delicia.jpg", "q-delicia"),
   // Desayunos
-  item("dishes", "Desayunos/Arepacon queso y Carne Asada.JPG", "Arepa con queso y carne asada", "Corn cake with cheese and grilled beef"),
-  item("dishes", "Desayunos/Caldo de Costilla.JPG", "Caldo de costilla", "Rib soup"),
-  item("dishes", "Desayunos/Calentado con carne asada y huevos al gusto.jpg", "Calentado con carne asada y huevos al gusto", "Calentado with grilled beef and eggs as you like"),
-  item("dishes", "Desayunos/Calentado con chuleta y huevos al gusto.jpg", "Calentado con chuleta y huevos al gusto", "Calentado with pork chop and eggs as you like"),
-  item("dishes", "Desayunos/Calentado con pechuga y huevos al gusto.jpg", "Calentado pechuga con huevos al gusto", "Calentado with chicken breast and eggs as you like"),
-  item("dishes", "Desayunos/Carne Guisada en salsa criolla.JPG", "Carne guisada en salsa criolla", "Top round steak in homemade sauce"),
+  item("dishes", "Desayunos/Arepacon queso y Carne Asada.JPG", "arepa-con-queso-y-carne-asada"),
+  item("dishes", "Desayunos/Caldo de Costilla.JPG", "caldo-de-costilla"),
+  item("dishes", "Desayunos/Calentado con carne asada y huevos al gusto.jpg", "calentado-con-carne-asada-y-huevos-al-gusto"),
+  item("dishes", "Desayunos/Calentado con chuleta y huevos al gusto.jpg", "calentado-con-chuleta-y-huevos-al-gusto"),
+  item("dishes", "Desayunos/Calentado con pechuga y huevos al gusto.jpg", "calentado-con-pechuga-y-huevos-al-gusto"),
+  item("dishes", "Desayunos/Carne Guisada en salsa criolla.JPG", "carne-guisada-en-salsa-criolla"),
   // Ensaladas
-  item("dishes", "Ensaladas/ensalada con Camrones.JPG", "Ensalada con camarones", "Shrimp salad"),
-  item("dishes", "Ensaladas/Ensalada con pechuga de Pollo.JPG", "Ensalada con pechuga de pollo", "Chicken salad"),
+  item("dishes", "Ensaladas/ensalada con Camrones.JPG", "ensalada-con-camarones"),
+  item("dishes", "Ensaladas/Ensalada con pechuga de Pollo.JPG", "ensalada-con-pechuga-de-pollo"),
   // PESCADOS Y MARISCOS
-  item("dishes", "PESCADOS Y MARISCOS/Arroz a la Marinera.JPG", "Arroz a la marinera", "Seafood rice"),
-  item("dishes", "PESCADOS Y MARISCOS/camarones en salsa Criolla.JPG", "Camarones en salsa criolla", "Shrimp in homemade sauce"),
-  item("dishes", "PESCADOS Y MARISCOS/Ceviche de Camarones.jpg", "Ceviche de camarones", "Shrimp ceviche"),
-  item("dishes", "PESCADOS Y MARISCOS/Entrana a la Marinera.jpg", "Entraña a la marinera", "Skirt steak topped with seafood rice"),
-  item("dishes", "PESCADOS Y MARISCOS/pechuga en salsa Marinera.jpg", "Pechuga en salsa a la marinera", "Seafood chowder chicken cutlet"),
-  item("dishes", "PESCADOS Y MARISCOS/Sopa Marinera.jpg", "Sopa marinera", "Seafood soup"),
+  item("dishes", "PESCADOS Y MARISCOS/Arroz a la Marinera.JPG", "arroz-a-la-marinera"),
+  item("dishes", "PESCADOS Y MARISCOS/camarones en salsa Criolla.JPG", "camarones-en-salsa-criolla"),
+  item("dishes", "PESCADOS Y MARISCOS/Ceviche de Camarones.jpg", "ceviche-de-camarones"),
+  item("dishes", "PESCADOS Y MARISCOS/Entrana a la Marinera.jpg", "entrana-a-la-marinera"),
+  item("dishes", "PESCADOS Y MARISCOS/pechuga en salsa Marinera.jpg", "pechuga-en-salsa-a-la-marinera"),
+  item("dishes", "PESCADOS Y MARISCOS/Sopa Marinera.jpg", "sopa-marinera"),
   // POLLO
-  item("dishes", "POLLO/Arroz con pollo.jpg", "Arroz con pollo", "Mixed rice with chicken"),
-  item("dishes", "POLLO/Pechuga en Champinones.JPG", "Pechuga a la parrilla en salsa con champiñón", "Grilled chicken breast with mushrooms"),
-  item("dishes", "POLLO/Pechuga Hawaiana.jpg", "Pechuga hawaiana", "Chicken breast in Hawaiian sauce"),
+  item("dishes", "POLLO/Arroz con pollo.jpg", "arroz-con-pollo"),
+  item("dishes", "POLLO/Pechuga en Champinones.JPG", "pechuga-a-la-parrilla-en-salsa-con-champinon"),
+  item("dishes", "POLLO/Pechuga Hawaiana.jpg", "pechuga-hawaiana"),
   // POSTRES
-  item("dishes", "POSTRES/Arroz con leche.jpg", "Arroz con leche", "Rice pudding"),
+  item("dishes", "POSTRES/Arroz con leche.jpg", "arroz-con-leche"),
   // Ricuras de la casa
-  item("dishes", "Ricuras de la casa/Bandeja Paisa.jpg", "Bandeja Paisa", "Bandeja Paisa"),
-  item("dishes", "Ricuras de la casa/Chuleta de cerdo a la parrilla.JPG", "Chuleta de cerdo a la parrilla", "Grilled pork with bone"),
-  item("dishes", "Ricuras de la casa/Chuleton a Caballo.jpg", "Chuletón a caballo", "Grilled pork with eggs over and onions on top"),
-  item("dishes", "Ricuras de la casa/Churrasco a la Parrilla.jpg", "Churrasco a la parrilla", "Grilled sirloin steak"),
-  item("dishes", "Ricuras de la casa/Lengua a la Parrilla.jpg", "Lengua a la parrilla", "Grilled beef tongue"),
+  item("dishes", "Ricuras de la casa/Bandeja Paisa.jpg", "bandeja-paisa"),
+  item("dishes", "Ricuras de la casa/Chuleta de cerdo a la parrilla.JPG", "chuleta-de-cerdo-a-la-parrilla-o-empanizada"),
+  item("dishes", "Ricuras de la casa/Chuleton a Caballo.jpg", "chuleton-a-caballo"),
+  item("dishes", "Ricuras de la casa/Churrasco a la Parrilla.jpg", "churrasco-a-la-parrilla"),
+  item("dishes", "Ricuras de la casa/Lengua a la Parrilla.jpg", "lengua-a-la-parrilla"),
   // Weekly specials flyers (text baked in)
   flyer("lunes", "Sopa de cebada con pollo al horno", "Barley soup with oven-baked chicken", "lunes", "Monday", "lunes.jpg"),
   flyer("martes", "Ajiaco con arroz con pollo", "Ajiaco with chicken and rice", "martes", "Tuesday", "Martes.jpg"),

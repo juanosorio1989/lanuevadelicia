@@ -113,6 +113,18 @@ export function validateContent(data: ContentData = defaults, facts: unknown = r
   check("specials", specialDay, data.specials);
   check("photos", photo, data.photos);
 
+  const dupes = <T>(values: T[]): T[] =>
+    [...new Set(values.filter((v, i) => values.indexOf(v) !== i))];
+  for (const id of dupes((data.categories as { id: string }[]).map((c) => c.id)))
+    problems.push(`categories: duplicate category id "${id}"`);
+  for (const day of dupes((data.specials as { day: number }[]).map((s) => s.day)))
+    problems.push(`specials: duplicate special day ${day}`);
+  for (const id of dupes((data.photos as { id: string }[]).map((p) => p.id)))
+    problems.push(`photos: duplicate photo id "${id}"`);
+  if (r.success)
+    for (const day of dupes(r.data.hours.flatMap((h) => h.days)))
+      problems.push(`restaurant.hours: weekday ${day} is in two hours rules`);
+
   const photoIds = new Set((data.photos as { id: string }[]).map((p) => p.id));
   const seen = new Set<string>();
   for (const it of data.menuItems as { id: string; image?: string; featured?: boolean }[]) {

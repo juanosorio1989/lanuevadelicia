@@ -16,7 +16,9 @@ restaurant's own photos, so the usage rights need a one-line owner confirmation 
   empanizado, Arroz con leche).
 - Map each kept photo to a menu item id. File names are close to the menu names but not exact (for example "Pechuga
   en Champinones" → "Pechuga a la parrilla en salsa con champiñón", "Arepacon queso y Carne Asada" → "Arepa con queso y
-  carne asada", "Entrana" → "Entraña"). Keep the mapping in `src/data/photos.ts`.
+  carne asada", "Entrana" → "Entraña"). The mapping lives in `scripts/photo-manifest.ts` (each photo's `itemId`, which is
+  also its slug); the menu item's `image` in `src/data/menu.ts` points back to that photo id, and a unit test
+  checks both sides. `src/data/photos.ts` is generated from the manifest.
 - Bar photos without a single menu item (`Cervezas1.jpg`, `Margaritas.jpg`) are used in the gallery and as category
   images.
 - Weekly special flyers (7 JPGs, 6600×8400, text baked in) are used as they are (owner decision). `TodoslosDias.pdf`
@@ -29,12 +31,13 @@ restaurant's own photos, so the usage rights need a one-line owner confirmation 
 ## Processing
 
 - Do not commit `assets-inbox/`. A script (`scripts/import-photos.ts`, run by hand) reads the approved list in
-  `src/data/photos.ts`, auto-orients from EXIF, strips metadata, and writes optimized masters (long side 2400px,
+  `scripts/photo-manifest.ts`, regenerates `src/data/photos.ts`, auto-orients from EXIF, strips metadata, and writes optimized masters (long side 2400px,
   quality ~82) to `public/images/{dishes,drinks,specials,restaurant}/<slug>.jpg`, with ASCII kebab-case slugs. Those
   masters are committed (estimate under 40 MB).
 - Build-time responsive variants: WebP at widths 384/640/828/1200/1920 (AVIF optional). See
   [07-technical.md](07-technical.md).
-- Alt text, bilingual: "Bandeja Paisa en La Nueva Delicia" / "Bandeja Paisa at La Nueva Delicia". Flyers: the full
+- Alt text, bilingual: "Bandeja Paisa en La Nueva Delicia" / "Bandeja Paisa at La Nueva Delicia". For a dish or
+  drink photo the manifest derives it from the menu item's `name`, so names have one source. Flyers: the full
   text shown on the flyer.
 
 ## Restaurant photos (arriving 2026-11-13)

@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { schemas, validateContent } from "@/data/schemas";
+import { restaurant } from "@/data/restaurant";
 
 const l10n = { es: "Hola", en: "Hello" };
 const photo = {
@@ -73,6 +74,36 @@ describe("validateContent cross checks", () => {
         specials: [{ day: 1, main: l10n, price: 10, flyer: "nope" }],
       }),
     ).toThrow(/nope/);
+  });
+  it("rejects duplicate category ids", () => {
+    const cat = { id: "pollo", name: l10n, order: 1 };
+    expect(() =>
+      validateContent({ ...empty, categories: [cat, { ...cat, order: 2 }] }),
+    ).toThrow(/duplicate category id "pollo"/i);
+  });
+  it("rejects two specials on the same day", () => {
+    const s = { day: 3, main: l10n, price: 10, flyer: "p1" };
+    expect(() =>
+      validateContent({ ...empty, photos: [photo], specials: [s, s] }),
+    ).toThrow(/duplicate special day 3/i);
+  });
+  it("rejects duplicate photo ids", () => {
+    expect(() => validateContent({ ...empty, photos: [photo, photo] })).toThrow(
+      /duplicate photo id "p1"/i,
+    );
+  });
+  it("rejects a weekday in two hours rules", () => {
+    const facts = {
+      ...restaurant,
+      hours: [
+        { days: [1, 2, 3, 4], open: "09:00", close: "21:00" },
+        { days: [4, 5, 6, 7], open: "09:00", close: "22:00" },
+      ],
+    };
+    expect(() => validateContent(empty, facts)).toThrow(/weekday 4 .*two hours rules/i);
+  });
+  it("accepts the real hours", () => {
+    expect(() => validateContent(empty, restaurant)).not.toThrow();
   });
   it("lists every problem", () => {
     expect(() =>

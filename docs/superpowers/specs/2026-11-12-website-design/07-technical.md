@@ -68,11 +68,11 @@ type L10n = { es: string; en: string };
 interface MenuItem {
   id: string;               // kebab-case, stable
   category: CategoryId;
-  subcategory?: string;     // e.g. 'jugos', 'shots'
+  subcategory?: L10n;       // e.g. { es: 'Jugos naturales', en: 'Fresh juices' }
   name: L10n;
   description?: L10n;
   price?: number;           // USD; omit when only options carry prices
-  options?: { label: L10n; price?: number }[]; // flavors, "en leche/en agua"
+  options?: { label: L10n; price?: number }[]; // flavors (no price), "en leche/en agua" (own price)
   image?: PhotoId;
   featured?: boolean;
   available?: boolean;      // default true

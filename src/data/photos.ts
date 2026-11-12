@@ -119,7 +119,7 @@ export const photos: Photo[] = [
     "height": 2400,
     "alt": {
       "es": "Jarra de refajo envenenado en La Nueva Delicia",
-      "en": "Pitcher of poisoned refajo at La Nueva Delicia"
+      "en": "Pitcher of spiked refajo at La Nueva Delicia"
     },
     "group": "drinks"
   },
@@ -234,12 +234,12 @@ export const photos: Photo[] = [
     "group": "dishes"
   },
   {
-    "id": "dishes/calentado-pechuga-con-huevos-al-gusto",
-    "src": "/images/dishes/calentado-pechuga-con-huevos-al-gusto.jpg",
+    "id": "dishes/calentado-con-pechuga-y-huevos-al-gusto",
+    "src": "/images/dishes/calentado-con-pechuga-y-huevos-al-gusto.jpg",
     "width": 2000,
     "height": 1333,
     "alt": {
-      "es": "Calentado pechuga con huevos al gusto en La Nueva Delicia",
+      "es": "Calentado con pechuga y huevos al gusto en La Nueva Delicia",
       "en": "Calentado with chicken breast and eggs as you like at La Nueva Delicia"
     },
     "group": "dishes"
@@ -317,7 +317,7 @@ export const photos: Photo[] = [
     "height": 768,
     "alt": {
       "es": "Entraña a la marinera en La Nueva Delicia",
-      "en": "Skirt steak topped with seafood rice at La Nueva Delicia"
+      "en": "Skirt steak with seafood rice at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -328,7 +328,7 @@ export const photos: Photo[] = [
     "height": 1333,
     "alt": {
       "es": "Pechuga en salsa a la marinera en La Nueva Delicia",
-      "en": "Seafood chowder chicken cutlet at La Nueva Delicia"
+      "en": "Chicken breast in seafood chowder at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -399,13 +399,13 @@ export const photos: Photo[] = [
     "group": "dishes"
   },
   {
-    "id": "dishes/chuleta-de-cerdo-a-la-parrilla",
-    "src": "/images/dishes/chuleta-de-cerdo-a-la-parrilla.jpg",
+    "id": "dishes/chuleta-de-cerdo-a-la-parrilla-o-empanizada",
+    "src": "/images/dishes/chuleta-de-cerdo-a-la-parrilla-o-empanizada.jpg",
     "width": 2000,
     "height": 1333,
     "alt": {
-      "es": "Chuleta de cerdo a la parrilla en La Nueva Delicia",
-      "en": "Grilled pork with bone at La Nueva Delicia"
+      "es": "Chuleta de cerdo a la parrilla o empanizada en La Nueva Delicia",
+      "en": "Grilled or breaded pork with bone at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -416,7 +416,7 @@ export const photos: Photo[] = [
     "height": 1600,
     "alt": {
       "es": "Chuletón a caballo en La Nueva Delicia",
-      "en": "Grilled pork with eggs over and onions on top at La Nueva Delicia"
+      "en": "Grilled pork with eggs over, onions on top at La Nueva Delicia"
     },
     "group": "dishes"
   },
