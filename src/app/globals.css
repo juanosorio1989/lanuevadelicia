@@ -42,3 +42,8 @@ h1, h2, h3 {
     scroll-behavior: auto !important;
   }
 }
+
+/* Scroll lock while the mobile nav dialog is open. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}

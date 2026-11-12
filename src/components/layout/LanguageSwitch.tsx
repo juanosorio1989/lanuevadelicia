@@ -6,6 +6,8 @@ import { getPathname, usePathname } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { track } from "@/lib/analytics";
 
+const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
+
 /** ES | EN. Links to the same page in the other locale; the current locale is bold and not a link. */
 export function LanguageSwitch() {
   const current = useLocale() as Locale;
@@ -23,7 +25,7 @@ export function LanguageSwitch() {
             </span>
           ) : (
             <a
-              href={getPathname({ href: pathname, locale })}
+              href={withSlash(getPathname({ href: pathname, locale }))}
               lang={locale}
               hrefLang={locale}
               onClick={() => track("switch_language", { from: current, to: locale })}

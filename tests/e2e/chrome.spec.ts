@@ -36,6 +36,27 @@ test.describe("mobile 390x844", () => {
     await expect(page.locator("dialog[open]")).toHaveCount(0);
     await expect(button).toBeFocused();
   });
+
+  test("clicking a link in the open dialog closes it", async ({ page }) => {
+    await page.goto("/es/");
+    await page.getByTestId("menu-button").click();
+    await page.locator("dialog[open]").getByRole("link", { name: "Galería" }).click();
+    await expect(page).toHaveURL(/\/es\/gallery\/$/);
+    await expect(page.locator("dialog[open]")).toHaveCount(0);
+  });
+});
+
+test.describe("mobile without JS", () => {
+  test.use({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
+
+  test("footer nav reaches every section as plain links", async ({ page }) => {
+    await page.goto("/es/");
+    await page.getByRole("contentinfo").getByRole("link", { name: "Especiales" }).click();
+    await expect(page).toHaveURL(/\/es\/specials\/$/);
+    for (const [name, path] of [["Nuestra historia", "our-story"], ["Galería", "gallery"], ["Visítanos", "visit"]]) {
+      await expect(page.getByRole("contentinfo").getByRole("link", { name })).toHaveAttribute("href", `/es/${path}/`);
+    }
+  });
 });
 
 test.describe("desktop 1280x800", () => {
@@ -54,6 +75,9 @@ test("language switch keeps the page", async ({ page }) => {
   await page.goto("/es/menu/");
   await page.getByTestId("lang-switch").getByRole("link", { name: "EN" }).click();
   await expect(page).toHaveURL(/\/en\/menu\/$/);
+  await page.goto("/es/");
+  await page.getByTestId("lang-switch").getByRole("link", { name: "EN" }).click();
+  await expect(page).toHaveURL(/\/en\/$/);
   await page.goto("/en/gallery/");
   await page.getByTestId("lang-switch").getByRole("link", { name: "ES" }).click();
   await expect(page).toHaveURL(/\/es\/gallery\/$/);

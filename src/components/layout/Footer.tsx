@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { formatTime } from "@/lib/hours";
 import { directionsUrl, telHref } from "@/lib/links";
+import { NAV_ITEMS } from "./nav-items";
 import { TrackedLink } from "./TrackedLink";
 
 const linkClass =
@@ -19,6 +20,7 @@ function dayRange(days: number[], locale: Locale): string {
 
 export async function Footer() {
   const t = await getTranslations("footer");
+  const nav = await getTranslations("nav");
   const locale = (await getLocale()) as Locale;
 
   return (
@@ -83,6 +85,17 @@ export async function Footer() {
           </ul>
         </div>
       </div>
+      <nav aria-label={nav("main")} className="border-t border-cream-50/20">
+        <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 px-4 py-2 text-sm md:px-8">
+          {NAV_ITEMS.map((item) => (
+            <li key={item.key}>
+              <Link href={item.href} className={linkClass}>
+                {nav(item.key)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div className="border-t border-cream-50/20">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 px-4 py-2 text-sm md:px-8">
           <p>{t("rights", { year: new Date().getFullYear() })}</p>
