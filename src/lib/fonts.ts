@@ -4,6 +4,7 @@ export const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["600", "700"],
   display: "swap",
+  preload: false,
   variable: "--font-playfair",
 });
 

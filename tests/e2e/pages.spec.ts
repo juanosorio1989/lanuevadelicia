@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import es from "../../messages/es.json";
 
 const STORY_ES =
   "La Nueva Delicia lleva más de tres décadas sirviendo comida colombiana en el corazón de Queens. Nuestras raíces están en Caldas, en el Eje Cafetero, y se sienten en cada plato: recetas caseras, ingredientes frescos y todo preparado en su punto. Nuestro equipo atiende con cariño, porque lo que más nos importa es que cada persona que entra se sienta como en casa.";
@@ -6,6 +7,7 @@ const STORY_ES =
 test("our story (es): approved text, expectations, CTAs, no owner or nationality wording", async ({ page }) => {
   await page.goto("/es/our-story/");
   await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("h1")).toHaveText(es.home.story.title);
   const text = await page.locator("main").innerText();
   expect(text.replace(/\s+/g, " ")).toContain(STORY_ES);
   expect(text).toContain("Más de 30 años de sabor colombiano en Jackson Heights.");
@@ -56,7 +58,9 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, note,
   await expect(table).toContainText("Desayunos");
   await expect(table).toContainText("Happy hour");
   for (const app of ["Uber Eats", "DoorDash", "Grubhub"]) {
-    await expect(main.getByRole("link", { name: app })).toBeVisible();
+    const link = main.getByRole("link", { name: app });
+    await expect(link).toBeVisible();
+    expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
   }
   await expect(main).toContainText("¿Evento o grupo grande? Llámanos.");
   await expect(main).toContainText("El domicilio a más de una milla tiene un cargo extra.");

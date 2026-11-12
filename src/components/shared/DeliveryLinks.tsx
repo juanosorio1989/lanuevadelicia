@@ -32,7 +32,7 @@ export async function DeliveryLinks({
             params={{ app: d.app, location }}
             external
             variant="outline"
-            className="px-4! text-sm"
+            className="px-4! text-sm!"
           >
             {d.label}
           </TrackedLink>

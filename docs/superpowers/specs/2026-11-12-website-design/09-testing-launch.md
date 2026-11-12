@@ -27,12 +27,16 @@
 Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO = 100. LCP < 2.5 s, CLS < 0.1, INP < 200 ms. Module JS
 shipped on the home page (`/es/`) at most 170 KB gzipped, excluding the `noModule` polyfill (Claude's call). Reason: the
 Next 16 + React 19 baseline alone is about 122 KB gzipped, so the original 120 KB target was not reachable; the Lighthouse
-mobile performance score of 90 or more stays the binding gate.
+mobile performance score of 90 or more stays the binding gate. Only DM Sans is preloaded; Playfair is not, because its
+preload competed with the hero image and pushed LCP to about 2.4 s.
 
 The local and CI gate (`lighthouserc.json`, 3 runs per URL) uses `throttlingMethod: devtools`: the browser applies a real
 mobile network and CPU throttle. Lighthouse's default `simulate` mode (what PageSpeed Insights reports) models the
-page load instead and gives a much higher LCP on `/es/` (about 3.3 to 3.5 s) than the observed one (about 150 ms),
-because render delay dominates the simulated figure. Rather than hide that, a second config (`lighthouserc.simulate.json`,
+page load instead and gives a much higher LCP on `/es/` (about 3.1 to 3.4 s). In the unthrottled trace Lantern simulates
+from, first paint and LCP land at about 123 ms, by which time all JS chunks (about 160 KB), the logo and the
+below-the-fold images have finished loading, so Lantern attributes all of them to LCP. This is an artefact of measuring
+locally; PageSpeed Insights against the preview deploy (Q12) is the real check. The devtools LCP is bandwidth-bound
+(hero image load), not render-bound. Rather than hide that, a second config (`lighthouserc.simulate.json`,
 `npm run lhci:simulate`) checks `/es/` LCP <= 2500 ms with simulated throttling at warn level only; CI runs it with
 `continue-on-error`, so the regression stays visible without failing the build. See the open item in
 [10-decisions-open.md](10-decisions-open.md).

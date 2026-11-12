@@ -35,8 +35,14 @@ for (const file of walk(root)) {
     if (!raw || /^(https?:|mailto:|tel:|data:|javascript:|\/\/)/.test(raw)) continue;
     if (raw.startsWith("#")) {
       // Hash-only link: the id must exist in this very file ("#" alone and "#top" are always valid).
-      const id = decodeURIComponent(raw.slice(1));
       checked++;
+      let id;
+      try {
+        id = decodeURIComponent(raw.slice(1));
+      } catch {
+        broken.push(`${file}: ${raw} -> malformed hash`);
+        continue;
+      }
       if (id && id !== "top" && !hasId(html, id)) broken.push(`${file}: ${raw} -> no id="${id}" in this page`);
       continue;
     }
@@ -49,8 +55,15 @@ for (const file of walk(root)) {
       continue;
     }
     if (hash && abs.endsWith("/")) {
+      let id;
+      try {
+        id = decodeURIComponent(hash);
+      } catch {
+        broken.push(`${file}: ${raw} -> malformed hash`);
+        continue;
+      }
       const target = readFileSync(join(root, abs, "index.html"), "utf8");
-      if (!hasId(target, hash)) broken.push(`${file}: ${raw} -> no id="${hash}" in ${abs}`);
+      if (!hasId(target, id)) broken.push(`${file}: ${raw} -> no id="${id}" in ${abs}`);
     }
   }
 }
