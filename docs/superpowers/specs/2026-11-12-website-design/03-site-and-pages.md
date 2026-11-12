@@ -131,5 +131,5 @@ directions button never depends on the map.
 ## Open-now logic
 
 The hours live in data. The client computes the status in `America/New_York` and shows one of: open (closes at X),
-closing soon (under 60 min), or closed (opens at X, today or tomorrow). The server and static HTML render the plain
+closing soon (60 min or less to close), or closed (opens at X, today or tomorrow). The server and static HTML render the plain
 hours with no badge, to avoid a wrong cached status. Holidays are not modeled in the MVP (Q4).
