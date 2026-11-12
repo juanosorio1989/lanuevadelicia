@@ -13,7 +13,7 @@ Node 22 is the target (`.nvmrc`); Node >= 20.9 works.
 | `npm run build` | Validates content (`prebuild`: `tests/unit/data.test.ts`), then static export to `out/` |
 | `npm run check:out` | Checks the shape of `out/` (redirect, locales, 404, hosting files) |
 | `npm run serve:out` | Serves `out/` on http://localhost:4173 |
-| `npm test` | Unit tests (Vitest) |
+| `npm test` | Unit tests (Vitest), plus a second `TZ=Europe/London` run of the hours tests (open status must follow New York time) |
 | `npm run e2e` | End-to-end tests (Playwright; serves `out/` itself, run `build` first) |
 | `npm run lint` / `npm run typecheck` | ESLint / TypeScript |
 

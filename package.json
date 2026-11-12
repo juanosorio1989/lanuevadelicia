@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "vitest run tests/unit/data.test.ts",
     "build": "next build",
-    "test": "vitest run",
+    "test": "vitest run && TZ=Europe/London vitest run tests/unit/hours.test.ts",
     "e2e": "playwright test",
     "serve:out": "serve out -l 4173 -c ../serve.json",
     "check:out": "node scripts/check-out.mjs",
