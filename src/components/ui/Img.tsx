@@ -6,10 +6,12 @@ type Props = {
   locale: Locale;
   sizes: string;
   priority?: boolean;
+  /** Eager without a preload or fetchpriority hint (small above-the-fold images such as the logo). */
+  eager?: boolean;
   className?: string;
 };
 
-export function Img({ photo, locale, sizes, priority, className }: Props) {
+export function Img({ photo, locale, sizes, priority, eager, className }: Props) {
   return (
     <ExportedImage
       src={photo.src}
@@ -18,6 +20,8 @@ export function Img({ photo, locale, sizes, priority, className }: Props) {
       height={photo.height}
       sizes={sizes}
       priority={priority}
+      {...(priority ? { fetchPriority: "high" as const } : {})}
+      {...(eager && !priority ? { loading: "eager" as const } : {})}
       className={className}
     />
   );

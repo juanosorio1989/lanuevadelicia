@@ -1,21 +1,17 @@
 "use client";
 
-import { useLocale } from "next-intl";
-import { useTranslations } from "next-intl";
-import { getPathname, usePathname } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { track } from "@/lib/analytics";
 
 const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
 
 /** ES | EN. Links to the same page in the other locale; the current locale is bold and not a link. */
-export function LanguageSwitch() {
-  const current = useLocale() as Locale;
+export function LanguageSwitch({ current, label }: { current: Locale; label: string }) {
   const pathname = usePathname();
-  const t = useTranslations("nav");
 
   return (
-    <div data-testid="lang-switch" role="group" aria-label={t("language")} className="flex items-center text-sm">
+    <div data-testid="lang-switch" role="group" aria-label={label} className="flex items-center text-sm">
       {routing.locales.map((locale, i) => (
         <span key={locale} className="flex items-center">
           {i > 0 && <span aria-hidden="true" className="opacity-60">|</span>}
@@ -25,7 +21,7 @@ export function LanguageSwitch() {
             </span>
           ) : (
             <a
-              href={withSlash(getPathname({ href: pathname, locale }))}
+              href={withSlash(pathname.replace(/^\/(es|en)(?=\/|$)/, `/${locale}`))}
               lang={locale}
               hrefLang={locale}
               onClick={() => track("switch_language", { from: current, to: locale })}

@@ -25,7 +25,7 @@
 - The EN story translation and all `descriptionEs` text are written by Claude, for owner review.
 - Light theme only.
 - The "what to expect" row on Our story.
-- A home-page JS budget under 120 KB gzipped.
+- A home-page JS budget of at most 170 KB gzipped (module JS, excluding the `noModule` polyfill; the Next 16 + React 19 baseline is about 122 KB).
 - One bilingual 404 page. Native `<dialog>` for the gallery and the mobile nav. A permissive script CSP (required by
   static export). One-day cache on images. ISO weekday numbering.
 

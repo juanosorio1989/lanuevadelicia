@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     <div className="mx-auto max-w-6xl px-4 pt-6 pb-10 md:px-8 md:pt-8">
       <h1 className="text-[1.75rem] md:text-4xl">{t("title")}</h1>
       <p className="mt-1.5 text-muted-600">{t("lead")}</p>
-      <GalleryGrid groups={groups} closeLabel={t("close")} openLabel={t("open")} />
+      <GalleryGrid groups={groups} closeLabel={t("close")} openLabel={t.raw("open") as string} />
     </div>
   );
 }

@@ -70,7 +70,7 @@ creating a GitHub repo or pushing.
 - Targets are at least 44px. Visible focus. One H1 per page. Every `<img>` has bilingual alt text. The menu works
   with JS off.
 - Do not use `aggregateRating`/`review` in JSON-LD. Show the rating as "4.4 ★ · 450+" text.
-- Home-page JS is under 120 KB gzipped. No Radix dialogs: use native `<dialog>`.
+- Home-page module JS is at most 170 KB gzipped (excluding the noModule polyfill; the Next 16 + React 19 baseline is about 122 KB). No Radix dialogs: use native `<dialog>`.
 - Code, comments and docs in English. UI copy in `messages/{es,en}.json` or the bilingual data files.
 - Docs change in the same commit as code (lab rule). Each task updates `README.md` (project root) sections it
   affects.

@@ -31,7 +31,7 @@ Spec pages: 08 (GA4), 07 (CSP), 09 (tests, budgets).
 
 - [ ] **Step 4: Lighthouse.** `lighthouserc.json` runs against `out/` through the static server on `/es/`, `/es/menu/`
   and `/en/`, mobile preset. Assertions: performance ≥ 0.9, accessibility ≥ 0.95, best-practices ≥ 0.95, seo = 1,
-  LCP ≤ 2500, CLS ≤ 0.1, `total-byte-weight` sanity check, and a script resource-size budget of 120 KB on `/es/`.
+  LCP ≤ 2500, CLS ≤ 0.1, `total-byte-weight` sanity check, and a script resource-size budget of 170 KB on `/es/` (see spec 09).
 
 - [ ] **Step 5: CI.** `.github/workflows/ci.yml` on push and pull_request: Node 22, `npm ci`,
   `npx playwright install --with-deps chromium`, `npm run ci`, then `npx lhci autorun`. (It only runs once Opus and

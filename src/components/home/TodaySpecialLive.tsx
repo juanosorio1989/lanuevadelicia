@@ -2,7 +2,6 @@
 
 import { useSyncExternalStore } from "react";
 import ExportedImage from "next-image-export-optimizer";
-import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { nyNow } from "@/lib/hours";
 import type { Locale } from "@/types/content";
@@ -24,8 +23,15 @@ const getSnapshot = () => nyNow(new Date()).weekday;
 const getServerSnapshot = () => null;
 
 /** Static HTML and the no-JS view show a neutral teaser (no dish, no price); the client swaps in today's special in New York time. */
-export function TodaySpecialLive({ locale, days }: { locale: Locale; days: SpecialDisplay[] }) {
-  const t = useTranslations("home.today");
+export type TodayLabels = {
+  eyebrowNeutral: string;
+  eyebrow: string;
+  teaser: string;
+  alternative: string;
+  all: string;
+};
+
+export function TodaySpecialLive({ locale, days, labels }: { locale: Locale; days: SpecialDisplay[]; labels: TodayLabels }) {
   const weekday = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const today = weekday === null ? undefined : days.find((d) => d.day === weekday);
 
@@ -48,20 +54,20 @@ export function TodaySpecialLive({ locale, days }: { locale: Locale; days: Speci
         )}
         <div className={today ? "" : "md:col-span-2"}>
           <p className="text-xs font-bold uppercase tracking-[0.12em] text-green-900">
-            {today ? t("eyebrow", { day: today.dayName }) : t("eyebrowNeutral")}
+            {today ? labels.eyebrow.replace("{day}", today.dayName) : labels.eyebrowNeutral}
           </p>
           <h2 id="today-title" className="mt-1 text-[1.375rem] md:text-[1.875rem]">
-            {today ? today.main : t("teaser")}
+            {today ? today.main : labels.teaser}
           </h2>
           {today && (
             <p className="mt-1 text-sm text-charcoal-900">
               <span className="font-bold">{today.price}</span>
-              {today.hasAlternative && <> · {t("alternative")}</>}
+              {today.hasAlternative && <> · {labels.alternative}</>}
             </p>
           )}
           <div className="mt-4">
             <Button href={`/${locale}/specials/`} variant="outline">
-              {t("all")}
+              {labels.all}
             </Button>
           </div>
         </div>

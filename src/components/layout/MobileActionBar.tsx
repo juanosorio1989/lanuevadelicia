@@ -1,6 +1,5 @@
 import { MapPin, Phone, UtensilsCrossed } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { getLocale, getTranslations } from "next-intl/server";
 import { directionsUrl, telHref } from "@/lib/links";
 import { TrackedLink } from "./TrackedLink";
 
@@ -10,16 +9,17 @@ const cell =
 /** Fixed bottom bar below md: Menu, Directions (primary, wider), Call. */
 export async function MobileActionBar() {
   const t = await getTranslations("cta");
+  const locale = await getLocale();
   return (
     <nav
       data-testid="bottom-bar"
       aria-label={`${t("menu")} / ${t("directions")} / ${t("call")}`}
       className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_1.3fr_1fr] border-t border-sand-100 bg-white pb-[env(safe-area-inset-bottom)] md:hidden"
     >
-      <Link href="/menu" data-testid="bottom-bar-menu" className={`${cell} text-green-900`}>
+      <a href={`/${locale}/menu/`} data-testid="bottom-bar-menu" className={`${cell} text-green-900`}>
         <UtensilsCrossed aria-hidden="true" size={20} />
         <span className="max-w-full truncate">{t("menu")}</span>
-      </Link>
+      </a>
       <TrackedLink
         href={directionsUrl()}
         event="click_directions"

@@ -21,8 +21,18 @@ requireFile("out/404.html", "Página no encontrada", "Page not found");
 requireFile("out/sitemap.xml", "<urlset", "/es/menu/");
 requireFile("out/robots.txt", "Sitemap:");
 if (!existsSync("out/og/home.jpg")) errors.push("missing out/og/home.jpg");
-requireFile("out/_redirects");
-requireFile("out/_headers");
+requireFile("out/_redirects", "/ /es/ 302");
+requireFile(
+  "out/_headers",
+  "/_next/static/*",
+  "immutable",
+  "X-Content-Type-Options: nosniff",
+  "Referrer-Policy:",
+  "Content-Security-Policy:",
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+  "frame-src https://www.google.com https://maps.google.com",
+);
 if (existsSync("out/fr")) errors.push("out/fr must not exist");
 
 if (errors.length) {

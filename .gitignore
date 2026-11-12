@@ -20,3 +20,5 @@ next-env.d.ts
 /public/nextImageExportOptimizer/
 /public/images/**/nextImageExportOptimizer/
 /public/images/next-image-export-optimizer-hashes.json
+.lighthouseci/
+.out-main/

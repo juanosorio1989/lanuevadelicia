@@ -24,8 +24,10 @@
 
 ## Budgets (Lighthouse, mobile, on the preview deploy)
 
-Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO = 100. LCP < 2.5 s, CLS < 0.1, INP < 200 ms. JS
-shipped on the home page under 120 KB gzipped (Claude's call).
+Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO = 100. LCP < 2.5 s, CLS < 0.1, INP < 200 ms. Module JS
+shipped on the home page (`/es/`) at most 170 KB gzipped, excluding the `noModule` polyfill (Claude's call). Reason: the
+Next 16 + React 19 baseline alone is about 122 KB gzipped, so the original 120 KB target was not reachable; the Lighthouse
+mobile performance score of 90 or more stays the binding gate.
 
 ## Manual checks
 

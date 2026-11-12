@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
@@ -29,15 +30,14 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={fontVariables}>
       <body className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
-        <NextIntlClientProvider>
-          <SkipLink />
-          <Header />
-          <main id="main" tabIndex={-1} className="focus:outline-none">
-            {children}
-          </main>
-          <Footer />
-          <MobileActionBar />
-        </NextIntlClientProvider>
+        <SkipLink />
+        <Header />
+        <main id="main" tabIndex={-1} className="focus:outline-none">
+          {children}
+        </main>
+        <Footer />
+        <MobileActionBar />
+        <GoogleAnalytics />
       </body>
     </html>
   );

@@ -9,12 +9,18 @@
     "test": "vitest run && TZ=Europe/London vitest run tests/unit/hours.test.ts",
     "e2e": "playwright test",
     "serve:out": "serve out -l 4173 -c ../serve.json",
+    "serve:headers": "node scripts/serve-with-headers.mjs 4173",
     "check:out": "node scripts/check-out.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:ga": "node scripts/check-ga.mjs",
+    "lhci": "lhci autorun",
+    "ci": "npm run typecheck && npm run lint && npm test && npm run build && npm run check:out && npm run check:links && npm run e2e",
     "lint": "eslint",
     "photos": "tsx scripts/import-photos.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@next/third-parties": "^16.4.6",
     "lucide-react": "^1.72.0",
     "next": "16.4.6",
     "next-image-export-optimizer": "^1.21.2",
@@ -25,6 +31,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.65.0",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/node": "^20",

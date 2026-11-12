@@ -1,6 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { restaurant } from "@/data/restaurant";
-import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { formatTime } from "@/lib/hours";
 import { directionsUrl, telHref } from "@/lib/links";
@@ -89,9 +88,9 @@ export async function Footer() {
         <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 px-4 py-2 text-sm md:px-8">
           {NAV_ITEMS.map((item) => (
             <li key={item.key}>
-              <Link href={item.href} className={linkClass}>
+              <a href={`/${locale}${item.href}/`} className={linkClass}>
                 {nav(item.key)}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -99,9 +98,9 @@ export async function Footer() {
       <div className="border-t border-cream-50/20">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 px-4 py-2 text-sm md:px-8">
           <p>{t("rights", { year: new Date().getFullYear() })}</p>
-          <Link href="/privacy" className={linkClass}>
+          <a href={`/${locale}/privacy/`} className={linkClass}>
             {t("privacy")}
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

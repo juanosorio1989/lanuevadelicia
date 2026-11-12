@@ -50,7 +50,7 @@ export function SpecialDayCard({
           </span>
         </h2>
         <p className="mt-2 text-lg font-bold text-charcoal-900">{main}</p>
-        <p className="mt-1 text-lg font-bold text-terra-700">{price}</p>
+        <p className="mt-1 text-xl font-bold text-terra-700">{price}</p>
         {alternative && (
           <div className="mt-3 border-t border-sand-100 pt-3">
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-green-900">

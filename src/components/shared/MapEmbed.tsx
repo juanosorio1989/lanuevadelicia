@@ -1,44 +1,9 @@
-"use client";
-
-import { useState } from "react";
-import { MapPin } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { restaurant } from "@/data/restaurant";
-import { track } from "@/lib/analytics";
-import { mapsEmbedUrl } from "@/lib/links";
+import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/types/content";
+import { MapEmbedLive } from "./MapEmbedLive";
 
-/** Click-to-load map: no Google request until the visitor asks for it. */
-export function MapEmbed({ location = "home" }: { locale?: Locale; location?: string }) {
-  const t = useTranslations("map");
-  const [loaded, setLoaded] = useState(false);
-
-  if (loaded) {
-    return (
-      <iframe
-        title={t("title")}
-        src={mapsEmbedUrl()}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="h-72 w-full rounded-card border-0 md:h-full md:min-h-72"
-      />
-    );
-  }
-  return (
-    <div className="flex h-72 flex-col items-center justify-center gap-3 rounded-card bg-green-900 p-6 text-center text-cream-50 md:h-full md:min-h-72">
-      <MapPin aria-hidden="true" size={32} className="text-star" />
-      <p className="font-bold">{restaurant.address.oneLine}</p>
-      <button
-        type="button"
-        onClick={() => {
-          setLoaded(true);
-          track("load_map", { location });
-        }}
-        className="inline-flex min-h-11 items-center justify-center rounded-full bg-terra-700 px-6 py-2 font-bold text-white hover:bg-cream-50 hover:text-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50"
-      >
-        {t("view")}
-      </button>
-      <p className="text-sm text-sand-100">{t("hint")}</p>
-    </div>
-  );
+/** Server wrapper: hands the client map card its strings as props. */
+export async function MapEmbed({ locale, location = "home" }: { locale: Locale; location?: string }) {
+  const t = await getTranslations({ locale, namespace: "map" });
+  return <MapEmbedLive labels={{ view: t("view"), title: t("title"), hint: t("hint") }} location={location} />;
 }

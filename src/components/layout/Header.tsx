@@ -3,7 +3,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Img } from "@/components/ui/Img";
 import { photos } from "@/data/photos";
 import { restaurant } from "@/data/restaurant";
-import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { directionsUrl, telHref } from "@/lib/links";
 import { HeaderShell } from "./HeaderShell";
@@ -18,12 +17,15 @@ export async function Header() {
   const t = await getTranslations("nav");
   const cta = await getTranslations("cta");
   const locale = (await getLocale()) as Locale;
+  const navLabels = Object.fromEntries(
+    ["menu", "specials", "story", "gallery", "visit", "main", "openMenu", "closeMenu"].map((k) => [k, t(k)]),
+  );
 
   return (
     <HeaderShell>
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 md:gap-6 md:px-8">
-        <Link
-          href="/"
+        <a
+          href={`/${locale}/`}
           aria-label={t("home")}
           className="flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50"
         >
@@ -31,14 +33,14 @@ export async function Header() {
             photo={logo}
             locale={locale}
             sizes="56px"
-            priority
+            eager
             className="h-12 w-auto transition-[height] duration-200 group-data-[scrolled]:h-10 md:h-14"
           />
-        </Link>
-        <NavLinks />
+        </a>
+        <NavLinks locale={locale} labels={navLabels} />
         <div className="ml-auto flex items-center gap-1 md:ml-0">
-          <LanguageSwitch />
-          <MobileNav />
+          <LanguageSwitch current={locale} label={t("language")} />
+          <MobileNav locale={locale} labels={navLabels} />
         </div>
         <TrackedLink
           href={telHref()}
