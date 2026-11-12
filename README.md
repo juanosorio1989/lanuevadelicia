@@ -10,7 +10,7 @@ Node 22 is the target (`.nvmrc`); Node >= 20.9 works.
 | Command | What it does |
 |---------|--------------|
 | `npm run dev` | Dev server |
-| `npm run build` | Validates content (`prebuild`: `tests/unit/data.test.ts`), then static export to `out/` |
+| `npm run build` | Validates content (`prebuild`: `tests/unit/data.test.ts`), static export to `out/`, then `next-image-export-optimizer` writes the WebP variants to `out/nextImageExportOptimizer/` (about 30 s) |
 | `npm run check:out` | Checks the shape of `out/` (redirect, locales, 404, hosting files) |
 | `npm run serve:out` | Serves `out/` on http://localhost:4173 |
 | `npm test` | Unit tests (Vitest), plus a second `TZ=Europe/London` run of the hours tests (open status must follow New York time) |

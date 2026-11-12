@@ -15,3 +15,8 @@ next-env.d.ts
 # env files (only .env.example is committed)
 .env*
 !.env.example
+
+# next-image-export-optimizer generated cache
+/public/nextImageExportOptimizer/
+/public/images/**/nextImageExportOptimizer/
+/public/images/next-image-export-optimizer-hashes.json

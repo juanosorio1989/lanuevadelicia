@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { fontVariables } from "@/lib/fonts";
 import "./globals.css";
 
 // Single bilingual 404 (Spanish first). Next writes it to out/404.html.
 // Task 11 styles it; plain CSS only for now.
 export default function NotFound() {
   return (
-    <html lang="es">
-      <body style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
+    <html lang="es" className={fontVariables}>
+      <body style={{ padding: "2rem" }}>
         <main>
           <h1>Página no encontrada</h1>
           <p>No encontramos lo que buscas. Prueba con estos enlaces:</p>
