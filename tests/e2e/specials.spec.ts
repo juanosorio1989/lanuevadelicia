@@ -90,3 +90,10 @@ test.describe("no JS", () => {
     await expect(page.locator("section[id^='day-'][aria-current]")).toHaveCount(0);
   });
 });
+
+for (const [locale, label] of [["es", "Ver el menú completo"], ["en", "See the full menu"]] as const) {
+  test(`${locale} specials: full menu button links to the menu`, async ({ page }) => {
+    await page.goto(`/${locale}/specials/`);
+    await expect(page.getByRole("link", { name: label })).toHaveAttribute("href", `/${locale}/menu/`);
+  });
+}

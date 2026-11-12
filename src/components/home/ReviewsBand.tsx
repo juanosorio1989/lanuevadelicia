@@ -19,10 +19,10 @@ export async function ReviewsBand({ locale }: { locale: Locale }) {
         {t("title", { value, count: displayCount })}
       </h2>
       <div className="mt-5 flex flex-wrap justify-center gap-3">
-        <TrackedLink href={reviewsUrl()} event="click_reviews" params={{ action: "read", location: "home" }} external variant="primary">
+        <TrackedLink href={reviewsUrl()} event="click_reviews" params={{ action: "read" }} external variant="primary">
           {t("read")}
         </TrackedLink>
-        <TrackedLink href={writeReviewUrl()} event="click_reviews" params={{ action: "write", location: "home" }} external variant="on-dark">
+        <TrackedLink href={writeReviewUrl()} event="click_reviews" params={{ action: "write" }} external variant="on-dark">
           {t("write")}
         </TrackedLink>
       </div>

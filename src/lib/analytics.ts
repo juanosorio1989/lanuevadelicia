@@ -6,7 +6,7 @@ export type EventParams = {
   click_directions: { location: TrackLocation };
   click_call: { location: TrackLocation };
   click_delivery: { app: string; location: TrackLocation };
-  click_reviews: { action: "read" | "write"; location?: string };
+  click_reviews: { action: "read" | "write" };
   load_map: { page: "home" | "visit" };
   switch_language: { from: string; to: string };
   view_menu_category: { category: string };

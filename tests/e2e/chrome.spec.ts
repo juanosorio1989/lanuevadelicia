@@ -112,7 +112,6 @@ test("the skip link is first and moves focus to #main", async ({ page }) => {
   await expect(page.locator("#main")).toBeFocused();
 });
 
-
 test.describe("header logo and wrapping across widths", () => {
   for (const locale of ["es", "en"] as const) {
     for (const width of [320, 768, 1024, 1280]) {
@@ -134,5 +133,27 @@ test.describe("header logo and wrapping across widths", () => {
         }
       });
     }
+  }
+});
+
+test.describe("footer at tablet width", () => {
+  for (const [locale, label] of [["es", "Pide a domicilio"], ["en", "Order delivery"]] as const) {
+    test(`${locale} 768px: Instagram handle does not overlap the delivery column`, async ({ page }) => {
+      await page.setViewportSize({ width: 768, height: 800 });
+      await page.goto(`/${locale}/`);
+      const footer = page.getByRole("contentinfo");
+      const handle = await footer.getByRole("link", { name: restaurant.instagram.handle }).boundingBox();
+      const delivery = await footer.getByText(label, { exact: true }).locator("..").boundingBox();
+      expect(handle).not.toBeNull();
+      expect(delivery).not.toBeNull();
+      const overlaps =
+        handle!.x < delivery!.x + delivery!.width &&
+        delivery!.x < handle!.x + handle!.width &&
+        handle!.y < delivery!.y + delivery!.height &&
+        delivery!.y < handle!.y + handle!.height;
+      expect(overlaps).toBe(false);
+      const noScroll = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+      expect(noScroll).toBe(true);
+    });
   }
 });

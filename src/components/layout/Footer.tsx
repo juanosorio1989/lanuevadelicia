@@ -24,7 +24,7 @@ export async function Footer() {
 
   return (
     <footer className="bg-charcoal-900 text-cream-50">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-4 md:px-8">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
           <p className="font-display text-xl font-bold">{restaurant.name}</p>
           <p className={`${labelClass} mt-4`}>{t("address")}</p>
@@ -60,7 +60,7 @@ export async function Footer() {
             event="click_instagram"
             params={{ location: "footer" }}
             external
-            className={linkClass}
+            className={`${linkClass} [overflow-wrap:anywhere]`}
           >
             {restaurant.instagram.handle}
           </TrackedLink>

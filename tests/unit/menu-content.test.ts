@@ -41,12 +41,16 @@ describe("menu categories", () => {
       { days: [6, 7], from: "17:00", to: "20:00" },
     ]);
   });
-  // The flyer wording shares one p.m. between the two ends ("12:00 a 7:00 p.m."), so the opening time is compared without its suffix.
-  const bare = (hhmm: string) => formatTime(hhmm, "es").replace(/ [ap]\.m\.$/, "");
+  // The flyer wording shares one p.m. between the two ends ("12:00 a 7:00 p.m."), so the start drops its period only when it matches the end's.
+  const period = (x: string) => x.slice(-4);
+  const start = (from: string, to: string) => {
+    const f = formatTime(from, "es");
+    return period(f) === period(formatTime(to, "es")) ? f.replace(/ [ap]\.m\.$/, "") : f;
+  };
   it.each(["es", "en"] as const)("cocteles note (%s) holds the formatted happy hour times and price", (locale) => {
     const note = categories.find((x) => x.id === "cocteles")!.note![locale];
     for (const hh of restaurant.happyHour) {
-      expect(note).toContain(`${bare(hh.from)} ${locale === "es" ? "a" : "to"} ${formatTime(hh.to, "es")}`);
+      expect(note).toContain(`${start(hh.from, hh.to)} ${locale === "es" ? "a" : "to"} ${formatTime(hh.to, "es")}`);
     }
     expect(note).toContain(`$${restaurant.happyHourCocktailPrice}`);
   });

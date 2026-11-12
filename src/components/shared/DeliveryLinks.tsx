@@ -39,7 +39,7 @@ export async function DeliveryLinks({
           </TrackedLink>
         ) : (
           // The separator trails each item but the last, so a wrapped line never starts with "·".
-          <span key={d.app} className="inline-flex items-center gap-2 not-last:after:content-['·']">
+          <span key={d.app} className="inline-flex items-center gap-2 not-last:after:content-['·'/'']">
             <TrackedLink href={d.url} event="click_delivery" params={{ app: d.app, location }} external className={linkClass}>
               {d.label}
             </TrackedLink>
