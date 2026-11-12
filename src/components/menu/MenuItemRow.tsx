@@ -1,16 +1,17 @@
 import { formatPrice } from "@/lib/format";
 import type { Locale, MenuItem } from "@/types/content";
 
-export type MenuLabels = { favorite: string; flavors: (list: string) => string };
+export type MenuLabels = { favorite: string };
+export type ItemHeading = "h3" | "h4";
 
-/** Priced options as lines ("En leche $7"), unpriced options as one flavor list. */
-export function ItemOptions({ item, locale, labels }: { item: MenuItem; locale: Locale; labels: MenuLabels }) {
+/** Priced options as lines ("En leche $7"), unpriced options as one neutral list (flavors, grill/breaded...). */
+export function ItemOptions({ item, locale }: { item: MenuItem; locale: Locale }) {
   const priced = item.options?.filter((o) => o.price !== undefined) ?? [];
   const plain = item.options?.filter((o) => o.price === undefined) ?? [];
   if (priced.length === 0 && plain.length === 0) return null;
   return (
     <div className="mt-1 text-muted-600">
-      {plain.length > 0 && <p>{labels.flavors(plain.map((o) => o.label[locale]).join(", "))}</p>}
+      {plain.length > 0 && <p>{plain.map((o) => o.label[locale]).join(" · ")}</p>}
       {priced.length > 0 && (
         <ul>
           {priced.map((o) => (
@@ -30,7 +31,7 @@ export function FavoriteTag({ label }: { label: string }) {
 }
 
 /** Text-list row: name, short description, price on the right, dotted separator. */
-export function MenuItemRow({ item, locale, labels }: { item: MenuItem; locale: Locale; labels: MenuLabels }) {
+export function MenuItemRow({ item, locale, labels, heading: H = "h3" }: { item: MenuItem; locale: Locale; labels: MenuLabels; heading?: ItemHeading }) {
   return (
     <li
       data-item="row"
@@ -38,12 +39,12 @@ export function MenuItemRow({ item, locale, labels }: { item: MenuItem; locale: 
       className="flex justify-between gap-3 border-b border-dotted border-muted-600/40 py-2.5 text-sm"
     >
       <div className="min-w-0">
-        <h3 className="font-sans text-sm font-bold">
+        <H className="font-sans text-sm font-bold">
           {item.name[locale]}
           {item.featured && <FavoriteTag label={labels.favorite} />}
-        </h3>
+        </H>
         {item.description && <p className="text-muted-600">{item.description[locale]}</p>}
-        <ItemOptions item={item} locale={locale} labels={labels} />
+        <ItemOptions item={item} locale={locale} />
       </div>
       {item.price !== undefined && <span className="shrink-0 font-bold text-terra-700">{formatPrice(item.price)}</span>}
     </li>

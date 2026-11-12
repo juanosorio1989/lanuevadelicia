@@ -41,8 +41,8 @@ First time: `npm install && npx playwright install chromium`.
 ## Menu page
 
 - `src/components/menu/`: `MenuCategorySection` (H2, note, photo cards, then text rows; Bebidas and Cervezas group by `subcategory`), `MenuItemCard` (104x92 thumbnail on mobile, vertical card from `md`), `MenuItemRow`, and `CategoryChips` (the only client code: sticky anchor chips, an `IntersectionObserver` sets `aria-current` and keeps the active chip in view, a tap calls `track('view_menu_category')`). Without JS the chips are plain `#id` links.
-- Sections have `id={category.id}`. `scroll-margin-top` comes from `--menu-sticky-offset` (header + chip bar), set on the page wrapper in `src/app/[locale]/menu/page.tsx`; if the header or chip height changes, update `--menu-header-h` and `--menu-sticky-offset` there (the e2e deep-link test pins it).
-- Options: priced options render as price lines ("En leche $7"); unpriced options render as one "Sabores:" list. Copy is under `menu.*` in `messages/{es,en}.json`.
+- Sections have `id={category.id}`. `scroll-margin-top` comes from `--menu-sticky-offset` (header + chip bar), set on the page wrapper (in rem) in `src/app/[locale]/menu/page.tsx`; if the header or chip height changes, update `--menu-header-h` and `--menu-sticky-offset` there (the e2e deep-link test pins it).
+- Options: priced options render as price lines ("En leche $7"); unpriced options render as one neutral " · " list. Copy is under `menu.*` in `messages/{es,en}.json`.
 
 ## Content
 

@@ -43,6 +43,13 @@ test("option prices render for juices", async ({ page }) => {
   await expect(juices).toContainText("En leche");
 });
 
+test("unpriced options carry no flavor label", async ({ page }) => {
+  await page.goto("/es/menu/");
+  const chuleta = page.locator("main [data-item]", { hasText: "Chuleta de cerdo a la parrilla o empanizada" }).first();
+  await expect(chuleta).toContainText("A la parrilla");
+  await expect(chuleta).not.toContainText("Sabores");
+});
+
 test("featured items carry the Favorito tag", async ({ page }) => {
   await page.goto("/es/menu/");
   await expect(page.locator("main [data-featured]")).toHaveCount(menuItems.filter((i) => i.featured).length);
@@ -59,17 +66,32 @@ test("price note per locale", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Our menu");
 });
 
-test("Review Focus 4: deep link heading clears the sticky header and chips", async ({ page }) => {
-  await page.goto("/en/menu/#cocteles");
-  await page.waitForTimeout(400);
-  const stack = await page.evaluate(() => {
+type Pg = import("@playwright/test").Page;
+const sticky = (page: Pg) =>
+  page.evaluate(() => {
     const header = document.querySelector("header")!.getBoundingClientRect().bottom;
-    const chips = document.querySelector("[data-testid=menu-chips]")!.getBoundingClientRect().bottom;
-    return Math.max(header, chips);
+    const chips = document.querySelector("[data-testid=menu-chips]")!.getBoundingClientRect();
+    return { header, chipsTop: chips.top, stack: Math.max(header, chips.bottom) };
   });
-  const top = (await page.locator("#cocteles h2").boundingBox())!.y;
-  expect(top).toBeGreaterThanOrEqual(stack);
-});
+
+const setups: [string, (page: Pg) => Promise<void>][] = [
+  ["desktop", async () => {}],
+  ["320x640", async (page) => page.setViewportSize({ width: 320, height: 640 })],
+  ["20px root font", async (page) => {
+    await page.addInitScript(() => document.addEventListener("DOMContentLoaded", () => { document.documentElement.style.fontSize = "20px"; }));
+  }],
+];
+for (const [name, setup] of setups) {
+  test(`Review Focus 4: deep link heading clears the sticky header and chips (${name})`, async ({ page }) => {
+    await setup(page);
+    await page.goto("/en/menu/#cocteles");
+    await page.waitForTimeout(500);
+    const s = await sticky(page);
+    expect(s.chipsTop).toBeGreaterThanOrEqual(s.header - 1);
+    const top = (await page.locator("#cocteles h2").boundingBox())!.y;
+    expect(top).toBeGreaterThanOrEqual(s.stack);
+  });
+}
 
 test.describe("JS disabled", () => {
   test.use({ javaScriptEnabled: false });

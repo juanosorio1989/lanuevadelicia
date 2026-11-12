@@ -88,10 +88,9 @@
   },
   "menu": {
     "title": "Our menu",
-    "priceNote": "In-restaurant prices. Prices on delivery apps may vary.",
+    "priceNote": "In-restaurant prices; delivery app prices may differ.",
     "chipsLabel": "Menu categories",
     "favorite": "Favorite",
-    "flavors": "Flavors: {list}",
     "specialsLink": "See this week's specials →"
   }
 }

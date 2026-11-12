@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/Button";
 import type { Locale, MenuCategory, MenuItem } from "@/types/content";
 import { MenuItemCard } from "./MenuItemCard";
-import { MenuItemRow, type MenuLabels } from "./MenuItemRow";
+import { MenuItemRow, type ItemHeading, type MenuLabels } from "./MenuItemRow";
 
 type Props = { category: MenuCategory; items: MenuItem[]; locale: Locale; labels: MenuLabels; specialsLink?: { href: string; label: string } };
 
-function Group({ items, locale, labels }: { items: MenuItem[]; locale: Locale; labels: MenuLabels }) {
+function Group({ items, locale, labels, heading }: { items: MenuItem[]; locale: Locale; labels: MenuLabels; heading: ItemHeading }) {
   const cards = items.filter((i) => i.image);
   const rows = items.filter((i) => !i.image);
   return (
@@ -13,14 +13,14 @@ function Group({ items, locale, labels }: { items: MenuItem[]; locale: Locale; l
       {cards.length > 0 && (
         <ul className="mt-4 grid gap-3 md:grid-cols-3 md:gap-4">
           {cards.map((i) => (
-            <MenuItemCard key={i.id} item={i} locale={locale} labels={labels} />
+            <MenuItemCard key={i.id} item={i} locale={locale} labels={labels} heading={heading} />
           ))}
         </ul>
       )}
       {rows.length > 0 && (
         <ul className="mt-4 grid md:grid-cols-2 md:gap-x-10">
           {rows.map((i) => (
-            <MenuItemRow key={i.id} item={i} locale={locale} labels={labels} />
+            <MenuItemRow key={i.id} item={i} locale={locale} labels={labels} heading={heading} />
           ))}
         </ul>
       )}
@@ -57,7 +57,7 @@ export function MenuCategorySection({ category, items, locale, labels, specialsL
       {groups.map((g) => (
         <div key={g.title ?? "all"} className="mt-2">
           {g.title && <h3 className="mt-4 text-lg">{g.title}</h3>}
-          <Group items={g.items} locale={locale} labels={labels} />
+          <Group items={g.items} locale={locale} labels={labels} heading={g.title ? "h4" : "h3"} />
         </div>
       ))}
     </section>

@@ -10,12 +10,13 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const locale = raw as Locale;
   const t = await getTranslations({ locale, namespace: "menu" });
   const ordered = [...categories].sort((a, b) => a.order - b.order);
-  const labels = { favorite: t("favorite"), flavors: (list: string) => t("flavors", { list }) };
+  const labels = { favorite: t("favorite") };
 
   return (
-    // --menu-header-h: the shrunken sticky header (measured: 48px, 60px on very narrow phones where it wraps);
-    // --menu-sticky-offset: header + 61px chip bar + a little air (scroll-margin for sections).
-    <div className="[--menu-header-h:48px] [--menu-sticky-offset:112px] max-[359px]:[--menu-header-h:60px] max-[359px]:[--menu-sticky-offset:124px]">
+    // All in rem so they follow the browser font size like the header and chips do.
+    // --menu-header-h: the shrunken sticky header (3rem; 3.75rem below 360px where it wraps);
+    // --menu-sticky-offset: header + chip bar (3.75rem + 1px border) + 0.25rem of air (scroll-margin for sections).
+    <div className="[--menu-header-h:3rem] [--menu-sticky-offset:calc(var(--menu-header-h)+4rem+1px)] max-[22.4375rem]:[--menu-header-h:3.75rem]">
       <div className="mx-auto max-w-6xl px-4 pt-6 pb-3 md:px-8 md:pt-8">
         <h1 className="text-[1.75rem] md:text-4xl">{t("title")}</h1>
         <p className="mt-1.5 text-muted-600">{t("priceNote")}</p>
