@@ -37,7 +37,7 @@ switch language. Desktop Chrome, Safari and Firefox at 1280 and 1920 widths.
 1. The owner reviews all ES and EN copy and the full menu with prices (a printed or PDF proof of the menu page).
 2. Restaurant photos are in, or the substitutes from [06-photos.md](06-photos.md) are in place. No placeholders
    remain.
-3. Q1 (phone) and Q2 (Place ID) are resolved, or the noted fallbacks are accepted.
+3. Q2 (Place ID) is resolved, or its fallback is accepted.
 4. The GA4 property is created by the owner, the ID is set in Cloudflare, and the events are verified in DebugView.
 5. The owner approves the DNS cutover: existing records are copied to Cloudflare, the nameservers move, both custom
    domains are added to Pages, and the www → apex Redirect Rule is created. Then HTTPS works on the apex and www, and

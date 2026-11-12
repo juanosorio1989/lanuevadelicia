@@ -7,7 +7,7 @@ Only these facts may appear on the site. Anything else needs owner confirmation 
 |------|-------|--------|
 | Name | La Nueva Delicia (no "s") | Owner; logo |
 | Address | 93-16B 37th Ave, Jackson Heights, NY 11372 | Google Maps listing (owner's link). Printed menu says "9316 37 Ave"; Grubhub says "9316 37th Ave Suite B". Use the Google form everywhere. |
-| Phone | +1 718-672-3456 (display: (718) 672-3456) | Printed menu ("Delivery"). See open question Q1. |
+| Phone | +1 718-672-3456 (display: (718) 672-3456). The main restaurant line, also used for delivery, and the number on Google | Owner, 2026-11-12 |
 | Hours | Mon–Thu 9:00 a.m.–9:00 p.m.; Fri–Sun 9:00 a.m.–10:00 p.m. | Owner, 2026-11-12 |
 | Breakfast | Served until 1:00 p.m. | Printed menu |
 | Happy hour | Mon–Fri 12:00–7:00 p.m.; Sat–Sun 5:00–8:00 p.m.; all cocktails $8 | Printed drinks menu |

@@ -33,7 +33,6 @@
 
 | # | Question | Fallback if unanswered |
 |---|----------|------------------------|
-| Q1 | Is (718) 672-3456 the main restaurant phone, or only delivery? Is it the number on Google? | Use it as the main phone |
 | Q2 | The Google Place ID (ChIJ…), for the "leave a review" link, the directions `destination_place_id` and `geo` | "Leave a review" goes to the Maps listing; no `geo` |
 | Q3 | Do they take reservations? | `acceptsReservations: false`, no reservation copy |
 | Q4 | Holiday closures or special hours? | Not modeled; a banner can be added in data later |
@@ -46,6 +45,8 @@
 
 ## Resolved after the builder check (owner, 2026-11-12)
 
+- **Q1, the phone:** (718) 672-3456 is the main restaurant phone, also used for delivery, and it is the number on
+  Google.
 - **Q10, the domain and accounts:** the only other service is the email `info@lanuevadelicia.com`, on Hostinger
   Mail. The repo owner holds the Hostinger and GitHub accounts. **No Cloudflare account exists yet. The repo owner
   creates it at launch** (Claude never creates it). Public DNS on 2026-11-12, all of which must be recreated in the
