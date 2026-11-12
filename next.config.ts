@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     loader: "custom",
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    imageSizes: [],
     deviceSizes: [384, 640, 828, 1200, 1920],
   },
   transpilePackages: ["next-image-export-optimizer"],
