@@ -52,7 +52,7 @@ function flyer(day: string, es: string, en: string, esDay: string, enDay: string
 
 export const entries: ManifestEntry[] = [
   // ANTOJITOS
-  item("dishes", "ANTOJITOS/Chicharron con arepa con queso.jpg", "Chicharrón con arepa con queso", "Fried pork skin with cheese corn cake"),
+  item("dishes", "ANTOJITOS/Chicharron con arepa con queso.jpg", "Chicharrón con arepa con queso", "Fried pork skin with corn cake with cheese"),
   item("dishes", "ANTOJITOS/Chorizo con arepita.jpg", "Chorizo con arepita", "Sausage with little corn cake"),
   item("dishes", "ANTOJITOS/Maduro con queso.jpg", "Maduro con queso", "Sweet plantain with cheese"),
   item("dishes", "ANTOJITOS/Picada Doble.jpg", "Picada doble", "Double picada platter"),
@@ -77,27 +77,27 @@ export const entries: ManifestEntry[] = [
   item("dishes", "Desayunos/Calentado con carne asada y huevos al gusto.jpg", "Calentado con carne asada y huevos al gusto", "Calentado with grilled beef and eggs as you like"),
   item("dishes", "Desayunos/Calentado con chuleta y huevos al gusto.jpg", "Calentado con chuleta y huevos al gusto", "Calentado with pork chop and eggs as you like"),
   item("dishes", "Desayunos/Calentado con pechuga y huevos al gusto.jpg", "Calentado pechuga con huevos al gusto", "Calentado with chicken breast and eggs as you like"),
-  item("dishes", "Desayunos/Carne Guisada en salsa criolla.JPG", "Carne guisada en salsa criolla", "Beef stew in creole sauce"),
+  item("dishes", "Desayunos/Carne Guisada en salsa criolla.JPG", "Carne guisada en salsa criolla", "Top round steak in homemade sauce"),
   // Ensaladas
   item("dishes", "Ensaladas/ensalada con Camrones.JPG", "Ensalada con camarones", "Shrimp salad"),
   item("dishes", "Ensaladas/Ensalada con pechuga de Pollo.JPG", "Ensalada con pechuga de pollo", "Chicken salad"),
   // PESCADOS Y MARISCOS
   item("dishes", "PESCADOS Y MARISCOS/Arroz a la Marinera.JPG", "Arroz a la marinera", "Seafood rice"),
-  item("dishes", "PESCADOS Y MARISCOS/camarones en salsa Criolla.JPG", "Camarones en salsa criolla", "Shrimp in creole sauce"),
+  item("dishes", "PESCADOS Y MARISCOS/camarones en salsa Criolla.JPG", "Camarones en salsa criolla", "Shrimp in homemade sauce"),
   item("dishes", "PESCADOS Y MARISCOS/Ceviche de Camarones.jpg", "Ceviche de camarones", "Shrimp ceviche"),
-  item("dishes", "PESCADOS Y MARISCOS/Entrana a la Marinera.jpg", "Entraña a la marinera", "Skirt steak with seafood sauce"),
-  item("dishes", "PESCADOS Y MARISCOS/pechuga en salsa Marinera.jpg", "Pechuga en salsa a la marinera", "Chicken breast in seafood sauce"),
+  item("dishes", "PESCADOS Y MARISCOS/Entrana a la Marinera.jpg", "Entraña a la marinera", "Skirt steak topped with seafood rice"),
+  item("dishes", "PESCADOS Y MARISCOS/pechuga en salsa Marinera.jpg", "Pechuga en salsa a la marinera", "Seafood chowder chicken cutlet"),
   item("dishes", "PESCADOS Y MARISCOS/Sopa Marinera.jpg", "Sopa marinera", "Seafood soup"),
   // POLLO
-  item("dishes", "POLLO/Arroz con pollo.jpg", "Arroz con pollo", "Rice with chicken"),
-  item("dishes", "POLLO/Pechuga en Champinones.JPG", "Pechuga a la parrilla en salsa con champiñón", "Grilled chicken breast with mushroom sauce"),
-  item("dishes", "POLLO/Pechuga Hawaiana.jpg", "Pechuga hawaiana", "Hawaiian chicken breast"),
+  item("dishes", "POLLO/Arroz con pollo.jpg", "Arroz con pollo", "Mixed rice with chicken"),
+  item("dishes", "POLLO/Pechuga en Champinones.JPG", "Pechuga a la parrilla en salsa con champiñón", "Grilled chicken breast with mushrooms"),
+  item("dishes", "POLLO/Pechuga Hawaiana.jpg", "Pechuga hawaiana", "Chicken breast in Hawaiian sauce"),
   // POSTRES
   item("dishes", "POSTRES/Arroz con leche.jpg", "Arroz con leche", "Rice pudding"),
   // Ricuras de la casa
   item("dishes", "Ricuras de la casa/Bandeja Paisa.jpg", "Bandeja Paisa", "Bandeja Paisa"),
-  item("dishes", "Ricuras de la casa/Chuleta de cerdo a la parrilla.JPG", "Chuleta de cerdo a la parrilla", "Grilled pork chop"),
-  item("dishes", "Ricuras de la casa/Chuleton a Caballo.jpg", "Chuletón a caballo", "Pork chop topped with eggs"),
+  item("dishes", "Ricuras de la casa/Chuleta de cerdo a la parrilla.JPG", "Chuleta de cerdo a la parrilla", "Grilled pork with bone"),
+  item("dishes", "Ricuras de la casa/Chuleton a Caballo.jpg", "Chuletón a caballo", "Grilled pork with eggs over and onions on top"),
   item("dishes", "Ricuras de la casa/Churrasco a la Parrilla.jpg", "Churrasco a la parrilla", "Grilled sirloin steak"),
   item("dishes", "Ricuras de la casa/Lengua a la Parrilla.jpg", "Lengua a la parrilla", "Grilled beef tongue"),
   // Weekly specials flyers (text baked in)

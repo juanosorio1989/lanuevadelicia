@@ -9,7 +9,7 @@ export const photos: Photo[] = [
     "height": 1600,
     "alt": {
       "es": "Chicharrón con arepa con queso en La Nueva Delicia",
-      "en": "Fried pork skin with cheese corn cake at La Nueva Delicia"
+      "en": "Fried pork skin with corn cake with cheese at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -251,7 +251,7 @@ export const photos: Photo[] = [
     "height": 1333,
     "alt": {
       "es": "Carne guisada en salsa criolla en La Nueva Delicia",
-      "en": "Beef stew in creole sauce at La Nueva Delicia"
+      "en": "Top round steak in homemade sauce at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -295,7 +295,7 @@ export const photos: Photo[] = [
     "height": 1333,
     "alt": {
       "es": "Camarones en salsa criolla en La Nueva Delicia",
-      "en": "Shrimp in creole sauce at La Nueva Delicia"
+      "en": "Shrimp in homemade sauce at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -317,7 +317,7 @@ export const photos: Photo[] = [
     "height": 768,
     "alt": {
       "es": "Entraña a la marinera en La Nueva Delicia",
-      "en": "Skirt steak with seafood sauce at La Nueva Delicia"
+      "en": "Skirt steak topped with seafood rice at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -328,7 +328,7 @@ export const photos: Photo[] = [
     "height": 1333,
     "alt": {
       "es": "Pechuga en salsa a la marinera en La Nueva Delicia",
-      "en": "Chicken breast in seafood sauce at La Nueva Delicia"
+      "en": "Seafood chowder chicken cutlet at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -350,7 +350,7 @@ export const photos: Photo[] = [
     "height": 1600,
     "alt": {
       "es": "Arroz con pollo en La Nueva Delicia",
-      "en": "Rice with chicken at La Nueva Delicia"
+      "en": "Mixed rice with chicken at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -361,7 +361,7 @@ export const photos: Photo[] = [
     "height": 1333,
     "alt": {
       "es": "Pechuga a la parrilla en salsa con champiñón en La Nueva Delicia",
-      "en": "Grilled chicken breast with mushroom sauce at La Nueva Delicia"
+      "en": "Grilled chicken breast with mushrooms at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -372,7 +372,7 @@ export const photos: Photo[] = [
     "height": 768,
     "alt": {
       "es": "Pechuga hawaiana en La Nueva Delicia",
-      "en": "Hawaiian chicken breast at La Nueva Delicia"
+      "en": "Chicken breast in Hawaiian sauce at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -405,7 +405,7 @@ export const photos: Photo[] = [
     "height": 1333,
     "alt": {
       "es": "Chuleta de cerdo a la parrilla en La Nueva Delicia",
-      "en": "Grilled pork chop at La Nueva Delicia"
+      "en": "Grilled pork with bone at La Nueva Delicia"
     },
     "group": "dishes"
   },
@@ -416,7 +416,7 @@ export const photos: Photo[] = [
     "height": 1600,
     "alt": {
       "es": "Chuletón a caballo en La Nueva Delicia",
-      "en": "Pork chop topped with eggs at La Nueva Delicia"
+      "en": "Grilled pork with eggs over and onions on top at La Nueva Delicia"
     },
     "group": "dishes"
   },
