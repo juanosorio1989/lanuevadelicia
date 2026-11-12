@@ -63,7 +63,6 @@
     },
     "visit": {
       "eyebrow": "Visítanos",
-      "delivery": "¿Prefieres a domicilio?",
       "events": "¿Evento o grupo grande? Llámanos."
     }
   },
@@ -100,5 +99,55 @@
     "alternative": "Especial alternativo",
     "alternativeNote": "el precio puede cambiar según la elección de la carne",
     "extraSoup": "Sopa grande adicional"
+  },
+  "delivery": {
+    "prompt": "¿Prefieres a domicilio?"
+  },
+  "story": {
+    "title": "Nuestra historia",
+    "expectTitle": "Qué esperar",
+    "expect": [
+      {
+        "title": "Comida casera",
+        "body": "Recetas de siempre, preparadas en casa."
+      },
+      {
+        "title": "Ingredientes frescos",
+        "body": "Cocinamos con ingredientes frescos."
+      },
+      {
+        "title": "Atención cálida",
+        "body": "Aquí te sientes como en casa."
+      }
+    ],
+    "ctaTitle": "Te esperamos en Jackson Heights"
+  },
+  "gallery": {
+    "title": "Galería",
+    "lead": "Algunos de nuestros platos y bebidas.",
+    "food": "Comida",
+    "drinks": "Bebidas",
+    "restaurant": "El restaurante",
+    "close": "Cerrar",
+    "open": "Ampliar foto: {alt}"
+  },
+  "visit": {
+    "title": "Visítanos",
+    "hoursTitle": "Horario",
+    "instagram": "Síguenos en Instagram",
+    "mapTitle": "Mapa",
+    "happyHourLine": "Happy hour ({days}): {from} a {to}"
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "lead": "Esta página explica de forma sencilla qué datos recoge este sitio.",
+    "analyticsTitle": "Estadísticas de uso",
+    "analytics": "Usamos Google Analytics (GA4) para medir de forma anónima cómo se usa el sitio: qué páginas se visitan y qué botones se tocan. No guardamos tu nombre ni datos personales.",
+    "whyTitle": "Para qué",
+    "why": "Solo para mejorar el sitio y que encuentres más fácil el menú, el horario y cómo llegar.",
+    "adsTitle": "Publicidad",
+    "ads": "Este sitio no muestra anuncios ni hace remarketing.",
+    "contactTitle": "Contacto",
+    "contact": "Si tienes preguntas, escríbenos a <email></email>."
   }
 }

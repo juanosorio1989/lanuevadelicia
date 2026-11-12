@@ -8,10 +8,10 @@ const linkClass =
 
 /** "Prefer delivery? Uber Eats · DoorDash · Grubhub", each an external tracked link. */
 export async function DeliveryLinks({ locale, location, className = "" }: { locale: Locale; location: string; className?: string }) {
-  const t = await getTranslations({ locale, namespace: "home.visit" });
+  const t = await getTranslations({ locale, namespace: "delivery" });
   return (
     <p className={`flex flex-wrap items-center gap-x-2 text-sm ${className}`.trim()}>
-      <span>{t("delivery")}</span>
+      <span>{t("prompt")}</span>
       {restaurant.delivery.map((d, i) => (
         <span key={d.app} className="inline-flex items-center gap-2">
           {i > 0 && <span aria-hidden="true">·</span>}

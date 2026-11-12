@@ -38,6 +38,13 @@ First time: `npm install && npx playwright install chromium`.
 - Keep client components small: pass display strings, never the `photos` manifest or `menuItems`. `src/lib/photo.ts` (`getPhoto`) is server-only.
 - The story teaser uses `dishes/picada-doble` until restaurant photos exist; the Q6 "lo que más destacan" line is intentionally absent.
 
+## Story, gallery, visit, privacy and 404
+
+- Our story reuses the approved `home.story` text; a dish photo stands in until restaurant photos exist.
+- Gallery: `GalleryGrid` (client) gets only `{src,width,height,alt}`; thumbnails are plain `<a href>` links to the image (work without JS) and open a native `<dialog>`. The "El restaurante" group appears only once `restaurant` photos exist.
+- Visit reuses `HoursTable`, `DeliveryLinks` (copy now in the `delivery` namespace) and the click-to-load `MapEmbed`. No transit info.
+- Privacy copy and the 404 copy are drafts pending owner review (COPY-REVIEW).
+
 ## Specials page
 
 - `src/components/specials/`: `SpecialDayCard` (server; one `<section id="day-1..7">` per weekday, Monday first, flyer + main dish + price + optional alternative with the price note) and `TodayHighlighter` (client, renders nothing; in New York time it sets `aria-current="date"` on today's card, unhides its "Hoy" badge and scrolls to it on first load when there is no URL hash). Without JS nothing is highlighted.

@@ -63,7 +63,6 @@
     },
     "visit": {
       "eyebrow": "Visit us",
-      "delivery": "Prefer delivery?",
       "events": "Event or large group? Call us."
     }
   },
@@ -100,5 +99,55 @@
     "alternative": "Alternative special",
     "alternativeNote": "the price may change depending on your choice of meat",
     "extraSoup": "Additional large soup"
+  },
+  "delivery": {
+    "prompt": "Prefer delivery?"
+  },
+  "story": {
+    "title": "Our story",
+    "expectTitle": "What to expect",
+    "expect": [
+      {
+        "title": "Home-style food",
+        "body": "Time-honored recipes, cooked in-house."
+      },
+      {
+        "title": "Fresh ingredients",
+        "body": "We cook with fresh ingredients."
+      },
+      {
+        "title": "Warm service",
+        "body": "Here you feel at home."
+      }
+    ],
+    "ctaTitle": "We look forward to seeing you in Jackson Heights"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "lead": "Some of our dishes and drinks.",
+    "food": "Food",
+    "drinks": "Drinks",
+    "restaurant": "The restaurant",
+    "close": "Close",
+    "open": "Enlarge photo: {alt}"
+  },
+  "visit": {
+    "title": "Visit us",
+    "hoursTitle": "Hours",
+    "instagram": "Follow us on Instagram",
+    "mapTitle": "Map",
+    "happyHourLine": "Happy hour ({days}): {from} to {to}"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "lead": "This page explains in plain words what data this site collects.",
+    "analyticsTitle": "Usage statistics",
+    "analytics": "We use Google Analytics (GA4) to measure, anonymously, how the site is used: which pages are visited and which buttons are tapped. We do not store your name or personal details.",
+    "whyTitle": "Why",
+    "why": "Only to improve the site so the menu, hours and directions are easy to find.",
+    "adsTitle": "Advertising",
+    "ads": "This site shows no ads and does no remarketing.",
+    "contactTitle": "Contact",
+    "contact": "If you have questions, write to us at <email></email>."
   }
 }
