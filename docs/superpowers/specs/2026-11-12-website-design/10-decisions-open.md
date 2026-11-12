@@ -42,8 +42,23 @@
 | Q7 | Fix the two calentado descriptions that look swapped or incomplete? | Publish the printed text (spelling fixed) |
 | Q8 | One-line OK that the dafotografia photos may be used on the website | Required before launch |
 | Q9 | A vector (SVG/AI) logo? | Use the PNG |
-| Q10 | Is email or anything else used on lanuevadelicia.com? Who holds the Hostinger login? Whose GitHub and Cloudflare accounts own the repo and the Pages project? | Blocks launch only (not the build) |
-| Q11 | A contact for the privacy page: phone, or an email? | Use the phone |
+| Q11 | A contact for the privacy page | **Claude's call:** `info@lanuevadelicia.com` on the privacy page only (not shown elsewhere unless the owner asks) |
+
+## Resolved after the builder check (owner, 2026-11-12)
+
+- **Q10, the domain and accounts:** the only other service is the email `info@lanuevadelicia.com`, on Hostinger
+  Mail. The repo owner holds the Hostinger and GitHub accounts. **No Cloudflare account exists yet. The repo owner
+  creates it at launch** (Claude never creates it). Public DNS on 2026-11-12, all of which must be recreated in the
+  Cloudflare zone before the nameservers move:
+  - `MX` 5 `mx1.hostinger.com`, 10 `mx2.hostinger.com`
+  - `TXT` (apex) `v=spf1 include:_spf.mail.hostinger.com ~all`
+  - `CNAME` `hostingermail-{a,b,c}._domainkey` → `hostingermail-{a,b,c}.dkim.mail.hostinger.com` (DKIM, DNS only,
+    not proxied)
+  - `CNAME` `autodiscover` → `autodiscover.mail.hostinger.com`, `autoconfig` → `autoconfig.mail.hostinger.com`
+  - `ftp` → 82.25.83.67 (the Hostinger web host; can be dropped once WordPress is retired)
+  - The apex and `www` currently point to Hostinger (82.25.83.67); they become the Pages custom domains.
+  Cloudflare's import scan usually finds these. Check against this list anyway, and send a test email in and out
+  after the switch. No `_dmarc` record exists today (adding one is optional and out of scope).
 
 ## Phase 2 (not in the MVP)
 
