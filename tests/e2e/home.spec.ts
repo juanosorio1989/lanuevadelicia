@@ -86,3 +86,10 @@ test.describe("JS disabled", () => {
     await expect(page.getByRole("link", { name: "Ver el menú completo" })).toHaveAttribute("href", "/es/menu/");
   });
 });
+
+test("home hours show the happy hour times, not only the cocktail price", async ({ page }) => {
+  await page.goto("/es/");
+  const table = page.locator("table").first();
+  await expect(table).toContainText("Lunes a viernes: 12:00 p.m. – 7:00 p.m.");
+  await expect(table).toContainText("Sábado y domingo: 5:00 p.m. – 8:00 p.m.");
+});

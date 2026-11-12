@@ -2,12 +2,12 @@
 
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { Button, type ButtonVariant } from "@/components/ui/Button";
-import { track, type AnalyticsEvent } from "@/lib/analytics";
+import { track, type AnalyticsEvent, type EventParams } from "@/lib/analytics";
 
-type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className" | "onClick"> & {
+type Props<E extends AnalyticsEvent> = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className" | "onClick"> & {
   href: string;
-  event: AnalyticsEvent;
-  params: Record<string, string>;
+  event: E;
+  params: EventParams[E];
   external?: boolean;
   /** When set, renders with Button styling. */
   variant?: ButtonVariant;
@@ -16,7 +16,7 @@ type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className" 
 };
 
 /** An <a> that sends a GA4 event on click. Works as a plain link without JS. */
-export function TrackedLink({ href, event, params, external, variant, className = "", children, ...rest }: Props) {
+export function TrackedLink<E extends AnalyticsEvent>({ href, event, params, external, variant, className = "", children, ...rest }: Props<E>) {
   const onClick = () => track(event, params);
   if (variant) {
     return (

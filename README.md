@@ -26,7 +26,7 @@ Node 22 is the target (`.nvmrc`); Node >= 20.9 works.
 
 First time: `npm install && npx playwright install chromium`.
 
-CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `npm run lhci:simulate` (warn only), `npm run check:ga`. Workflow permissions are read-only and runs are cancelled when a newer push arrives on the same ref. It runs once the repo has a GitHub remote.
+CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `npm run lhci:simulate` (warn only), `npm run check:ga`. Workflow permissions are read-only and runs are cancelled when a newer push arrives on the same ref. The repo lives on GitHub (`origin`); CI runs on every push and pull request.
 
 ## Notes
 
@@ -35,7 +35,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 
 ## Site chrome
 
-- `src/components/layout/`: `Header`, `MobileNav` (native `<dialog>`), `MobileActionBar` (below `md`), `LanguageSwitch`, `Footer`, `SkipLink`, `TrackedLink` (an `<a>` that calls `track()`; use it for every CTA).
+- `src/components/layout/`: `Header`, `MobileNav` (native `<dialog>`), `MobileActionBar` (below `lg`; the desktop header nav, phone and directions button switch at `lg` too), `LanguageSwitch`, `Footer`, `SkipLink`, `TrackedLink` (an `<a>` that calls `track()`; use it for every CTA).
 - `src/app/[locale]/layout.tsx` wraps pages in `<main id="main">`. Pages must not render their own `<main>`.
 - Chrome copy lives under `nav`, `cta` and `footer` in `messages/{es,en}.json`. Chrome text must not use `h1`-`h3` (the global heading color is green and the chrome is on dark backgrounds). The heading color is in `@layer base`, so a utility such as `text-cream-50` overrides it on dark sections.
 
@@ -67,7 +67,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 ## Quality gates and deploy
 
 - Budgets ([spec 09](docs/superpowers/specs/2026-11-12-website-design/09-testing-launch.md)): Lighthouse mobile performance >= 90, accessibility >= 95, best practices >= 95, SEO = 100, LCP <= 2.5 s, CLS <= 0.1, and module JS on `/es/` <= 170 KB gzipped (the Next 16 + React 19 baseline is about 122 KB; the original 120 KB target was not reachable).
-- Headers, CSP and hosting ([spec 07](docs/superpowers/specs/2026-11-12-website-design/07-technical-design.md)): `public/_headers` and `public/_redirects` are Cloudflare Pages files; `check:out` verifies their content and the e2e tests run with the CSP applied.
+- Headers, CSP and hosting ([spec 07](docs/superpowers/specs/2026-11-12-website-design/07-technical.md)): `public/_headers` and `public/_redirects` are Cloudflare Pages files; `check:out` verifies their content and the e2e tests run with the CSP applied.
 - GA4 (`src/components/analytics/GoogleAnalytics.tsx`, [spec 08](docs/superpowers/specs/2026-11-12-website-design/08-seo-analytics.md)) loads only when `NEXT_PUBLIC_GA_ID` is set (set it in Cloudflare Pages settings; `.env.example` lists it). Without it the page makes no request to Google.
 - Client JS stays small: there is no `NextIntlClientProvider`. Client components get their strings as props from a server wrapper (`OpenStatus` -> `OpenStatusLive`, `MapEmbed` -> `MapEmbedLive`, `TodaySpecial`, `Header` -> `NavLinks`/`MobileNav`/`LanguageSwitch`). Do not call `useTranslations`/`useLocale` or next-intl's `Link` in client or shared components; use plain `<a href="/${locale}/...">` with explicit locale paths.
 - Cloudflare Pages: build command `npm run build`, output `out`.

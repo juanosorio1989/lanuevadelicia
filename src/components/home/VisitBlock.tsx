@@ -22,16 +22,16 @@ export async function VisitBlock({ locale }: { locale: Locale }) {
         </h2>
         <HoursTable locale={locale} className="my-3" />
         <div className="flex flex-wrap gap-3">
-          <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "visit_block" }} external variant="primary">
+          <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "visit" }} external variant="primary">
             <MapPin aria-hidden="true" size={18} />
             {cta("directions")}
           </TrackedLink>
-          <TrackedLink href={telHref()} event="click_call" params={{ location: "visit_block" }} variant="outline">
+          <TrackedLink href={telHref()} event="click_call" params={{ location: "visit" }} variant="outline">
             <Phone aria-hidden="true" size={18} />
             {cta("call")}
           </TrackedLink>
         </div>
-        <DeliveryLinks locale={locale} location="visit_block" className="mt-4" />
+        <DeliveryLinks locale={locale} location="visit" className="mt-4" />
         <p className="mt-1 text-sm text-muted-600">{t("events")}</p>
       </div>
       <MapEmbed locale={locale} location="home" />

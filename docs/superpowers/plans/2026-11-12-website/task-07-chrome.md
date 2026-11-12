@@ -38,7 +38,7 @@ Spec pages: 03 ("Global elements"), 05 (components, motion, a11y).
 - [ ] **Step 3: Implement** per spec 03 and 05
 
 The header is sticky, uses `green-900`, and shrinks its padding after 24px of scroll (client, honoring
-`prefers-reduced-motion`). The bottom bar shows below `md`, has 3 cells with directions in the middle and wider in
+`prefers-reduced-motion`). The bottom bar shows below `lg`, has 3 cells with directions in the middle and wider in
 `terra-700`, Lucide icons (`UtensilsCrossed`, `MapPin`, `Phone`), and `pb-[env(safe-area-inset-bottom)]`. The
 language switch builds the other-locale href with `getPathname({ href: pathname, locale: other })`. The footer reads
 every fact from `restaurant`. Tracking: the language switch calls `track('switch_language',{from,to})`,

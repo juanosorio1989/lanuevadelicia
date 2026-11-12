@@ -10,6 +10,7 @@
   --color-charcoal-900: #252722;
   --color-muted-600: #555555;
   --color-star: #E9B44C;
+  --color-status-open: #6fcf7f; /* open-now dot on the dark green header/hero */
 
   --font-display: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;

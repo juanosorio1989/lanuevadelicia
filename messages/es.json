@@ -74,11 +74,11 @@
     "closedDay": "Cerrado · abre el {day} a las {time}"
   },
   "hours": {
-    "range": "{from} a {to}",
     "breakfast": "Desayunos",
     "breakfastUntil": "hasta la {time}",
     "happyHour": "Happy hour",
-    "happyHourValue": "cócteles a {price}"
+    "happyHourValue": "cócteles a {price}",
+    "happyHourWindow": "{days}: {from} – {to}"
   },
   "map": {
     "view": "Ver mapa",
@@ -98,7 +98,7 @@
     "today": "Hoy",
     "alternative": "Especial alternativo",
     "alternativeNote": "el precio puede cambiar según la elección de la carne",
-    "extraSoup": "Sopa grande adicional"
+    "seeMenu": "Ver el menú completo"
   },
   "delivery": {
     "prompt": "¿Prefieres a domicilio?"
@@ -134,9 +134,7 @@
   "visit": {
     "title": "Visítanos",
     "hoursTitle": "Horario",
-    "instagram": "Síguenos en Instagram",
-    "mapTitle": "Mapa",
-    "happyHourLine": "Happy hour ({days}): {from} a {to}"
+    "instagram": "Síguenos en Instagram"
   },
   "privacy": {
     "title": "Privacidad",

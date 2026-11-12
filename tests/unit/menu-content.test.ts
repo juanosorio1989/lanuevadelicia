@@ -4,6 +4,7 @@ import { specials } from "@/data/specials";
 import { photos } from "@/data/photos";
 import { validateContent } from "@/data/schemas";
 import { restaurant } from "@/data/restaurant";
+import { formatTime } from "@/lib/hours";
 import { entries } from "../../scripts/photo-manifest";
 
 const byId = Object.fromEntries(menuItems.map((i) => [i.id, i]));
@@ -39,6 +40,19 @@ describe("menu categories", () => {
       { days: [1, 2, 3, 4, 5], from: "12:00", to: "19:00" },
       { days: [6, 7], from: "17:00", to: "20:00" },
     ]);
+  });
+  // The flyer wording shares one p.m. between the two ends ("12:00 a 7:00 p.m."), so the opening time is compared without its suffix.
+  const bare = (hhmm: string) => formatTime(hhmm, "es").replace(/ [ap]\.m\.$/, "");
+  it.each(["es", "en"] as const)("cocteles note (%s) holds the formatted happy hour times and price", (locale) => {
+    const note = categories.find((x) => x.id === "cocteles")!.note![locale];
+    for (const hh of restaurant.happyHour) {
+      expect(note).toContain(`${bare(hh.from)} ${locale === "es" ? "a" : "to"} ${formatTime(hh.to, "es")}`);
+    }
+    expect(note).toContain(`$${restaurant.happyHourCocktailPrice}`);
+  });
+  it.each(["es", "en"] as const)("desayunos note (%s) holds the formatted breakfast cutoff", (locale) => {
+    const note = categories.find((x) => x.id === "desayunos")!.note![locale];
+    expect(note).toContain(formatTime(restaurant.breakfastUntil, "es"));
   });
   it("every category has at least one item and every item a known category", () => {
     for (const cat of categories)

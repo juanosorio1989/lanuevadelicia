@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { TrackedLink } from "@/components/layout/TrackedLink";
+import type { TrackLocation } from "@/lib/analytics";
 import { restaurant } from "@/data/restaurant";
 import type { Locale } from "@/types/content";
 
@@ -14,7 +15,7 @@ export async function DeliveryLinks({
   variant = "links",
 }: {
   locale: Locale;
-  location: string;
+  location: TrackLocation;
   className?: string;
   /** "links" = inline text links (home); "buttons" = secondary (outline) buttons (Visit page, spec 03). */
   variant?: "links" | "buttons";
@@ -23,7 +24,7 @@ export async function DeliveryLinks({
   return (
     <div className={`flex flex-wrap items-center gap-x-2 text-sm ${className}`.trim()}>
       <span>{t("prompt")}</span>
-      {restaurant.delivery.map((d, i) =>
+      {restaurant.delivery.map((d) =>
         variant === "buttons" ? (
           <TrackedLink
             key={d.app}
@@ -37,8 +38,8 @@ export async function DeliveryLinks({
             {d.label}
           </TrackedLink>
         ) : (
-          <span key={d.app} className="inline-flex items-center gap-2">
-            {i > 0 && <span aria-hidden="true">·</span>}
+          // The separator trails each item but the last, so a wrapped line never starts with "·".
+          <span key={d.app} className="inline-flex items-center gap-2 not-last:after:content-['·']">
             <TrackedLink href={d.url} event="click_delivery" params={{ app: d.app, location }} external className={linkClass}>
               {d.label}
             </TrackedLink>

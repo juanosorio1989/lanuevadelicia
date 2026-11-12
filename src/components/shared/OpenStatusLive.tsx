@@ -14,7 +14,7 @@ function subscribe(onChange: () => void) {
 const getSnapshot = () => JSON.stringify(getOpenStatus(new Date(), restaurant.hours));
 const getServerSnapshot = () => null;
 
-const dotColor = { open: "bg-[#6fcf7f]", "closing-soon": "bg-star", closed: "bg-muted-600" } as const;
+const dotColor = { open: "bg-status-open", "closing-soon": "bg-star", closed: "bg-muted-600" } as const;
 
 /** Open/closed badge in New York time. Renders nothing on the server and in the no-JS view (a cached badge could be wrong). */
 export type StatusLabels = {

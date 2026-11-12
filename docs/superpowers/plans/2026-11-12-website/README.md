@@ -41,8 +41,7 @@ implement → reviewer-opus → fix → re-review. Then one final branch review.
 property, Search Console) is **not** a plan task. It is the owner-in-the-loop checklist in spec page 09, run by Opus
 with the user.
 
-Branch: `website-mvp`, off `website-design`. Commit per task. There is no Git remote yet: Opus asks the user before
-creating a GitHub repo or pushing.
+Branch: `website-mvp`, off `website-design`. Commit per task. `origin` is on GitHub and CI runs on push; Opus still asks the user before pushing or merging.
 
 ## Task files
 

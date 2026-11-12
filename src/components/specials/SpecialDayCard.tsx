@@ -27,7 +27,7 @@ export function SpecialDayCard({
     <section
       id={`day-${day}`}
       aria-labelledby={`day-${day}-title`}
-      className="group scroll-mt-20 grid items-start gap-4 rounded-[14px] border border-sand-100 bg-cream-50 p-4 aria-[current=date]:border-terra-700 aria-[current=date]:bg-sand-100 md:grid-cols-[13.75rem_1fr] md:gap-6 md:p-5"
+      className="group scroll-mt-20 grid items-start gap-4 rounded-band border border-sand-100 bg-cream-50 p-4 aria-[current=date]:border-terra-700 aria-[current=date]:bg-sand-100 md:grid-cols-[13.75rem_1fr] md:gap-6 md:p-5"
     >
       <Img
         photo={flyer}

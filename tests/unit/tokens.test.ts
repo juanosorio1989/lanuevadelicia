@@ -19,7 +19,7 @@ function contrast(a: string, b: string): number {
 }
 
 describe("design tokens", () => {
-  it.each(["#A2471F", "#253D30", "#F4EBDD", "#E8DCC8", "#C85E36", "#252722", "#555555", "#E9B44C"])(
+  it.each(["#A2471F", "#253D30", "#F4EBDD", "#E8DCC8", "#C85E36", "#252722", "#555555", "#E9B44C", "#6FCF7F"])(
     "globals.css defines %s",
     (hex) => {
       expect(css.toUpperCase()).toContain(hex);

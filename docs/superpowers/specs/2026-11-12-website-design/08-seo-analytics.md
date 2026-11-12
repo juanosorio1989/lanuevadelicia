@@ -49,13 +49,16 @@ Custom events (`lib/analytics.ts`, one typed `track()` function):
 
 | Event | When | Params |
 |-------|------|--------|
-| `click_directions` | Any Cómo llegar / Get Directions | `location` (hero, header, bottom_bar, visit, footer), `locale` |
-| `click_call` | Any `tel:` link | `location`, `locale` |
+| `click_directions` | Any Cómo llegar / Get Directions | `location` (hero, header, bottom_bar, visit, footer, story), `locale` |
+| `click_call` | Any `tel:` link | `location` (same values), `locale` |
 | `click_delivery` | A delivery app link | `app` (ubereats, doordash, grubhub), `location` |
 | `click_reviews` | Read / Leave review | `action` (read, write) |
-| `load_map` | Map card clicked | `page` |
+| `load_map` | Map card clicked | `page` (home, visit) |
 | `switch_language` | Language switch | `from`, `to` |
 | `view_menu_category` | Chip tapped | `category` |
-| `click_instagram` | Instagram link | `location` |
+| `click_instagram` | Instagram link | `location` (footer, visit) |
+
+`track()` adds `locale` (the page language) to every event, and its params are typed per event, so a missing param is
+a compile error. `story` is the call to action at the bottom of the Our Story page.
 
 Mark `click_directions` and `click_call` as key events (conversions) in GA4.

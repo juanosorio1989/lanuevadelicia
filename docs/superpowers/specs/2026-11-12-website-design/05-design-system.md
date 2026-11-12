@@ -24,6 +24,7 @@ risked cliché. Pure C (textures) hurt load speed and legibility.
 | `charcoal-900` | `#252722` | Body text (12.77:1 on cream), footer background |
 | `muted-600` | `#555555` | Secondary text (6.31:1 on cream) |
 | `star` | `#E9B44C` | Star glyphs only, always next to text |
+| `status-open` | `#6FCF7F` | The "open now" dot on the dark green header and hero |
 
 Contrast was checked: white on `#C85E36` is 4.11:1, which **fails** AA for normal text. That is why buttons and small
 terracotta text use `terra-700`. Do not put small `terra-700` text on `sand-100` (4.48:1); use green or charcoal

@@ -65,7 +65,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             {t("ctaTitle")}
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "story_cta" }} external variant="primary">
+            <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "story" }} external variant="primary">
               <MapPin aria-hidden="true" size={18} />
               {cta("directions")}
             </TrackedLink>

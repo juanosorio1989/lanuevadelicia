@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SpecialDayCard } from "@/components/specials/SpecialDayCard";
+import { Button } from "@/components/ui/Button";
 import { TodayHighlighter } from "@/components/specials/TodayHighlighter";
 import { menuItems } from "@/data/menu";
 import { specials } from "@/data/specials";
@@ -60,6 +61,11 @@ export default async function Page({
           </span>
         </p>
       )}
+      <p className="mt-6">
+        <Button href={`/${locale}/menu/`} variant="outline">
+          {t("seeMenu")}
+        </Button>
+      </p>
       <TodayHighlighter />
     </div>
   );
