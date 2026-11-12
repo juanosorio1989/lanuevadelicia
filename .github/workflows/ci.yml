@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run ci
+      - run: npx lhci autorun
+      # Simulated (PageSpeed-style) throttling, warn only: keeps the /es/ LCP regression visible (see spec 09, Budgets).
+      - run: npm run lhci:simulate
+        continue-on-error: true
+      # Rebuilds with a test GA id and checks the gtag loader (restores out/ afterwards).
+      - run: npm run check:ga

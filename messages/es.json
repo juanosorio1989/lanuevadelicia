@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "menu": "Menú",
+    "specials": "Especiales",
+    "story": "Nuestra historia",
+    "gallery": "Galería",
+    "visit": "Visítanos",
+    "main": "Navegación principal",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "language": "Idioma",
+    "home": "Ir al inicio",
+    "skip": "Saltar al contenido"
+  },
+  "cta": {
+    "directions": "Cómo llegar",
+    "call": "Llamar",
+    "menu": "Ver menú"
+  },
+  "footer": {
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "hours": "Horario",
+    "breakfast": "Desayunos hasta la {time}",
+    "instagram": "Instagram",
+    "delivery": "Pide a domicilio",
+    "privacy": "Privacidad",
+    "rights": "© {year} La Nueva Delicia",
+    "siteNav": "Secciones del sitio"
+  },
+  "home": {
+    "hero": {
+      "title": "El sabor de Colombia, cerca de ti.",
+      "lead": "Comida casera, fresca y en su punto, con más de 30 años en Jackson Heights. Ven a sentirte como en casa.",
+      "rating": "★ {value} en Google ({count} reseñas)"
+    },
+    "favorites": {
+      "eyebrow": "Los favoritos de la casa",
+      "title": "Platos que nos piden una y otra vez",
+      "breakfastUntil": "Desayuno hasta la {time}",
+      "toShare": "Para compartir",
+      "all": "Ver el menú completo →",
+      "listLabel": "Platos favoritos"
+    },
+    "today": {
+      "eyebrowNeutral": "Especial del día",
+      "eyebrow": "Especial de hoy · {day}",
+      "teaser": "Cada día tiene su especial",
+      "alternative": "Pregunta también por el especial alternativo.",
+      "all": "Ver los especiales de la semana"
+    },
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "title": "Más de 30 años de sabor colombiano en Jackson Heights.",
+      "body": "La Nueva Delicia lleva más de tres décadas sirviendo comida colombiana en el corazón de Queens. Nuestras raíces están en Caldas, en el Eje Cafetero, y se sienten en cada plato: recetas caseras, ingredientes frescos y todo preparado en su punto. Nuestro equipo atiende con cariño, porque lo que más nos importa es que cada persona que entra se sienta como en casa.",
+      "roots": "Raíces en Caldas · Eje Cafetero"
+    },
+    "reviews": {
+      "title": "{value} en Google · {count} reseñas",
+      "stars": "{value} de 5 estrellas",
+      "read": "Leer reseñas en Google",
+      "write": "Dejar una reseña"
+    },
+    "visit": {
+      "eyebrow": "Visítanos",
+      "events": "¿Evento o grupo grande? Llámanos."
+    }
+  },
+  "status": {
+    "open": "Abierto ahora · cierra a las {time}",
+    "closingSoon": "Cierra pronto · cierra a las {time}",
+    "closedToday": "Cerrado · abre hoy a las {time}",
+    "closedTomorrow": "Cerrado · abre mañana a las {time}",
+    "closedDay": "Cerrado · abre el {day} a las {time}"
+  },
+  "hours": {
+    "breakfast": "Desayunos",
+    "breakfastUntil": "hasta la {time}",
+    "happyHour": "Happy hour",
+    "happyHourValue": "cócteles a {price}",
+    "happyHourWindow": "{days}: {from} – {to}"
+  },
+  "map": {
+    "view": "Ver mapa",
+    "title": "Mapa de La Nueva Delicia en Google Maps",
+    "hint": "El mapa se carga solo al tocar el botón."
+  },
+  "menu": {
+    "title": "Nuestro menú",
+    "priceNote": "Precios en el restaurante; en las apps de domicilio pueden variar.",
+    "chipsLabel": "Categorías del menú",
+    "favorite": "Favorito",
+    "specialsLink": "Ver los especiales de la semana →"
+  },
+  "specials": {
+    "title": "Especiales de la semana",
+    "lead": "Un especial distinto cada día, preparado en casa.",
+    "today": "Hoy",
+    "alternative": "Especial alternativo",
+    "alternativeNote": "el precio puede cambiar según la elección de la carne",
+    "seeMenu": "Ver el menú completo"
+  },
+  "delivery": {
+    "prompt": "¿Prefieres a domicilio?"
+  },
+  "story": {
+    "title": "Nuestra historia",
+    "expectTitle": "Qué esperar",
+    "expect": [
+      {
+        "title": "Comida casera",
+        "body": "Recetas de siempre, preparadas en casa."
+      },
+      {
+        "title": "Ingredientes frescos",
+        "body": "Cocinamos con ingredientes frescos."
+      },
+      {
+        "title": "Atención cálida",
+        "body": "Aquí te sientes como en casa."
+      }
+    ],
+    "ctaTitle": "Te esperamos en Jackson Heights"
+  },
+  "gallery": {
+    "title": "Galería",
+    "lead": "Algunos de nuestros platos y bebidas.",
+    "food": "Comida",
+    "drinks": "Bebidas",
+    "restaurant": "El restaurante",
+    "close": "Cerrar",
+    "open": "Ampliar foto: {alt}"
+  },
+  "visit": {
+    "title": "Visítanos",
+    "hoursTitle": "Horario",
+    "instagram": "Síguenos en Instagram"
+  },
+  "privacy": {
+    "title": "Privacidad",
+    "lead": "Esta página explica de forma sencilla qué datos recoge este sitio.",
+    "analyticsTitle": "Estadísticas de uso",
+    "analytics": "Usamos Google Analytics (GA4) para medir de forma anónima cómo se usa el sitio: qué páginas se visitan y qué botones se tocan. No guardamos tu nombre ni datos personales.",
+    "whyTitle": "Para qué",
+    "why": "Solo para mejorar el sitio y que encuentres más fácil el menú, el horario y cómo llegar.",
+    "adsTitle": "Publicidad",
+    "ads": "Este sitio no muestra anuncios ni hace remarketing.",
+    "contactTitle": "Contacto",
+    "contact": "Si tienes preguntas, escríbenos a <email></email>."
+  },
+  "meta": {
+    "home": {
+      "title": "La Nueva Delicia | Restaurante colombiano en Jackson Heights, Queens",
+      "description": "Comida colombiana casera en Jackson Heights, Queens: bandeja paisa, desayunos colombianos y más de 30 años de sabor. Visítanos en 37th Ave."
+    },
+    "menu": {
+      "title": "Menú | La Nueva Delicia, comida colombiana en Jackson Heights",
+      "description": "Menú completo en español e inglés: desayunos, antojitos, bandeja paisa, pescados y mariscos, jugos y cócteles, con precios."
+    },
+    "specials": {
+      "title": "Especiales de la semana | La Nueva Delicia, Queens",
+      "description": "El especial colombiano de cada día de la semana en La Nueva Delicia, Jackson Heights, con su precio."
+    },
+    "story": {
+      "title": "Nuestra historia | La Nueva Delicia, Jackson Heights",
+      "description": "Más de 30 años de comida colombiana casera en Jackson Heights, Queens: nuestras raíces en Caldas y lo que puedes esperar al visitarnos."
+    },
+    "gallery": {
+      "title": "Galería | La Nueva Delicia, comida colombiana en Queens",
+      "description": "Fotos de nuestros platos y bebidas colombianas: bandeja paisa, picadas, jugos y más, en Jackson Heights, Queens."
+    },
+    "visit": {
+      "title": "Visítanos | Dirección y horario, La Nueva Delicia",
+      "description": "Estamos en {address}. Horario, teléfono, cómo llegar y pedidos a domicilio."
+    },
+    "privacy": {
+      "title": "Privacidad | La Nueva Delicia",
+      "description": "Qué datos recoge este sitio y por qué: estadísticas de uso anónimas, sin anuncios ni remarketing."
+    }
+  }
+}

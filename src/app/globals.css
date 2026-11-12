@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Design tokens: spec 05. Light theme only. */
+@theme {
+  --color-green-900: #253D30;
+  --color-cream-50: #F4EBDD;
+  --color-sand-100: #E8DCC8;
+  --color-terra-500: #C85E36; /* decorative only; small text and buttons use terra-700 */
+  --color-terra-700: #A2471F;
+  --color-charcoal-900: #252722;
+  --color-muted-600: #555555;
+  --color-star: #E9B44C;
+  --color-status-open: #6fcf7f; /* open-now dot on the dark green header/hero */
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  --radius-card: 12px;
+  --radius-band: 14px;
+}
+
+html {
+  background: var(--color-cream-50);
+}
+
+body {
+  background: var(--color-cream-50);
+  color: var(--color-charcoal-900);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* In the base layer so utilities such as text-cream-50 on dark sections can override the heading color. */
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--color-green-900);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scroll lock while the mobile nav dialog is open. */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
