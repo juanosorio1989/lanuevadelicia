@@ -29,7 +29,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables}>
-      <body className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+      <body className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
         <SkipLink />
         <Header />
         <main id="main" tabIndex={-1} className="focus:outline-none">

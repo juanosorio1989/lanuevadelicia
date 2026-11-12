@@ -25,6 +25,13 @@ test.describe("mobile 390x844", () => {
     });
   }
 
+  test("header has no phone or directions link on mobile", async ({ page }) => {
+    await page.goto("/es/");
+    const header = page.getByRole("banner");
+    await expect(header.getByRole("link", { name: "Cómo llegar" })).toBeHidden();
+    await expect(header.getByRole("link", { name: restaurant.phone.display })).toBeHidden();
+  });
+
   test("menu button opens the nav dialog; Escape closes it and returns focus", async ({ page }) => {
     await page.goto("/es/");
     const button = page.getByTestId("menu-button");
@@ -103,4 +110,29 @@ test("the skip link is first and moves focus to #main", async ({ page }) => {
   await expect(skip).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("#main")).toBeFocused();
+});
+
+
+test.describe("header logo and wrapping across widths", () => {
+  for (const locale of ["es", "en"] as const) {
+    for (const width of [320, 768, 1024, 1280]) {
+      test(`${locale} ${width}px: logo keeps its width, header items do not wrap`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 800 });
+        await page.goto(`/${locale}/`);
+        const header = page.getByRole("banner");
+        const logo = header.locator("a").first().locator("img");
+        await expect(logo).toBeVisible();
+        expect((await logo.boundingBox())!.width).toBeGreaterThanOrEqual(40);
+        if (width >= 1024) {
+          const phone = header.getByRole("link", { name: restaurant.phone.display });
+          await expect(phone).toBeVisible();
+          // min-h-11 is 44px; a wrapped phone number would be at least two 20px lines plus padding.
+          expect((await phone.boundingBox())!.height).toBeLessThanOrEqual(48);
+        } else {
+          await expect(page.getByTestId("menu-button")).toBeVisible();
+          await expect(page.getByTestId("bottom-bar")).toBeVisible();
+        }
+      });
+    }
+  }
 });

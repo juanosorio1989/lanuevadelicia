@@ -30,7 +30,7 @@ export async function Hero({ locale }: { locale: Locale }) {
         <div className="max-w-[29rem]">
           <h1 className="text-[1.75rem] leading-[1.12] text-cream-50 md:text-[2.75rem]">{t("title")}</h1>
           <p className="mt-3 md:mt-4">{t("lead")}</p>
-          <div className="mt-5 hidden flex-wrap gap-3 md:flex">
+          <div className="mt-5 hidden flex-wrap gap-3 lg:flex">
             <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "hero" }} external variant="primary">
               {cta("directions")}
             </TrackedLink>

@@ -6,7 +6,7 @@ import { TrackedLink } from "./TrackedLink";
 const cell =
   "flex min-h-14 min-w-0 flex-col items-center justify-center gap-0.5 px-1 py-2 text-xs font-bold leading-tight focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-solid focus-visible:outline-green-900";
 
-/** Fixed bottom bar below md: Menu, Directions (primary, wider), Call. */
+/** Fixed bottom bar below lg: Menu, Directions (primary, wider), Call. */
 export async function MobileActionBar() {
   const t = await getTranslations("cta");
   const locale = await getLocale();
@@ -14,7 +14,7 @@ export async function MobileActionBar() {
     <nav
       data-testid="bottom-bar"
       aria-label={`${t("menu")} / ${t("directions")} / ${t("call")}`}
-      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_1.3fr_1fr] border-t border-sand-100 bg-white pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_1.3fr_1fr] border-t border-sand-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden"
     >
       <a href={`/${locale}/menu/`} data-testid="bottom-bar-menu" className={`${cell} text-green-900`}>
         <UtensilsCrossed aria-hidden="true" size={20} />

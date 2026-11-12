@@ -24,11 +24,11 @@ Visítanos / Visit us.
 
 ## Global elements
 
-- **Header (desktop):** dark green bar. Logo (left) → nav → language switch `ES | EN` (current locale bold) → phone
+- **Header (desktop, 1024px and up):** dark green bar. Logo (left) → nav → language switch `ES | EN` (current locale bold) → phone
   number as a `tel:` link → primary button "Cómo llegar". It sticks to the top on scroll and shrinks a little.
-- **Header (mobile):** logo, language switch, and a menu button that opens a full-screen nav panel. No phone or
+- **Header (mobile and tablet, below 1024px):** logo, language switch, and a menu button that opens a full-screen nav panel. No phone or
   directions in the header, because the bottom bar has them.
-- **Mobile bottom bar (below 768px, every page):** fixed, 3 equal cells: Menú (link to menu) · **Cómo llegar**
+- **Mobile bottom bar (below 1024px, every page):** fixed, 3 equal cells: Menú (link to menu) · **Cómo llegar**
   (terracotta, slightly wider, the primary action) · Llamar (`tel:`). Icon above the label. Leave bottom padding so it
   never covers content; respect `env(safe-area-inset-bottom)`.
 - **Language switch:** links to the same page in the other locale (not to home).

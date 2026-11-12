@@ -8,7 +8,7 @@ import { NAV_ITEMS, type NavLabels } from "./nav-items";
 export function NavLinks({ locale, labels }: { locale: string; labels: NavLabels }) {
   const pathname = usePathname();
   return (
-    <nav aria-label={labels.main} className="hidden flex-1 items-center gap-1 md:flex">
+    <nav aria-label={labels.main} className="hidden flex-1 items-center gap-1 lg:flex">
       {NAV_ITEMS.map((item) => {
         const href = `/${locale}${item.href}/`;
         const active = pathname === href || pathname === `/${locale}${item.href}`;

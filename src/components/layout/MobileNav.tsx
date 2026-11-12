@@ -18,7 +18,7 @@ export function MobileNav({ locale, labels: t }: { locale: string; labels: NavLa
         data-testid="menu-button"
         aria-label={t.openMenu}
         onClick={() => dialog.current?.showModal()}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50 md:hidden"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50 lg:hidden"
       >
         <Menu aria-hidden="true" size={26} />
       </button>

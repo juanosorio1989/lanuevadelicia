@@ -45,7 +45,7 @@ are tuned for light surroundings).
 - Spacing: a 4px base scale (Tailwind default). Sections get 44px padding on desktop and 22px on mobile. The page
   gutter is 16px on mobile.
 - Max content width 1200px. The hero is full-bleed.
-- Breakpoints: Tailwind defaults. The bottom bar shows below `md` (768px).
+- Breakpoints: Tailwind defaults. The bottom bar shows below `lg` (1024px); the desktop header (nav, phone, directions) switches at the same point.
 
 ## Components (inventory)
 
