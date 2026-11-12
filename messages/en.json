@@ -85,5 +85,13 @@
     "view": "View map",
     "title": "La Nueva Delicia on Google Maps",
     "hint": "The map loads only when you tap the button."
+  },
+  "menu": {
+    "title": "Our menu",
+    "priceNote": "In-restaurant prices. Prices on delivery apps may vary.",
+    "chipsLabel": "Menu categories",
+    "favorite": "Favorite",
+    "flavors": "Flavors: {list}",
+    "specialsLink": "See this week's specials →"
   }
 }
