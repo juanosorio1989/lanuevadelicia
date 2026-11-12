@@ -16,8 +16,8 @@ simple in a static export). `trailingSlash: true`.
 | Privacy (GA4 disclosure) | `/es/privacy/` | `/en/privacy/` | yes (short page; Claude's call) |
 | Catering | — | — | phase 2 |
 
-`/` redirects to `/es/` (302, via hosting redirect rules; see [07-technical.md](07-technical.md)). A custom 404 page
-is required in both languages, with links to Menu and Visit.
+`/` redirects to `/es/` (302, via hosting redirect rules; see [07-technical.md](07-technical.md)). A single bilingual
+404 page (real 404 status) links to Menu and Visit in both languages.
 
 Nav labels (ES / EN): Menú / Menu · Especiales / Specials · Nuestra historia / Our story · Galería / Gallery ·
 Visítanos / Visit us.
@@ -50,8 +50,9 @@ In order:
    flag in menu data. On mobile the cards scroll horizontally. Link: "Ver el menú completo →".
 3. **Today's special:** sand-colored band showing today's weekday flyer, its dish name as real text, the price and
    "Pregunta también por el especial alternativo", plus a link to the specials page. The weekday is computed in
-   `America/New_York` on the client. Static HTML shows Monday's special as a neutral "Especiales de la semana"
-   teaser, and the client swaps in today's.
+   `America/New_York` on the client. The static HTML (and the no-JS view) shows a neutral teaser with **no dish and no
+   price**: "Cada día tiene su especial" plus a link to the specials page. The client swaps in today's flyer, dish
+   and price.
 4. **Our story (short):** the approved text (below) on one side, a photo on the other (interior or exterior once it
    arrives, see [06-photos.md](06-photos.md)), and a small detail line "Raíces en Caldas · Eje Cafetero" with a coffee
    leaf/bean line icon (the "C" touch).

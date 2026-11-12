@@ -51,8 +51,9 @@ are tuned for light surroundings).
 variants, min height 44px), `OpenStatus` (client), `Hero`, `DishCard` (vertical) and `DishRow` (horizontal mobile
 card), `MenuCategory`, `MenuItemRow`, `CategoryChips` (client enhancement), `TodaySpecial` (client), `SpecialDay`,
 `StoryBlock`, `ReviewsBand`, `HoursTable`, `MapEmbed` (click-to-load, client), `DeliveryLinks`, `Gallery` and
-`GalleryDialog` (client), `PhotoPlaceholder` (dev only, see [06-photos.md](06-photos.md)). Use shadcn/ui only where it
-saves real work (Sheet for the mobile nav, Dialog). Lucide for icons. Emoji appear in the mockups only.
+`GalleryDialog` (client), `PhotoPlaceholder` (dev only, see [06-photos.md](06-photos.md)). The gallery dialog and the mobile nav
+panel both use the native `<dialog>` element (no Radix), to stay inside the JS budget. Use shadcn/ui only for
+primitives that ship no client JS, or skip it. Lucide for icons. Emoji appear in the mockups only.
 
 ## Motion and accessibility
 

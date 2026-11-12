@@ -8,7 +8,10 @@
   data files (every item has `es` and `en` names; prices are positive; featured items exist and have images; every
   `image` id exists in `photos.ts`; every special has a flyer).
 - **End-to-end (Playwright, against the built `out/` served statically):**
-  - `/` lands on `/es/`. The language switch keeps the page (`/es/menu/` ↔ `/en/menu/`).
+  - `/` lands on `/es/` (via `out/index.html` locally; via `_redirects` on the preview deploy). The language switch
+    keeps the page (`/es/menu/` ↔ `/en/menu/`).
+  - On the preview deploy, an unknown URL (`/es/nope/`) returns **status 404** with the bilingual 404 page, not a 200
+    redirect.
   - Mobile viewport (390×844): the bottom bar is visible on every page, with correct hrefs (directions URL, `tel:`,
     menu).
   - The menu chips scroll to their sections, and the menu works with JavaScript disabled.
@@ -36,7 +39,9 @@ switch language. Desktop Chrome, Safari and Firefox at 1280 and 1920 widths.
    remain.
 3. Q1 (phone) and Q2 (Place ID) are resolved, or the noted fallbacks are accepted.
 4. The GA4 property is created by the owner, the ID is set in Cloudflare, and the events are verified in DebugView.
-5. The owner approves the DNS cutover. Then HTTPS works on the apex and www, and www redirects to the apex.
+5. The owner approves the DNS cutover: existing records are copied to Cloudflare, the nameservers move, both custom
+   domains are added to Pages, and the www → apex Redirect Rule is created. Then HTTPS works on the apex and www, and
+   any email on the domain still works.
 6. Search Console is verified and the sitemap submitted. The GBP website link is updated.
 7. Rich Results Test passes on Home and Menu.
 8. Lighthouse budgets are met on production.

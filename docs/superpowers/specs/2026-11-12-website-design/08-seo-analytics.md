@@ -9,7 +9,8 @@ Colombian food Queens NY, bandeja paisa Jackson Heights, Colombian breakfast Que
 - Unique `<title>` and meta description per page and locale. Example, home ES: "La Nueva Delicia | Restaurante
   colombiano en Jackson Heights, Queens". Home EN: "La Nueva Delicia | Colombian Restaurant in Jackson Heights,
   Queens".
-- `hreflang`: `es`, `en`, and `x-default` → `/es/` on every page. Self-referencing canonical URLs (absolute,
+- `hreflang` on every page: `es`, `en`, and `x-default`, which points to the **Spanish version of that same page**
+  (on `/en/menu/`, `x-default` → `/es/menu/`). Self-referencing canonical URLs (absolute,
   trailing slash).
 - `sitemap.xml` with both locales and alternates. `robots.txt` allows all and points to the sitemap.
 - Open Graph and Twitter cards per page (1200×630 image from the Bandeja Paisa photo, generated at build or

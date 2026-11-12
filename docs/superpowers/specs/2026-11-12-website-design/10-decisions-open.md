@@ -26,6 +26,8 @@
 - Light theme only.
 - The "what to expect" row on Our story.
 - A home-page JS budget under 120 KB gzipped.
+- One bilingual 404 page. Native `<dialog>` for the gallery and the mobile nav. A permissive script CSP (required by
+  static export). One-day cache on images. ISO weekday numbering.
 
 ## Open questions (non-blocking; each has a fallback)
 
@@ -40,6 +42,8 @@
 | Q7 | Fix the two calentado descriptions that look swapped or incomplete? | Publish the printed text (spelling fixed) |
 | Q8 | One-line OK that the dafotografia photos may be used on the website | Required before launch |
 | Q9 | A vector (SVG/AI) logo? | Use the PNG |
+| Q10 | Is email or anything else used on lanuevadelicia.com? Who holds the Hostinger login? Whose GitHub and Cloudflare accounts own the repo and the Pages project? | Blocks launch only (not the build) |
+| Q11 | A contact for the privacy page: phone, or an email? | Use the phone |
 
 ## Phase 2 (not in the MVP)
 
