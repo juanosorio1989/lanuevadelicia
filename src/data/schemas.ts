@@ -20,7 +20,7 @@ const photo = z.object({
   width: z.number().int().positive(),
   height: z.number().int().positive(),
   alt: l10n,
-  group: z.enum(["dishes", "drinks", "specials", "restaurant"]),
+  group: z.enum(["dishes", "drinks", "specials", "brand", "restaurant"]),
 });
 const menuOption = z.object({ label: l10n, price: price.optional() });
 const menuItem = z.object({

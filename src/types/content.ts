@@ -24,7 +24,7 @@ export interface Photo {
   width: number;
   height: number;
   alt: L10n;
-  group: "dishes" | "drinks" | "specials" | "restaurant";
+  group: "dishes" | "drinks" | "specials" | "brand" | "restaurant";
 }
 export interface MenuOption {
   label: L10n;

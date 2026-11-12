@@ -11,6 +11,7 @@
     "serve:out": "serve out -l 4173 -c ../serve.json",
     "check:out": "node scripts/check-out.mjs",
     "lint": "eslint",
+    "photos": "tsx scripts/import-photos.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -32,7 +33,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "serve": "^14.2.7",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^4.1.12"
   },
