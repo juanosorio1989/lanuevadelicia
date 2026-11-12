@@ -102,11 +102,15 @@ for (const [name, size] of [
   test(`specials deep link #day-5 is not hidden under the sticky header (${name})`, async ({ page }) => {
     await page.setViewportSize(size);
     await page.goto("/es/specials/#day-5");
-    await page.waitForTimeout(500);
-    const { header, top } = await page.evaluate(() => ({
-      header: document.querySelector("header")!.getBoundingClientRect().bottom,
-      top: document.querySelector("#day-5 h2, #day-5 h3")!.getBoundingClientRect().top,
-    }));
-    expect(top).toBeGreaterThanOrEqual(header);
+    const measure = () =>
+      page.evaluate(() => ({
+        header: document.querySelector("header")!.getBoundingClientRect().bottom,
+        top: document.querySelector("#day-5 h2, #day-5 h3")!.getBoundingClientRect().top,
+      }));
+    // Wait for the hash scroll to settle, then check the heading is below the sticky header.
+    await expect.poll(async () => {
+      const { header, top } = await measure();
+      return top >= header;
+    }).toBe(true);
   });
 }

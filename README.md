@@ -12,20 +12,21 @@ Node 22 is the target (`.nvmrc`); Node >= 20.9 works.
 | `npm run dev` | Dev server |
 | `npm run build` | Validates content (`prebuild`: `tests/unit/data.test.ts`), static export to `out/`, then `next-image-export-optimizer` writes the WebP variants to `out/nextImageExportOptimizer/` (about 30 s) |
 | `npm run check:out` | Checks the shape of `out/` (redirect, locales, 404, and the content of `_headers` / `_redirects`) |
-| `npm run check:links` | Crawls `out/**/*.html` and fails on any broken internal `href`/`src` or `#id` |
+| `npm run check:links` | Crawls `out/**/*.html` and fails on any broken internal `href`/`src` or `#id` (including same-page `#id` links) |
 | `npm run check:ga` | Builds once with `NEXT_PUBLIC_GA_ID=G-TEST123` and checks the gtag loader is in the HTML; moves `out/` aside and restores it, so run it on its own |
 | `npm run serve:out` | Serves `out/` on http://localhost:4173 (plain `serve`) |
-| `npm run serve:headers` | Serves `out/` on :4173 like Cloudflare Pages: applies `out/_headers` (so the CSP is live), gzip, `404.html` with status 404. Playwright and Lighthouse use this one |
+| `npm run serve:headers` | Serves `out/` on :4173 like Cloudflare Pages: applies `out/_headers` (so the CSP is live), gzip, a 308 to the slash form for directories (like Pages), `404.html` with status 404; `_redirects` and `:placeholder` header patterns are not emulated. Playwright and Lighthouse use this one |
 | `npm test` | Unit tests (Vitest), plus a second `TZ=Europe/London` run of the hours tests (open status must follow New York time) |
 | `npm run e2e` | End-to-end tests (Playwright; serves `out/` itself, run `build` first). `site.spec.ts` runs axe (WCAG 2.2 AA, no serious or critical), console and CSP errors, one `h1`, image alt text and no horizontal scroll at 320px on all 14 URLs |
 | `npm run ci` | `typecheck`, `lint`, `test`, `build`, `check:out`, `check:links`, `e2e` |
 | `npm run lhci` | Lighthouse (mobile, devtools throttling) on `/es/`, `/es/menu/`, `/en/` against `out/`; needs Chrome (`CHROME_PATH` if it is not on the default path). Budgets in `lighthouserc.json` |
+| `npm run lhci:simulate` | Same for `/es/` only with Lighthouse's default simulated throttling (what PageSpeed Insights shows); LCP <= 2.5 s at warn level, so it never fails. CI runs it with `continue-on-error`. Config: `lighthouserc.simulate.json` |
 | `npm run photos` | Re-imports the approved photos from `assets-inbox/` (not committed) into `public/images/` (long side 2400px, JPEG q82, EXIF-oriented, no metadata), regenerates `src/data/photos.ts` and the favicon and app icons. The approved list is `scripts/photo-manifest.ts` |
 | `npm run lint` / `npm run typecheck` | ESLint / TypeScript |
 
 First time: `npm install && npx playwright install chromium`.
 
-CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `npm run check:ga`. It runs once the repo has a GitHub remote.
+CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `npm run lhci:simulate` (warn only), `npm run check:ga`. Workflow permissions are read-only and runs are cancelled when a newer push arrives on the same ref. It runs once the repo has a GitHub remote.
 
 ## Notes
 

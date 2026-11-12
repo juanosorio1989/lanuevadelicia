@@ -1,6 +1,8 @@
 // Static server for out/ that mimics Cloudflare Pages: trailing-slash index
 // resolution, out/404.html with status 404, and the rules of out/_headers
-// (so the CSP is exercised locally). Usage: node scripts/serve-with-headers.mjs [port]
+// (so the CSP is exercised locally). A directory request without a trailing slash gets a 308 to the slash form.
+// Not emulated: `_redirects` and `:placeholder` patterns in `_headers` (only literal paths and `*` splats work).
+// Usage: node scripts/serve-with-headers.mjs [port]
 import { createServer } from "node:http";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { extname, join, normalize, resolve } from "node:path";
@@ -48,15 +50,35 @@ const headersFile = join(root, "_headers");
 const rules = existsSync(headersFile) ? parseHeaders(readFileSync(headersFile, "utf8")) : [];
 
 function resolveFile(pathname) {
-  const safe = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, "");
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathname);
+  } catch {
+    return null; // malformed %-escape: treat as not found
+  }
+  const safe = normalize(decoded).replace(/^(\.\.[/\\])+/, "");
   let file = join(root, safe);
   if (!file.startsWith(root)) return null;
   if (existsSync(file) && statSync(file).isDirectory()) file = join(file, "index.html");
   return existsSync(file) && statSync(file).isFile() ? file : null;
 }
 
-createServer((req, res) => {
+function isDirectory(pathname) {
+  try {
+    const dir = join(root, normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, ""));
+    return dir.startsWith(root) && existsSync(dir) && statSync(dir).isDirectory();
+  } catch {
+    return false;
+  }
+}
+
+function handle(req, res) {
   const pathname = new URL(req.url, "http://localhost").pathname;
+  if (!pathname.endsWith("/") && isDirectory(pathname)) {
+    res.writeHead(308, { Location: `${pathname}/${new URL(req.url, "http://localhost").search}` });
+    res.end();
+    return;
+  }
   let file = resolveFile(pathname);
   let status = 200;
   if (!file) {
@@ -80,4 +102,14 @@ createServer((req, res) => {
   }
   res.writeHead(status, headers);
   res.end(body);
+}
+
+createServer((req, res) => {
+  try {
+    handle(req, res);
+  } catch (err) {
+    console.error(err);
+    if (!res.headersSent) res.writeHead(400, { "Content-Type": "text/plain" });
+    res.end("Bad request");
+  }
 }).listen(port, () => console.log(`serving out/ on http://localhost:${port}`));

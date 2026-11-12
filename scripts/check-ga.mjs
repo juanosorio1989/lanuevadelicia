@@ -5,7 +5,15 @@ import { existsSync, readFileSync, renameSync, rmSync } from "node:fs";
 
 const ID = "G-TEST123";
 const aside = ".out-main";
-if (existsSync(aside)) rmSync(aside, { recursive: true });
+if (existsSync(aside)) {
+  if (existsSync("out")) {
+    console.error(`FAIL: both ${aside}/ and out/ exist. Inspect them and delete the stale one by hand; nothing was changed.`);
+    process.exit(1);
+  }
+  // A previous run was interrupted after moving out/ aside: put the real build back first.
+  renameSync(aside, "out");
+  console.log(`restored out/ from ${aside}/ left by an interrupted run`);
+}
 const hadOut = existsSync("out");
 if (hadOut) renameSync("out", aside);
 

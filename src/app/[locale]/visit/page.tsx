@@ -65,7 +65,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             {cta("call")}
           </TrackedLink>
         </div>
-        <DeliveryLinks locale={locale} location="visit_page" className="mt-4" />
+        <DeliveryLinks locale={locale} location="visit_page" variant="buttons" className="mt-4 gap-y-2" />
         <p className="mt-1 text-sm text-muted-600">{restaurant.deliveryNote[locale]}</p>
         <p className="mt-3 text-sm">{home("events")}</p>
         <p className="mt-3">

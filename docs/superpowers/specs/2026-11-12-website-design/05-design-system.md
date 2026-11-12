@@ -33,7 +33,7 @@ are tuned for light surroundings).
 ## Typography
 
 - Headings: **Playfair Display** 600/700. Body and UI: **DM Sans** 400/500/700. Load both via `next/font/google`
-  (self-hosted at build), `display: swap`, latin + latin-ext (Spanish accents).
+  (self-hosted at build), `display: swap`, latin only (it includes the Spanish accents, ñ, ¿ and ¡; latin-ext was dropped to save two preloaded woff2 files).
 - Scale (mobile → desktop): H1 28→44px, H2 22→30px, H3 18→20px, body 16px (line-height 1.6), small 13–14px. Eyebrow:
   12px, 700, uppercase, letter-spacing .12em, `terra-700`.
 

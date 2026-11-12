@@ -14,6 +14,7 @@
     "check:links": "node scripts/check-links.mjs",
     "check:ga": "node scripts/check-ga.mjs",
     "lhci": "lhci autorun",
+    "lhci:simulate": "lhci autorun --config=lighthouserc.simulate.json",
     "ci": "npm run typecheck && npm run lint && npm test && npm run build && npm run check:out && npm run check:links && npm run e2e",
     "lint": "eslint",
     "photos": "tsx scripts/import-photos.ts",

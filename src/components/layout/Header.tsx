@@ -8,6 +8,7 @@ import { directionsUrl, telHref } from "@/lib/links";
 import { HeaderShell } from "./HeaderShell";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
+import { NAV_ITEMS, type NavLabels } from "./nav-items";
 import { NavLinks } from "./NavLinks";
 import { TrackedLink } from "./TrackedLink";
 
@@ -17,9 +18,8 @@ export async function Header() {
   const t = await getTranslations("nav");
   const cta = await getTranslations("cta");
   const locale = (await getLocale()) as Locale;
-  const navLabels = Object.fromEntries(
-    ["menu", "specials", "story", "gallery", "visit", "main", "openMenu", "closeMenu"].map((k) => [k, t(k)]),
-  );
+  const navKeys = [...NAV_ITEMS.map((i) => i.key), "main", "openMenu", "closeMenu"] as const;
+  const navLabels = Object.fromEntries(navKeys.map((k) => [k, t(k)])) as NavLabels;
 
   return (
     <HeaderShell>

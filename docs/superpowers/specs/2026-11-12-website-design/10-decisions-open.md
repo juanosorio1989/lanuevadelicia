@@ -42,6 +42,7 @@
 | Q8 | One-line OK that the dafotografia photos may be used on the website | Required before launch |
 | Q9 | A vector (SVG/AI) logo? | Use the PNG |
 | Q11 | A contact for the privacy page | **Claude's call:** `info@lanuevadelicia.com` on the privacy page only (not shown elsewhere unless the owner asks) |
+| Q12 | Simulated (PageSpeed Insights) LCP on /es/ is ~3.5 s, ~65% render delay; re-measure on the preview deploy and fix before launch checklist item 8. | Ship if the real-device and devtools-throttled LCP stay under 2.5 s |
 
 ## Resolved after the builder check (owner, 2026-11-12)
 

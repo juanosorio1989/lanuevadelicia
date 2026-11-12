@@ -3,10 +3,10 @@
 import { useRef } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { NAV_ITEMS } from "./nav-items";
+import { NAV_ITEMS, type NavLabels } from "./nav-items";
 
 /** Menu button + full-screen native <dialog>. Escape closes it and the browser returns focus to the button. */
-export function MobileNav({ locale, labels: t }: { locale: string; labels: Record<string, string> }) {
+export function MobileNav({ locale, labels: t }: { locale: string; labels: NavLabels }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const button = useRef<HTMLButtonElement>(null);
 

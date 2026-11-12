@@ -32,9 +32,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     <>
       <div className="mx-auto grid max-w-6xl items-center gap-6 px-4 pt-6 pb-10 md:grid-cols-2 md:gap-10 md:px-8 md:pt-10">
         <div>
-          <Eyebrow>{s("eyebrow")}</Eyebrow>
-          <h1 className="mt-1 text-[1.75rem] md:text-4xl">{t("title")}</h1>
-          <h2 className="mt-4 text-[1.375rem] md:text-[1.875rem]">{s("title")}</h2>
+          <Eyebrow>{t("title")}</Eyebrow>
+          <h1 className="mt-1 text-[1.75rem] md:text-4xl">{s("title")}</h1>
           <p className="mt-3 text-lg">{s("body")}</p>
           <p className="mt-4 flex items-center gap-2 text-sm text-green-900">
             <Leaf aria-hidden="true" size={18} />

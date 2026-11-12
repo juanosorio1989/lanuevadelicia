@@ -29,6 +29,14 @@ shipped on the home page (`/es/`) at most 170 KB gzipped, excluding the `noModul
 Next 16 + React 19 baseline alone is about 122 KB gzipped, so the original 120 KB target was not reachable; the Lighthouse
 mobile performance score of 90 or more stays the binding gate.
 
+The local and CI gate (`lighthouserc.json`, 3 runs per URL) uses `throttlingMethod: devtools`: the browser applies a real
+mobile network and CPU throttle. Lighthouse's default `simulate` mode (what PageSpeed Insights reports) models the
+page load instead and gives a much higher LCP on `/es/` (about 3.3 to 3.5 s) than the observed one (about 150 ms),
+because render delay dominates the simulated figure. Rather than hide that, a second config (`lighthouserc.simulate.json`,
+`npm run lhci:simulate`) checks `/es/` LCP <= 2500 ms with simulated throttling at warn level only; CI runs it with
+`continue-on-error`, so the regression stays visible without failing the build. See the open item in
+[10-decisions-open.md](10-decisions-open.md).
+
 ## Manual checks
 
 Real iPhone and Android: tap Cómo llegar (it opens the Maps app with the right place), tap Llamar, scroll the menu,
