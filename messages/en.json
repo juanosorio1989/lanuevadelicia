@@ -1,7 +1,4 @@
 {
-  "Home": {
-    "title": "La Nueva Delicia"
-  },
   "nav": {
     "menu": "Menu",
     "specials": "Specials",
@@ -28,6 +25,65 @@
     "instagram": "Instagram",
     "delivery": "Order delivery",
     "privacy": "Privacy",
-    "rights": "© {year} La Nueva Delicia"
+    "rights": "© {year} La Nueva Delicia",
+    "siteNav": "Site sections"
+  },
+  "home": {
+    "hero": {
+      "title": "The authentic taste of Colombia, close to home.",
+      "lead": "Fresh, home-style food cooked just right, with 30+ years in Jackson Heights. Come feel at home.",
+      "rating": "★ {value} on Google ({count} reviews)"
+    },
+    "favorites": {
+      "eyebrow": "House favorites",
+      "title": "Dishes people ask for again and again",
+      "breakfastUntil": "Breakfast until {time}",
+      "toShare": "To share",
+      "all": "See the full menu →",
+      "listLabel": "Favorite dishes"
+    },
+    "today": {
+      "eyebrowNeutral": "Special of the day",
+      "eyebrow": "Today's special · {day}",
+      "teaser": "Every day has its own special",
+      "alternative": "Also ask about the alternative special.",
+      "all": "See this week's specials"
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "title": "30+ years of Colombian flavor in Jackson Heights.",
+      "body": "La Nueva Delicia has served Colombian food in the heart of Queens for more than three decades. Our roots are in Caldas, in Colombia's coffee region, and you can taste them in every dish: home-style recipes, fresh ingredients, everything cooked just right. Our team serves with warmth, because what matters most to us is that everyone who walks in feels at home.",
+      "roots": "Roots in Caldas · Coffee Region"
+    },
+    "reviews": {
+      "title": "{value} on Google · {count} reviews",
+      "stars": "{value} out of 5 stars",
+      "read": "Read reviews on Google",
+      "write": "Leave a review"
+    },
+    "visit": {
+      "eyebrow": "Visit us",
+      "delivery": "Prefer delivery?",
+      "events": "Event or large group? Call us."
+    }
+  },
+  "status": {
+    "open": "Open now · closes at {time}",
+    "closingSoon": "Closing soon · closes at {time}",
+    "closedToday": "Closed · opens today at {time}",
+    "closedTomorrow": "Closed · opens tomorrow at {time}",
+    "closedDay": "Closed · opens {day} at {time}"
+  },
+  "hours": {
+    "range": "{from} to {to}",
+    "breakfast": "Breakfast",
+    "breakfastUntil": "until {time}",
+    "happyHour": "Happy hour",
+    "happyHourValue": "cocktails {price}"
+  },
+  "map": {
+    "view": "View map",
+    "title": "La Nueva Delicia on Google Maps",
+    "hint": "The map loads only when you tap the button."
   }
 }

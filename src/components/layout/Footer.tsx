@@ -85,7 +85,7 @@ export async function Footer() {
           </ul>
         </div>
       </div>
-      <nav aria-label={nav("main")} className="border-t border-cream-50/20">
+      <nav aria-label={t("siteNav")} className="border-t border-cream-50/20">
         <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 px-4 py-2 text-sm md:px-8">
           {NAV_ITEMS.map((item) => (
             <li key={item.key}>

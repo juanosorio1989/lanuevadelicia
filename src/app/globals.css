@@ -30,9 +30,12 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3 {
-  font-family: var(--font-display);
-  color: var(--color-green-900);
+/* In the base layer so utilities such as text-cream-50 on dark sections can override the heading color. */
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--color-green-900);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

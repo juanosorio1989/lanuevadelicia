@@ -29,7 +29,14 @@ First time: `npm install && npx playwright install chromium`.
 
 - `src/components/layout/`: `Header`, `MobileNav` (native `<dialog>`), `MobileActionBar` (below `md`), `LanguageSwitch`, `Footer`, `SkipLink`, `TrackedLink` (an `<a>` that calls `track()`; use it for every CTA).
 - `src/app/[locale]/layout.tsx` wraps pages in `<main id="main">`. Pages must not render their own `<main>`.
-- Chrome copy lives under `nav`, `cta` and `footer` in `messages/{es,en}.json`. Chrome text must not use `h1`-`h3` (the global heading color is green and the chrome is on dark backgrounds).
+- Chrome copy lives under `nav`, `cta` and `footer` in `messages/{es,en}.json`. Chrome text must not use `h1`-`h3` (the global heading color is green and the chrome is on dark backgrounds). The heading color is in `@layer base`, so a utility such as `text-cream-50` overrides it on dark sections.
+
+## Home page
+
+- `src/components/home/`: `Hero`, `Favorites`, `TodaySpecial` (server wrapper) + `TodaySpecialLive` (client; swaps in today's special in New York time, static HTML shows a teaser with no dish or price), `StoryTeaser`, `ReviewsBand`, `VisitBlock`. Copy is under `home.*` in `messages/{es,en}.json`.
+- `src/components/shared/` (reused by Specials and Visit): `OpenStatus` (client, renders nothing until mounted), `HoursTable`, `MapEmbed` (client, click-to-load), `DeliveryLinks`, `DishCard`, `PhotoPlaceholder` (dev only). Status and hours copy: `status.*`, `hours.*`, `map.*`.
+- Keep client components small: pass display strings, never the `photos` manifest or `menuItems`. `src/lib/photo.ts` (`getPhoto`) is server-only.
+- The story teaser uses `dishes/picada-doble` until restaurant photos exist; the Q6 "lo que más destacan" line is intentionally absent.
 
 ## Content
 

@@ -1,7 +1,4 @@
 {
-  "Home": {
-    "title": "La Nueva Delicia"
-  },
   "nav": {
     "menu": "Menú",
     "specials": "Especiales",
@@ -28,6 +25,65 @@
     "instagram": "Instagram",
     "delivery": "Pide a domicilio",
     "privacy": "Privacidad",
-    "rights": "© {year} La Nueva Delicia"
+    "rights": "© {year} La Nueva Delicia",
+    "siteNav": "Secciones del sitio"
+  },
+  "home": {
+    "hero": {
+      "title": "El sabor de Colombia, cerca de ti.",
+      "lead": "Comida casera, fresca y en su punto, con más de 30 años en Jackson Heights. Ven a sentirte como en casa.",
+      "rating": "★ {value} en Google ({count} reseñas)"
+    },
+    "favorites": {
+      "eyebrow": "Los favoritos de la casa",
+      "title": "Platos que nos piden una y otra vez",
+      "breakfastUntil": "Desayuno hasta la {time}",
+      "toShare": "Para compartir",
+      "all": "Ver el menú completo →",
+      "listLabel": "Platos favoritos"
+    },
+    "today": {
+      "eyebrowNeutral": "Especial del día",
+      "eyebrow": "Especial de hoy · {day}",
+      "teaser": "Cada día tiene su especial",
+      "alternative": "Pregunta también por el especial alternativo.",
+      "all": "Ver los especiales de la semana"
+    },
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "title": "Más de 30 años de sabor colombiano en Jackson Heights.",
+      "body": "La Nueva Delicia lleva más de tres décadas sirviendo comida colombiana en el corazón de Queens. Nuestras raíces están en Caldas, en el Eje Cafetero, y se sienten en cada plato: recetas caseras, ingredientes frescos y todo preparado en su punto. Nuestro equipo atiende con cariño, porque lo que más nos importa es que cada persona que entra se sienta como en casa.",
+      "roots": "Raíces en Caldas · Eje Cafetero"
+    },
+    "reviews": {
+      "title": "{value} en Google · {count} reseñas",
+      "stars": "{value} de 5 estrellas",
+      "read": "Leer reseñas en Google",
+      "write": "Dejar una reseña"
+    },
+    "visit": {
+      "eyebrow": "Visítanos",
+      "delivery": "¿Prefieres a domicilio?",
+      "events": "¿Evento o grupo grande? Llámanos."
+    }
+  },
+  "status": {
+    "open": "Abierto ahora · cierra a las {time}",
+    "closingSoon": "Cierra pronto · cierra a las {time}",
+    "closedToday": "Cerrado · abre hoy a las {time}",
+    "closedTomorrow": "Cerrado · abre mañana a las {time}",
+    "closedDay": "Cerrado · abre el {day} a las {time}"
+  },
+  "hours": {
+    "range": "{from} a {to}",
+    "breakfast": "Desayunos",
+    "breakfastUntil": "hasta la {time}",
+    "happyHour": "Happy hour",
+    "happyHourValue": "cócteles a {price}"
+  },
+  "map": {
+    "view": "Ver mapa",
+    "title": "Mapa de La Nueva Delicia en Google Maps",
+    "hint": "El mapa se carga solo al tocar el botón."
   }
 }
