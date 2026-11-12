@@ -38,6 +38,11 @@ First time: `npm install && npx playwright install chromium`.
 - Keep client components small: pass display strings, never the `photos` manifest or `menuItems`. `src/lib/photo.ts` (`getPhoto`) is server-only.
 - The story teaser uses `dishes/picada-doble` until restaurant photos exist; the Q6 "lo que más destacan" line is intentionally absent.
 
+## Specials page
+
+- `src/components/specials/`: `SpecialDayCard` (server; one `<section id="day-1..7">` per weekday, Monday first, flyer + main dish + price + optional alternative with the price note) and `TodayHighlighter` (client, renders nothing; in New York time it sets `aria-current="date"` on today's card, unhides its "Hoy" badge and scrolls to it on first load when there is no URL hash). Without JS nothing is highlighted.
+- "Sopa grande adicional" is read from the `especiales` menu item, not hard-coded. Copy is under `specials.*` in `messages/{es,en}.json`. All flyers load lazily (today is only known on the client).
+
 ## Menu page
 
 - `src/components/menu/`: `MenuCategorySection` (H2, note, photo cards, then text rows; Bebidas and Cervezas group by `subcategory`), `MenuItemCard` (104x92 thumbnail on mobile, vertical card from `md`), `MenuItemRow`, and `CategoryChips` (the only client code: sticky anchor chips, an `IntersectionObserver` sets `aria-current` and keeps the active chip in view, a tap calls `track('view_menu_category')`). Without JS the chips are plain `#id` links.

@@ -92,5 +92,13 @@
     "chipsLabel": "Menu categories",
     "favorite": "Favorite",
     "specialsLink": "See this week's specials →"
+  },
+  "specials": {
+    "title": "Weekly specials",
+    "lead": "A different special every day, made in house.",
+    "today": "Today",
+    "alternative": "Alternative special",
+    "alternativeNote": "the price may change depending on your choice of meat",
+    "extraSoup": "Additional large soup"
   }
 }

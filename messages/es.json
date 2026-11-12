@@ -92,5 +92,13 @@
     "chipsLabel": "Categorías del menú",
     "favorite": "Favorito",
     "specialsLink": "Ver los especiales de la semana →"
+  },
+  "specials": {
+    "title": "Especiales de la semana",
+    "lead": "Un especial distinto cada día, preparado en casa.",
+    "today": "Hoy",
+    "alternative": "Especial alternativo",
+    "alternativeNote": "el precio puede cambiar según la elección de la carne",
+    "extraSoup": "Sopa grande adicional"
   }
 }
