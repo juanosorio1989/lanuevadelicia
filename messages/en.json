@@ -1,5 +1,33 @@
 {
   "Home": {
     "title": "La Nueva Delicia"
+  },
+  "nav": {
+    "menu": "Menu",
+    "specials": "Specials",
+    "story": "Our Story",
+    "gallery": "Gallery",
+    "visit": "Visit Us",
+    "main": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "home": "Go to home page",
+    "skip": "Skip to content"
+  },
+  "cta": {
+    "directions": "Get Directions",
+    "call": "Call",
+    "menu": "View menu"
+  },
+  "footer": {
+    "address": "Address",
+    "phone": "Phone",
+    "hours": "Hours",
+    "breakfast": "Breakfast until {time}",
+    "instagram": "Instagram",
+    "delivery": "Order delivery",
+    "privacy": "Privacy",
+    "rights": "© {year} La Nueva Delicia"
   }
 }

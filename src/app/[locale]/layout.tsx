@@ -4,6 +4,10 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { SkipLink } from "@/components/layout/SkipLink";
 
 export const dynamicParams = false;
 
@@ -24,8 +28,16 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={fontVariables}>
-      <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      <body className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+        <NextIntlClientProvider>
+          <SkipLink />
+          <Header />
+          <main id="main" tabIndex={-1} className="focus:outline-none">
+            {children}
+          </main>
+          <Footer />
+          <MobileActionBar />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
