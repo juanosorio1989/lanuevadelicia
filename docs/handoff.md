@@ -15,8 +15,8 @@ Updated 2026-11-12.
 
 ## Next
 
-1. Deploy to Cloudflare Pages (ask the owner before creating the project). Set `NEXT_PUBLIC_GA_ID` (the owner has
-   the GA4 measurement id and keeps it; production only, never in `.env.local`, which would break the no-GA e2e
+1. Deploy to Cloudflare Pages (ask the owner before creating the project). Set `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C` (GA4
+   measurement id, given by the owner 2026-11-15; public, it ships in every page; production only, never in `.env.local`, which would break the no-GA e2e
    tests and add test hits to GA) and `NEXT_PUBLIC_SITE_URL`.
 2. On the preview deploy: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording).
