@@ -78,6 +78,7 @@
     "breakfastUntil": "until {time}",
     "happyHour": "Happy hour",
     "happyHourValue": "cocktails {price}",
+    "closedNote": "Closed on {dates}.",
     "happyHourWindow": "{days}: {from} – {to}"
   },
   "map": {
@@ -109,6 +110,7 @@
   },
   "delivery": {
     "prompt": "Prefer delivery?",
+    "reservations": "<b>Reservations:</b> call <phone></phone>.",
     "phoneTitle": "Order by phone",
     "phoneBody": "Call <phone></phone> for pickup or delivery.",
     "range": "Delivery: up to {free} mile at no extra charge; {free} to {max} miles, extra charge. Beyond {max} miles, order on:"

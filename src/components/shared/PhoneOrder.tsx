@@ -37,7 +37,8 @@ export async function PhoneOrder({
 
   return (
     <div data-testid="phone-order" className={`text-sm ${className}`.trim()}>
-      <p className="font-bold">{t("phoneTitle")}</p>
+      <p>{t.rich("reservations", { b: (chunks) => <strong>{chunks}</strong>, phone: () => phone })}</p>
+      <p className="mt-3 font-bold">{t("phoneTitle")}</p>
       <p className="mt-1">{t.rich("phoneBody", { phone: () => phone })}</p>
       <p className="mt-1 text-muted-600">{t("range", range)}</p>
       <DeliveryLinks locale={locale} location={location} variant={variant} showPrompt={false} className="mt-1 gap-y-2" />

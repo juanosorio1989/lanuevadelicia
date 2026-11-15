@@ -24,6 +24,7 @@ export const restaurant: Restaurant = {
   ],
   happyHourCocktailPrice: 8,
   deliveryRange: { freeMiles: 1, maxMiles: 1.5 },
+  closedDates: [{ month: 1, day: 1 }],
   instagram: {
     handle: "@lanuevadeliciarestaurante",
     url: "https://www.instagram.com/lanuevadeliciarestaurante/",

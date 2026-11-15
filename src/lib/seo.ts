@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { categories, menuItems } from "@/data/menu";
 import { restaurant } from "@/data/restaurant";
+import { nextClosedDates } from "@/lib/hours";
 import { routing } from "@/i18n/routing";
 import type { IsoWeekday, Locale } from "@/types/content";
 
@@ -84,10 +85,17 @@ export function restaurantJsonLd(locale: Locale): Record<string, unknown> {
       opens: h.open,
       closes: h.close,
     })),
+    specialOpeningHoursSpecification: nextClosedDates(new Date(), restaurant.closedDates, 2).map((d) => ({
+      "@type": "OpeningHoursSpecification",
+      opens: "00:00",
+      closes: "00:00",
+      validFrom: d,
+      validThrough: d,
+    })),
     servesCuisine: "Colombian",
     priceRange: "$$",
     hasMenu: pageUrl(locale, "menu"),
-    acceptsReservations: false,
+    acceptsReservations: true,
     sameAs: [restaurant.instagram.url, restaurant.googleMapsUrl, ...restaurant.delivery.map((d) => d.url)],
   };
 }

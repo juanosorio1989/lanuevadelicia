@@ -78,6 +78,7 @@
     "breakfastUntil": "hasta la {time}",
     "happyHour": "Happy hour",
     "happyHourValue": "cócteles a {price}",
+    "closedNote": "Cerrado el {dates}.",
     "happyHourWindow": "{days}: {from} – {to}"
   },
   "map": {
@@ -109,6 +110,7 @@
   },
   "delivery": {
     "prompt": "¿Prefieres a domicilio?",
+    "reservations": "<b>Reservas:</b> llámanos al <phone></phone>.",
     "phoneTitle": "Pide por teléfono",
     "phoneBody": "Llámanos al <phone></phone> para recoger o para domicilio.",
     "range": "Domicilio: hasta {free} milla sin recargo; de {free} a {max} millas, con recargo. A más de {max} millas, pide por:"

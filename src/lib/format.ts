@@ -1,4 +1,4 @@
-import type { IsoWeekday, Locale } from "@/types/content";
+import type { ClosedDate, IsoWeekday, Locale } from "@/types/content";
 
 /** 23 -> '$23', 12.99 -> '$12.99'. Prices come from data and are never rounded. */
 export function formatPrice(n: number): string {
@@ -25,3 +25,14 @@ export function dayRange(days: IsoWeekday[], locale: Locale): string {
 }
 
 export const capitalize = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
+
+const MONTHS = {
+  es: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+} as const;
+
+/** { month: 1, day: 1 } -> '1 de enero' / 'January 1'. Fixed month names so ICU variants cannot change it. */
+export function formatMonthDay(d: ClosedDate, locale: Locale): string {
+  const month = MONTHS[locale][d.month - 1];
+  return locale === "es" ? `${d.day} de ${month}` : `${month} ${d.day}`;
+}

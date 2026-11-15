@@ -11,7 +11,7 @@ function subscribe(onChange: () => void) {
   return () => clearInterval(id);
 }
 // A string snapshot keeps getSnapshot referentially stable between ticks.
-const getSnapshot = () => JSON.stringify(getOpenStatus(new Date(), restaurant.hours));
+const getSnapshot = () => JSON.stringify(getOpenStatus(new Date(), restaurant.hours, undefined, restaurant.closedDates));
 const getServerSnapshot = () => null;
 
 const dotColor = { open: "bg-status-open", "closing-soon": "bg-star", closed: "bg-muted-600" } as const;

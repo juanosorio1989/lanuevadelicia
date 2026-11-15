@@ -23,9 +23,9 @@ Colombian food Queens NY, bandeja paisa Jackson Heights, Colombian breakfast Que
 ## Structured data (JSON-LD)
 
 - Home and Visit pages: `Restaurant` with `name`, `url`, `logo`, `image`, `address` (PostalAddress: 93-16B 37th Ave,
-  Jackson Heights, NY 11372, US), `telephone`, `openingHoursSpecification` (from data), `servesCuisine: "Colombian"`,
+  Jackson Heights, NY 11372, US), `telephone`, `openingHoursSpecification` (from data), `specialOpeningHoursSpecification` (the next two closed dates, `opens`/`closes` 00:00), `servesCuisine: "Colombian"`,
   `priceRange: "$$"` (Claude's call, derived from menu prices of $3–$65), `hasMenu` → menu URL, `acceptsReservations:
-  false` (Q3 to confirm), and `sameAs` (Instagram, Google Maps link, Uber Eats, DoorDash, Grubhub). Add `geo` only if
+  true` (by phone, owner 2026-11-15), and `sameAs` (Instagram, Google Maps link, Uber Eats, DoorDash, Grubhub). Add `geo` only if
   the owner gives coordinates or the Place ID (Q2); never guess them.
 - Menu page: `Menu` with `MenuSection` and `MenuItem` (with `offers.price`, `priceCurrency: USD`) generated from
   data.

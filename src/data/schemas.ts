@@ -64,6 +64,7 @@ const restaurantSchema = z.object({
   happyHour: z.array(z.object({ days: z.array(weekday).min(1), from: hhmm, to: hhmm })),
   happyHourCocktailPrice: price,
   deliveryRange: z.object({ freeMiles: z.number().positive(), maxMiles: z.number().positive() }),
+  closedDates: z.array(z.object({ month: z.number().int().min(1).max(12), day: z.number().int().min(1).max(31) })),
   instagram: z.object({ handle: text, url: z.url() }),
   googleMapsUrl: z.url(),
   googlePlaceId: text.optional(),

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { restaurant } from "@/data/restaurant";
-import { capitalize, dayRange, formatPrice } from "@/lib/format";
+import { capitalize, dayRange, formatMonthDay, formatPrice } from "@/lib/format";
 import { formatTime } from "@/lib/hours";
 import type { IsoWeekday, Locale } from "@/types/content";
 
@@ -46,6 +46,11 @@ export async function HoursTable({ locale, className = "" }: { locale: Locale; c
                 </li>
               ))}
             </ul>
+          </td>
+        </tr>
+        <tr>
+          <td colSpan={2} className={`${cell} text-muted-600`}>
+            {t("closedNote", { dates: restaurant.closedDates.map((c) => formatMonthDay(c, locale)).join(locale === "es" ? " y " : " and ") })}
           </td>
         </tr>
       </tbody>

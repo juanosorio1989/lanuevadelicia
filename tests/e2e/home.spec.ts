@@ -78,7 +78,8 @@ test.describe("JS disabled", () => {
   test("no status badge, no dish or price in the today block, links still work", async ({ page }) => {
     await page.goto("/es/");
     await expect(page.locator("main")).not.toContainText("Abierto");
-    await expect(page.locator("main")).not.toContainText("Cerrado");
+    await expect(page.locator("main")).not.toContainText("Cerrado ·");
+    await expect(page.getByTestId("open-status")).toHaveCount(0);
     const today = page.getByTestId("today-special");
     await expect(today).not.toContainText("$");
     await expect(today).not.toContainText("Ajiaco");

@@ -4,6 +4,8 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { menuItems } from "@/data/menu";
+import { nextClosedDates } from "@/lib/hours";
+import { restaurant } from "@/data/restaurant";
 import { buildMetadata, menuJsonLd, pageUrl, restaurantJsonLd } from "@/lib/seo";
 
 describe("seo", () => {
@@ -34,7 +36,12 @@ describe("seo", () => {
     expect(r.telephone).toBe("+17186723456");
     expect(r.priceRange).toBe("$$");
     expect(r.servesCuisine).toBe("Colombian");
-    expect(r.acceptsReservations).toBe(false);
+    expect(r.acceptsReservations).toBe(true);
+    const dates = nextClosedDates(new Date(), restaurant.closedDates, 2);
+    expect(r.specialOpeningHoursSpecification).toEqual(
+      dates.map((d) => ({ "@type": "OpeningHoursSpecification", opens: "00:00", closes: "00:00", validFrom: d, validThrough: d })),
+    );
+    expect(dates).toHaveLength(2);
     expect(r.hasMenu).toBe("https://lanuevadelicia.com/es/menu/");
     expect(r.openingHoursSpecification).toEqual([
       { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "09:00", closes: "21:00" },

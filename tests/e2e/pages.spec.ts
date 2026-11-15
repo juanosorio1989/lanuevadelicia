@@ -59,6 +59,18 @@ test("visit (en): phone order copy", async ({ page }) => {
   }
 });
 
+test("visit (en): reservations and closed date", async ({ page }) => {
+  await page.goto("/en/visit/");
+  await expect(page.locator("main").getByTestId("phone-order")).toContainText("Reservations: call (718) 672-3456.");
+  await expect(page.locator("main")).toContainText("Closed on January 1.");
+});
+
+test("open status is closed on January 1", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2027-01-01T12:00:00-05:00"));
+  await page.goto("/es/visit/");
+  await expect(page.getByTestId("open-status").first()).toHaveText("Cerrado · abre mañana a las 9:00 a.m.");
+});
+
 test("visit (es): address, hours, breakfast, happy hour, delivery, events, note, no transit", async ({ page }) => {
   await page.goto("/es/visit/");
   await expect(page.locator("h1")).toHaveCount(1);
@@ -79,7 +91,10 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, note,
   await expect(order).toContainText("Pide por teléfono");
   await expect(order).toContainText("Llámanos al (718) 672-3456 para recoger o para domicilio.");
   await expect(order).toContainText("Domicilio: hasta 1 milla sin recargo; de 1 a 1.5 millas, con recargo. A más de 1.5 millas, pide por:");
-  await expect(order.getByRole("link", { name: "(718) 672-3456" })).toHaveAttribute("href", telHref());
+  await expect(order.getByRole("link", { name: "(718) 672-3456" }).first()).toHaveAttribute("href", telHref());
+  await expect(order).toContainText("Reservas: llámanos al (718) 672-3456.");
+  await expect(main).toContainText("Cerrado el 1 de enero.");
+  await expect(main).not.toContainText("festivos");
   await expect(main).not.toContainText("cargo extra");
   expect(await main.innerText()).not.toMatch(/metro|subway|bus\b|tren|train|\b7\b line/i);
   await expect(main.getByRole("button", { name: "Ver mapa" })).toBeVisible();
