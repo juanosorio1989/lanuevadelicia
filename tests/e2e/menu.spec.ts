@@ -394,10 +394,3 @@ test("390px: mounting the search box does not shift the menu", async ({ page }) 
   await page.waitForTimeout(500);
   expect(await page.evaluate(() => (window as unknown as { __cls: number }).__cls)).toBeLessThan(0.01);
 });
-
-test("scroll-padding-top clears the sticky toolbar on the menu page", async ({ page }) => {
-  await page.goto("/es/menu/");
-  await expect(page.getByRole("searchbox")).toBeVisible();
-  const padding = await page.evaluate(() => document.documentElement.style.scrollPaddingTop);
-  expect(padding).toContain("--menu-header-h");
-});

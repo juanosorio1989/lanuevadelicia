@@ -32,6 +32,10 @@ Interior/exterior photos: the owner is still working on them (2026-11-15), no da
   central plaque is raster (~980 px), so it does not answer Q9. The owner decided the stamp is for the T-shirt only,
   not the site. Still needed: the designer's original `.ai`/`.svg`/`.eps`.
 
+- WCAG 2.2 2.4.11 Focus Not Obscured on /menu/: keyboard focus can land under the sticky toolbar; a working
+  scroll-padding-top must resolve to px and needs section scroll-margin set to 0 with JS on (they add up), so it
+  touches the tested offset logic. Do it as its own change.
+
 ## Notes
 
 - `assets-inbox/` (~300 MB raw photos and the menu PDFs) and `.superpowers/` (mockups, SDD ledger) are gitignored

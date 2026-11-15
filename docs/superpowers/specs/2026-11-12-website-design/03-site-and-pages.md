@@ -62,8 +62,7 @@ In order:
    "lo que más destacan" line is the owner's characterization; keep it only if the owner confirms that reviews say
    this (Q6), otherwise drop it.**
 6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m., happy hour cocktails $8),
-   **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (phone number, delivery range line, the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md)), the line
-   "Reservaciones: llama al (718) 672-3456." under the hours, and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
+   **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (first line "**Reservas:** llámanos al (718) 672-3456." / "**Reservations:** call (718) 672-3456.", then the phone number, delivery range line and the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md) §5), and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
 7. **Footer.**
 
 ### Approved story text
@@ -120,8 +119,8 @@ opens the larger image in a native `<dialog>`. No lightbox library. The images l
 ## Visit us
 
 The address, hours table (with the open-now badge), Cómo llegar, Llamar, a click-to-load map, the PhoneOrder block
-("Pide por teléfono", delivery range line; see [menu-search design](../2026-11-15-menu-search-design/README.md)) with the 3 delivery app
-buttons (secondary style, open in a new tab), the events line, the reservations-by-phone line, and Instagram. Transit
+("Pide por teléfono"; its first line is the reservations-by-phone copy "**Reservas:** llámanos al (718) 672-3456." / "**Reservations:** call (718) 672-3456.", then the delivery range line; see [menu-search design](../2026-11-15-menu-search-design/README.md) §5) with the 3 delivery app
+buttons (secondary style, open in a new tab), the events line, and Instagram. Transit
 info is left out until verified.
 
 ## Click-to-load map

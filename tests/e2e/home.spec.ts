@@ -112,3 +112,14 @@ test("home visit block has the phone-order block", async ({ page }) => {
     await expect(order).not.toContainText(c.old);
   }
 });
+
+test("390px: the closed-dates note is separated from the directions button", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/es/");
+  const note = page.getByText(/^Cerrado el /).first();
+  const link = note.locator("xpath=following::a[normalize-space()='Cómo llegar'][1]");
+  await link.scrollIntoViewIfNeeded();
+  const n = (await note.boundingBox())!;
+  const l = (await link.boundingBox())!;
+  expect(l.y - (n.y + n.height)).toBeGreaterThanOrEqual(8);
+});

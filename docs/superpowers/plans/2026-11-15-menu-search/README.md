@@ -76,3 +76,4 @@ expect the old delivery note and the gallery link: Task 1 fixes those.
 - 2026-11-15 (Opus): Task 3 sends the `search` event once per term typed (differs from the last one sent), so a re-search later counts again.
 - 2026-11-15 (Opus): the footer hours also show "Cerrado el 1 de enero." (spec: everywhere hours show).
 - 2026-11-15 (Opus): final fix wave includes the cheap minors (privacy wording, this log, dead `showPrompt`, `scroll-padding-top`, empty `closedDates` guard, search box spacing, `nyDate` comment, spec 03/05 notes).
+- 2026-11-15 (Opus): scroll-padding attempt removed (resolved to auto); WCAG 2.4.11 left open in the handoff.

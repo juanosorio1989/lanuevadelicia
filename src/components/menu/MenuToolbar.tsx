@@ -75,8 +75,6 @@ export function MenuToolbar({
     if (!el) return;
     const offset = `calc(var(--menu-header-h) + ${el.getBoundingClientRect().height}px + 0.25rem)`;
     el.parentElement?.style.setProperty("--menu-sticky-offset", offset);
-    // WCAG 2.4.11: keyboard focus scrolled into view must not land under the sticky toolbar.
-    document.documentElement.style.scrollPaddingTop = offset;
   };
 
   useEffect(() => {
@@ -89,7 +87,6 @@ export function MenuToolbar({
     return () => {
       observer.disconnect();
       parent.style.removeProperty("--menu-sticky-offset");
-      document.documentElement.style.removeProperty("scroll-padding-top");
     };
   }, []);
 
@@ -154,9 +151,18 @@ export function MenuToolbar({
         className="sticky top-[var(--menu-header-h)] z-30 border-b border-sand-100 bg-cream-50"
       >
         {!mounted && (
-          // Reserves the search row's height (pt-2 + min-h-11) so the menu does not jump when the box mounts.
+          // Reserves the search row's height so the menu does not jump when the box mounts. It copies the real row's
+          // structure (pt-2 wrapper, bordered min-h-11 box, min-h-11 label) so the heights match by construction.
           // Shown only when scripting is on: without JS the box never appears, so nothing is reserved.
-          <div aria-hidden="true" data-testid="menu-search-placeholder" className="hidden h-13 [@media(scripting:enabled)]:block" />
+          <div
+            aria-hidden="true"
+            data-testid="menu-search-placeholder"
+            className="mx-auto hidden max-w-6xl px-4 pt-2 md:px-8 [@media(scripting:enabled)]:block"
+          >
+            <div className="flex min-h-11 items-center rounded-full border-[1.5px] border-transparent">
+              <div className="min-h-11" />
+            </div>
+          </div>
         )}
         {mounted && (
           <div role="search" className="mx-auto max-w-6xl px-4 pt-2 md:px-8">

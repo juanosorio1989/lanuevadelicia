@@ -11,8 +11,8 @@ export async function HoursTable({ locale, className = "" }: { locale: Locale; c
   const cell = "py-1 pr-5 text-left align-top";
 
   return (
-    <>
-      <table className={`text-sm ${className}`.trim()}>
+    <div className={className || undefined}>
+      <table className="text-sm">
         <tbody>
           {restaurant.hours.map((h) => (
             <tr key={h.days.join()}>
@@ -52,10 +52,10 @@ export async function HoursTable({ locale, className = "" }: { locale: Locale; c
         </tbody>
       </table>
       {restaurant.closedDates.length > 0 && (
-        <p className="text-sm text-muted-600">
+        <p className="mt-1 text-sm text-muted-600">
           {t("closedNote", { dates: formatClosedDates(restaurant.closedDates, locale) })}
         </p>
       )}
-    </>
+    </div>
   );
 }
