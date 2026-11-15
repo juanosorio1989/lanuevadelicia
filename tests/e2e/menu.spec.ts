@@ -71,25 +71,43 @@ const sticky = (page: Pg) =>
   page.evaluate(() => {
     const header = document.querySelector("header")!.getBoundingClientRect().bottom;
     const chips = document.querySelector("[data-testid=menu-chips]")!.getBoundingClientRect();
-    return { header, chipsTop: chips.top, stack: Math.max(header, chips.bottom) };
+    const toolbar = document.querySelector("[data-testid=menu-toolbar]")!.getBoundingClientRect();
+    return { header, chipsTop: chips.top, stack: Math.max(header, toolbar.bottom) };
   });
 
-const setups: [string, (page: Pg) => Promise<void>][] = [
+const setups: [string, (page: Pg) => Promise<void>, ((page: Pg) => Promise<void>)?][] = [
   ["desktop", async () => {}],
   ["320x640", async (page) => page.setViewportSize({ width: 320, height: 640 })],
   ["20px root font", async (page) => {
     await page.addInitScript(() => document.addEventListener("DOMContentLoaded", () => { document.documentElement.style.fontSize = "20px"; }));
   }],
+  [
+    "390px after swiping chips",
+    async (page) => page.setViewportSize({ width: 390, height: 844 }),
+    async (page) => {
+      await expect(page.getByRole("searchbox")).toBeVisible(); // hydrated: the scroll listener is attached
+      await page.getByTestId("menu-chips").evaluate((n) => { n.scrollLeft = 150; });
+      await expect(page.getByTestId("menu-swipe-hint")).toBeHidden();
+      await page.getByTestId("menu-chips").getByRole("link", { name: "Cocktails" }).click();
+    },
+  ],
 ];
-for (const [name, setup] of setups) {
+for (const [name, setup, after] of setups) {
   test(`Review Focus 4: deep link heading clears the sticky header and chips (${name})`, async ({ page }) => {
     await setup(page);
-    await page.goto("/en/menu/#cocteles");
+    if (after) {
+      await page.goto("/en/menu/");
+      await after(page);
+    } else {
+      await page.goto("/en/menu/#cocteles");
+    }
     await page.waitForTimeout(500);
     const s = await sticky(page);
     expect(s.chipsTop).toBeGreaterThanOrEqual(s.header - 1);
     const top = (await page.locator("#cocteles h2").boundingBox())!.y;
     expect(top).toBeGreaterThanOrEqual(s.stack);
+    // Upper bound: air (0.25rem) + the section's own top padding (up to 1.75rem); catches an offset that is too big.
+    expect(top).toBeLessThan(s.stack + 40);
   });
 }
 
@@ -101,6 +119,54 @@ test.describe("JS disabled", () => {
     await expect(page).toHaveURL(/#postres$/);
     await expect(page.locator("#postres")).toBeInViewport();
   });
+  test("390px: no search box, hint visible, 13 chip links", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/es/menu/");
+    await expect(page.getByRole("searchbox")).toHaveCount(0);
+    await expect(page.getByTestId("menu-swipe-hint")).toBeVisible();
+    await expect(page.getByTestId("menu-chips").getByRole("link")).toHaveCount(13);
+  });
+});
+
+test.describe("390px", () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+  test("search box and swipe hint; hint styled like the category note; hides after swiping", async ({ page }) => {
+    await page.goto("/es/menu/");
+    const toolbar = page.getByTestId("menu-toolbar");
+    await expect(toolbar.getByRole("searchbox", { name: "Buscar en el menú…" })).toBeVisible();
+    const hint = page.getByTestId("menu-swipe-hint");
+    await expect(hint).toHaveText("Desliza para ver más categorías →");
+    const style = (sel: string) =>
+      page.locator(sel).first().evaluate((e) => {
+        const s = getComputedStyle(e);
+        return [s.color, s.fontWeight, s.fontSize];
+      });
+    expect(await style("[data-testid=menu-swipe-hint]")).toEqual(await style("#desayunos h2 + p"));
+    await page.getByTestId("menu-chips").evaluate((n) => { n.scrollLeft = 150; });
+    await expect(hint).toBeHidden();
+  });
+  test("toolbar stays under the header after scrolling", async ({ page }) => {
+    await page.goto("/es/menu/");
+    await page.mouse.wheel(0, 2000);
+    await expect(page.getByRole("searchbox")).toBeInViewport();
+    // The header shrinks with a transition; wait until the toolbar sits right under it.
+    await expect
+      .poll(async () => {
+        const s = await sticky(page);
+        const top = await page.getByTestId("menu-toolbar").evaluate((e) => e.getBoundingClientRect().top);
+        return Math.abs(top - s.header);
+      })
+      .toBeLessThanOrEqual(1);
+  });
+});
+test("en: search box label", async ({ page }) => {
+  await page.goto("/en/menu/");
+  await expect(page.getByRole("searchbox", { name: "Search the menu…" })).toBeVisible();
+});
+test("desktop: no swipe hint", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/es/menu/");
+  await expect(page.getByTestId("menu-swipe-hint")).toBeHidden();
 });
 
 test("JS on: chip for the section in view gets aria-current", async ({ page }) => {
