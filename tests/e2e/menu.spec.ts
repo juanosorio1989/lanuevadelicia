@@ -75,6 +75,14 @@ const sticky = (page: Pg) =>
     return { header, chipsTop: chips.top, stack: Math.max(header, toolbar.bottom) };
   });
 
+// The section box (not its heading, whose distance depends on section padding) sits 0.25rem under the stack.
+async function expectSectionClearsStack(page: Pg, selector: string, stack: number) {
+  const rootPx = await page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).fontSize));
+  const secTop = (await page.locator(selector).boundingBox())!.y;
+  expect(secTop).toBeGreaterThanOrEqual(stack - 1);
+  expect(secTop).toBeLessThanOrEqual(stack + rootPx * 0.25 + 2);
+}
+
 const setups: [string, (page: Pg) => Promise<void>, ((page: Pg) => Promise<void>)?][] = [
   ["desktop", async () => {}],
   ["320x640", async (page) => page.setViewportSize({ width: 320, height: 640 })],
@@ -106,8 +114,7 @@ for (const [name, setup, after] of setups) {
     expect(s.chipsTop).toBeGreaterThanOrEqual(s.header - 1);
     const top = (await page.locator("#cocteles h2").boundingBox())!.y;
     expect(top).toBeGreaterThanOrEqual(s.stack);
-    // Upper bound: air (0.25rem) + the section's own top padding (up to 1.75rem); catches an offset that is too big.
-    expect(top).toBeLessThan(s.stack + 40);
+    await expectSectionClearsStack(page, "#cocteles", s.stack);
   });
 }
 
@@ -125,7 +132,34 @@ test.describe("JS disabled", () => {
     await expect(page.getByRole("searchbox")).toHaveCount(0);
     await expect(page.getByTestId("menu-swipe-hint")).toBeVisible();
     await expect(page.getByTestId("menu-chips").getByRole("link")).toHaveCount(13);
+    await expect(page.getByTestId("menu-chips-fade")).toBeVisible();
   });
+  test("390px: static offset fallback clears the toolbar on a deep link", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/en/menu/#cocteles");
+    await page.waitForTimeout(300);
+    await expectSectionClearsStack(page, "#cocteles", (await sticky(page)).stack);
+  });
+});
+
+test("malformed hash does not crash the page", async ({ page }) => {
+  const errors: Error[] = [];
+  page.on("pageerror", (e) => errors.push(e));
+  await page.goto("/es/menu/#%E0");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.getByRole("searchbox")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("390px: swipe hint does not come back after a deep link to the last category", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`/es/menu/#${ordered[ordered.length - 1].id}`); // centering puts the row at its end
+  await expect(page.getByRole("searchbox")).toBeVisible();
+  const hint = page.getByTestId("menu-swipe-hint");
+  await expect(hint).toBeHidden();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(500);
+  await expect(hint).toBeHidden();
 });
 
 test.describe("390px", () => {

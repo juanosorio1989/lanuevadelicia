@@ -22,8 +22,10 @@ export function CategoryChips({ chips, label, swipeHint }: { chips: Chip[]; labe
     const box = nav.current;
     if (!box) return;
     const update = () => {
-      if (Math.abs(box.scrollLeft - centered.current) > 8) setScrolled(true);
-      setAtEnd(box.scrollLeft + box.clientWidth >= box.scrollWidth - 8);
+      const end = box.scrollLeft + box.clientWidth >= box.scrollWidth - 8;
+      // The hint latches: once swiped, at the end of the row, or with no overflow, it never comes back.
+      if (end || Math.abs(box.scrollLeft - centered.current) > 8) setScrolled(true);
+      setAtEnd(end);
     };
     update();
     box.addEventListener("scroll", update, { passive: true });
@@ -37,7 +39,7 @@ export function CategoryChips({ chips, label, swipeHint }: { chips: Chip[]; labe
   useEffect(() => {
     const toolbar = nav.current?.closest<HTMLElement>("[data-testid=menu-toolbar]");
     if (!toolbar) return;
-    const measure = () => setStackBottom(parseFloat(getComputedStyle(toolbar).top) + toolbar.offsetHeight);
+    const measure = () => setStackBottom(parseFloat(getComputedStyle(toolbar).top) + toolbar.getBoundingClientRect().height);
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(toolbar);
@@ -71,7 +73,7 @@ export function CategoryChips({ chips, label, swipeHint }: { chips: Chip[]; labe
     centered.current = box.scrollLeft;
   }, [active]);
 
-  const showHint = !scrolled && !atEnd;
+  const showHint = !scrolled;
 
   return (
     <>
@@ -101,6 +103,7 @@ export function CategoryChips({ chips, label, swipeHint }: { chips: Chip[]; labe
         </nav>
         <div
           aria-hidden="true"
+          data-testid="menu-chips-fade"
           className={`pointer-events-none absolute inset-y-0 right-0 flex w-14 items-center justify-end bg-gradient-to-l from-cream-50 via-cream-50/90 to-transparent pr-1 text-green-900 transition-opacity lg:hidden ${atEnd ? "opacity-0" : ""}`}
         >
           <ChevronRight size={22} />

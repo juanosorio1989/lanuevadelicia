@@ -22,7 +22,7 @@ export function MenuToolbar({ chips, labels }: { chips: Chip[]; labels: MenuTool
     const el = root.current;
     el?.parentElement?.style.setProperty(
       "--menu-sticky-offset",
-      `calc(var(--menu-header-h) + ${el.offsetHeight}px + 0.25rem)`,
+      `calc(var(--menu-header-h) + ${el.getBoundingClientRect().height}px + 0.25rem)`,
     );
   };
 
@@ -43,7 +43,13 @@ export function MenuToolbar({ chips, labels }: { chips: Chip[]; labels: MenuTool
   useEffect(() => {
     if (!mounted || !location.hash) return;
     publish();
-    document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
+    let id = location.hash.slice(1);
+    try {
+      id = decodeURIComponent(id);
+    } catch {
+      // Malformed escape such as #%E0: use the raw string.
+    }
+    document.getElementById(id)?.scrollIntoView();
   }, [mounted]);
 
   return (
