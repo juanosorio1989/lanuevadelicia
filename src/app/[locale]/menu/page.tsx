@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { MenuToolbar } from "@/components/menu/MenuToolbar";
 import { MenuCategorySection } from "@/components/menu/MenuCategorySection";
 import { categories, menuItems } from "@/data/menu";
+import { restaurant } from "@/data/restaurant";
+import { telHref } from "@/lib/links";
 import type { Locale } from "@/types/content";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -36,9 +38,16 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       </div>
       <MenuToolbar
         chips={ordered.map((c) => ({ id: c.id, label: c.name[locale] }))}
-        labels={{ chips: t("chipsLabel"), swipeHint: t("swipeHint"), search: t("searchLabel") }}
+        labels={{ chips: t("chipsLabel"), swipeHint: t("swipeHint"), search: t("searchLabel"),
+          clear: t("searchClear"),
+          noResults: t("noResults"),
+          noResultsCall: t("noResultsCall"),
+          resultsOne: t("resultsOne"),
+          resultsOther: t("resultsOther"),
+        }}
+        phone={{ display: restaurant.phone.display, href: telHref() }}
       />
-      <div className="mx-auto max-w-6xl px-4 md:px-8">
+      <div data-menu-list className="mx-auto max-w-6xl px-4 md:px-8">
         {ordered.map((c) => (
           <MenuCategorySection
             key={c.id}

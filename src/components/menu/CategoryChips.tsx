@@ -7,7 +7,17 @@ import { track } from "@/lib/analytics";
 export type Chip = { id: string; label: string };
 
 /** Anchor chips (work without JS). With JS: highlights the section in view and keeps that chip visible. */
-export function CategoryChips({ chips, label, swipeHint }: { chips: Chip[]; label: string; swipeHint: string }) {
+export function CategoryChips({
+  chips,
+  label,
+  swipeHint,
+  hiddenIds,
+}: {
+  chips: Chip[];
+  label: string;
+  swipeHint: string;
+  hiddenIds?: ReadonlySet<string>;
+}) {
   const [active, setActive] = useState<string | null>(null);
   // Below lg the chips overflow: a hint line and a right-edge fade say "swipe". No JS: both stay visible.
   const [scrolled, setScrolled] = useState(false);
@@ -88,7 +98,7 @@ export function CategoryChips({ chips, label, swipeHint }: { chips: Chip[]; labe
         <nav ref={nav} aria-label={label} data-testid="menu-chips" className="overflow-x-auto">
           <ul className="mx-auto flex w-max min-w-full max-w-none gap-2 px-4 py-2 md:px-8">
             {chips.map((c) => (
-              <li key={c.id}>
+              <li key={c.id} hidden={hiddenIds?.has(c.id)}>
                 <a
                   href={`#${c.id}`}
                   aria-current={active === c.id ? "true" : undefined}

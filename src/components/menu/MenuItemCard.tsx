@@ -1,6 +1,7 @@
 import { Img } from "@/components/ui/Img";
 import { formatPrice } from "@/lib/format";
 import { getPhoto } from "@/lib/photo";
+import { searchText } from "@/lib/search";
 import type { Locale, MenuItem } from "@/types/content";
 import { FavoriteTag, ItemOptions, type ItemHeading, type MenuLabels } from "./MenuItemRow";
 
@@ -10,6 +11,7 @@ export function MenuItemCard({ item, locale, labels, heading: H = "h3" }: { item
   return (
     <li
       data-item="card"
+      data-search={searchText(item, locale)}
       data-featured={item.featured ? "" : undefined}
       className="flex overflow-hidden rounded-card bg-white md:flex-col"
     >

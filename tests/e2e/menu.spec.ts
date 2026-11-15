@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { categories, menuItems } from "../../src/data/menu";
+import { matchesSearch, normalizeSearch } from "../../src/lib/search";
+import { telHref } from "../../src/lib/links";
 
 const ordered = [...categories].sort((a, b) => a.order - b.order);
 const available = menuItems.filter((i) => i.available !== false);
@@ -213,4 +215,147 @@ test("no horizontal page scroll at 320px", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto("/es/menu/");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
+test.describe("search", () => {
+  type Loc = "es" | "en";
+  const expected = (locale: Loc, q: string) =>
+    available.filter((i) =>
+      matchesSearch(normalizeSearch(`${i.name[locale]} ${i.description?.[locale] ?? ""}`), q),
+    ).length;
+  const open = async (page: import("@playwright/test").Page, path = "/es/menu/") => {
+    await page.goto(path);
+    const box = page.getByRole("searchbox");
+    await expect(box).toBeVisible();
+    return box;
+  };
+  const visibleItems = (page: import("@playwright/test").Page) => page.locator("main li[data-item]:visible");
+
+  test("filters by name, ignoring accents and case (es)", async ({ page }) => {
+    const box = await open(page);
+    await box.fill("FRIJOLES");
+    const n = expected("es", "frijoles");
+    expect(n).toBeGreaterThan(0);
+    expect(n).toBeLessThan(available.length);
+    await expect(visibleItems(page)).toHaveCount(n);
+    const visibleSections = await page.locator("main section[id]:visible").evaluateAll((els) => els.map((e) => e.id));
+    const chips = page.getByTestId("menu-chips").getByRole("link");
+    for (const c of ordered) {
+      const chip = chips.filter({ hasText: c.name.es }).first();
+      if (visibleSections.includes(c.id)) await expect(chip).toBeVisible();
+      else await expect(chip).toBeHidden();
+    }
+    expect(visibleSections.length).toBeGreaterThan(0);
+  });
+
+  test("en matches English text", async ({ page }) => {
+    const box = await open(page, "/en/menu/");
+    await box.fill("beans");
+    const n = expected("en", "beans");
+    expect(n).toBeGreaterThan(0);
+    await expect(visibleItems(page)).toHaveCount(n);
+  });
+
+  test("every word must match", async ({ page }) => {
+    const box = await open(page);
+    await box.fill("jugo mora");
+    await expect(visibleItems(page)).toHaveCount(expected("es", "jugo mora"));
+  });
+
+  test("subcategory heading stays with its hit", async ({ page }) => {
+    const multi = ordered.filter(
+      (c) => new Set(available.filter((i) => i.category === c.id && i.subcategory).map((i) => i.subcategory!.es)).size >= 2,
+    );
+    const item = available.find((i) => i.subcategory && multi.some((c) => c.id === i.category))!;
+    const box = await open(page);
+    await box.fill(item.name.es);
+    const section = page.locator(`#${item.category}`);
+    await expect(section.getByRole("heading", { name: item.subcategory!.es, exact: true })).toBeVisible();
+    const others = await section.locator("[data-search-group]").evaluateAll(
+      (groups, title) => groups.filter((g) => g.querySelector("h3")?.textContent !== title).map((g) => !(g as HTMLElement).offsetParent),
+      item.subcategory!.es,
+    );
+    expect(others.length).toBeGreaterThan(0);
+    expect(others.every(Boolean)).toBe(true);
+    const emptyLists = await page.locator("main [data-search-list]:visible").evaluateAll(
+      (els) => els.filter((e) => !e.querySelector("li[data-item]:not([hidden])")).length,
+    );
+    expect(emptyLists).toBe(0);
+  });
+
+  test("no results offers the phone", async ({ page }) => {
+    const box = await open(page);
+    await box.fill("zzzz");
+    const msg = page.getByTestId("menu-no-results");
+    await expect(msg).toBeVisible();
+    await expect(msg).toHaveText("No encontramos ese plato. Llámanos al (718) 672-3456.");
+    await expect(msg.getByRole("link")).toHaveAttribute("href", telHref());
+    await expect(page.locator("main section[id]:visible")).toHaveCount(0);
+    await expect(page.getByRole("status")).toHaveText("No encontramos ese plato.");
+  });
+
+  test("clear and Escape restore the full menu; chips still work", async ({ page }) => {
+    const box = await open(page);
+    const chips = page.getByTestId("menu-chips").getByRole("link");
+    const clear = page.getByRole("button", { name: "Borrar búsqueda" });
+    await expect(clear).toBeHidden();
+    await box.fill("pollo");
+    await expect(visibleItems(page)).toHaveCount(expected("es", "pollo"));
+    await clear.click();
+    await expect(visibleItems(page)).toHaveCount(available.length);
+    await expect(chips.locator("visible=true")).toHaveCount(13);
+    await expect(clear).toBeHidden();
+    await expect(box).toBeFocused();
+    await box.fill("pollo");
+    await box.press("Escape");
+    await expect(visibleItems(page)).toHaveCount(available.length);
+    await expect(chips.locator("visible=true")).toHaveCount(13);
+    await expect(box).toBeFocused();
+    await expect(box).toHaveValue("");
+    await chips.filter({ hasText: "Postres" }).click();
+    await expect(chips.filter({ hasText: "Postres" })).toHaveAttribute("aria-current", "true");
+    await expect(page.locator("#postres")).toBeInViewport();
+  });
+
+  test.describe("390px", () => {
+    test.use({ viewport: { width: 390, height: 844 } });
+    test("typing deep in the page brings results into view", async ({ page }) => {
+      const box = await open(page);
+      await page.evaluate(() => window.scrollTo(0, 4000));
+      await box.fill("bandeja");
+      const first = visibleItems(page).first();
+      await expect(first).toBeInViewport();
+      await expect
+        .poll(async () => {
+          const bar = await page.getByTestId("menu-toolbar").evaluate((e) => e.getBoundingClientRect().bottom);
+          const top = await first.evaluate((e) => e.getBoundingClientRect().top);
+          return top >= bar - 1;
+        })
+        .toBe(true);
+    });
+  });
+
+  test("live region counts dishes", async ({ page }) => {
+    const box = await open(page);
+    await box.fill("bandeja");
+    const n = expected("es", "bandeja");
+    await expect(page.getByRole("status")).toHaveText(n === 1 ? "1 plato" : `${n} platos`);
+  });
+
+  test("sends one search event after a pause", async ({ page }) => {
+    await page.addInitScript(() => {
+      const w = window as unknown as { __ev: unknown[][]; gtag: (...a: unknown[]) => void };
+      w.__ev = [];
+      w.gtag = (...a) => w.__ev.push(a);
+    });
+    const box = await open(page);
+    await box.pressSequentially("b");
+    await page.waitForTimeout(1200);
+    expect(await page.evaluate(() => (window as unknown as { __ev: unknown[][] }).__ev.filter((e) => e[1] === "search"))).toEqual([]);
+    await box.pressSequentially("andeja");
+    await page.waitForTimeout(1200);
+    const events = await page.evaluate(() => (window as unknown as { __ev: unknown[][] }).__ev.filter((e) => e[1] === "search"));
+    expect(events).toHaveLength(1);
+    expect(events[0]).toEqual(["event", "search", expect.objectContaining({ search_term: "bandeja" })]);
+  });
 });
