@@ -62,7 +62,7 @@ In order:
    "lo que más destacan" line is the owner's characterization; keep it only if the owner confirms that reviews say
    this (Q6), otherwise drop it.**
 6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m., happy hour cocktails $8),
-   **Cómo llegar** and **Llamar** buttons, delivery line "¿Prefieres a domicilio? Uber Eats · DoorDash · Grubhub",
+   **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (phone number, delivery range line, the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md)),
    and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
 7. **Footer.**
 
@@ -118,8 +118,9 @@ opens the larger image in a native `<dialog>`. No lightbox library. The images l
 
 ## Visit us
 
-The address, hours table (with the open-now badge), Cómo llegar, Llamar, a click-to-load map, the 3 delivery app
-buttons (secondary style, open in a new tab), the delivery-distance note, the events line, and Instagram. Transit
+The address, hours table (with the open-now badge), Cómo llegar, Llamar, a click-to-load map, the PhoneOrder block
+("Pide por teléfono", delivery range line; see [menu-search design](../2026-11-15-menu-search-design/README.md)) with the 3 delivery app
+buttons (secondary style, open in a new tab), the events line, and Instagram. Transit
 info is left out until verified.
 
 ## Click-to-load map

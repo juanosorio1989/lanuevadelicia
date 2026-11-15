@@ -42,7 +42,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 ## Home page
 
 - `src/components/home/`: `Hero`, `Favorites`, `TodaySpecial` (server wrapper) + `TodaySpecialLive` (client; swaps in today's special in New York time, static HTML shows a teaser with no dish or price), `StoryTeaser`, `ReviewsBand`, `VisitBlock`. Copy is under `home.*` in `messages/{es,en}.json`.
-- `src/components/shared/` (reused by Specials and Visit): `OpenStatus` (client, renders nothing until mounted), `HoursTable`, `MapEmbed` (client, click-to-load), `DeliveryLinks`, `DishCard`, `PhotoPlaceholder` (dev only). Status and hours copy: `status.*`, `hours.*`, `map.*`.
+- `src/components/shared/` (reused by Specials and Visit): `OpenStatus` (client, renders nothing until mounted), `HoursTable`, `MapEmbed` (client, click-to-load), `DeliveryLinks`, `PhoneOrder` (phone, delivery range, apps; used by the home Visit block and Visit), `DishCard`, `PhotoPlaceholder` (dev only). Status and hours copy: `status.*`, `hours.*`, `map.*`.
 - Keep client components small: pass display strings, never the `photos` manifest or `menuItems`. `src/lib/photo.ts` (`getPhoto`) is server-only.
 - The story teaser uses `dishes/picada-doble` until restaurant photos exist; the Q6 "lo que más destacan" line is intentionally absent.
 
@@ -50,7 +50,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 
 - Our story reuses the approved `home.story` text; a dish photo stands in until restaurant photos exist.
 - Gallery: `GalleryGrid` (client) gets only `{src,width,height,alt}`; thumbnails are plain `<a href>` links to the image (work without JS) and open a native `<dialog>`. The "El restaurante" group appears only once `restaurant` photos exist.
-- Visit reuses `HoursTable`, `DeliveryLinks` (copy now in the `delivery` namespace) and the click-to-load `MapEmbed`. No transit info.
+- Visit reuses `HoursTable`, `PhoneOrder` (which wraps `DeliveryLinks`) (copy now in the `delivery` namespace) and the click-to-load `MapEmbed`. No transit info.
 - Privacy copy and the 404 copy are drafts pending owner review (COPY-REVIEW).
 
 ## Specials page
