@@ -25,8 +25,8 @@ Updated 2026-11-12.
 ## Open questions (owner)
 
 See spec page 10: Q2 Place ID, Q3 reservations, Q4 holidays, Q5 transit, Q6 review highlights, Q7 calentado
-descriptions, Q8 photo usage OK, Q9 vector logo, Q12 PSI LCP. Restaurant interior/exterior photos are expected
-2026-11-13 in `assets-inbox/`.
+descriptions, Q9 vector logo, Q12 PSI LCP. Restaurant interior/exterior photos are expected
+2026-11-13 in `assets-inbox/`. Q8 (photo permission) answered yes on 2026-11-15.
 
 - Q9: `assets-inbox/logo2.pdf` (2026-11-12) is a T-shirt "Made in Colombia" stamp. Its ring is vector, but the
   central plaque is raster (~980 px), so it does not answer Q9. The owner decided the stamp is for the T-shirt only,
