@@ -17,6 +17,8 @@ ordered by phone, and the gallery adds little for now.
 2. **Swipe hint.** Below `lg`, the customer is told the category bar scrolls sideways.
 3. **Phone orders and delivery range.** Pickup and own delivery by phone; the delivery rules in three steps.
 4. **Hide the gallery** from navigation in both languages, for now.
+5. **Reservations and holidays** (owner answers to Q3 and Q4, 2026-11-15): reservations by phone; regular hours on
+   holidays; closed every January 1.
 
 Non-goals: typo-tolerant ("fuzzy") search, search outside the menu page, removing the gallery page, a delivery-fee
 amount. Anti-goals: a slower menu page (Lighthouse budgets in `lighthouserc.json` must still pass), a search box that
@@ -77,6 +79,19 @@ The owner picked the first.
 
 - Removed from `NAV_ITEMS` (header, mobile nav, footer) and from the sitemap. The page and its route stay, reachable
   by URL. Spec 03 notes it as hidden.
+
+### 5. Reservations and holidays
+
+- Reservations by phone only, no minimum party size or notice. `PhoneOrder` gets a first line, bold label:
+  "**Reservas:** llámanos al (718) 672-3456." / "**Reservations:** call (718) 672-3456." (tracked `tel:` link).
+  Restaurant JSON-LD: `acceptsReservations: true`.
+- `restaurant.ts` gains `closedDates: [{ month: 1, day: 1 }]` (recurring every year).
+- Open status: on a closed date the badge says closed and points at the next real opening (January 1 is skipped when
+  counting "abre mañana / el {día}"). Existing status strings are reused.
+- Under the hours table (everywhere it shows): "Abierto los días festivos en horario regular, excepto el 1 de enero."
+  / "Open on holidays, regular hours, except January 1." The date comes from `closedDates`, formatted per locale.
+- Restaurant JSON-LD: `specialOpeningHoursSpecification` marks the next two January 1 dates (from the build date) as
+  closed (`opens`/`closes` "00:00", `validFrom` = `validThrough` = the date). The site is rebuilt on each deploy.
 
 ### Dev server on a phone
 

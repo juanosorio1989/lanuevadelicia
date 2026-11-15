@@ -34,8 +34,8 @@
 | # | Question | Fallback if unanswered |
 |---|----------|------------------------|
 | Q2 | The Google Place ID (ChIJ…), for the "leave a review" link, the directions `destination_place_id` and `geo` | "Leave a review" goes to the Maps listing; no `geo` |
-| Q3 | Do they take reservations? | `acceptsReservations: false`, no reservation copy |
-| Q4 | Holiday closures or special hours? | Not modeled; a banner can be added in data later |
+| Q3 | Do they take reservations? | **Answered 2026-11-15:** yes, by phone only, no minimum party size or notice ([menu search design](../2026-11-15-menu-search-design/README.md) §5) |
+| Q4 | Holiday closures or special hours? | **Answered 2026-11-15:** regular hours on holidays; closed every January 1 (same design page, §5) |
 | Q5 | Verified transit directions (subway/bus) | Leave them out |
 | Q6 | Do reviews really highlight "sabor casero" and "atención cálida"? | Drop that line |
 | Q7 | Fix the two calentado descriptions that look swapped or incomplete? | Publish the printed text (spelling fixed) |

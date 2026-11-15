@@ -2,8 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ship the four owner-approved changes: menu search, the swipe hint, the phone-order block with the delivery
-range, and the gallery hidden from navigation.
+**Goal:** Ship the owner-approved changes: menu search, the swipe hint, the phone-order block with the delivery
+range, the gallery hidden from navigation, reservations by phone and January 1 closed.
 
 **Architecture:** Static export stays as is. Search filters the server-rendered menu in place: each item carries a
 normalized `data-search` string, a client toolbar hides non-matching items, groups and sections, and tells the chips
@@ -24,6 +24,7 @@ Main session: Opus 5.5 (orchestrates, does not implement).
 | 1 | Phone orders + delivery range, gallery hidden, dev origins | `implementer-sonnet` | `reviewer-opus` | Facts, copy and nav; fully specified |
 | 2 | Sticky menu toolbar: search box look, swipe hint, measured offset | `implementer-sonnet` | `reviewer-opus` | One client component; look approved |
 | 3 | Search filtering, no-results, analytics, a11y | `implementer-sonnet` | `reviewer-opus` | Pure function + DOM filter; algorithm pinned here |
+| 4 | Reservations line, January 1 closed (status, hours note, JSON-LD) | `implementer-sonnet` | `reviewer-opus` | Hours algorithm pinned in the task |
 | — | Final branch review | — | `reviewer-opus` | One review; no money or production data |
 
 ## Starting state
@@ -62,7 +63,9 @@ expect the old delivery note and the gallery link: Task 1 fixes those.
 - [Task 1: Phone orders, delivery range, gallery hidden](task-01-phone-orders.md)
 - [Task 2: Sticky menu toolbar](task-02-menu-toolbar.md)
 - [Task 3: Search filtering](task-03-search.md)
+- [Task 4: Reservations and holidays](task-04-reservations-holidays.md)
 
 ## Decisions log
 
+- 2026-11-15 (Opus): Task 4 added after the owner answered Q3 (reservations by phone) and Q4 (holidays).
 - 2026-11-15 (Opus): spike kept as the starting point (owner approved the look); tasks own its tests and clean-up.
