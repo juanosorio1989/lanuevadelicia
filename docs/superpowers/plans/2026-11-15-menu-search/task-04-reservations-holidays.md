@@ -5,7 +5,7 @@ Implementer: `implementer-sonnet`. Reviewer: `reviewer-opus`. Spec section 5. Ru
 **Files:**
 - Modify: `src/types/content.ts` (`Restaurant.closedDates`), `src/data/restaurant.ts`
 - Modify: `src/lib/hours.ts`, `src/components/shared/OpenStatusLive.tsx` (pass closed dates)
-- Modify: `src/components/shared/HoursTable.tsx` (holiday note), `src/components/shared/PhoneOrder.tsx`
+- Modify: `src/components/shared/HoursTable.tsx` (closed-dates note), `src/components/shared/PhoneOrder.tsx`
 - Modify: `src/lib/seo.ts` (`acceptsReservations`, `specialOpeningHoursSpecification`), `src/lib/format.ts`
 - Modify: `messages/es.json`, `messages/en.json`
 - Modify: `docs/superpowers/specs/2026-11-12-website-design/02-business-facts.md` (rows "Reservations: by phone, no
@@ -28,7 +28,7 @@ Copy:
 | key | es | en |
 |-----|----|----|
 | `delivery.reservations` | `<b>Reservas:</b> llámanos al <phone></phone>.` | `<b>Reservations:</b> call <phone></phone>.` |
-| `hours.holidayNote` | `Abierto los días festivos en horario regular, excepto el {dates}.` | `Open on holidays, regular hours, except {dates}.` |
+| `hours.closedNote` | `Cerrado el {dates}.` | `Closed on {dates}.` |
 
 `{dates}` = the closed dates through `formatMonthDay`, joined with " y " / " and " (one date today).
 
@@ -67,9 +67,9 @@ closes: "00:00", validFrom: d, validThrough: d }` with `d` from `nextClosedDates
 Also `restaurant.closedDates` toEqual `[{ month: 1, day: 1 }]` (in `data.test.ts`).
 
 `tests/e2e/pages.spec.ts`:
-- visit (es): `phone-order` contains "Reservas: llámanos al (718) 672-3456."; `main` contains "Abierto los días
-  festivos en horario regular, excepto el 1 de enero."
-- visit (en): "Reservations: call (718) 672-3456." and "Open on holidays, regular hours, except January 1."
+- visit (es): `phone-order` contains "Reservas: llámanos al (718) 672-3456."; `main` contains "Cerrado el 1 de enero."
+  and does not contain "festivos"
+- visit (en): "Reservations: call (718) 672-3456." and "Closed on January 1."
 - "open status is closed on January 1": `page.clock.setFixedTime(new Date("2027-01-01T12:00:00-05:00"))` before
   `goto("/es/visit/")` → `open-status` has text "Cerrado · abre mañana a las 9:00 a.m.".
 

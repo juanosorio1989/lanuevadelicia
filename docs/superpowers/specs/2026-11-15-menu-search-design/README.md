@@ -88,8 +88,8 @@ The owner picked the first.
 - `restaurant.ts` gains `closedDates: [{ month: 1, day: 1 }]` (recurring every year).
 - Open status: on a closed date the badge says closed and points at the next real opening (January 1 is skipped when
   counting "abre mañana / el {día}"). Existing status strings are reused.
-- Under the hours table (everywhere it shows): "Abierto los días festivos en horario regular, excepto el 1 de enero."
-  / "Open on holidays, regular hours, except January 1." The date comes from `closedDates`, formatted per locale.
+- Under the hours table (everywhere it shows): "Cerrado el 1 de enero." / "Closed on January 1." The date comes from
+  `closedDates`, formatted per locale. No holiday-hours line (owner: holidays are regular, say nothing about them).
 - Restaurant JSON-LD: `specialOpeningHoursSpecification` marks the next two January 1 dates (from the build date) as
   closed (`opens`/`closes` "00:00", `validFrom` = `validThrough` = the date). The site is rebuilt on each deploy.
 
