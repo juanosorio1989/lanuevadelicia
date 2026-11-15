@@ -8,6 +8,9 @@ export type PagePath = "" | "menu" | "specials" | "our-story" | "gallery" | "vis
 
 export const pagePaths: PagePath[] = ["", "menu", "specials", "our-story", "gallery", "visit", "privacy"];
 
+/** Pages listed in the sitemap: the gallery page is still built but hidden since 2026-11-15. */
+export const sitemapPaths: PagePath[] = pagePaths.filter((p) => p !== "gallery");
+
 const OG_LOCALE: Record<Locale, string> = { es: "es_US", en: "en_US" };
 const DAY_NAMES: Record<IsoWeekday, string> = {
   1: "Monday",

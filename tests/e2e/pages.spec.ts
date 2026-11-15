@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import es from "../../messages/es.json";
+import { telHref } from "../../src/lib/links";
 
 const STORY_ES =
   "La Nueva Delicia lleva más de tres décadas sirviendo comida colombiana en el corazón de Queens. Nuestras raíces están en Caldas, en el Eje Cafetero, y se sienten en cada plato: recetas caseras, ingredientes frescos y todo preparado en su punto. Nuestro equipo atiende con cariño, porque lo que más nos importa es que cada persona que entra se sienta como en casa.";
@@ -47,6 +48,17 @@ test("gallery thumbnails are plain links to the image with JS off", async ({ bro
   await ctx.close();
 });
 
+test("visit (en): phone order copy", async ({ page }) => {
+  await page.goto("/en/visit/");
+  const order = page.locator("main").getByTestId("phone-order");
+  await expect(order).toContainText("Order by phone");
+  await expect(order).toContainText("Call (718) 672-3456 for pickup or delivery.");
+  await expect(order).toContainText("Delivery: up to 1 mile at no extra charge; 1 to 1.5 miles, extra charge. Beyond 1.5 miles, order on:");
+  for (const app of ["Uber Eats", "DoorDash", "Grubhub"]) {
+    await expect(order.getByRole("link", { name: app })).toBeVisible();
+  }
+});
+
 test("visit (es): address, hours, breakfast, happy hour, delivery, events, note, no transit", async ({ page }) => {
   await page.goto("/es/visit/");
   await expect(page.locator("h1")).toHaveCount(1);
@@ -63,7 +75,12 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, note,
     expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
   }
   await expect(main).toContainText("¿Evento o grupo grande? Llámanos.");
-  await expect(main).toContainText("El domicilio a más de una milla tiene un cargo extra.");
+  const order = main.getByTestId("phone-order");
+  await expect(order).toContainText("Pide por teléfono");
+  await expect(order).toContainText("Llámanos al (718) 672-3456 para recoger o para domicilio.");
+  await expect(order).toContainText("Domicilio: hasta 1 milla sin recargo; de 1 a 1.5 millas, con recargo. A más de 1.5 millas, pide por:");
+  await expect(order.getByRole("link", { name: "(718) 672-3456" })).toHaveAttribute("href", telHref());
+  await expect(main).not.toContainText("cargo extra");
   expect(await main.innerText()).not.toMatch(/metro|subway|bus\b|tren|train|\b7\b line/i);
   await expect(main.getByRole("button", { name: "Ver mapa" })).toBeVisible();
 });

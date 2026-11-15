@@ -11,7 +11,7 @@ simple in a static export). `trailingSlash: true`.
 | Menu | `/es/menu/` | `/en/menu/` | yes |
 | Weekly specials | `/es/specials/` | `/en/specials/` | yes |
 | Our story | `/es/our-story/` | `/en/our-story/` | yes |
-| Gallery | `/es/gallery/` | `/en/gallery/` | yes |
+| Gallery | `/es/gallery/` | `/en/gallery/` | yes (page kept; hidden from navigation and sitemap since 2026-11-15, see [menu-search design](../2026-11-15-menu-search-design/README.md)) |
 | Visit us | `/es/visit/` | `/en/visit/` | yes |
 | Privacy (GA4 disclosure) | `/es/privacy/` | `/en/privacy/` | yes (short page; Claude's call) |
 | Catering | — | — | phase 2 |
@@ -19,8 +19,9 @@ simple in a static export). `trailingSlash: true`.
 `/` redirects to `/es/` (302, via hosting redirect rules; see [07-technical.md](07-technical.md)). A single bilingual
 404 page (real 404 status) links to Menu and Visit in both languages.
 
-Nav labels (ES / EN): Menú / Menu · Especiales / Specials · Nuestra historia / Our story · Galería / Gallery ·
-Visítanos / Visit us.
+Nav labels (ES / EN): Menú / Menu · Especiales / Specials · Nuestra historia / Our story ·
+Visítanos / Visit us. (Galería / Gallery is hidden from navigation and sitemap since 2026-11-15, page kept; see
+[menu-search design](../2026-11-15-menu-search-design/README.md).)
 
 ## Global elements
 

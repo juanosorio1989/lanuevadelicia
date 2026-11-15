@@ -47,8 +47,8 @@ test.describe("mobile 390x844", () => {
   test("clicking a link in the open dialog closes it", async ({ page }) => {
     await page.goto("/es/");
     await page.getByTestId("menu-button").click();
-    await page.locator("dialog[open]").getByRole("link", { name: "Galería" }).click();
-    await expect(page).toHaveURL(/\/es\/gallery\/$/);
+    await page.locator("dialog[open]").getByRole("link", { name: "Visítanos" }).click();
+    await expect(page).toHaveURL(/\/es\/visit\/$/);
     await expect(page.locator("dialog[open]")).toHaveCount(0);
   });
 });
@@ -60,9 +60,10 @@ test.describe("mobile without JS", () => {
     await page.goto("/es/");
     await page.getByRole("contentinfo").getByRole("link", { name: "Especiales" }).click();
     await expect(page).toHaveURL(/\/es\/specials\/$/);
-    for (const [name, path] of [["Nuestra historia", "our-story"], ["Galería", "gallery"], ["Visítanos", "visit"]]) {
+    for (const [name, path] of [["Nuestra historia", "our-story"], ["Visítanos", "visit"]]) {
       await expect(page.getByRole("contentinfo").getByRole("link", { name })).toHaveAttribute("href", `/es/${path}/`);
     }
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Galería" })).toHaveCount(0);
   });
 });
 
@@ -155,5 +156,19 @@ test.describe("footer at tablet width", () => {
       const noScroll = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
       expect(noScroll).toBe(true);
     });
+  }
+});
+
+test("gallery is hidden from navigation in both languages", async ({ page }) => {
+  for (const locale of ["es", "en"]) {
+    for (const width of [390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto(`/${locale}/`);
+      if (width === 390) {
+        await page.getByTestId("menu-button").click();
+        await expect(page.locator("dialog[open]")).toBeVisible();
+      }
+      await expect(page.locator('a[href*="/gallery/"]')).toHaveCount(0);
+    }
   }
 });

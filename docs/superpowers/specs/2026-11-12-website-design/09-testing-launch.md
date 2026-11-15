@@ -20,7 +20,7 @@
   - No console errors on any page.
 - **Accessibility:** `@axe-core/playwright` on every page in both locales. Zero serious or critical violations.
 - **Build checks:** `next build` succeeds with the static export. No broken internal links (a crawl of `out/`). The
-  sitemap lists 14 URLs (7 pages × 2 locales). Every page has a title, a description, a canonical and hreflang.
+  sitemap lists 12 URLs (6 pages × 2 locales; gallery hidden since 2026-11-15). Every page has a title, a description, a canonical and hreflang.
 
 ## Budgets (Lighthouse, mobile, on the preview deploy)
 

@@ -93,3 +93,21 @@ test("home hours show the happy hour times, not only the cocktail price", async 
   await expect(table).toContainText("Lunes a viernes: 12:00 p.m. – 7:00 p.m.");
   await expect(table).toContainText("Sábado y domingo: 5:00 p.m. – 8:00 p.m.");
 });
+
+test("home visit block has the phone-order block", async ({ page }) => {
+  const cases = [
+    { path: "/es/", title: "Pide por teléfono", range: "hasta 1 milla sin recargo", old: "¿Prefieres a domicilio?" },
+    { path: "/en/", title: "Order by phone", range: "up to 1 mile at no extra charge", old: "Prefer delivery?" },
+  ];
+  for (const c of cases) {
+    await page.goto(c.path);
+    const order = page.getByTestId("phone-order");
+    await expect(order).toBeVisible();
+    await expect(order).toContainText(c.title);
+    await expect(order).toContainText(c.range);
+    for (const app of ["Uber Eats", "DoorDash", "Grubhub"]) {
+      await expect(order.getByRole("link", { name: app })).toBeVisible();
+    }
+    await expect(order).not.toContainText(c.old);
+  }
+});

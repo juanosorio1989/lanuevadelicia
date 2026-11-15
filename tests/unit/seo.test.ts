@@ -63,9 +63,10 @@ describe("seo", () => {
     expect(item?.offers?.map((o) => o.price)).toEqual(["7.00", "6.00"]);
   });
 
-  it("sitemap lists 14 pages with es/en alternates", () => {
+  it("sitemap lists 12 pages (gallery hidden) with es/en alternates", () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(14);
+    expect(entries).toHaveLength(12);
+    expect(entries.some((e) => e.url.includes("/gallery/"))).toBe(false);
     for (const e of entries) {
       expect(e.alternates?.languages).toHaveProperty("es");
       expect(e.alternates?.languages).toHaveProperty("en");
