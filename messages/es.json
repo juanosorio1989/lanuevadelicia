@@ -109,7 +109,6 @@
     "seeMenu": "Ver el menú completo"
   },
   "delivery": {
-    "prompt": "¿Prefieres a domicilio?",
     "reservations": "<b>Reservas:</b> llámanos al <phone></phone>.",
     "phoneTitle": "Pide por teléfono",
     "phoneBody": "Llámanos al <phone></phone> para recoger o para domicilio.",

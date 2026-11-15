@@ -31,7 +31,7 @@ const toMin = (hhmm: string) => {
 
 const ruleFor = (hours: Hours, day: IsoWeekday) => hours.find((r) => r.days.includes(day));
 
-/** Calendar date (y, m, d), weekday and minutes since midnight in the given zone. */
+/** Calendar date (year, month, day) in the given zone. */
 function nyDate(now: Date, timeZone: string) {
   const parts = new Intl.DateTimeFormat('en-US', { timeZone, year: 'numeric', month: 'numeric', day: 'numeric' })
     .formatToParts(now);

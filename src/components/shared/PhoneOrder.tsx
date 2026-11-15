@@ -41,7 +41,7 @@ export async function PhoneOrder({
       <p className="mt-3 font-bold">{t("phoneTitle")}</p>
       <p className="mt-1">{t.rich("phoneBody", { phone: () => phone })}</p>
       <p className="mt-1 text-muted-600">{t("range", range)}</p>
-      <DeliveryLinks locale={locale} location={location} variant={variant} showPrompt={false} className="mt-1 gap-y-2" />
+      <DeliveryLinks locale={locale} location={location} variant={variant} className="mt-1 gap-y-2" />
     </div>
   );
 }

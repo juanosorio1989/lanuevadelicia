@@ -69,3 +69,10 @@ expect the old delivery note and the gallery link: Task 1 fixes those.
 
 - 2026-11-15 (Opus): Task 4 added after the owner answered Q3 (reservations by phone) and Q4 (holidays).
 - 2026-11-15 (Opus): spike kept as the starting point (owner approved the look); tasks own its tests and clean-up.
+- 2026-11-15 (Opus): Task 2 deep-link test bound is `< stack + 40`, not the plan's `+ 24` (sections have 20-28px top padding).
+- 2026-11-15 (Opus): Task 2 also re-scrolls to the `#hash` after the search box mounts, and centering the active chip does not count as a swipe.
+- 2026-11-15 (Opus): Task 2 review minors moved into the loop: malformed `#hash` no longer crashes, the swipe hint never comes back, offset uses `getBoundingClientRect`, no-JS deep link matches the fallback.
+- 2026-11-15 (Opus): Task 3 `search` events drop terms with "@" or 5+ digits (`isTrackableSearchTerm`), since GA4 policy forbids personal data.
+- 2026-11-15 (Opus): Task 3 sends the `search` event once per term typed (differs from the last one sent), so a re-search later counts again.
+- 2026-11-15 (Opus): the footer hours also show "Cerrado el 1 de enero." (spec: everywhere hours show).
+- 2026-11-15 (Opus): final fix wave includes the cheap minors (privacy wording, this log, dead `showPrompt`, `scroll-padding-top`, empty `closedDates` guard, search box spacing, `nyDate` comment, spec 03/05 notes).

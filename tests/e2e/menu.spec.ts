@@ -377,3 +377,27 @@ test.describe("search", () => {
     expect(events[0]).toEqual(["event", "search", expect.objectContaining({ search_term: "bandeja" })]);
   });
 });
+
+test("390px: mounting the search box does not shift the menu", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.addInitScript(() => {
+    const w = window as unknown as { __cls: number };
+    w.__cls = 0;
+    new PerformanceObserver((list) => {
+      for (const e of list.getEntries() as unknown as { value: number; hadRecentInput: boolean }[]) {
+        if (!e.hadRecentInput) w.__cls += e.value;
+      }
+    }).observe({ type: "layout-shift", buffered: true });
+  });
+  await page.goto("/es/menu/");
+  await expect(page.getByRole("searchbox")).toBeVisible();
+  await page.waitForTimeout(500);
+  expect(await page.evaluate(() => (window as unknown as { __cls: number }).__cls)).toBeLessThan(0.01);
+});
+
+test("scroll-padding-top clears the sticky toolbar on the menu page", async ({ page }) => {
+  await page.goto("/es/menu/");
+  await expect(page.getByRole("searchbox")).toBeVisible();
+  const padding = await page.evaluate(() => document.documentElement.style.scrollPaddingTop);
+  expect(padding).toContain("--menu-header-h");
+});

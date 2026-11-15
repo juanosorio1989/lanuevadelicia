@@ -62,8 +62,8 @@ In order:
    "lo que más destacan" line is the owner's characterization; keep it only if the owner confirms that reviews say
    this (Q6), otherwise drop it.**
 6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m., happy hour cocktails $8),
-   **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (phone number, delivery range line, the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md)),
-   and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
+   **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (phone number, delivery range line, the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md)), the line
+   "Reservaciones: llama al (718) 672-3456." under the hours, and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
 7. **Footer.**
 
 ### Approved story text
@@ -97,6 +97,7 @@ Rules are in [04-menu.md](04-menu.md). Layout:
   horizontal card with a 104×92 thumbnail on the left), then a **text list** of the rest (name, short description,
   price aligned right, dotted separator; 2 columns on desktop, 1 on mobile).
 - A "Favorito" tag on featured items.
+- The search box and the swipe hint are specified in the [menu-search design](../2026-11-15-menu-search-design/README.md).
 
 ## Weekly specials
 
@@ -120,7 +121,7 @@ opens the larger image in a native `<dialog>`. No lightbox library. The images l
 
 The address, hours table (with the open-now badge), Cómo llegar, Llamar, a click-to-load map, the PhoneOrder block
 ("Pide por teléfono", delivery range line; see [menu-search design](../2026-11-15-menu-search-design/README.md)) with the 3 delivery app
-buttons (secondary style, open in a new tab), the events line, and Instagram. Transit
+buttons (secondary style, open in a new tab), the events line, the reservations-by-phone line, and Instagram. Transit
 info is left out until verified.
 
 ## Click-to-load map

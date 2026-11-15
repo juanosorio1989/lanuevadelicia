@@ -1,4 +1,3 @@
-import { getTranslations } from "next-intl/server";
 import { TrackedLink } from "@/components/layout/TrackedLink";
 import type { TrackLocation } from "@/lib/analytics";
 import { restaurant } from "@/data/restaurant";
@@ -7,26 +6,21 @@ import type { Locale } from "@/types/content";
 const linkClass =
   "inline-flex min-h-11 items-center font-bold text-green-900 underline underline-offset-4 hover:text-terra-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-green-900";
 
-/** "Prefer delivery? Uber Eats · DoorDash · Grubhub", each an external tracked link. */
+/** "Uber Eats · DoorDash · Grubhub", each an external tracked link. The surrounding text introduces the apps. */
 export async function DeliveryLinks({
   locale,
   location,
   className = "",
   variant = "links",
-  showPrompt = true,
 }: {
   locale: Locale;
   location: TrackLocation;
   className?: string;
   /** "links" = inline text links (home); "buttons" = secondary (outline) buttons (Visit page, spec 03). */
   variant?: "links" | "buttons";
-  /** false when the surrounding text already introduces the apps (PhoneOrder). */
-  showPrompt?: boolean;
 }) {
-  const t = await getTranslations({ locale, namespace: "delivery" });
   return (
     <div className={`flex flex-wrap items-center gap-x-2 text-sm ${className}`.trim()}>
-      {showPrompt && <span>{t("prompt")}</span>}
       {restaurant.delivery.map((d) =>
         variant === "buttons" ? (
           <TrackedLink

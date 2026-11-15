@@ -36,3 +36,8 @@ export function formatMonthDay(d: ClosedDate, locale: Locale): string {
   const month = MONTHS[locale][d.month - 1];
   return locale === "es" ? `${d.day} de ${month}` : `${month} ${d.day}`;
 }
+
+/** The closed dates as one phrase: "1 de enero", "1 de enero y 25 de diciembre" / "January 1 and December 25". */
+export function formatClosedDates(closedDates: ClosedDate[], locale: Locale): string {
+  return closedDates.map((c) => formatMonthDay(c, locale)).join(` ${rangeWords[locale].pair} `);
+}

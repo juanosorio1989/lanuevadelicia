@@ -72,10 +72,11 @@ export function MenuToolbar({
 
   const publish = () => {
     const el = root.current;
-    el?.parentElement?.style.setProperty(
-      "--menu-sticky-offset",
-      `calc(var(--menu-header-h) + ${el.getBoundingClientRect().height}px + 0.25rem)`,
-    );
+    if (!el) return;
+    const offset = `calc(var(--menu-header-h) + ${el.getBoundingClientRect().height}px + 0.25rem)`;
+    el.parentElement?.style.setProperty("--menu-sticky-offset", offset);
+    // WCAG 2.4.11: keyboard focus scrolled into view must not land under the sticky toolbar.
+    document.documentElement.style.scrollPaddingTop = offset;
   };
 
   useEffect(() => {
@@ -88,6 +89,7 @@ export function MenuToolbar({
     return () => {
       observer.disconnect();
       parent.style.removeProperty("--menu-sticky-offset");
+      document.documentElement.style.removeProperty("scroll-padding-top");
     };
   }, []);
 
@@ -151,11 +153,16 @@ export function MenuToolbar({
         data-testid="menu-toolbar"
         className="sticky top-[var(--menu-header-h)] z-30 border-b border-sand-100 bg-cream-50"
       >
+        {!mounted && (
+          // Reserves the search row's height (pt-2 + min-h-11) so the menu does not jump when the box mounts.
+          // Shown only when scripting is on: without JS the box never appears, so nothing is reserved.
+          <div aria-hidden="true" data-testid="menu-search-placeholder" className="hidden h-13 [@media(scripting:enabled)]:block" />
+        )}
         {mounted && (
           <div role="search" className="mx-auto max-w-6xl px-4 pt-2 md:px-8">
-            <div className="flex min-h-11 items-center rounded-full border-[1.5px] border-sand-100 bg-white pl-4 text-charcoal-900 focus-within:border-green-900">
+            <div className="flex min-h-11 items-center gap-2 rounded-full border-[1.5px] border-sand-100 bg-white text-charcoal-900 focus-within:border-green-900">
               {/* The label wraps only icon + input, so the clear button does not leak into the input's name. */}
-              <label className="flex min-h-11 flex-1 items-center gap-2">
+              <label className="flex min-h-11 flex-1 items-center gap-2 pl-4">
                 <Search aria-hidden="true" size={18} className="shrink-0 text-green-900" />
                 <span className="sr-only">{labels.search}</span>
                 <input

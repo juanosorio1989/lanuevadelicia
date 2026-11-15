@@ -109,7 +109,6 @@
     "seeMenu": "See the full menu"
   },
   "delivery": {
-    "prompt": "Prefer delivery?",
     "reservations": "<b>Reservations:</b> call <phone></phone>.",
     "phoneTitle": "Order by phone",
     "phoneBody": "Call <phone></phone> for pickup or delivery.",
