@@ -13,17 +13,20 @@ export async function DeliveryLinks({
   location,
   className = "",
   variant = "links",
+  showPrompt = true,
 }: {
   locale: Locale;
   location: TrackLocation;
   className?: string;
   /** "links" = inline text links (home); "buttons" = secondary (outline) buttons (Visit page, spec 03). */
   variant?: "links" | "buttons";
+  /** false when the surrounding text already introduces the apps (PhoneOrder). */
+  showPrompt?: boolean;
 }) {
   const t = await getTranslations({ locale, namespace: "delivery" });
   return (
     <div className={`flex flex-wrap items-center gap-x-2 text-sm ${className}`.trim()}>
-      <span>{t("prompt")}</span>
+      {showPrompt && <span>{t("prompt")}</span>}
       {restaurant.delivery.map((d) =>
         variant === "buttons" ? (
           <TrackedLink

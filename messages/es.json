@@ -89,6 +89,8 @@
     "title": "Nuestro menú",
     "priceNote": "Precios en el restaurante; en las apps de domicilio pueden variar.",
     "chipsLabel": "Categorías del menú",
+    "searchLabel": "Buscar en el menú…",
+    "swipeHint": "Desliza para ver más categorías",
     "favorite": "Favorito",
     "specialsLink": "Ver los especiales de la semana →"
   },
@@ -101,7 +103,10 @@
     "seeMenu": "Ver el menú completo"
   },
   "delivery": {
-    "prompt": "¿Prefieres a domicilio?"
+    "prompt": "¿Prefieres a domicilio?",
+    "phoneTitle": "Pide por teléfono",
+    "phoneBody": "Llámanos al <phone></phone> para recoger o para domicilio.",
+    "range": "Domicilio: hasta {free} milla sin recargo; de {free} a {max} millas, con recargo. A más de {max} millas, pide por:"
   },
   "story": {
     "title": "Nuestra historia",

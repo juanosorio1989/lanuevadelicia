@@ -89,6 +89,8 @@
     "title": "Our menu",
     "priceNote": "In-restaurant prices; delivery app prices may differ.",
     "chipsLabel": "Menu categories",
+    "searchLabel": "Search the menu…",
+    "swipeHint": "Swipe to see more categories",
     "favorite": "Favorite",
     "specialsLink": "See this week's specials →"
   },
@@ -101,7 +103,10 @@
     "seeMenu": "See the full menu"
   },
   "delivery": {
-    "prompt": "Prefer delivery?"
+    "prompt": "Prefer delivery?",
+    "phoneTitle": "Order by phone",
+    "phoneBody": "Call <phone></phone> for pickup or delivery.",
+    "range": "Delivery: up to {free} mile at no extra charge; {free} to {max} miles, extra charge. Beyond {max} miles, order on:"
   },
   "story": {
     "title": "Our story",
