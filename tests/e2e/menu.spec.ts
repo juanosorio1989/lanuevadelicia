@@ -319,6 +319,17 @@ test.describe("search", () => {
 
   test.describe("390px", () => {
     test.use({ viewport: { width: 390, height: 844 } });
+    test("hint and fade hide when few chips remain; fade returns after clearing", async ({ page }) => {
+      const box = await open(page);
+      const fade = page.getByTestId("menu-chips-fade");
+      await expect(fade).not.toHaveClass(/opacity-0/);
+      await box.fill("bandeja");
+      await expect(page.getByTestId("menu-swipe-hint")).toBeHidden();
+      await expect(fade).toHaveClass(/opacity-0/);
+      await box.fill("");
+      await expect(fade).not.toHaveClass(/opacity-0/);
+      await expect(page.getByTestId("menu-swipe-hint")).toBeHidden();
+    });
     test("typing deep in the page brings results into view", async ({ page }) => {
       const box = await open(page);
       await page.evaluate(() => window.scrollTo(0, 4000));
@@ -333,6 +344,13 @@ test.describe("search", () => {
         })
         .toBe(true);
     });
+  });
+
+  test("searchbox name excludes the clear button", async ({ page }) => {
+    const box = await open(page);
+    await box.fill("bandeja");
+    await expect(page.getByRole("button", { name: "Borrar búsqueda" })).toBeVisible();
+    await expect(page.getByRole("searchbox", { name: "Buscar en el menú…", exact: true })).toBeVisible();
   });
 
   test("live region counts dishes", async ({ page }) => {

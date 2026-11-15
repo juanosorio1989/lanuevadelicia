@@ -57,7 +57,7 @@ Custom events (`lib/analytics.ts`, one typed `track()` function):
 | `switch_language` | Language switch | `from`, `to` |
 | `view_menu_category` | Chip tapped | `category` |
 | `click_instagram` | Instagram link | `location` (footer, visit) |
-| `search` | Menu search, 1 s after typing stops, 2+ chars, once per term | `search_term` |
+| `search` | Menu search, 1 s after typing stops, 2+ chars, once per term; terms that look like an email or phone number are not sent | `search_term` |
 
 `track()` adds `locale` (the page language) to every event, and its params are typed per event, so a missing param is
 a compile error. `story` is the call to action at the bottom of the Our Story page.

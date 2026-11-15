@@ -40,7 +40,12 @@ export function CategoryChips({
     update();
     box.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
+    // Hiding or showing chips (search) changes the row's width without a scroll or resize.
+    const row = box.querySelector("ul");
+    const observer = new ResizeObserver(update);
+    if (row) observer.observe(row);
     return () => {
+      observer.disconnect();
       box.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { matchesSearch, normalizeSearch } from "@/lib/search";
+import { isTrackableSearchTerm, matchesSearch, normalizeSearch } from "@/lib/search";
 
 describe("normalizeSearch", () => {
   it("drops accents, punctuation and case", () => {
@@ -16,5 +16,19 @@ describe("matchesSearch", () => {
   });
   it("matches everything for a blank query", () => {
     expect(matchesSearch("anything", "   ")).toBe(true);
+  });
+});
+
+describe("isTrackableSearchTerm", () => {
+  it("accepts dish searches", () => {
+    expect(isTrackableSearchTerm("bandeja")).toBe(true);
+    expect(isTrackableSearchTerm("jugo de mora")).toBe(true);
+    expect(isTrackableSearchTerm("combo 2")).toBe(true);
+  });
+  it("rejects emails and phone numbers", () => {
+    expect(isTrackableSearchTerm("a@b.co")).toBe(false);
+    expect(isTrackableSearchTerm("7186723456")).toBe(false);
+    expect(isTrackableSearchTerm("718 672 3456")).toBe(false);
+    expect(isTrackableSearchTerm("12345")).toBe(false);
   });
 });

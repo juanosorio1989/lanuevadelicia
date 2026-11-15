@@ -23,3 +23,10 @@ export function matchesSearch(normalizedText: string, query: string): boolean {
 export function searchText(item: MenuItem, locale: Locale): string {
   return normalizeSearch(`${item.name[locale]} ${item.description?.[locale] ?? ""}`);
 }
+
+/** False for terms that look like an email or phone number: personal data must not reach GA4. */
+export function isTrackableSearchTerm(term: string): boolean {
+  if (term.includes("@")) return false;
+  if (/\d{5,}/.test(term)) return false;
+  return (term.match(/\d/g)?.length ?? 0) < 7;
+}

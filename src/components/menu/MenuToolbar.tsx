@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Search, X } from "lucide-react";
 import { TrackedLink } from "@/components/layout/TrackedLink";
 import { track } from "@/lib/analytics";
-import { matchesSearch } from "@/lib/search";
+import { isTrackableSearchTerm, matchesSearch } from "@/lib/search";
 import { CategoryChips, type Chip } from "./CategoryChips";
 
 const noopSubscribe = () => () => {};
@@ -110,7 +110,7 @@ export function MenuToolbar({
     clearTimeout(timer.current);
     timer.current = setTimeout(() => {
       const term = next.trim().toLowerCase();
-      if (term.length >= SEARCH_EVENT_MIN_LENGTH && term !== lastSent.current) {
+      if (term.length >= SEARCH_EVENT_MIN_LENGTH && term !== lastSent.current && isTrackableSearchTerm(term)) {
         lastSent.current = term;
         track("search", { search_term: term });
       }
@@ -153,23 +153,26 @@ export function MenuToolbar({
       >
         {mounted && (
           <div role="search" className="mx-auto max-w-6xl px-4 pt-2 md:px-8">
-            <label className="flex min-h-11 items-center gap-2 rounded-full border-[1.5px] border-sand-100 bg-white pl-4 text-charcoal-900 focus-within:border-green-900">
-              <Search aria-hidden="true" size={18} className="shrink-0 text-green-900" />
-              <span className="sr-only">{labels.search}</span>
-              <input
-                ref={input}
-                type="search"
-                value={query}
-                placeholder={labels.search}
-                onChange={(e) => change(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Escape" && query !== "") {
-                    e.preventDefault();
-                    clear();
-                  }
-                }}
-                className="w-full bg-transparent text-base outline-none placeholder:text-muted-600 [&::-webkit-search-cancel-button]:appearance-none"
-              />
+            <div className="flex min-h-11 items-center rounded-full border-[1.5px] border-sand-100 bg-white pl-4 text-charcoal-900 focus-within:border-green-900">
+              {/* The label wraps only icon + input, so the clear button does not leak into the input's name. */}
+              <label className="flex min-h-11 flex-1 items-center gap-2">
+                <Search aria-hidden="true" size={18} className="shrink-0 text-green-900" />
+                <span className="sr-only">{labels.search}</span>
+                <input
+                  ref={input}
+                  type="search"
+                  value={query}
+                  placeholder={labels.search}
+                  onChange={(e) => change(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape" && query !== "") {
+                      e.preventDefault();
+                      clear();
+                    }
+                  }}
+                  className="w-full bg-transparent text-base outline-none placeholder:text-muted-600 [&::-webkit-search-cancel-button]:appearance-none"
+                />
+              </label>
               {query !== "" ? (
                 <button
                   type="button"
@@ -182,7 +185,7 @@ export function MenuToolbar({
               ) : (
                 <span className="pr-4" />
               )}
-            </label>
+            </div>
           </div>
         )}
         {mounted && (
