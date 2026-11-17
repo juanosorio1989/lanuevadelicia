@@ -1,4 +1,5 @@
 export const NAV_ITEMS = [
+  { key: "homeLink", href: "" },
   { key: "menu", href: "/menu" },
   { key: "specials", href: "/specials" },
   { key: "story", href: "/our-story" },

@@ -19,7 +19,7 @@ simple in a static export). `trailingSlash: true`.
 `/` redirects to `/es/` (302, via hosting redirect rules; see [07-technical.md](07-technical.md)). A single bilingual
 404 page (real 404 status) links to Menu and Visit in both languages.
 
-Nav labels (ES / EN): Menú / Menu · Especiales / Specials · Nuestra historia / Our story ·
+Nav labels (ES / EN): Inicio / Home (added 2026-11-17) · Menú / Menu · Especiales / Specials · Nuestra historia / Our story ·
 Visítanos / Visit us. (Galería / Gallery is hidden from navigation and sitemap since 2026-11-15, page kept; see
 [menu-search design](../2026-11-15-menu-search-design/README.md).)
 

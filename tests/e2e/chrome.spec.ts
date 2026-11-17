@@ -44,6 +44,14 @@ test.describe("mobile 390x844", () => {
     await expect(button).toBeFocused();
   });
 
+  test("the mobile panel starts with Inicio", async ({ page }) => {
+    await page.goto("/es/menu/");
+    await page.getByTestId("menu-button").click();
+    const first = page.locator("dialog[open] nav a").first();
+    await expect(first).toHaveText("Inicio");
+    await expect(first).toHaveAttribute("href", "/es/");
+  });
+
   test("clicking a link in the open dialog closes it", async ({ page }) => {
     await page.goto("/es/");
     await page.getByTestId("menu-button").click();
@@ -64,6 +72,31 @@ test.describe("mobile without JS", () => {
       await expect(page.getByRole("contentinfo").getByRole("link", { name })).toHaveAttribute("href", `/es/${path}/`);
     }
     await expect(page.getByRole("contentinfo").getByRole("link", { name: "Galería" })).toHaveCount(0);
+  });
+});
+
+test.describe("home link in the nav", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("desktop nav starts with Inicio; current only on the home page", async ({ page }) => {
+    await page.goto("/es/menu/");
+    const first = page.getByRole("banner").getByRole("navigation").getByRole("link").first();
+    await expect(first).toHaveText("Inicio");
+    await expect(first).toHaveAttribute("href", "/es/");
+    await expect(first).not.toHaveAttribute("aria-current", /.*/);
+    await page.goto("/es/");
+    await expect(page.getByRole("banner").getByRole("navigation").getByRole("link").first()).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  test("footer site nav has Home in English", async ({ page }) => {
+    await page.goto("/en/");
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Home", exact: true })).toHaveAttribute(
+      "href",
+      "/en/",
+    );
   });
 });
 
