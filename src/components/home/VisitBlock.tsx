@@ -1,7 +1,7 @@
 import { MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { TrackedLink } from "@/components/layout/TrackedLink";
-import { DeliveryLinks } from "@/components/shared/DeliveryLinks";
+import { PhoneOrder } from "@/components/shared/PhoneOrder";
 import { HoursTable } from "@/components/shared/HoursTable";
 import { MapEmbed } from "@/components/shared/MapEmbed";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -31,7 +31,7 @@ export async function VisitBlock({ locale }: { locale: Locale }) {
             {cta("call")}
           </TrackedLink>
         </div>
-        <DeliveryLinks locale={locale} location="visit" className="mt-4" />
+        <PhoneOrder locale={locale} location="visit" className="mt-4" />
         <p className="mt-1 text-sm text-muted-600">{t("events")}</p>
       </div>
       <MapEmbed locale={locale} location="home" />

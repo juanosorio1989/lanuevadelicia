@@ -31,6 +31,14 @@ describe("track", () => {
     expect(gtag).toHaveBeenCalledWith("event", "load_map", { locale: "en", page: "visit" });
   });
 
+  it("sends the search term", () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("window", { gtag });
+    vi.stubGlobal("document", { documentElement: { lang: "es" } });
+    track("search", { search_term: "bandeja" });
+    expect(gtag).toHaveBeenCalledWith("event", "search", { locale: "es", search_term: "bandeja" });
+  });
+
   it("still sends the event when document is unavailable", () => {
     const gtag = vi.fn();
     vi.stubGlobal("window", { gtag });

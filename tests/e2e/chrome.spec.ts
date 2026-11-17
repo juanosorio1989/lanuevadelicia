@@ -47,8 +47,8 @@ test.describe("mobile 390x844", () => {
   test("clicking a link in the open dialog closes it", async ({ page }) => {
     await page.goto("/es/");
     await page.getByTestId("menu-button").click();
-    await page.locator("dialog[open]").getByRole("link", { name: "Galería" }).click();
-    await expect(page).toHaveURL(/\/es\/gallery\/$/);
+    await page.locator("dialog[open]").getByRole("link", { name: "Visítanos" }).click();
+    await expect(page).toHaveURL(/\/es\/visit\/$/);
     await expect(page.locator("dialog[open]")).toHaveCount(0);
   });
 });
@@ -60,9 +60,10 @@ test.describe("mobile without JS", () => {
     await page.goto("/es/");
     await page.getByRole("contentinfo").getByRole("link", { name: "Especiales" }).click();
     await expect(page).toHaveURL(/\/es\/specials\/$/);
-    for (const [name, path] of [["Nuestra historia", "our-story"], ["Galería", "gallery"], ["Visítanos", "visit"]]) {
+    for (const [name, path] of [["Nuestra historia", "our-story"], ["Visítanos", "visit"]]) {
       await expect(page.getByRole("contentinfo").getByRole("link", { name })).toHaveAttribute("href", `/es/${path}/`);
     }
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Galería" })).toHaveCount(0);
   });
 });
 
@@ -95,12 +96,18 @@ test("footer shows the facts and the delivery apps", async ({ page }) => {
   const footer = page.getByRole("contentinfo");
   await expect(footer).toContainText("93-16B 37th Ave");
   await expect(footer).toContainText("(718) 672-3456");
+  await expect(footer).not.toContainText("Cerrado el");
   await expect(footer).toContainText("@lanuevadeliciarestaurante");
   for (const d of restaurant.delivery) {
     const link = footer.getByRole("link", { name: d.label });
     await expect(link).toHaveAttribute("href", d.url);
     await expect(link).toHaveAttribute("target", "_blank");
   }
+});
+
+test("footer has no closed-date note in English", async ({ page }) => {
+  await page.goto("/en/");
+  await expect(page.getByRole("contentinfo")).not.toContainText("Closed on");
 });
 
 test("the skip link is first and moves focus to #main", async ({ page }) => {
@@ -136,6 +143,48 @@ test.describe("header logo and wrapping across widths", () => {
   }
 });
 
+for (const [width, height, expected] of [[390, 844, 64], [1280, 800, 80]] as const) {
+  test(`logo is ${expected}px at ${width}px wide, 40px after scroll`, async ({ page }) => {
+    await page.setViewportSize({ width, height });
+    await page.goto("/es/");
+    const header = page.getByRole("banner");
+    const logo = header.locator("a").first().locator("img");
+    await expect(logo).toBeVisible();
+    await expect.poll(async () => Math.round((await logo.boundingBox())!.height)).toBe(expected);
+    await page.mouse.wheel(0, 800);
+    await expect(header).toHaveAttribute("data-scrolled", "");
+    await expect.poll(async () => Math.round((await logo.boundingBox())!.height)).toBe(40);
+  });
+}
+
+test.describe("header scroll state does not flicker", () => {
+  for (const [width, height] of [[390, 844], [1280, 800]] as const) {
+    for (const delta of [30, 60, 100]) {
+      test(`${width}px, wheel ${delta}px on /es/menu/: data-scrolled changes ${delta === 100 ? "exactly once and ends set" : "at most once"}`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto("/es/menu/");
+        await page.evaluate(() => {
+          const header = document.querySelector("header")!;
+          (window as unknown as { __toggles: number }).__toggles = 0;
+          new MutationObserver((records) => {
+            for (const r of records) if (r.attributeName === "data-scrolled") (window as unknown as { __toggles: number }).__toggles++;
+          }).observe(header, { attributes: true });
+        });
+        await page.mouse.move(200, 400);
+        await page.mouse.wheel(0, delta);
+        await page.waitForTimeout(1000);
+        const toggles = await page.evaluate(() => (window as unknown as { __toggles: number }).__toggles);
+        if (delta === 100) {
+          expect(toggles).toBe(1);
+          await expect(page.getByRole("banner")).toHaveAttribute("data-scrolled", "");
+        } else {
+          expect(toggles).toBeLessThanOrEqual(1);
+        }
+      });
+    }
+  }
+});
+
 test.describe("footer at tablet width", () => {
   for (const [locale, label] of [["es", "Pide a domicilio"], ["en", "Order delivery"]] as const) {
     test(`${locale} 768px: Instagram handle does not overlap the delivery column`, async ({ page }) => {
@@ -155,5 +204,19 @@ test.describe("footer at tablet width", () => {
       const noScroll = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
       expect(noScroll).toBe(true);
     });
+  }
+});
+
+test("gallery is hidden from navigation in both languages", async ({ page }) => {
+  for (const locale of ["es", "en"]) {
+    for (const width of [390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto(`/${locale}/`);
+      if (width === 390) {
+        await page.getByTestId("menu-button").click();
+        await expect(page.locator("dialog[open]")).toBeVisible();
+      }
+      await expect(page.locator('a[href*="/gallery/"]')).toHaveCount(0);
+    }
   }
 });

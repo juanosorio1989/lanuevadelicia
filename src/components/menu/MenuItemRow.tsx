@@ -1,4 +1,5 @@
 import { formatPrice } from "@/lib/format";
+import { searchText } from "@/lib/search";
 import type { Locale, MenuItem } from "@/types/content";
 
 export type MenuLabels = { favorite: string };
@@ -35,6 +36,7 @@ export function MenuItemRow({ item, locale, labels, heading: H = "h3" }: { item:
   return (
     <li
       data-item="row"
+      data-search={searchText(item, locale)}
       data-featured={item.featured ? "" : undefined}
       className="flex justify-between gap-3 border-b border-dotted border-muted-600/40 py-2.5 text-sm"
     >

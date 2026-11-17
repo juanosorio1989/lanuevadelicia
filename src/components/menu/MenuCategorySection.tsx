@@ -11,14 +11,14 @@ function Group({ items, locale, labels, heading }: { items: MenuItem[]; locale: 
   return (
     <>
       {cards.length > 0 && (
-        <ul className="mt-4 grid gap-3 md:grid-cols-3 md:gap-4">
+        <ul data-search-list className="mt-4 grid gap-3 md:grid-cols-3 md:gap-4">
           {cards.map((i) => (
             <MenuItemCard key={i.id} item={i} locale={locale} labels={labels} heading={heading} />
           ))}
         </ul>
       )}
       {rows.length > 0 && (
-        <ul className="mt-4 grid md:grid-cols-2 md:gap-x-10">
+        <ul data-search-list className="mt-4 grid md:grid-cols-2 md:gap-x-10">
           {rows.map((i) => (
             <MenuItemRow key={i.id} item={i} locale={locale} labels={labels} heading={heading} />
           ))}
@@ -55,7 +55,7 @@ export function MenuCategorySection({ category, items, locale, labels, specialsL
         </div>
       )}
       {groups.map((g) => (
-        <div key={g.title ?? "all"} className="mt-2">
+        <div key={g.title ?? "all"} data-search-group className="mt-2">
           {g.title && <h3 className="mt-4 text-lg">{g.title}</h3>}
           <Group items={g.items} locale={locale} labels={labels} heading={g.title ? "h4" : "h3"} />
         </div>

@@ -52,7 +52,7 @@ are tuned for light surroundings).
 
 `Header`, `MobileNav`, `MobileActionBar`, `LanguageSwitch`, `Footer`, `Button` (primary / outline / on-dark
 variants, min height 44px), `OpenStatus` (client), `Hero`, `DishCard` (vertical) and `DishRow` (horizontal mobile
-card), `MenuCategory`, `MenuItemRow`, `CategoryChips` (client enhancement), `TodaySpecial` (client), `SpecialDay`,
+card), `MenuCategory`, `MenuItemRow`, `CategoryChips` (client enhancement), `MenuToolbar` (client: search box, swipe hint, chips), `PhoneOrder`, `TodaySpecial` (client), `SpecialDay`,
 `StoryBlock`, `ReviewsBand`, `HoursTable`, `MapEmbed` (click-to-load, client), `DeliveryLinks`, `Gallery` and
 `GalleryDialog` (client), `PhotoPlaceholder` (dev only, see [06-photos.md](06-photos.md)). The gallery dialog and the mobile nav
 panel both use the native `<dialog>` element (no Radix), to stay inside the JS budget. Use shadcn/ui only for

@@ -34,12 +34,12 @@
 | # | Question | Fallback if unanswered |
 |---|----------|------------------------|
 | Q2 | The Google Place ID (ChIJ…), for the "leave a review" link, the directions `destination_place_id` and `geo` | "Leave a review" goes to the Maps listing; no `geo` |
-| Q3 | Do they take reservations? | `acceptsReservations: false`, no reservation copy |
-| Q4 | Holiday closures or special hours? | Not modeled; a banner can be added in data later |
+| Q3 | Do they take reservations? | **Answered 2026-11-15:** yes, by phone only, no minimum party size or notice ([menu search design](../2026-11-15-menu-search-design/README.md) §5) |
+| Q4 | Holiday closures or special hours? | **Answered 2026-11-15:** regular hours on holidays; closed every January 1 (same design page, §5) |
 | Q5 | Verified transit directions (subway/bus) | Leave them out |
 | Q6 | Do reviews really highlight "sabor casero" and "atención cálida"? | Drop that line |
 | Q7 | Fix the two calentado descriptions that look swapped or incomplete? | Publish the printed text (spelling fixed) |
-| Q8 | One-line OK that the dafotografia photos may be used on the website | Required before launch |
+| Q8 | One-line OK that the dafotografia photos may be used on the website | **Answered 2026-11-15:** the owner confirmed they have permission to use the photos on the website |
 | Q9 | A vector (SVG/AI) logo? `logo2.pdf` (T-shirt stamp, 2026-11-12) has a raster center plaque, so it does not answer this; the stamp is T-shirt only, not for the site (owner). | Use the PNG |
 | Q11 | A contact for the privacy page | **Claude's call:** `info@lanuevadelicia.com` on the privacy page only (not shown elsewhere unless the owner asks) |
 | Q12 | Simulated (PageSpeed Insights-style) LCP on /es/ is ~3.1-3.4 s locally. Lantern simulates from an unthrottled trace where first paint and LCP land at ~123 ms, so it attributes all JS chunks, the logo and below-the-fold images to LCP; this is a local-measurement artefact. Re-measure with PageSpeed Insights on the preview deploy and fix before launch checklist item 8. | Ship if the real-device and devtools-throttled LCP stay under 2.5 s |

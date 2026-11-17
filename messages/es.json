@@ -74,6 +74,7 @@
     "closedDay": "Cerrado · abre el {day} a las {time}"
   },
   "hours": {
+    "title": "Horario",
     "breakfast": "Desayunos",
     "breakfastUntil": "hasta la {time}",
     "happyHour": "Happy hour",
@@ -89,6 +90,13 @@
     "title": "Nuestro menú",
     "priceNote": "Precios en el restaurante; en las apps de domicilio pueden variar.",
     "chipsLabel": "Categorías del menú",
+    "searchLabel": "Buscar en el menú…",
+    "swipeHint": "Desliza para ver más categorías",
+    "searchClear": "Borrar búsqueda",
+    "noResults": "No encontramos ese plato.",
+    "noResultsCall": "Llámanos al",
+    "resultsOne": "1 plato",
+    "resultsOther": "{count} platos",
     "favorite": "Favorito",
     "specialsLink": "Ver los especiales de la semana →"
   },
@@ -101,7 +109,10 @@
     "seeMenu": "Ver el menú completo"
   },
   "delivery": {
-    "prompt": "¿Prefieres a domicilio?"
+    "reservations": "<b>Reservas:</b> llámanos al <phone></phone>.",
+    "phoneTitle": "Pide por teléfono",
+    "phoneBody": "Llámanos al <phone></phone> para recoger o para domicilio.",
+    "range": "Domicilio: hasta {free} milla sin recargo; de {free} a {max} millas, con recargo. A más de {max} millas, pide por:"
   },
   "story": {
     "title": "Nuestra historia",
@@ -140,7 +151,7 @@
     "title": "Privacidad",
     "lead": "Esta página explica de forma sencilla qué datos recoge este sitio.",
     "analyticsTitle": "Estadísticas de uso",
-    "analytics": "Usamos Google Analytics (GA4) para medir de forma anónima cómo se usa el sitio: qué páginas se visitan y qué botones se tocan. No guardamos tu nombre ni datos personales.",
+    "analytics": "Usamos Google Analytics (GA4) para medir de forma anónima cómo se usa el sitio: qué páginas se visitan, qué botones se tocan y qué se busca en el menú. No guardamos tu nombre ni datos personales.",
     "whyTitle": "Para qué",
     "why": "Solo para mejorar el sitio y que encuentres más fácil el menú, el horario y cómo llegar.",
     "adsTitle": "Publicidad",

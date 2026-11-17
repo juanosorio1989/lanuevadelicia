@@ -4,6 +4,7 @@ import { specials } from "@/data/specials";
 import { photos } from "@/data/photos";
 import { validateContent } from "@/data/schemas";
 import { restaurant } from "@/data/restaurant";
+import { matchesSearch, searchText } from "@/lib/search";
 import { formatTime } from "@/lib/hours";
 import { entries } from "../../scripts/photo-manifest";
 
@@ -202,5 +203,35 @@ describe("menu and photos", () => {
         es: `${i.name.es} en La Nueva Delicia`,
         en: `${i.name.en} at La Nueva Delicia`,
       });
+  });
+});
+
+describe("descriptions filled from Uber Eats (2026-11-17)", () => {
+  const rows: [string, string, string][] = [
+    ["tostones", "Rodajas de plátano verde fritas y crocantes.", "Crispy fried green plantain slices."],
+    ["papa-criolla", "Papitas amarillas criollas, un acompañamiento clásico colombiano.", "Small yellow potatoes, a classic Colombian side."],
+    ["maduros-fritos", "Plátano maduro frito, dorado por fuera y suave por dentro.", "Ripe plantain, fried golden outside and tender inside."],
+    ["arepitas", "Arepitas de maíz crocantes.", "Crispy little corn cakes."],
+    ["frijoles", "Fríjoles al estilo tradicional.", "Traditional-style beans."],
+    ["mazamorra-con-panela", "Postre tradicional colombiano de maíz con panela.", "Traditional Colombian corn pudding sweetened with panela (cane sugar)."],
+    ["ensalada-de-fruta", "Mezcla de frutas frescas de temporada.", "A mix of fresh seasonal fruit."],
+    ["arroz-con-leche", "Postre cremoso de arroz cocido en leche.", "Creamy rice cooked in milk."],
+    ["flan-con-caramelo", "Flan cremoso bañado en caramelo.", "Creamy custard topped with caramel."],
+    ["aguapanela-con-limon", "Bebida de panela, dulce y refrescante, con limón.", "Sweet, refreshing cane-sugar drink with a squeeze of lemon."],
+    ["chocolate", "Chocolate caliente, espeso y suave.", "Rich, smooth hot chocolate."],
+    ["soda-postobon", "Gaseosa colombiana de sabores dulces y frutales.", "Colombian soda with sweet, fruity flavors."],
+  ];
+  it.each(rows)("%s has its es/en description", (id, es, en) => {
+    expect(byId[id], `missing item ${id}`).toBeDefined();
+    expect(byId[id].description).toEqual({ es, en });
+  });
+  it("48 items have a description", () => {
+    expect(menuItems.filter((i) => i.description).length).toBe(48);
+  });
+  it("searching platano (no accent) finds tostones and maduros-fritos", () => {
+    const ids = menuItems
+      .filter((i) => matchesSearch(searchText(i, "es"), "platano"))
+      .map((i) => i.id);
+    expect(ids).toEqual(expect.arrayContaining(["tostones", "maduros-fritos"]));
   });
 });

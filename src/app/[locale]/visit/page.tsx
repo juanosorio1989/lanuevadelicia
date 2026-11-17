@@ -4,7 +4,7 @@ import { buildMetadata, restaurantJsonLd } from "@/lib/seo";
 import { MapPin, Phone } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TrackedLink } from "@/components/layout/TrackedLink";
-import { DeliveryLinks } from "@/components/shared/DeliveryLinks";
+import { PhoneOrder } from "@/components/shared/PhoneOrder";
 import { HoursTable } from "@/components/shared/HoursTable";
 import { MapEmbed } from "@/components/shared/MapEmbed";
 import { OpenStatus } from "@/components/shared/OpenStatus";
@@ -34,8 +34,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         <h1 className="text-[1.75rem] md:text-4xl">{t("title")}</h1>
         <p className="mt-2 text-lg font-bold">{restaurant.address.oneLine}</p>
         <OpenStatus locale={locale} className="mt-2 text-green-900" />
-        <h2 className="mt-5 text-xl">{t("hoursTitle")}</h2>
-        <HoursTable locale={locale} className="my-2" />
+        <h2 id="hours-title" className="mt-5 text-xl">{t("hoursTitle")}</h2>
+        <HoursTable locale={locale} className="my-2" showTitle={false} labelledBy="hours-title" />
         <div className="mt-4 flex flex-wrap gap-3">
           <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "visit" }} external variant="primary">
             <MapPin aria-hidden="true" size={18} />
@@ -46,8 +46,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             {cta("call")}
           </TrackedLink>
         </div>
-        <DeliveryLinks locale={locale} location="visit" variant="buttons" className="mt-4 gap-y-2" />
-        <p className="mt-1 text-sm text-muted-600">{restaurant.deliveryNote[locale]}</p>
+        <PhoneOrder locale={locale} location="visit" variant="buttons" className="mt-5" />
         <p className="mt-3 text-sm">{home("events")}</p>
         <p className="mt-3">
           <TrackedLink

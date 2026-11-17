@@ -23,10 +23,8 @@ export const restaurant: Restaurant = {
     { days: [6, 7], from: "17:00", to: "20:00" },
   ],
   happyHourCocktailPrice: 8,
-  deliveryNote: {
-    es: "El domicilio a más de una milla tiene un cargo extra.",
-    en: "Delivery beyond one mile has an extra charge.",
-  },
+  deliveryRange: { freeMiles: 1, maxMiles: 1.5 },
+  closedDates: [{ month: 1, day: 1 }],
   instagram: {
     handle: "@lanuevadeliciarestaurante",
     url: "https://www.instagram.com/lanuevadeliciarestaurante/",

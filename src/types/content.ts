@@ -80,7 +80,10 @@ export interface Restaurant {
   breakfastUntil: string;
   happyHour: { days: IsoWeekday[]; from: string; to: string }[];
   happyHourCocktailPrice: number;
-  deliveryNote: L10n;
+  /** Own delivery by phone: free up to `freeMiles`, extra charge up to `maxMiles`; beyond that, the apps. */
+  deliveryRange: { freeMiles: number; maxMiles: number };
+  /** Days the restaurant is closed every year (1-based month). */
+  closedDates: ClosedDate[];
   instagram: { handle: string; url: string };
   googleMapsUrl: string;
   googlePlaceId?: string;
@@ -94,3 +97,6 @@ export interface Restaurant {
   timeZone: "America/New_York";
   foundedClaim: L10n;
 }
+
+/** A recurring closed day; `month` is 1-based. */
+export type ClosedDate = { month: number; day: number };

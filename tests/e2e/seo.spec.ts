@@ -46,7 +46,7 @@ test("robots.txt and sitemap.xml", async ({ request }) => {
   expect(robots).toContain(`Sitemap: ${ORIGIN}/sitemap.xml`);
   const xml = await (await request.get("/sitemap.xml")).text();
   expect(xml.startsWith("<?xml")).toBe(true);
-  expect(xml.match(/<url>/g)).toHaveLength(14);
+  expect(xml.match(/<url>/g)).toHaveLength(12);
   expect(xml).not.toContain("404");
 });
 

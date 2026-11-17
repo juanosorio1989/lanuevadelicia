@@ -42,11 +42,11 @@ The whole text is Claude's draft (`COPY-REVIEW` comment in the page). One senten
 This overstates what GA4 does. GA4 sets cookies and a client ID in the visitor's browser and collects the approximate
 location and device. Nothing is changed in the live text. Proposed wording for the owner to approve:
 
-- ES: "Usamos Google Analytics (GA4) para saber qué páginas se visitan y qué botones se tocan. GA4 guarda cookies y
-  un identificador aleatorio en tu navegador, y recibe datos como tu ubicación aproximada y tu tipo de dispositivo.
+- ES: "Usamos Google Analytics (GA4) para saber qué páginas se visitan, qué botones se tocan y qué se busca en el
+  menú. GA4 guarda cookies y un identificador aleatorio en tu navegador, y recibe datos como tu ubicación aproximada y tu tipo de dispositivo.
   No sabemos quién eres y no te pedimos tu nombre ni otros datos personales."
-- EN: "We use Google Analytics (GA4) to learn which pages are visited and which buttons are tapped. GA4 stores cookies
-  and a random identifier in your browser, and receives data such as your approximate location and device type. We
+- EN: "We use Google Analytics (GA4) to learn which pages are visited, which buttons are tapped and what is searched
+  for in the menu. GA4 stores cookies and a random identifier in your browser, and receives data such as your approximate location and device type. We
   do not know who you are, and we do not ask for your name or other personal details."
 
 The `meta.privacy.description` ("estadísticas de uso anónimas" / "anonymous usage statistics") should follow the

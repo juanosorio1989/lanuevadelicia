@@ -23,9 +23,9 @@ Colombian food Queens NY, bandeja paisa Jackson Heights, Colombian breakfast Que
 ## Structured data (JSON-LD)
 
 - Home and Visit pages: `Restaurant` with `name`, `url`, `logo`, `image`, `address` (PostalAddress: 93-16B 37th Ave,
-  Jackson Heights, NY 11372, US), `telephone`, `openingHoursSpecification` (from data), `servesCuisine: "Colombian"`,
+  Jackson Heights, NY 11372, US), `telephone`, `openingHoursSpecification` (from data), `specialOpeningHoursSpecification` (the next two closed dates, `opens`/`closes` 00:00), `servesCuisine: "Colombian"`,
   `priceRange: "$$"` (Claude's call, derived from menu prices of $3–$65), `hasMenu` → menu URL, `acceptsReservations:
-  false` (Q3 to confirm), and `sameAs` (Instagram, Google Maps link, Uber Eats, DoorDash, Grubhub). Add `geo` only if
+  true` (by phone, owner 2026-11-15), and `sameAs` (Instagram, Google Maps link, Uber Eats, DoorDash, Grubhub). Add `geo` only if
   the owner gives coordinates or the Place ID (Q2); never guess them.
 - Menu page: `Menu` with `MenuSection` and `MenuItem` (with `offers.price`, `priceCurrency: USD`) generated from
   data.
@@ -50,13 +50,14 @@ Custom events (`lib/analytics.ts`, one typed `track()` function):
 | Event | When | Params |
 |-------|------|--------|
 | `click_directions` | Any Cómo llegar / Get Directions | `location` (hero, header, bottom_bar, visit, footer, story), `locale` |
-| `click_call` | Any `tel:` link | `location` (same values), `locale` |
+| `click_call` | Any `tel:` link | `location` (same values plus `menu`, the no-results phone link), `locale` |
 | `click_delivery` | A delivery app link | `app` (ubereats, doordash, grubhub), `location` |
 | `click_reviews` | Read / Leave review | `action` (read, write) |
 | `load_map` | Map card clicked | `page` (home, visit) |
 | `switch_language` | Language switch | `from`, `to` |
 | `view_menu_category` | Chip tapped | `category` |
 | `click_instagram` | Instagram link | `location` (footer, visit) |
+| `search` | Menu search, 1 s after typing stops, 2+ chars, once per term; terms that look like an email or phone number are not sent | `search_term` |
 
 `track()` adds `locale` (the page language) to every event, and its params are typed per event, so a missing param is
 a compile error. `story` is the call to action at the bottom of the Our Story page.

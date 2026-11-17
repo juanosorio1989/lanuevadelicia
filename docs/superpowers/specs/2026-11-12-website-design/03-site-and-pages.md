@@ -11,7 +11,7 @@ simple in a static export). `trailingSlash: true`.
 | Menu | `/es/menu/` | `/en/menu/` | yes |
 | Weekly specials | `/es/specials/` | `/en/specials/` | yes |
 | Our story | `/es/our-story/` | `/en/our-story/` | yes |
-| Gallery | `/es/gallery/` | `/en/gallery/` | yes |
+| Gallery | `/es/gallery/` | `/en/gallery/` | yes (page kept; hidden from navigation and sitemap since 2026-11-15, see [menu-search design](../2026-11-15-menu-search-design/README.md)) |
 | Visit us | `/es/visit/` | `/en/visit/` | yes |
 | Privacy (GA4 disclosure) | `/es/privacy/` | `/en/privacy/` | yes (short page; Claude's call) |
 | Catering | — | — | phase 2 |
@@ -19,8 +19,9 @@ simple in a static export). `trailingSlash: true`.
 `/` redirects to `/es/` (302, via hosting redirect rules; see [07-technical.md](07-technical.md)). A single bilingual
 404 page (real 404 status) links to Menu and Visit in both languages.
 
-Nav labels (ES / EN): Menú / Menu · Especiales / Specials · Nuestra historia / Our story · Galería / Gallery ·
-Visítanos / Visit us.
+Nav labels (ES / EN): Menú / Menu · Especiales / Specials · Nuestra historia / Our story ·
+Visítanos / Visit us. (Galería / Gallery is hidden from navigation and sitemap since 2026-11-15, page kept; see
+[menu-search design](../2026-11-15-menu-search-design/README.md).)
 
 ## Global elements
 
@@ -60,9 +61,8 @@ In order:
    el sabor casero y la atención cálida.", and buttons "Leer reseñas en Google" and "Dejar una reseña". **The
    "lo que más destacan" line is the owner's characterization; keep it only if the owner confirms that reviews say
    this (Q6), otherwise drop it.**
-6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m., happy hour cocktails $8),
-   **Cómo llegar** and **Llamar** buttons, delivery line "¿Prefieres a domicilio? Uber Eats · DoorDash · Grubhub",
-   and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
+6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m.) and a happy hour card (cocktails $8; since 2026-11-17, see `../2026-11-17-hours-logo-design/`),
+   **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (first line "**Reservas:** llámanos al (718) 672-3456." / "**Reservations:** call (718) 672-3456.", then the phone number, delivery range line and the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md) §5), and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
 7. **Footer.**
 
 ### Approved story text
@@ -96,6 +96,7 @@ Rules are in [04-menu.md](04-menu.md). Layout:
   horizontal card with a 104×92 thumbnail on the left), then a **text list** of the rest (name, short description,
   price aligned right, dotted separator; 2 columns on desktop, 1 on mobile).
 - A "Favorito" tag on featured items.
+- The search box and the swipe hint are specified in the [menu-search design](../2026-11-15-menu-search-design/README.md).
 
 ## Weekly specials
 
@@ -117,8 +118,9 @@ opens the larger image in a native `<dialog>`. No lightbox library. The images l
 
 ## Visit us
 
-The address, hours table (with the open-now badge), Cómo llegar, Llamar, a click-to-load map, the 3 delivery app
-buttons (secondary style, open in a new tab), the delivery-distance note, the events line, and Instagram. Transit
+The address, hours table (with the open-now badge), Cómo llegar, Llamar, a click-to-load map, the PhoneOrder block
+("Pide por teléfono"; its first line is the reservations-by-phone copy "**Reservas:** llámanos al (718) 672-3456." / "**Reservations:** call (718) 672-3456.", then the delivery range line; see [menu-search design](../2026-11-15-menu-search-design/README.md) §5) with the 3 delivery app
+buttons (secondary style, open in a new tab), the events line, and Instagram. Transit
 info is left out until verified.
 
 ## Click-to-load map

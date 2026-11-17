@@ -42,7 +42,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 ## Home page
 
 - `src/components/home/`: `Hero`, `Favorites`, `TodaySpecial` (server wrapper) + `TodaySpecialLive` (client; swaps in today's special in New York time, static HTML shows a teaser with no dish or price), `StoryTeaser`, `ReviewsBand`, `VisitBlock`. Copy is under `home.*` in `messages/{es,en}.json`.
-- `src/components/shared/` (reused by Specials and Visit): `OpenStatus` (client, renders nothing until mounted), `HoursTable`, `MapEmbed` (client, click-to-load), `DeliveryLinks`, `DishCard`, `PhotoPlaceholder` (dev only). Status and hours copy: `status.*`, `hours.*`, `map.*`.
+- `src/components/shared/` (reused by Specials and Visit): `OpenStatus` (client, renders nothing until mounted), `HoursTable`, `MapEmbed` (client, click-to-load), `DeliveryLinks`, `PhoneOrder` (phone, delivery range, apps; used by the home Visit block and Visit), `DishCard`, `PhotoPlaceholder` (dev only). Status and hours copy: `status.*`, `hours.*`, `map.*`.
 - Keep client components small: pass display strings, never the `photos` manifest or `menuItems`. `src/lib/photo.ts` (`getPhoto`) is server-only.
 - The story teaser uses `dishes/picada-doble` until restaurant photos exist; the Q6 "lo que más destacan" line is intentionally absent.
 
@@ -50,7 +50,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 
 - Our story reuses the approved `home.story` text; a dish photo stands in until restaurant photos exist.
 - Gallery: `GalleryGrid` (client) gets only `{src,width,height,alt}`; thumbnails are plain `<a href>` links to the image (work without JS) and open a native `<dialog>`. The "El restaurante" group appears only once `restaurant` photos exist.
-- Visit reuses `HoursTable`, `DeliveryLinks` (copy now in the `delivery` namespace) and the click-to-load `MapEmbed`. No transit info.
+- Visit reuses `HoursTable`, `PhoneOrder` (which wraps `DeliveryLinks`) (copy now in the `delivery` namespace) and the click-to-load `MapEmbed`. No transit info.
 - Privacy copy and the 404 copy are drafts pending owner review (COPY-REVIEW).
 
 ## Specials page
@@ -60,8 +60,9 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 
 ## Menu page
 
-- `src/components/menu/`: `MenuCategorySection` (H2, note, photo cards, then text rows; Bebidas and Cervezas group by `subcategory`), `MenuItemCard` (104x92 thumbnail on mobile, vertical card from `md`), `MenuItemRow`, and `CategoryChips` (the only client code: sticky anchor chips, an `IntersectionObserver` sets `aria-current` and keeps the active chip in view, a tap calls `track('view_menu_category')`). Without JS the chips are plain `#id` links.
-- Sections have `id={category.id}`. `scroll-margin-top` comes from `--menu-sticky-offset` (header + chip bar), set on the page wrapper (in rem) in `src/app/[locale]/menu/page.tsx`; if the header or chip height changes, update `--menu-header-h` and `--menu-sticky-offset` there (the e2e deep-link test pins it).
+- `src/components/menu/`: `MenuCategorySection` (H2, note, photo cards, then text rows; Bebidas and Cervezas group by `subcategory`), `MenuItemCard` (104x92 thumbnail on mobile, vertical card from `md`), `MenuItemRow`, and `CategoryChips` (client: sticky anchor chips, an `IntersectionObserver` sets `aria-current` and keeps the active chip in view, a tap calls `track('view_menu_category')`; without JS the chips are plain `#id` links) and `MenuToolbar` (client: owns the search box, the filtering, the live region and the no-results message, wraps the chips, and measures its own height to publish `--menu-sticky-offset`).
+- Search DOM contract: each item `<li>` carries `data-item` and `data-search` (built by `searchText()`), the item lists and subcategory groups carry `data-search-list` / `data-search-group`, and the page wraps all sections in `data-menu-list`. `src/lib/search.ts` holds normalization (accent- and case-insensitive), matching and `isTrackableSearchTerm`, the PII filter for the GA `search` event.
+- Sections have `id={category.id}`. `scroll-margin-top` comes from `--menu-sticky-offset`. With JS, `MenuToolbar` sets it from the measured toolbar height; the rem value on the page wrapper in `src/app/[locale]/menu/page.tsx` (header + hint + chips) is only the no-JS fallback. If the header or chip height changes, update `--menu-header-h` and that fallback (the e2e deep-link test pins it). Until the search box mounts, an empty placeholder (visible only when scripting is enabled) reserves its height to avoid layout shift.
 - Options: priced options render as price lines ("En leche $7"); unpriced options render as one neutral " · " list. Copy is under `menu.*` in `messages/{es,en}.json`.
 
 ## Quality gates and deploy

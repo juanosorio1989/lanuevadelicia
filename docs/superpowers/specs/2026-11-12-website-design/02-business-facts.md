@@ -11,7 +11,10 @@ Only these facts may appear on the site. Anything else needs owner confirmation 
 | Hours | Mon–Thu 9:00 a.m.–9:00 p.m.; Fri–Sun 9:00 a.m.–10:00 p.m. | Owner, 2026-11-12 |
 | Breakfast | Served until 1:00 p.m. | Printed menu |
 | Happy hour | Mon–Fri 12:00–7:00 p.m.; Sat–Sun 5:00–8:00 p.m.; all cocktails $8 | Printed drinks menu |
-| Delivery note | Delivery beyond one mile has an extra charge | Printed menu |
+| Phone orders | Pickup and delivery by phone | Owner, 2026-11-15 ([menu-search design](../2026-11-15-menu-search-design/README.md)) |
+| Delivery range | Up to 1 mile free; 1–1.5 miles extra charge (amount not shown); beyond 1.5 miles only via the apps | Owner, 2026-11-15 ([menu-search design](../2026-11-15-menu-search-design/README.md)) |
+| Reservations | By phone, no minimum party size | Owner, 2026-11-15 ([menu-search design](../2026-11-15-menu-search-design/README.md)) |
+| Holidays | Regular hours; closed every January 1 (no holiday-hours line on the site) | Owner, 2026-11-15 ([menu-search design](../2026-11-15-menu-search-design/README.md)) |
 | Instagram | @lanuevadeliciarestaurante → https://www.instagram.com/lanuevadeliciarestaurante/ | Owner. (The printed menu shows an old handle with a trailing underscore; do not use it.) |
 | Google Maps | https://maps.app.goo.gl/4CmW2ZLtRpvPJKb56 | Owner |
 | Google rating | 4.4 ★, 452 reviews (as of 2026-11-12) | Owner |

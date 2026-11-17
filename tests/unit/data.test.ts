@@ -20,6 +20,19 @@ describe("content", () => {
   });
 });
 
+describe("restaurant facts", () => {
+  it("delivery range: free up to 1 mile, own delivery up to 1.5 miles", () => {
+    expect(restaurant.deliveryRange).toEqual({ freeMiles: 1, maxMiles: 1.5 });
+    expect("deliveryNote" in restaurant).toBe(false);
+  });
+});
+
+describe("closed dates", () => {
+  it("the restaurant is closed every January 1", () => {
+    expect(restaurant.closedDates).toEqual([{ month: 1, day: 1 }]);
+  });
+});
+
 describe("schemas reject bad samples", () => {
   it("rejects zero and negative prices", () => {
     expect(schemas.menuItem.safeParse({ ...item, price: 0 }).success).toBe(false);

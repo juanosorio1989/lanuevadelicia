@@ -1,5 +1,5 @@
 /** Where on the site a tracked link lives (spec 08). `story` is the Our Story page call to action. */
-export type TrackLocation = "hero" | "header" | "bottom_bar" | "visit" | "footer" | "story";
+export type TrackLocation = "hero" | "header" | "bottom_bar" | "visit" | "footer" | "story" | "menu";
 
 /** Params each GA4 event must send (spec 08). `locale` is added by track(). */
 export type EventParams = {
@@ -11,6 +11,7 @@ export type EventParams = {
   switch_language: { from: string; to: string };
   view_menu_category: { category: string };
   click_instagram: { location: TrackLocation };
+  search: { search_term: string };
 };
 
 export type AnalyticsEvent = keyof EventParams;

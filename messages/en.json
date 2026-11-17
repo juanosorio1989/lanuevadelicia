@@ -74,6 +74,7 @@
     "closedDay": "Closed · opens {day} at {time}"
   },
   "hours": {
+    "title": "Opening hours",
     "breakfast": "Breakfast",
     "breakfastUntil": "until {time}",
     "happyHour": "Happy hour",
@@ -89,6 +90,13 @@
     "title": "Our menu",
     "priceNote": "In-restaurant prices; delivery app prices may differ.",
     "chipsLabel": "Menu categories",
+    "searchLabel": "Search the menu…",
+    "swipeHint": "Swipe to see more categories",
+    "searchClear": "Clear search",
+    "noResults": "We couldn't find that dish.",
+    "noResultsCall": "Call us at",
+    "resultsOne": "1 dish",
+    "resultsOther": "{count} dishes",
     "favorite": "Favorite",
     "specialsLink": "See this week's specials →"
   },
@@ -101,7 +109,10 @@
     "seeMenu": "See the full menu"
   },
   "delivery": {
-    "prompt": "Prefer delivery?"
+    "reservations": "<b>Reservations:</b> call <phone></phone>.",
+    "phoneTitle": "Order by phone",
+    "phoneBody": "Call <phone></phone> for pickup or delivery.",
+    "range": "Delivery: up to {free} mile at no extra charge; {free} to {max} miles, extra charge. Beyond {max} miles, order on:"
   },
   "story": {
     "title": "Our story",
@@ -140,7 +151,7 @@
     "title": "Privacy",
     "lead": "This page explains in plain words what data this site collects.",
     "analyticsTitle": "Usage statistics",
-    "analytics": "We use Google Analytics (GA4) to measure, anonymously, how the site is used: which pages are visited and which buttons are tapped. We do not store your name or personal details.",
+    "analytics": "We use Google Analytics (GA4) to measure, anonymously, how the site is used: which pages are visited, which buttons are tapped and what is searched for in the menu. We do not store your name or personal details.",
     "whyTitle": "Why",
     "why": "Only to improve the site so the menu, hours and directions are easy to find.",
     "adsTitle": "Advertising",

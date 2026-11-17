@@ -546,12 +546,37 @@ const infantil: Row[] = [
 
 // Food Menu.pdf page 6
 const extras: Row[] = [
-  { id: "tostones", name: t("Tostones", "Fried plantain"), price: 6 },
-  { id: "papa-criolla", name: t("Papa criolla", "Creole yellow potatoes"), price: 7 },
-  { id: "maduros-fritos", name: t("Maduros fritos", "Fried sweet plantain"), price: 6 },
+  {
+    id: "tostones",
+    name: t("Tostones", "Fried plantain"),
+    price: 6,
+    description: t("Rodajas de plátano verde fritas y crocantes.", "Crispy fried green plantain slices."),
+  },
+  {
+    id: "papa-criolla",
+    name: t("Papa criolla", "Creole yellow potatoes"),
+    price: 7,
+    description: t("Papitas amarillas criollas, un acompañamiento clásico colombiano.", "Small yellow potatoes, a classic Colombian side."),
+  },
+  {
+    id: "maduros-fritos",
+    name: t("Maduros fritos", "Fried sweet plantain"),
+    price: 6,
+    description: t("Plátano maduro frito, dorado por fuera y suave por dentro.", "Ripe plantain, fried golden outside and tender inside."),
+  },
   { id: "aguacate", name: t("Aguacate", "Avocado"), price: 6 },
-  { id: "arepitas", name: t("Arepitas", "Little corn cakes"), price: 5 },
-  { id: "frijoles", name: t("Fríjoles", "Beans"), price: 7 },
+  {
+    id: "arepitas",
+    name: t("Arepitas", "Little corn cakes"),
+    price: 5,
+    description: t("Arepitas de maíz crocantes.", "Crispy little corn cakes."),
+  },
+  {
+    id: "frijoles",
+    name: t("Fríjoles", "Beans"),
+    price: 7,
+    description: t("Fríjoles al estilo tradicional.", "Traditional-style beans."),
+  },
   { id: "arroz", name: t("Arroz", "Rice"), price: 5 },
   { id: "queso", name: t("Queso", "Cheese"), price: 3 },
   { id: "papitas-fritas", name: t("Papitas fritas", "French fries"), price: 7 },
@@ -569,13 +594,20 @@ const postres: Row[] = [
     name: t("Mazamorra con panela", "Colombian corn pudding"),
     price: 8,
     options: [opt("Con bocadillo", "With guava paste", 8.5)],
+    description: t("Postre tradicional colombiano de maíz con panela.", "Traditional Colombian corn pudding sweetened with panela (cane sugar)."),
   },
-  { id: "ensalada-de-fruta", name: t("Ensalada de fruta", "Fruit salad"), price: 13 },
+  {
+    id: "ensalada-de-fruta",
+    name: t("Ensalada de fruta", "Fruit salad"),
+    price: 13,
+    description: t("Mezcla de frutas frescas de temporada.", "A mix of fresh seasonal fruit."),
+  },
   {
     id: "arroz-con-leche",
     name: t("Arroz con leche", "Rice pudding"),
     price: 7,
     image: "dishes/arroz-con-leche",
+    description: t("Postre cremoso de arroz cocido en leche.", "Creamy rice cooked in milk."),
   },
   {
     id: "brevas-con-arequipe-y-queso",
@@ -583,7 +615,12 @@ const postres: Row[] = [
     price: 10,
   },
   { id: "brownie-con-helado", name: t("Brownie con helado", "Brownie with ice cream"), price: 10 },
-  { id: "flan-con-caramelo", name: t("Flan con caramelo", "Flan with caramel"), price: 7 },
+  {
+    id: "flan-con-caramelo",
+    name: t("Flan con caramelo", "Flan with caramel"),
+    price: 7,
+    description: t("Flan cremoso bañado en caramelo.", "Creamy custard topped with caramel."),
+  },
 ];
 
 // Food Menu.pdf page 7
@@ -601,13 +638,28 @@ const bebidas: Row[] = [
     { id: "aguapanela-con-queso", name: t("Aguapanela con queso", "Aguapanela with cheese"), price: 7 },
     { id: "te", name: t("Té", "Tea"), price: 2 },
     { id: "milo", name: t("Milo", "Milo"), price: 6, image: "drinks/milo" },
-    { id: "chocolate", name: t("Chocolate", "Chocolate"), price: 7 },
+    {
+      id: "chocolate",
+      name: t("Chocolate", "Chocolate"),
+      price: 7,
+      description: t("Chocolate caliente, espeso y suave.", "Rich, smooth hot chocolate."),
+    },
     { id: "cafe", name: t("Café", "Coffee"), price: 2, image: "drinks/cafe" },
     { id: "soda", name: t("Soda", "Soda"), price: 2.5 },
-    { id: "soda-postobon", name: t("Soda Postobón", "Postobón soda"), price: 3.5 },
+    {
+      id: "soda-postobon",
+      name: t("Soda Postobón", "Postobón soda"),
+      price: 3.5,
+      description: t("Gaseosa colombiana de sabores dulces y frutales.", "Colombian soda with sweet, fruity flavors."),
+    },
     { id: "pony-malta", name: t("Pony Malta", "Pony Malta"), price: 3.5 },
     { id: "botella-de-agua", name: t("Botella de agua", "Water bottle"), price: 2 },
-    { id: "aguapanela-con-limon", name: t("Aguapanela con limón", "Aguapanela with lemon"), price: 5 },
+    {
+      id: "aguapanela-con-limon",
+      name: t("Aguapanela con limón", "Aguapanela with lemon"),
+      price: 5,
+      description: t("Bebida de panela, dulce y refrescante, con limón.", "Sweet, refreshing cane-sugar drink with a squeeze of lemon."),
+    },
     { id: "limonada-natural", name: t("Limonada natural", "Natural lemonade"), price: 5 },
   ]),
   ...sub(juices, [
