@@ -32,9 +32,9 @@ export async function Header() {
           <Img
             photo={logo}
             locale={locale}
-            sizes="56px"
+            sizes="80px"
             eager
-            className="h-12 w-auto transition-[height] duration-200 group-data-[scrolled]:h-10 shrink-0 object-contain lg:h-14"
+            className="h-16 w-auto transition-[height] duration-200 group-data-[scrolled]:h-10 shrink-0 object-contain lg:h-20 lg:group-data-[scrolled]:h-10"
           />
         </a>
         <NavLinks locale={locale} labels={navLabels} />

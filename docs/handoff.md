@@ -22,7 +22,7 @@ Updated 2026-11-15.
    tests and add test hits to GA) and `NEXT_PUBLIC_SITE_URL`.
 3. On the preview deploy: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
-4. Deferred nits: 56px logo loads the 384w file; mazamorra option price not in Menu JSON-LD (ruled out for now).
+4. Deferred nits: 80px logo loads the 384w file (check after the size change); mazamorra option price not in Menu JSON-LD (ruled out for now).
 
 ## Open questions (owner)
 

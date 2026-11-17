@@ -143,6 +143,20 @@ test.describe("header logo and wrapping across widths", () => {
   }
 });
 
+test("logo is 64px on mobile, 80px on desktop, 40px after scroll", async ({ page }) => {
+  for (const [width, height, expected] of [[390, 844, 64], [1280, 800, 80]] as const) {
+    await page.setViewportSize({ width, height });
+    await page.goto("/es/");
+    const header = page.getByRole("banner");
+    const logo = header.locator("a").first().locator("img");
+    await expect(logo).toBeVisible();
+    await expect.poll(async () => Math.round((await logo.boundingBox())!.height)).toBe(expected);
+    await page.mouse.wheel(0, 800);
+    await expect(header).toHaveAttribute("data-scrolled", "");
+    await expect.poll(async () => Math.round((await logo.boundingBox())!.height)).toBe(40);
+  }
+});
+
 test.describe("footer at tablet width", () => {
   for (const [locale, label] of [["es", "Pide a domicilio"], ["en", "Order delivery"]] as const) {
     test(`${locale} 768px: Instagram handle does not overlap the delivery column`, async ({ page }) => {
