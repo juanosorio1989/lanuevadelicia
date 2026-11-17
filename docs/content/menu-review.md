@@ -167,6 +167,39 @@ price; the site shows them with "el precio puede cambiar según la elección de 
 | Sábado | Sancocho de gallina con gallina guisada / Hen sancocho with stewed hen | — | $15.00 |
 | Domingo | Cazuela de fríjoles con pezuña, acompañada con chicharrón / Bean casserole with pig's foot, served with fried pork skin | — | $15.00 |
 
+## Descriptions from Uber Eats (2026-11-17)
+
+The restaurant's Uber Eats store was the source (English only; Uber prices are not used). Only items that had no
+description were filled; names, prices, options and the 36 existing descriptions did not change. The Spanish lines
+are Claude's renderings. Please proof these 12:
+
+| Item (ES) | Description (ES) | Description (EN) |
+|-----------|------------------|------------------|
+| Tostones | Rodajas de plátano verde fritas y crocantes. | Crispy fried green plantain slices. |
+| Papa criolla | Papitas amarillas criollas, un acompañamiento clásico colombiano. | Small yellow potatoes, a classic Colombian side. |
+| Maduros fritos | Plátano maduro frito, dorado por fuera y suave por dentro. | Ripe plantain, fried golden outside and tender inside. |
+| Arepitas | Arepitas de maíz crocantes. | Crispy little corn cakes. |
+| Fríjoles | Fríjoles al estilo tradicional. | Traditional-style beans. |
+| Mazamorra con panela | Postre tradicional colombiano de maíz con panela. | Traditional Colombian corn pudding sweetened with panela (cane sugar). |
+| Ensalada de fruta | Mezcla de frutas frescas de temporada. | A mix of fresh seasonal fruit. |
+| Arroz con leche | Postre cremoso de arroz cocido en leche. | Creamy rice cooked in milk. |
+| Flan con caramelo | Flan cremoso bañado en caramelo. | Creamy custard topped with caramel. |
+| Aguapanela con limón | Bebida de panela, dulce y refrescante, con limón. | Sweet, refreshing cane-sugar drink with a squeeze of lemon. |
+| Chocolate | Chocolate caliente, espeso y suave. | Rich, smooth hot chocolate. |
+| Soda Postobón | Gaseosa colombiana de sabores dulces y frutales. | Colombian soda with sweet, fruity flavors. |
+
+### Q7 note: chicken calentado
+
+Uber Eats describes the chicken calentado as mixed rice and beans with grilled chicken cutlet and eggs. The site
+keeps the printed line until you confirm.
+
+### Items still without a description (your call)
+
+- Cocktails, beers, wines and shots (the source does not cover them).
+- Combo empanaditas, Maduro con queso, Choricriolla, Chuletón a caballo, Brevas con arequipe y queso, Brownie con
+  helado, and the drinks with cheese: do you want a description for any of these?
+- Left without one on purpose because the name says it all: water, soda, coffee, tea, rice, avocado, cheese, fries.
+
 ## Needs owner check
 
 ### Q7: two calentado descriptions (kept as printed)
