@@ -5,16 +5,18 @@ import { capitalize, dayRange, formatPrice } from "@/lib/format";
 import { formatTime } from "@/lib/hours";
 import type { IsoWeekday, Locale } from "@/types/content";
 
-/** Opening hours from data. Server-rendered, no status badge (see OpenStatus). */
-export async function HoursTable({ locale, className = "" }: { locale: Locale; className?: string }) {
+/** Opening hours from data. The title is the table caption; pass showTitle={false} where the page has its own heading. Server-rendered, no status badge (see OpenStatus). */
+export async function HoursTable({ locale, className = "", showTitle = true }: { locale: Locale; className?: string; showTitle?: boolean }) {
   const t = await getTranslations({ locale, namespace: "hours" });
   const label = (days: IsoWeekday[]) => capitalize(dayRange(days, locale));
   const cell = "py-1 pr-5 text-left align-top";
 
   return (
     <div className={className || undefined}>
-      <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-600">{t("title")}</p>
       <table className="text-sm">
+        {showTitle && (
+          <caption className="mb-1 text-left text-xs font-bold uppercase tracking-wider text-muted-600">{t("title")}</caption>
+        )}
         <tbody>
           {restaurant.hours.map((h) => (
             <tr key={h.days.join()}>

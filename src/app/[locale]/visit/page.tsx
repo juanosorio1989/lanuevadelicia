@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         <p className="mt-2 text-lg font-bold">{restaurant.address.oneLine}</p>
         <OpenStatus locale={locale} className="mt-2 text-green-900" />
         <h2 className="mt-5 text-xl">{t("hoursTitle")}</h2>
-        <HoursTable locale={locale} className="my-2" />
+        <HoursTable locale={locale} className="my-2" showTitle={false} />
         <div className="mt-4 flex flex-wrap gap-3">
           <TrackedLink href={directionsUrl()} event="click_directions" params={{ location: "visit" }} external variant="primary">
             <MapPin aria-hidden="true" size={18} />

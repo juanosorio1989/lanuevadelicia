@@ -143,8 +143,8 @@ test.describe("header logo and wrapping across widths", () => {
   }
 });
 
-test("logo is 64px on mobile, 80px on desktop, 40px after scroll", async ({ page }) => {
-  for (const [width, height, expected] of [[390, 844, 64], [1280, 800, 80]] as const) {
+for (const [width, height, expected] of [[390, 844, 64], [1280, 800, 80]] as const) {
+  test(`logo is ${expected}px at ${width}px wide, 40px after scroll`, async ({ page }) => {
     await page.setViewportSize({ width, height });
     await page.goto("/es/");
     const header = page.getByRole("banner");
@@ -154,6 +154,29 @@ test("logo is 64px on mobile, 80px on desktop, 40px after scroll", async ({ page
     await page.mouse.wheel(0, 800);
     await expect(header).toHaveAttribute("data-scrolled", "");
     await expect.poll(async () => Math.round((await logo.boundingBox())!.height)).toBe(40);
+  });
+}
+
+test.describe("header scroll state does not flicker", () => {
+  for (const [width, height] of [[390, 844], [1280, 800]] as const) {
+    for (const delta of [30, 60]) {
+      test(`${width}px, wheel ${delta}px on /es/menu/: data-scrolled changes at most once`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto("/es/menu/");
+        await page.evaluate(() => {
+          const header = document.querySelector("header")!;
+          (window as unknown as { __toggles: number }).__toggles = 0;
+          new MutationObserver((records) => {
+            for (const r of records) if (r.attributeName === "data-scrolled") (window as unknown as { __toggles: number }).__toggles++;
+          }).observe(header, { attributes: true });
+        });
+        await page.mouse.move(200, 400);
+        await page.mouse.wheel(0, delta);
+        await page.waitForTimeout(1000);
+        const toggles = await page.evaluate(() => (window as unknown as { __toggles: number }).__toggles);
+        expect(toggles).toBeLessThanOrEqual(1);
+      });
+    }
   }
 });
 

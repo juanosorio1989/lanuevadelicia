@@ -1,6 +1,6 @@
 # Handoff
 
-Updated 2026-11-15.
+Updated 2026-11-17.
 
 ## Done
 
@@ -12,6 +12,8 @@ Updated 2026-11-15.
   `allowedDevOrigins` for phone testing. Tasks reviewed; final branch review fixes applied. Not merged yet.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-hours-logo-design/`): happy hour is its own card under the hours
   table ("Horario" label added) and the closed-dates note is hidden everywhere (January 1 logic and JSON-LD stay).
+- 2026-11-17: header scroll state uses hysteresis (on past 80px, off below 8px) to stop a flicker loop caused by
+  scroll anchoring while the header shrinks; hours title is now a table caption, hidden on `/visit/`.
 - `npm run ci` green; Lighthouse mobile budgets met.
 
 ## Next
@@ -22,7 +24,7 @@ Updated 2026-11-15.
    tests and add test hits to GA) and `NEXT_PUBLIC_SITE_URL`.
 3. On the preview deploy: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
-4. Deferred nits: 80px logo loads the 384w file (check after the size change); mazamorra option price not in Menu JSON-LD (ruled out for now).
+4. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
 
 ## Open questions (owner)
 

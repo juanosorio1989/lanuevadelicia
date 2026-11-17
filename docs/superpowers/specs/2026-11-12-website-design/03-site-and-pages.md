@@ -61,7 +61,7 @@ In order:
    el sabor casero y la atención cálida.", and buttons "Leer reseñas en Google" and "Dejar una reseña". **The
    "lo que más destacan" line is the owner's characterization; keep it only if the owner confirms that reviews say
    this (Q6), otherwise drop it.**
-6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m., happy hour cocktails $8; 2026-11-17: happy hour moved to its own card, see `../2026-11-17-hours-logo-design/`),
+6. **Visit us:** address as H2, hours table (Mon–Thu, Fri–Sun, breakfast until 1 p.m.) and a happy hour card (cocktails $8; since 2026-11-17, see `../2026-11-17-hours-logo-design/`),
    **Cómo llegar** and **Llamar** buttons, a "Pide por teléfono" PhoneOrder block (first line "**Reservas:** llámanos al (718) 672-3456." / "**Reservations:** call (718) 672-3456.", then the phone number, delivery range line and the 3 apps as text links; see [menu-search design](../2026-11-15-menu-search-design/README.md) §5), and "¿Evento o grupo grande? Llámanos." Next to it is a click-to-load map (see below).
 7. **Footer.**
 

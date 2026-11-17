@@ -84,7 +84,8 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, no tr
   await expect(table).toContainText("9:00 a.m. – 10:00 p.m.");
   await expect(table).toContainText("Desayunos");
   await expect(main.getByTestId("happy-hour")).toContainText("Happy hour");
-  await expect(main).toContainText("Horario");
+  await expect(main.locator("table caption")).toHaveCount(0);
+  await expect(main.getByRole("heading", { name: "Horario" })).toHaveCount(1);
   for (const app of ["Uber Eats", "DoorDash", "Grubhub"]) {
     const link = main.getByRole("link", { name: app });
     await expect(link).toBeVisible();
@@ -126,4 +127,11 @@ test("404 is styled, bilingual and its 4 links point to menu and visit", async (
   const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
   expect(bg).not.toBe("rgba(0, 0, 0, 0)");
   expect(bg).not.toBe("rgb(255, 255, 255)");
+});
+
+test("hours table has a caption naming it on the home page", async ({ page }) => {
+  for (const [locale, title] of [["es", "Horario"], ["en", "Opening hours"]] as const) {
+    await page.goto(`/${locale}/`);
+    await expect(page.locator("table").first().locator("caption")).toHaveText(title);
+  }
 });

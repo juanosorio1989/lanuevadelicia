@@ -26,7 +26,8 @@ Small change requested by the owner after seeing the site locally.
 
 **Hours block** (`src/components/shared/HoursTable.tsx`):
 
-- A small uppercase label "Horario" / "Opening hours" above the table (new message key).
+- A small uppercase label "Horario" / "Opening hours" above the table (new message key). It is the table's
+  `<caption>`, hidden on `/visit/` (`showTitle={false}`), which has its own h2.
 - Table rows: the opening-hours rows and the breakfast row, as today.
 - Below the table, a happy hour card: `bg-terra-700`, `text-cream-50`, rounded, padding about 12px 14px.
   - Title row: Lucide `Martini` icon (`aria-hidden`) + "Happy hour", and on the right a pill (`bg-cream-50`,
@@ -54,3 +55,8 @@ change.
 
 Exact spacing, and updating any unit or e2e test that asserts the closed note or the happy hour table row. Acceptance:
 `npm run ci` green, Lighthouse budgets met, and the spec/docs that mention the closed note updated in the same commit.
+
+## Follow-up (final review)
+
+The header scroll threshold is now 80px in / 8px out (hysteresis), because the shrinking sticky header made Chrome's
+scroll anchoring toggle `data-scrolled` endlessly at small scroll positions.
