@@ -14,7 +14,7 @@ Updated 2026-11-17.
   table ("Horario" label added) and the closed-dates note is hidden everywhere (January 1 logic and JSON-LD stay).
 - 2026-11-17: header scroll state uses hysteresis (on past 80px, off below 8px) to stop a flicker loop caused by
   scroll anchoring while the header shrinks; hours title is now a table caption, hidden on `/visit/`.
-- 2026-11-17: "Inicio / Home" added as the first nav item (header, mobile panel, footer); branch `nav-home`.
+- 2026-11-17: "Inicio / Home" added as the first nav item (header, mobile panel, footer); in `main`, merged 2026-11-17.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-menu-descriptions-design/`): 12 menu descriptions filled from Uber
   Eats (sides, desserts, three drinks); 48 of 138 items now have one. Owner proof list: `docs/content/menu-review.md`.
 - `npm run ci` green; Lighthouse mobile budgets met.

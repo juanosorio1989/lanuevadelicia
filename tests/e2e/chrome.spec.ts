@@ -154,7 +154,7 @@ test("the skip link is first and moves focus to #main", async ({ page }) => {
 
 test.describe("header logo and wrapping across widths", () => {
   for (const locale of ["es", "en"] as const) {
-    for (const width of [320, 768, 1024, 1280]) {
+    for (const width of [320, 768, 1024, 1280, 1440]) {
       test(`${locale} ${width}px: logo keeps its width, header items do not wrap`, async ({ page }) => {
         await page.setViewportSize({ width, height: 800 });
         await page.goto(`/${locale}/`);
@@ -166,6 +166,21 @@ test.describe("header logo and wrapping across widths", () => {
           const phone = header.getByRole("link", { name: restaurant.phone.display });
           await expect(phone).toBeVisible();
           // min-h-11 is 44px; a wrapped phone number would be at least two 20px lines plus padding.
+          expect((await phone.boundingBox())!.height).toBeLessThanOrEqual(48);
+          // Measure the text, not the box: a two-line label still fits inside min-h-11.
+          const oneLine = async () =>
+            header.getByRole("navigation").first().locator("a").evaluateAll((links) =>
+              links.map((a) => {
+                const r = document.createRange();
+                r.selectNodeContents(a);
+                return r.getBoundingClientRect().height;
+              }),
+            );
+          for (const h of await oneLine()) expect(h).toBeLessThanOrEqual(24);
+          await page.mouse.move(640, 400);
+          await page.mouse.wheel(0, 300);
+          await expect(page.locator("header[data-scrolled]")).toHaveCount(1);
+          for (const h of await oneLine()) expect(h).toBeLessThanOrEqual(24);
           expect((await phone.boundingBox())!.height).toBeLessThanOrEqual(48);
         } else {
           await expect(page.getByTestId("menu-button")).toBeVisible();
