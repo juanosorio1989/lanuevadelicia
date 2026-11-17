@@ -196,9 +196,11 @@ keeps the printed line until you confirm.
 ### Items still without a description (your call)
 
 - Cocktails, beers, wines and shots (the source does not cover them).
+- Most meats, chicken, seafood and appetizers: the Uber Eats line is the same as the item's English name, so nothing was added.
 - Combo empanaditas, Maduro con queso, Choricriolla, Chuletón a caballo, Brevas con arequipe y queso, Brownie con
   helado, and the drinks with cheese: do you want a description for any of these?
-- Left without one on purpose because the name says it all: water, soda, coffee, tea, rice, avocado, cheese, fries.
+- Left without one on purpose because the name says it all: water, soda, coffee, tea, rice, avocado, cheese, fries, Milo, Pony Malta, natural lemonade, "any meat from the
+  specials", large extra soup.
 
 ## Needs owner check
 
