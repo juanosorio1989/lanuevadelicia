@@ -59,10 +59,13 @@ test("visit (en): phone order copy", async ({ page }) => {
   }
 });
 
-test("visit (en): reservations and closed date", async ({ page }) => {
+test("visit (en): reservations, happy hour card, no closed note", async ({ page }) => {
   await page.goto("/en/visit/");
   await expect(page.locator("main").getByTestId("phone-order")).toContainText("Reservations: call (718) 672-3456.");
-  await expect(page.locator("main")).toContainText("Closed on January 1.");
+  const card = page.locator("main").getByTestId("happy-hour");
+  await expect(card).toContainText("cocktails $8");
+  await expect(card).toContainText("12:00 PM – 7:00 PM");
+  await expect(page.locator("main")).not.toContainText("Closed on");
 });
 
 test("open status is closed on January 1", async ({ page }) => {
@@ -71,7 +74,7 @@ test("open status is closed on January 1", async ({ page }) => {
   await expect(page.getByTestId("open-status").first()).toHaveText("Cerrado · abre mañana a las 9:00 a.m.");
 });
 
-test("visit (es): address, hours, breakfast, happy hour, delivery, events, note, no transit", async ({ page }) => {
+test("visit (es): address, hours, breakfast, happy hour, delivery, events, no transit", async ({ page }) => {
   await page.goto("/es/visit/");
   await expect(page.locator("h1")).toHaveCount(1);
   const main = page.locator("main");
@@ -80,7 +83,8 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, note,
   await expect(table).toContainText("9:00 a.m. – 9:00 p.m.");
   await expect(table).toContainText("9:00 a.m. – 10:00 p.m.");
   await expect(table).toContainText("Desayunos");
-  await expect(table).toContainText("Happy hour");
+  await expect(main.getByTestId("happy-hour")).toContainText("Happy hour");
+  await expect(main).toContainText("Horario");
   for (const app of ["Uber Eats", "DoorDash", "Grubhub"]) {
     const link = main.getByRole("link", { name: app });
     await expect(link).toBeVisible();
@@ -93,7 +97,7 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, note,
   await expect(order).toContainText("Domicilio: hasta 1 milla sin recargo; de 1 a 1.5 millas, con recargo. A más de 1.5 millas, pide por:");
   await expect(order.getByRole("link", { name: "(718) 672-3456" }).first()).toHaveAttribute("href", telHref());
   await expect(order).toContainText("Reservas: llámanos al (718) 672-3456.");
-  await expect(main).toContainText("Cerrado el 1 de enero.");
+  await expect(main).not.toContainText("Cerrado el");
   await expect(main).not.toContainText("festivos");
   await expect(main).not.toContainText("cargo extra");
   expect(await main.innerText()).not.toMatch(/metro|subway|bus\b|tren|train|\b7\b line/i);

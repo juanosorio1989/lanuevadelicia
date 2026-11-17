@@ -90,6 +90,7 @@ The owner picked the first.
   counting "abre mañana / el {día}"). Existing status strings are reused.
 - Under the hours table (everywhere it shows): "Cerrado el 1 de enero." / "Closed on January 1." The date comes from
   `closedDates`, formatted per locale. No holiday-hours line (owner: holidays are regular, say nothing about them).
+  Superseded 2026-11-17: the note is no longer shown; see `../2026-11-17-hours-logo-design/`.
 - Restaurant JSON-LD: `specialOpeningHoursSpecification` marks the next two January 1 dates (from the build date) as
   closed (`opens`/`closes` "00:00", `validFrom` = `validThrough` = the date). The site is rebuilt on each deploy.
 

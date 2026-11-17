@@ -96,7 +96,7 @@ test("footer shows the facts and the delivery apps", async ({ page }) => {
   const footer = page.getByRole("contentinfo");
   await expect(footer).toContainText("93-16B 37th Ave");
   await expect(footer).toContainText("(718) 672-3456");
-  await expect(footer).toContainText("Cerrado el 1 de enero.");
+  await expect(footer).not.toContainText("Cerrado el");
   await expect(footer).toContainText("@lanuevadeliciarestaurante");
   for (const d of restaurant.delivery) {
     const link = footer.getByRole("link", { name: d.label });
@@ -105,9 +105,9 @@ test("footer shows the facts and the delivery apps", async ({ page }) => {
   }
 });
 
-test("footer shows the closed-date note in English", async ({ page }) => {
+test("footer has no closed-date note in English", async ({ page }) => {
   await page.goto("/en/");
-  await expect(page.getByRole("contentinfo")).toContainText("Closed on January 1.");
+  await expect(page.getByRole("contentinfo")).not.toContainText("Closed on");
 });
 
 test("the skip link is first and moves focus to #main", async ({ page }) => {

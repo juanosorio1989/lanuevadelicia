@@ -1,7 +1,6 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { restaurant } from "@/data/restaurant";
 import type { Locale } from "@/i18n/routing";
-import { formatClosedDates } from "@/lib/format";
 import { formatTime } from "@/lib/hours";
 import { directionsUrl, telHref } from "@/lib/links";
 import { NAV_ITEMS } from "./nav-items";
@@ -21,7 +20,6 @@ function dayRange(days: number[], locale: Locale): string {
 export async function Footer() {
   const t = await getTranslations("footer");
   const nav = await getTranslations("nav");
-  const hours = await getTranslations("hours");
   const locale = (await getLocale()) as Locale;
 
   return (
@@ -54,11 +52,6 @@ export async function Footer() {
             ))}
           </ul>
           <p className="mt-1 text-sm">{t("breakfast", { time: formatTime(restaurant.breakfastUntil, locale) })}</p>
-          {restaurant.closedDates.length > 0 && (
-            <p className="mt-1 text-sm">
-              {hours("closedNote", { dates: formatClosedDates(restaurant.closedDates, locale) })}
-            </p>
-          )}
         </div>
         <div>
           <p className={labelClass}>{t("instagram")}</p>

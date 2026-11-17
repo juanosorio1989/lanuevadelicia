@@ -10,6 +10,8 @@ Updated 2026-11-15.
   `docs/superpowers/plans/2026-11-15-menu-search/`): menu search and sticky toolbar with swipe hint, phone orders and
   delivery range, gallery hidden from nav and sitemap, reservations by phone, closed every January 1, and
   `allowedDevOrigins` for phone testing. Tasks reviewed; final branch review fixes applied. Not merged yet.
+- 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-hours-logo-design/`): happy hour is its own card under the hours
+  table ("Horario" label added) and the closed-dates note is hidden everywhere (January 1 logic and JSON-LD stay).
 - `npm run ci` green; Lighthouse mobile budgets met.
 
 ## Next

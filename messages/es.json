@@ -74,11 +74,11 @@
     "closedDay": "Cerrado · abre el {day} a las {time}"
   },
   "hours": {
+    "title": "Horario",
     "breakfast": "Desayunos",
     "breakfastUntil": "hasta la {time}",
     "happyHour": "Happy hour",
     "happyHourValue": "cócteles a {price}",
-    "closedNote": "Cerrado el {dates}.",
     "happyHourWindow": "{days}: {from} – {to}"
   },
   "map": {

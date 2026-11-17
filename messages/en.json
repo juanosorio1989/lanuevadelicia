@@ -74,11 +74,11 @@
     "closedDay": "Closed · opens {day} at {time}"
   },
   "hours": {
+    "title": "Opening hours",
     "breakfast": "Breakfast",
     "breakfastUntil": "until {time}",
     "happyHour": "Happy hour",
     "happyHourValue": "cocktails {price}",
-    "closedNote": "Closed on {dates}.",
     "happyHourWindow": "{days}: {from} – {to}"
   },
   "map": {
