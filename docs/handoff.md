@@ -19,13 +19,19 @@ Updated 2026-11-17.
   Eats (sides, desserts, three drinks); 48 of 138 items now have one. Owner proof list: `docs/content/menu-review.md`.
 - `npm run ci` green; Lighthouse mobile budgets met.
 
+## Deployed
+
+- Cloudflare Pages project `lanuevadelicia` (created 2026-11-17), Git-connected to `main`: every push to `main`
+  rebuilds production at https://lanuevadelicia.pages.dev (first build ~2 min, commit 0850ab2). Build `npm run build`,
+  output `out`. Production vars: `NODE_VERSION=22`, `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C`,
+  `NEXT_PUBLIC_SITE_URL=https://lanuevadelicia.pages.dev`. Preview vars: same minus `NEXT_PUBLIC_GA_ID`.
+
 ## Next
 
-1. Deploy to Cloudflare Pages (ask the owner before creating the project). Set `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C` (GA4
-   measurement id, given by the owner 2026-11-15; public, it ships in every page; production only, never in `.env.local`, which would break the no-GA e2e
-   tests and add test hits to GA) and `NEXT_PUBLIC_SITE_URL`.
-2. On the preview deploy: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
+1. On https://lanuevadelicia.pages.dev: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
+2. When the owner has a domain: add it in Pages > Custom domains and change `NEXT_PUBLIC_SITE_URL` (Production)
+   to it, then redeploy.
 3. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
 
 ## Open questions (owner)
