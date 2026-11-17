@@ -17,7 +17,7 @@ export function NavLinks({ locale, labels }: { locale: string; labels: NavLabels
             key={item.key}
             href={href}
             aria-current={active ? "page" : undefined}
-            className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50 ${
+            className={`inline-flex min-h-11 items-center rounded-full px-2 text-sm whitespace-nowrap xl:px-3 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50 ${
               active ? "font-bold" : ""
             }`}
           >

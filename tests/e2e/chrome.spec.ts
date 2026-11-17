@@ -44,6 +44,14 @@ test.describe("mobile 390x844", () => {
     await expect(button).toBeFocused();
   });
 
+  test("the mobile panel starts with Inicio", async ({ page }) => {
+    await page.goto("/es/menu/");
+    await page.getByTestId("menu-button").click();
+    const first = page.locator("dialog[open] nav a").first();
+    await expect(first).toHaveText("Inicio");
+    await expect(first).toHaveAttribute("href", "/es/");
+  });
+
   test("clicking a link in the open dialog closes it", async ({ page }) => {
     await page.goto("/es/");
     await page.getByTestId("menu-button").click();
@@ -64,6 +72,31 @@ test.describe("mobile without JS", () => {
       await expect(page.getByRole("contentinfo").getByRole("link", { name })).toHaveAttribute("href", `/es/${path}/`);
     }
     await expect(page.getByRole("contentinfo").getByRole("link", { name: "Galería" })).toHaveCount(0);
+  });
+});
+
+test.describe("home link in the nav", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("desktop nav starts with Inicio; current only on the home page", async ({ page }) => {
+    await page.goto("/es/menu/");
+    const first = page.getByRole("banner").getByRole("navigation").getByRole("link").first();
+    await expect(first).toHaveText("Inicio");
+    await expect(first).toHaveAttribute("href", "/es/");
+    await expect(first).not.toHaveAttribute("aria-current", /.*/);
+    await page.goto("/es/");
+    await expect(page.getByRole("banner").getByRole("navigation").getByRole("link").first()).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  test("footer site nav has Home in English", async ({ page }) => {
+    await page.goto("/en/");
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Home", exact: true })).toHaveAttribute(
+      "href",
+      "/en/",
+    );
   });
 });
 
@@ -121,7 +154,7 @@ test("the skip link is first and moves focus to #main", async ({ page }) => {
 
 test.describe("header logo and wrapping across widths", () => {
   for (const locale of ["es", "en"] as const) {
-    for (const width of [320, 768, 1024, 1280]) {
+    for (const width of [320, 768, 1024, 1280, 1440]) {
       test(`${locale} ${width}px: logo keeps its width, header items do not wrap`, async ({ page }) => {
         await page.setViewportSize({ width, height: 800 });
         await page.goto(`/${locale}/`);
@@ -133,6 +166,21 @@ test.describe("header logo and wrapping across widths", () => {
           const phone = header.getByRole("link", { name: restaurant.phone.display });
           await expect(phone).toBeVisible();
           // min-h-11 is 44px; a wrapped phone number would be at least two 20px lines plus padding.
+          expect((await phone.boundingBox())!.height).toBeLessThanOrEqual(48);
+          // Measure the text, not the box: a two-line label still fits inside min-h-11.
+          const oneLine = async () =>
+            header.getByRole("navigation").first().locator("a").evaluateAll((links) =>
+              links.map((a) => {
+                const r = document.createRange();
+                r.selectNodeContents(a);
+                return r.getBoundingClientRect().height;
+              }),
+            );
+          for (const h of await oneLine()) expect(h).toBeLessThanOrEqual(24);
+          await page.mouse.move(640, 400);
+          await page.mouse.wheel(0, 300);
+          await expect(page.locator("header[data-scrolled]")).toHaveCount(1);
+          for (const h of await oneLine()) expect(h).toBeLessThanOrEqual(24);
           expect((await phone.boundingBox())!.height).toBeLessThanOrEqual(48);
         } else {
           await expect(page.getByTestId("menu-button")).toBeVisible();
