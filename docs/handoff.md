@@ -6,10 +6,10 @@ Updated 2026-11-17.
 
 - Website MVP merged into `main` 2026-11-12 (spec `docs/superpowers/specs/2026-11-12-website-design/`, plan
   `docs/superpowers/plans/2026-11-12-website/`). Owner copy to review: `docs/content/copy-review.md`.
-- Branch `site-improvements` (spec `docs/superpowers/specs/2026-11-15-menu-search-design/`, plan
+- `site-improvements` (merged into `main` 2026-11-17, cc39d41; spec `docs/superpowers/specs/2026-11-15-menu-search-design/`, plan
   `docs/superpowers/plans/2026-11-15-menu-search/`): menu search and sticky toolbar with swipe hint, phone orders and
   delivery range, gallery hidden from nav and sitemap, reservations by phone, closed every January 1, and
-  `allowedDevOrigins` for phone testing. Tasks reviewed; final branch review fixes applied. Not merged yet.
+  `allowedDevOrigins` for phone testing. Tasks reviewed; final branch review fixes applied. Merged.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-hours-logo-design/`): happy hour is its own card under the hours
   table ("Horario" label added) and the closed-dates note is hidden everywhere (January 1 logic and JSON-LD stay).
 - 2026-11-17: header scroll state uses hysteresis (on past 80px, off below 8px) to stop a flicker loop caused by
@@ -20,13 +20,12 @@ Updated 2026-11-17.
 
 ## Next
 
-1. Merge `site-improvements` into `main` after the owner approves.
-2. Deploy to Cloudflare Pages (ask the owner before creating the project). Set `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C` (GA4
+1. Deploy to Cloudflare Pages (ask the owner before creating the project). Set `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C` (GA4
    measurement id, given by the owner 2026-11-15; public, it ships in every page; production only, never in `.env.local`, which would break the no-GA e2e
    tests and add test hits to GA) and `NEXT_PUBLIC_SITE_URL`.
-3. On the preview deploy: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
+2. On the preview deploy: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
-4. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
+3. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
 
 ## Open questions (owner)
 
