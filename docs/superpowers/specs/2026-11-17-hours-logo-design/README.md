@@ -60,3 +60,6 @@ Exact spacing, and updating any unit or e2e test that asserts the closed note or
 
 The header scroll threshold is now 80px in / 8px out (hysteresis), because the shrinking sticky header made Chrome's
 scroll anchoring toggle `data-scrolled` endlessly at small scroll positions.
+
+On /visit/ the hours table has no caption; it is named by the page's own `h2` through `aria-labelledby`
+(`HoursTable` prop `labelledBy`).

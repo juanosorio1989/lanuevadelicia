@@ -86,6 +86,7 @@ test("visit (es): address, hours, breakfast, happy hour, delivery, events, no tr
   await expect(main.getByTestId("happy-hour")).toContainText("Happy hour");
   await expect(main.locator("table caption")).toHaveCount(0);
   await expect(main.getByRole("heading", { name: "Horario" })).toHaveCount(1);
+  await expect(main.getByRole("table", { name: "Horario" })).toBeVisible();
   for (const app of ["Uber Eats", "DoorDash", "Grubhub"]) {
     const link = main.getByRole("link", { name: app });
     await expect(link).toBeVisible();

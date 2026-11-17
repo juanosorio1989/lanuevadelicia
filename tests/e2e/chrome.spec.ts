@@ -159,8 +159,8 @@ for (const [width, height, expected] of [[390, 844, 64], [1280, 800, 80]] as con
 
 test.describe("header scroll state does not flicker", () => {
   for (const [width, height] of [[390, 844], [1280, 800]] as const) {
-    for (const delta of [30, 60]) {
-      test(`${width}px, wheel ${delta}px on /es/menu/: data-scrolled changes at most once`, async ({ page }) => {
+    for (const delta of [30, 60, 100]) {
+      test(`${width}px, wheel ${delta}px on /es/menu/: data-scrolled changes ${delta === 100 ? "exactly once and ends set" : "at most once"}`, async ({ page }) => {
         await page.setViewportSize({ width, height });
         await page.goto("/es/menu/");
         await page.evaluate(() => {
@@ -174,7 +174,12 @@ test.describe("header scroll state does not flicker", () => {
         await page.mouse.wheel(0, delta);
         await page.waitForTimeout(1000);
         const toggles = await page.evaluate(() => (window as unknown as { __toggles: number }).__toggles);
-        expect(toggles).toBeLessThanOrEqual(1);
+        if (delta === 100) {
+          expect(toggles).toBe(1);
+          await expect(page.getByRole("banner")).toHaveAttribute("data-scrolled", "");
+        } else {
+          expect(toggles).toBeLessThanOrEqual(1);
+        }
       });
     }
   }
