@@ -607,7 +607,7 @@ const extras: Row[] = [
   },
 ];
 
-// Food Menu.pdf page 7
+// Food Menu.pdf page 7; Baileys Brownie Martini from menu.pdf (April 2026)
 const postres: Row[] = [
   {
     id: "mazamorra-con-panela",
@@ -645,6 +645,7 @@ const postres: Row[] = [
     image: "dishes/flan-con-caramelo",
     description: t("Flan cremoso bañado en caramelo.", "Creamy custard topped with caramel."),
   },
+  { id: "baileys-brownie-martini", name: t("Baileys Brownie Martini", "Baileys Brownie Martini"), price: 14 },
 ];
 
 // Food Menu.pdf page 7

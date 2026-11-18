@@ -3,6 +3,7 @@
 Every item on the website menu, as stored in `src/data/menu.ts` and `src/data/specials.ts`. Sources:
 `Food Menu.pdf` and `drinks menu.pdf` (owner's printed menus). Every price was read from the rendered PDF pages
 (not from text extracts) on 2026-11-12. Please check each row and tell us what to change.
+`menu.pdf` (April 2026, served on the site) was compared on 2026-11-17: all prices match; it adds Baileys Brownie Martini.
 
 Prices are in-restaurant prices. Options without a price are flavors or a choice at the same price.
 
@@ -101,53 +102,54 @@ Prices are in-restaurant prices. Options without a price are flavors or a choice
 | 89 | Postres | Brevas con arequipe y queso | Figs with arequipe & cheese | $10.00 | Food p7 |
 | 90 | Postres | Brownie con helado | Brownie with ice cream | $10.00 | Food p7 |
 | 91 | Postres | Flan con caramelo | Flan with caramel | $7.00 | Food p7 |
-| 92 | Bebidas y jugos › Bebidas calientes y frías | Chocolate con queso | Chocolate with cheese | $8.00 | Food p7 |
-| 93 | Bebidas y jugos › Bebidas calientes y frías | Milo y queso | Milo & cheese | $7.00 | Food p7 |
-| 94 | Bebidas y jugos › Bebidas calientes y frías | Aguapanela con queso | Aguapanela with cheese | $7.00 | Food p7 |
-| 95 | Bebidas y jugos › Bebidas calientes y frías | Té | Tea | $2.00 | Food p7 |
-| 96 | Bebidas y jugos › Bebidas calientes y frías | Milo | Milo | $6.00 | Food p7 |
-| 97 | Bebidas y jugos › Bebidas calientes y frías | Chocolate | Chocolate | $7.00 | Food p7 |
-| 98 | Bebidas y jugos › Bebidas calientes y frías | Café | Coffee | $2.00 | Food p7 |
-| 99 | Bebidas y jugos › Bebidas calientes y frías | Soda | Soda | $2.50 | Food p7 |
-| 100 | Bebidas y jugos › Bebidas calientes y frías | Soda Postobón | Postobón soda | $3.50 | Food p7 |
-| 101 | Bebidas y jugos › Bebidas calientes y frías | Pony Malta | Pony Malta | $3.50 | Food p7 |
-| 102 | Bebidas y jugos › Bebidas calientes y frías | Botella de agua | Water bottle | $2.00 | Food p7 |
-| 103 | Bebidas y jugos › Bebidas calientes y frías | Aguapanela con limón | Aguapanela with lemon | $5.00 | Food p7 |
-| 104 | Bebidas y jugos › Bebidas calientes y frías | Limonada natural | Natural lemonade | $5.00 | Food p7 |
-| 105 | Bebidas y jugos › Jugos naturales | Jugos naturales | Fresh juices | En leche $7.00 / En agua $6.00 (options: Papaya-guanábana, Mango-guayaba, Banano-lulo, Mora-maracuyá, Piña-tomate de árbol) | Food p7 |
-| 106 | Cócteles | Margarita | Margarita | $13.00 (options: Mango, Mora, Coco, Maracuyá, Tradicional, Tamarindo) | Drinks p2 |
-| 107 | Cócteles | Mojito | Mojito | $13.00 (options: Mango, Maracuyá, Coco, Tradicional) | Drinks p2 |
-| 108 | Cócteles | Piña colada | Piña colada | $13.00 | Drinks p2 |
-| 109 | Cócteles | Piña colada virgen | Virgin piña colada | $9.00 | Drinks p2 |
-| 110 | Cócteles | Expresso Martini | Espresso Martini | $13.00 | Drinks p2 |
-| 111 | Cócteles | Alexander | Alexander | $13.00 | Drinks p2 |
-| 112 | Cócteles | Q' Delicia | Q' Delicia | $13.00 | Drinks p2 |
-| 113 | Cervezas, vinos y shots › Cervezas | Corona | Corona | $5.00 | Drinks p2 |
-| 114 | Cervezas, vinos y shots › Cervezas | Modelo Especial | Modelo Especial | $5.00 | Drinks p2 |
-| 115 | Cervezas, vinos y shots › Cervezas | Águila | Águila | $6.00 | Drinks p2 |
-| 116 | Cervezas, vinos y shots › Cervezas | Heineken | Heineken | $5.00 | Drinks p2 |
-| 117 | Cervezas, vinos y shots › Cervezas | Club Colombia | Club Colombia | $6.00 | Drinks p2 |
-| 118 | Cervezas, vinos y shots › Cervezas | Cola y pola | Cola y pola | $4.00 | Drinks p2 |
-| 119 | Cervezas, vinos y shots › Cervezas | Michelada colombiana | Colombian michelada | $7.50 | Drinks p2 |
-| 120 | Cervezas, vinos y shots › Cervezas | Cerveza michelada | Michelada beer | $6.50 | Drinks p2 |
-| 121 | Cervezas, vinos y shots › Cervezas | Jarra de refajo | Pitcher of refajo | $17.00 | Drinks p2 |
-| 122 | Cervezas, vinos y shots › Cervezas | Jarra de refajo envenenado | Pitcher of spiked refajo | $23.00 | Drinks p2 |
-| 123 | Cervezas, vinos y shots › Vinos | Jarra de sangría | Pitcher of sangria | $31.00 | Drinks p2 |
-| 124 | Cervezas, vinos y shots › Vinos | Botella de vino tinto | Bottle of red wine | $26.00 | Drinks p2 |
-| 125 | Cervezas, vinos y shots › Vinos | Copa de vino tinto | Glass of red wine | $6.00 | Drinks p2 |
-| 126 | Cervezas, vinos y shots › Vinos | Copa de vino blanco | Glass of white wine | $6.00 | Drinks p2 |
-| 127 | Cervezas, vinos y shots › Vinos | Copa de sangría | Glass of sangria | $11.00 | Drinks p2 |
-| 128 | Cervezas, vinos y shots › Shots | Shot de guaro | Aguardiente (guaro) shot | $5.00 | Drinks p2 |
-| 129 | Cervezas, vinos y shots › Shots | Shot de guaro amarillo | Yellow aguardiente shot | $6.00 | Drinks p2 |
-| 130 | Cervezas, vinos y shots › Shots | Shot de tequila | Tequila shot | $6.00 | Drinks p2 |
-| 131 | Cervezas, vinos y shots › Shots | Shot de Casamigos | Casamigos shot | $7.00 | Drinks p2 |
-| 132 | Cervezas, vinos y shots › Shots | Shot de Patrón Silver | Patrón Silver shot | $7.00 | Drinks p2 |
-| 133 | Cervezas, vinos y shots › Shots | Shot Don Julio 1942 | Don Julio 1942 shot | $28.00 | Drinks p2 |
-| 134 | Cervezas, vinos y shots › Shots | Shot Don Julio 70 | Don Julio 70 shot | $12.00 | Drinks p2 |
-| 135 | Cervezas, vinos y shots › Shots | Shot de Patrón Cielo | Patrón Cielo shot | $9.00 | Drinks p2 |
-| 136 | Cervezas, vinos y shots › Shots | Shot de whiskey Johnnie Walker Black | Johnnie Walker Black whiskey shot | $9.00 | Drinks p2 |
-| 137 | Cervezas, vinos y shots › Shots | Shot de whiskey Buchanan's Deluxe | Buchanan's Deluxe whiskey shot | $9.00 | Drinks p2 |
-| 138 | Cervezas, vinos y shots › Shots | Shot Double Black | Double Black shot | $13.00 | Drinks p2 |
+| 92 | Postres | Baileys Brownie Martini | Baileys Brownie Martini | $14.00 | menu.pdf (Apr 2026) |
+| 93 | Bebidas y jugos › Bebidas calientes y frías | Chocolate con queso | Chocolate with cheese | $8.00 | Food p7 |
+| 94 | Bebidas y jugos › Bebidas calientes y frías | Milo y queso | Milo & cheese | $7.00 | Food p7 |
+| 95 | Bebidas y jugos › Bebidas calientes y frías | Aguapanela con queso | Aguapanela with cheese | $7.00 | Food p7 |
+| 96 | Bebidas y jugos › Bebidas calientes y frías | Té | Tea | $2.00 | Food p7 |
+| 97 | Bebidas y jugos › Bebidas calientes y frías | Milo | Milo | $6.00 | Food p7 |
+| 98 | Bebidas y jugos › Bebidas calientes y frías | Chocolate | Chocolate | $7.00 | Food p7 |
+| 99 | Bebidas y jugos › Bebidas calientes y frías | Café | Coffee | $2.00 | Food p7 |
+| 100 | Bebidas y jugos › Bebidas calientes y frías | Soda | Soda | $2.50 | Food p7 |
+| 101 | Bebidas y jugos › Bebidas calientes y frías | Soda Postobón | Postobón soda | $3.50 | Food p7 |
+| 102 | Bebidas y jugos › Bebidas calientes y frías | Pony Malta | Pony Malta | $3.50 | Food p7 |
+| 103 | Bebidas y jugos › Bebidas calientes y frías | Botella de agua | Water bottle | $2.00 | Food p7 |
+| 104 | Bebidas y jugos › Bebidas calientes y frías | Aguapanela con limón | Aguapanela with lemon | $5.00 | Food p7 |
+| 105 | Bebidas y jugos › Bebidas calientes y frías | Limonada natural | Natural lemonade | $5.00 | Food p7 |
+| 106 | Bebidas y jugos › Jugos naturales | Jugos naturales | Fresh juices | En leche $7.00 / En agua $6.00 (options: Papaya-guanábana, Mango-guayaba, Banano-lulo, Mora-maracuyá, Piña-tomate de árbol) | Food p7 |
+| 107 | Cócteles | Margarita | Margarita | $13.00 (options: Mango, Mora, Coco, Maracuyá, Tradicional, Tamarindo) | Drinks p2 |
+| 108 | Cócteles | Mojito | Mojito | $13.00 (options: Mango, Maracuyá, Coco, Tradicional) | Drinks p2 |
+| 109 | Cócteles | Piña colada | Piña colada | $13.00 | Drinks p2 |
+| 110 | Cócteles | Piña colada virgen | Virgin piña colada | $9.00 | Drinks p2 |
+| 111 | Cócteles | Expresso Martini | Espresso Martini | $13.00 | Drinks p2 |
+| 112 | Cócteles | Alexander | Alexander | $13.00 | Drinks p2 |
+| 113 | Cócteles | Q' Delicia | Q' Delicia | $13.00 | Drinks p2 |
+| 114 | Cervezas, vinos y shots › Cervezas | Corona | Corona | $5.00 | Drinks p2 |
+| 115 | Cervezas, vinos y shots › Cervezas | Modelo Especial | Modelo Especial | $5.00 | Drinks p2 |
+| 116 | Cervezas, vinos y shots › Cervezas | Águila | Águila | $6.00 | Drinks p2 |
+| 117 | Cervezas, vinos y shots › Cervezas | Heineken | Heineken | $5.00 | Drinks p2 |
+| 118 | Cervezas, vinos y shots › Cervezas | Club Colombia | Club Colombia | $6.00 | Drinks p2 |
+| 119 | Cervezas, vinos y shots › Cervezas | Cola y pola | Cola y pola | $4.00 | Drinks p2 |
+| 120 | Cervezas, vinos y shots › Cervezas | Michelada colombiana | Colombian michelada | $7.50 | Drinks p2 |
+| 121 | Cervezas, vinos y shots › Cervezas | Cerveza michelada | Michelada beer | $6.50 | Drinks p2 |
+| 122 | Cervezas, vinos y shots › Cervezas | Jarra de refajo | Pitcher of refajo | $17.00 | Drinks p2 |
+| 123 | Cervezas, vinos y shots › Cervezas | Jarra de refajo envenenado | Pitcher of spiked refajo | $23.00 | Drinks p2 |
+| 124 | Cervezas, vinos y shots › Vinos | Jarra de sangría | Pitcher of sangria | $31.00 | Drinks p2 |
+| 125 | Cervezas, vinos y shots › Vinos | Botella de vino tinto | Bottle of red wine | $26.00 | Drinks p2 |
+| 126 | Cervezas, vinos y shots › Vinos | Copa de vino tinto | Glass of red wine | $6.00 | Drinks p2 |
+| 127 | Cervezas, vinos y shots › Vinos | Copa de vino blanco | Glass of white wine | $6.00 | Drinks p2 |
+| 128 | Cervezas, vinos y shots › Vinos | Copa de sangría | Glass of sangria | $11.00 | Drinks p2 |
+| 129 | Cervezas, vinos y shots › Shots | Shot de guaro | Aguardiente (guaro) shot | $5.00 | Drinks p2 |
+| 130 | Cervezas, vinos y shots › Shots | Shot de guaro amarillo | Yellow aguardiente shot | $6.00 | Drinks p2 |
+| 131 | Cervezas, vinos y shots › Shots | Shot de tequila | Tequila shot | $6.00 | Drinks p2 |
+| 132 | Cervezas, vinos y shots › Shots | Shot de Casamigos | Casamigos shot | $7.00 | Drinks p2 |
+| 133 | Cervezas, vinos y shots › Shots | Shot de Patrón Silver | Patrón Silver shot | $7.00 | Drinks p2 |
+| 134 | Cervezas, vinos y shots › Shots | Shot Don Julio 1942 | Don Julio 1942 shot | $28.00 | Drinks p2 |
+| 135 | Cervezas, vinos y shots › Shots | Shot Don Julio 70 | Don Julio 70 shot | $12.00 | Drinks p2 |
+| 136 | Cervezas, vinos y shots › Shots | Shot de Patrón Cielo | Patrón Cielo shot | $9.00 | Drinks p2 |
+| 137 | Cervezas, vinos y shots › Shots | Shot de whiskey Johnnie Walker Black | Johnnie Walker Black whiskey shot | $9.00 | Drinks p2 |
+| 138 | Cervezas, vinos y shots › Shots | Shot de whiskey Buchanan's Deluxe | Buchanan's Deluxe whiskey shot | $9.00 | Drinks p2 |
+| 139 | Cervezas, vinos y shots › Shots | Shot Double Black | Double Black shot | $13.00 | Drinks p2 |
 
 Also on the menu page: "Sopa grande adicional $6" (Especiales), and "Cualquier carne de los especiales $7" (Órdenes
 extra).
