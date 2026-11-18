@@ -21,10 +21,10 @@ Lucide icons, next-intl, Zod. No database, no backend API. React Hook Form is no
   data files.
 - **Root layout pattern (next-intl):** `app/layout.tsx` only passes `children` through (no `<html>`).
   `app/[locale]/layout.tsx` renders `<html lang={locale}>`. There is **no** `app/page.tsx`.
-- **Root redirect:** `public/_redirects` contains `/ /es/ 302` (Cloudflare). `public/index.html` (copied to
-  `out/index.html` because no `app/page.tsx` exists) is a fallback for hosts without redirect rules:
+- **Root rewrite:** `public/_redirects` contains `/ /es/ 200` (Cloudflare rewrite, no redirect hop; see spec `2026-11-17-root-rewrite-design`). `public/index.html` (copied to
+  `out/index.html` because no `app/page.tsx` exists) is a fallback for hosts without rewrite rules:
   `<meta http-equiv="refresh" content="0; url=/es/">` plus `<link rel="canonical" href="https://lanuevadelicia.com/es/">`.
-  On AWS later, a CloudFront Function does the redirect.
+  On AWS later, a CloudFront Function does the rewrite.
 - **404:** `app/not-found.tsx` renders its own `<html lang="es">` and is a single **bilingual** 404 page (Spanish
   first, English below) with links to `/es/menu/`, `/es/visit/`, `/en/menu/` and `/en/visit/` (Claude's call). This
   makes Next write `out/404.html`, which Cloudflare Pages serves with status 404. Without it, Pages falls back to SPA
