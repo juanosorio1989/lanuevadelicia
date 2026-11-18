@@ -57,4 +57,6 @@ Details: `docs/superpowers/specs/2026-11-17-new-photos-design/README.md`.
 - Twelve Instagram dish photos (text baked in: titles, handle, phone) are used on menu cards as given (owner
   decision); `object-cover` shows the centre of each post. `POSTRES/Mazamorra.JPG` is a clean photo.
 - Not used: `Fachada/videofachada.mp4` (owner decision) and `Ricuras de la casa/Lomo de cerdo empanizado.jpg` (same
-  breaded chicken breast as `POLLO/PechugaEmpanizada.jpg`, not pork loin; Claude's call).
+  breaded chicken breast as `POLLO/PechugaEmpanizada.jpg`, not pork loin; owner decision, 2026-11-17; no pork loin photo until a real one exists).
+- The home story teaser and `/our-story/` use `restaurant/fachada-noche`, `/visit/` uses `restaurant/fachada-dia`; all
+  are cropped with `object-[50%_15%]` so the sign shows.

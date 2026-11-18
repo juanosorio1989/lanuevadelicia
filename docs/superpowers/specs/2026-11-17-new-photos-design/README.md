@@ -11,11 +11,12 @@ restaurant photos missing since 2026-11-15) and dish photos taken from the resta
   Instagram handle, the delivery phone, in Spanish). They are used as menu card photos as they are; the card's
   `object-cover` crop shows the centre of each post.
 - **Owner decision:** the video (`Fachada/videofachada.mp4`) is not used.
-- **Claude's call:** `Ricuras de la casa/Lomo de cerdo empanizado.jpg` is not used: it shows the same breaded chicken
-  breast as `POLLO/PechugaEmpanizada.jpg` (with a "Comida 100% colombiana" title), not pork loin.
+- **Owner decision (2026-11-17):** `Ricuras de la casa/Lomo de cerdo empanizado.jpg` is not used until the owner sends
+  a real pork loin photo: the file shows the same breaded chicken breast as `POLLO/PechugaEmpanizada.jpg` (with a
+  "Comida 100% colombiana" title), not pork loin.
 - **Claude's call:** storefront by day goes on `/visit/` (above the map, so people recognize the place); storefront by
   night replaces the dish stand-in on `/our-story/`.
-- Claude's call: the home story teaser also uses the storefront at night. The storefront photos are cropped toward the
+- **Claude's call:** the home story teaser also uses the storefront at night. The storefront photos are cropped toward the
   top (`object-[50%_15%]`) so the sign shows.
 - All new photos pass the 1000px rule (spec 06): 1080px to 2000px on the long side.
 
