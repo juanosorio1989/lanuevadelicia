@@ -65,7 +65,7 @@ for (const url of URLS) {
 }
 
 test("Review Focus 5: unknown URLs are a real 404 with the bilingual page", async ({ request }) => {
-  for (const path of ["/menu/", "/fr/", "/es/nope/"]) {
+  for (const path of ["/visit/", "/fr/", "/es/nope/"]) {
     const res = await request.get(path);
     expect(res.status(), path).toBe(404);
     const body = await res.text();

@@ -23,7 +23,7 @@ Spec pages: 08 (GA4), 07 (CSP), 09 (tests, budgets).
     run a tiny `scripts/serve-with-headers.mjs` (node http plus static files) that parses `out/_headers` and applies
     the headers, so the CSP is exercised locally.
   - **Review Focus #2:** at 320×640, `document.documentElement.scrollWidth <= window.innerWidth` on every page.
-  - **Review Focus #5:** `/menu/`, `/fr/` and `/es/nope/` return 404 with the 404 page.
+  - **Review Focus #5:** `/visit/`, `/fr/` and `/es/nope/` return 404 with the 404 page. (`/menu` and `/menu/` are redirected to the menu PDF by `_redirects` on Cloudflare; see `docs/superpowers/specs/2026-11-17-menu-pdf-design/`)
   - Every `img` has a non-empty `alt`. Exactly one `h1` per page.
 
 - [ ] **Step 3: `scripts/check-links.mjs`.** It crawls `out/**/*.html`, resolves every internal `href`/`src`

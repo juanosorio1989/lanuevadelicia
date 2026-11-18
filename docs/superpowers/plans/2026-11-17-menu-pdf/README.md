@@ -104,7 +104,7 @@ prints nothing. Commit: `feat: menu PDF link and /menu redirect`.
 **Acceptance:** `npm test` and `npx playwright test tests/e2e/menu.spec.ts` pass; `grep -c "^| [0-9]" docs/content/menu-review.md`
 counts the menu table rows consistently (last menu row numbered 139). Commit: `feat: add Baileys Brownie Martini to desserts`.
 
-## Task 3: preview verification (Opus)
+## Task 3: preview verification (Opus) (superseded by the Follow-up below)
 
 Push `menu-pdf`; on the preview URL: `curl -I` `/menu` and `/menu/` → 301 `location: /es/menu/`;
 `/la-nueva-delicia-menu.pdf` → 200 `application/pdf`; check the link on `/es/menu/` and `/en/menu/`. Then final
