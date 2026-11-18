@@ -21,6 +21,8 @@ Updated 2026-11-17.
   Spanish home with a 200 rewrite instead of a 302 (saves ~1.5 s LCP); nav and language switch treat `/` as `/es/`.
   Verified on the branch preview; merged 2026-11-17.
 - `npm run ci` green; Lighthouse mobile budgets met.
+- 2026-11-17: PageSpeed Insights mobile on production: `/` perf 99 (LCP 2.3 s), `/es/menu/` perf 100 (LCP 1.0 s);
+  Q12 closed. Local Lighthouse is too noisy on the home network to judge LCP; use PSI.
 
 ## Deployed
 
@@ -31,7 +33,7 @@ Updated 2026-11-17.
 
 ## Next
 
-1. On https://lanuevadelicia.pages.dev: PageSpeed Insights check (spec 10 Q12), owner COPY-REVIEW (`docs/content/copy-review.md`,
+1. On https://lanuevadelicia.pages.dev: owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
 2. When the owner has a domain: add it in Pages > Custom domains and change `NEXT_PUBLIC_SITE_URL` (Production)
    to it, then redeploy.
@@ -41,8 +43,7 @@ Updated 2026-11-17.
 
 ## Open questions (owner)
 
-See spec page 10: Q2 Place ID, Q5 transit, Q6 review highlights, Q7 calentado descriptions, Q9 vector logo, Q12 PSI
-LCP. Answered 2026-11-15: Q3 reservations (by phone), Q4 holidays (closed January 1), Q8 photo permission (yes).
+See spec page 10: Q2 Place ID, Q5 transit, Q6 review highlights, Q7 calentado descriptions, Q9 vector logo. Answered 2026-11-15: Q3 reservations (by phone), Q4 holidays (closed January 1), Q8 photo permission (yes).
 Storefront photos (day/night) arrived and are live as of 2026-11-17 (`/visit/`, `/our-story/`, gallery); interior
 and team photos are still pending, no date. 12 Instagram dish photos added to menu cards.
 Pork loin (`lomo-de-cerdo-a-la-parrilla-o-empanizado`): no photo until the owner sends a real one (2026-11-17); the
