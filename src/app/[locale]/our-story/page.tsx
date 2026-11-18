@@ -24,8 +24,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations({ locale, namespace: "story" });
   const s = await getTranslations({ locale, namespace: "home.story" });
   const cta = await getTranslations({ locale, namespace: "cta" });
-  // A dish photo stands in until restaurant photos exist (spec 06).
-  const photo = getPhoto("dishes/picada-doble");
+  const photo = getPhoto("restaurant/fachada-noche");
   const expect = [0, 1, 2].map((i) => ({ title: t(`expect.${i}.title`), body: t(`expect.${i}.body`) }));
 
   return (

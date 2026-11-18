@@ -46,3 +46,15 @@ Interior, exterior and team photos are coming. During development, `PhotoPlaceho
 striped box ("Foto del salón: pendiente"). **Launch gate:** no placeholder may ship. If the photos are not ready, the
 story block uses a dish photo instead and the gallery hides the "El restaurante" group. Team photos need the
 people's consent; the owner confirms when sending them.
+
+### New photos (2026-11-17)
+
+Details: `docs/superpowers/specs/2026-11-17-new-photos-design/README.md`.
+
+- Storefront: `restaurant/fachada-dia` (on `/visit/`, above the map) and `restaurant/fachada-noche` (on `/our-story/`,
+  replacing the dish stand-in). The gallery now shows the "El restaurante" group. Interior and team photos are still
+  pending.
+- Twelve Instagram dish photos (text baked in: titles, handle, phone) are used on menu cards as given (owner
+  decision); `object-cover` shows the centre of each post. `POSTRES/Mazamorra.JPG` is a clean photo.
+- Not used: `Fachada/videofachada.mp4` (owner decision) and `Ricuras de la casa/Lomo de cerdo empanizado.jpg` (same
+  breaded chicken breast as `POLLO/PechugaEmpanizada.jpg`, not pork loin; Claude's call).

@@ -30,9 +30,10 @@ describe("photo manifest", () => {
   it("no source is in the excluded list", () => {
     for (const e of entries) expect(excluded).not.toContain(e.source);
   });
-  it("has 40 dish and drink photos, 7 flyers and the logo", () => {
+  it("has 52 dish and drink photos, 2 restaurant photos, 7 flyers and the logo", () => {
     const n = (g: string) => entries.filter((e) => e.group === g).length;
-    expect(n("dishes") + n("drinks")).toBe(40);
+    expect(n("dishes") + n("drinks")).toBe(52);
+    expect(n("restaurant")).toBe(2);
     expect(n("specials")).toBe(7);
     expect(n("brand")).toBe(1);
   });

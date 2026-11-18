@@ -8,6 +8,8 @@ import { PhoneOrder } from "@/components/shared/PhoneOrder";
 import { HoursTable } from "@/components/shared/HoursTable";
 import { MapEmbed } from "@/components/shared/MapEmbed";
 import { OpenStatus } from "@/components/shared/OpenStatus";
+import { Img } from "@/components/ui/Img";
+import { getPhoto } from "@/lib/photo";
 import { restaurant } from "@/data/restaurant";
 import { directionsUrl, telHref } from "@/lib/links";
 import type { Locale } from "@/types/content";
@@ -60,7 +62,15 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           </TrackedLink>
         </p>
       </div>
-      <MapEmbed locale={locale} location="visit" />
+      <div className="flex flex-col gap-4">
+        <Img
+          photo={getPhoto("restaurant/fachada-dia")}
+          locale={locale}
+          sizes="(min-width: 768px) 56vw, 100vw"
+          className="h-64 w-full rounded-card object-cover md:h-80"
+        />
+        <MapEmbed locale={locale} location="visit" />
+      </div>
     </div>
   );
 }

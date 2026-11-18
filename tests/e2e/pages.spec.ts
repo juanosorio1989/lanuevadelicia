@@ -25,7 +25,7 @@ test("gallery: groups, dialog opens with alt text, Escape closes and focus retur
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.getByRole("heading", { name: "Comida" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Bebidas" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "El restaurante" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "El restaurante" })).toBeVisible();
   const thumb = page.locator("main ul a").first();
   await thumb.waitFor();
   const alt = await thumb.locator("img").getAttribute("alt");
