@@ -21,7 +21,7 @@ Only these facts may appear on the site. Anything else needs owner confirmation 
 | Uber Eats | https://www.ubereats.com/store/la-nueva-delicias/uPk0HRZTWfGVY-h8iVvtoA | Owner |
 | DoorDash | https://www.doordash.com/store/la-nueva-delicia-jackson-heights-704445/13145759 | Owner |
 | Grubhub | https://www.grubhub.com/restaurant/la-nueva-delicia-9316-37th-ave-suite-b-jackson-heights/3157876 | Owner |
-| Domain | lanuevadelicia.com (registered and DNS at Hostinger) | DNS lookup 2026-11-11 |
+| Domain | lanuevadelicia.com (registered at Hostinger; DNS on Cloudflare since 2026-11-17) | DNS lookup 2026-11-11; cutover 2026-11-17 |
 | Email | info@lanuevadelicia.com (Hostinger Mail); used on the privacy page only | Owner |
 | Age | "más de 30 años" / "30+ years" in Jackson Heights | Owner approved the claim |
 | Roots | Caldas, Eje Cafetero (Colombia's coffee region) | Owner |

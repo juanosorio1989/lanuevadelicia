@@ -106,6 +106,9 @@ in this project.
   domains on the Pages project. **www → apex** is a Cloudflare Redirect Rule on the zone (301), because `_redirects`
   cannot match on hostname. Every step is an owner-approved manual step at launch: no account, cloud resource or DNS
   change without asking. The Hostinger WordPress "Coming Soon" site is retired after the cutover.
+  **Done 2026-11-17** (owner-approved): apex is the Pages custom domain; www is not added to Pages, the Redirect Rule
+  catches it first (`http*://www.lanuevadelicia.com/*`, so plain-http www also redirects). Mail records must stay
+  DNS only (see `docs/handoff.md`).
 - AWS later: S3 (private) + CloudFront with OAC, the same `out/`, a CloudFront Function for `/` → `/es/` and for
   `index.html` resolution. Out of scope now; the static export keeps it possible.
 

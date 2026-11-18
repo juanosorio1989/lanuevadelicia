@@ -27,16 +27,23 @@ Updated 2026-11-17.
 ## Deployed
 
 - Cloudflare Pages project `lanuevadelicia` (created 2026-11-17), Git-connected to `main`: every push to `main`
-  rebuilds production at https://lanuevadelicia.pages.dev (first build ~2 min, commit 0850ab2). Build `npm run build`,
-  output `out`. Production vars: `NODE_VERSION=22`, `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C`,
-  `NEXT_PUBLIC_SITE_URL=https://lanuevadelicia.pages.dev`. Preview vars: same minus `NEXT_PUBLIC_GA_ID`.
+  rebuilds production at https://lanuevadelicia.com (also https://lanuevadelicia.pages.dev; first build ~2 min).
+  Build `npm run build`, output `out`. Production vars: `NODE_VERSION=22`, `NEXT_PUBLIC_GA_ID=G-W4XL44MY1C`,
+  `NEXT_PUBLIC_SITE_URL=https://lanuevadelicia.com`. Preview vars: same minus `NEXT_PUBLIC_GA_ID`.
+- Domain cutover 2026-11-17: nameservers on Cloudflare (registration stays at Hostinger). `lanuevadelicia.com` is a
+  Pages custom domain (apex CNAME → `lanuevadelicia.pages.dev`, replaced the Hostinger WordPress A/AAAA). www → apex is
+  the zone Redirect Rule "www to apex" (`http*://www.lanuevadelicia.com/*` → `https://lanuevadelicia.com/${2}`, 301,
+  query kept); www is not a Pages custom domain. Mail stays on Hostinger: MX, SPF, `_dmarc` (p=none), DKIM
+  `hostingermail-{a,b,c}._domainkey`, `autodiscover` and `autoconfig` must stay **DNS only** (they were proxied
+  after the nameserver move, which broke DKIM; fixed 2026-11-17).
 
 ## Next
 
-1. On https://lanuevadelicia.pages.dev: owner COPY-REVIEW (`docs/content/copy-review.md`,
+1. On https://lanuevadelicia.com: owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
-2. When the owner has a domain: add it in Pages > Custom domains and change `NEXT_PUBLIC_SITE_URL` (Production)
-   to it, then redeploy.
+2. Google Search Console (domain property, DNS TXT in Cloudflare) and submit `https://lanuevadelicia.com/sitemap.xml`;
+   set the Google Business Profile website to `https://lanuevadelicia.com/es/` (spec 08). Optional cleanup: the `ftp`
+   A record (proxied, points to the old Hostinger host) can go once WordPress is retired at Hostinger.
 3. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
    No component render test for NavLinks/LanguageSwitch on `/` (helper `src/i18n/pathname.ts` is unit-tested; preview
    checked EN link and aria-current); any new `usePathname()` caller must use `localizedPathname`.
