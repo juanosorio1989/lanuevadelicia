@@ -54,6 +54,11 @@ Updated 2026-11-17.
 
 ## Open questions (owner)
 
+- Search Console / Google Business Profile: which Google account owns the Search Console property (the repo
+  owner's or the restaurant's GBP account)? Pending the owner (2026-11-17). Plan once decided: Domain property,
+  verify with a DNS TXT record in Cloudflare, submit `https://lanuevadelicia.com/sitemap.xml`, set the GBP website to
+  `https://lanuevadelicia.com/es/`.
+
 See spec page 10: Q2 Place ID, Q5 transit, Q6 review highlights, Q7 calentado descriptions, Q9 vector logo. Answered 2026-11-15: Q3 reservations (by phone), Q4 holidays (closed January 1), Q8 photo permission (yes).
 Storefront photos (day/night) arrived and are live as of 2026-11-17 (`/visit/`, `/our-story/`, gallery); interior
 and team photos are still pending, no date. 12 Instagram dish photos added to menu cards.
