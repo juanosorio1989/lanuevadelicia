@@ -16,17 +16,17 @@ Updated 2026-11-17.
   scroll anchoring while the header shrinks; hours title is now a table caption, hidden on `/visit/`.
 - 2026-11-17: "Inicio / Home" added as the first nav item (header, mobile panel, footer); in `main`, merged 2026-11-17.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-menu-descriptions-design/`): 12 menu descriptions filled from Uber
-  Eats (sides, desserts, three drinks); 48 of 139 items now have one. Owner proof list: `docs/content/menu-review.md`.
+  Eats (sides, desserts, three drinks); 48 of 138 items now have one. Owner proof list: `docs/content/menu-review.md`.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-root-rewrite-design/`): `/` serves the
   Spanish home with a 200 rewrite instead of a 302 (saves ~1.5 s LCP); nav and language switch treat `/` as `/es/`.
   Verified on the branch preview; merged 2026-11-17.
 - `npm run ci` green; Lighthouse mobile budgets met.
 - 2026-11-17: PageSpeed Insights mobile on production: `/` perf 99 (LCP 2.3 s), `/es/menu/` perf 100 (LCP 1.0 s);
   Q12 closed. Local Lighthouse is too noisy on the home network to judge LCP; use PSI.
-
-- 2026-11-17 (branch `menu-pdf`, spec `docs/superpowers/specs/2026-11-17-menu-pdf-design/`): `/menu` and `/menu/` 301 to
-  `/es/menu/`; the owner's PDF is served at `/la-nueva-delicia-menu.pdf` and linked from both menu pages
-  (GA4 `view_menu_pdf`).
+- 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-menu-pdf-design/`): `/menu` and `/menu/` 301 to
+  `/es/menu/` (the old Wix menu link); the owner's PDF (`menu.pdf`, April 2026) is served at
+  `/la-nueva-delicia-menu.pdf` and linked from both menu pages (GA4 `view_menu_pdf`); Baileys Brownie Martini added
+  to Postres (menu now 139 items). Verified on the branch preview; merged 2026-11-17.
 
 ## Deployed
 
