@@ -43,7 +43,10 @@ Updated 2026-11-17.
 
 See spec page 10: Q2 Place ID, Q5 transit, Q6 review highlights, Q7 calentado descriptions, Q9 vector logo, Q12 PSI
 LCP. Answered 2026-11-15: Q3 reservations (by phone), Q4 holidays (closed January 1), Q8 photo permission (yes).
-Storefront photos (day/night) arrived and are live as of 2026-11-17 (`/visit/`, `/our-story/`, gallery); interior and team photos are still pending, no date. 12 Instagram dish photos added to menu cards.
+Storefront photos (day/night) arrived and are live as of 2026-11-17 (`/visit/`, `/our-story/`, gallery); interior
+and team photos are still pending, no date. 12 Instagram dish photos added to menu cards.
+Pork loin (`lomo-de-cerdo-a-la-parrilla-o-empanizado`): no photo until the owner sends a real one (2026-11-17); the
+file in assets-inbox shows the breaded chicken breast.
 
 - Q9: `assets-inbox/logo2.pdf` (2026-11-12) is a T-shirt "Made in Colombia" stamp. Its ring is vector, but the
   central plaque is raster (~980 px), so it does not answer Q9. The owner decided the stamp is for the T-shirt only,

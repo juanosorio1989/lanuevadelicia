@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           photo={getPhoto("restaurant/fachada-dia")}
           locale={locale}
           sizes="(min-width: 768px) 56vw, 100vw"
-          className="h-64 w-full rounded-card object-cover md:h-80"
+          className="h-64 w-full rounded-card object-cover object-[50%_15%] md:h-80"
         />
         <MapEmbed locale={locale} location="visit" />
       </div>

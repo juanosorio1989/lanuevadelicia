@@ -15,6 +15,10 @@ const excluded = [
   "PESCADOS Y MARISCOS/Spaguetti a la Marinera.jpg",
   "POLLO/Spaguetti en crema de Pollo.jpg",
   "Ricuras de la casa/Lomo Empanizado.jpg",
+  // same photo as POLLO/PechugaEmpanizada.jpg; owner: no pork loin photo until a real one exists (spec 2026-11-17)
+  "Ricuras de la casa/Lomo de cerdo empanizado.jpg",
+  // owner: the video is not used
+  "Fachada/videofachada.mp4",
   "PESCADOS Y MARISCOS/Mojarra Frita.jpg",
   "PESCADOS Y MARISCOS/Mojarra a la Marinera.jpg",
   "Ricuras de la casa/Higado Encebollado.jpg",

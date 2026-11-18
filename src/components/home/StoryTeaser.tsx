@@ -7,8 +7,7 @@ import type { Locale } from "@/types/content";
 
 export async function StoryTeaser({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.story" });
-  // A dish photo stands in until restaurant photos exist (spec 06); then swap this id for an interior/exterior shot.
-  const photo = getPhoto("dishes/picada-doble");
+  const photo = getPhoto("restaurant/fachada-noche");
 
   return (
     <section aria-labelledby="story-title" className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-[22px] md:grid-cols-2 md:gap-9 md:px-8 md:py-11">
@@ -23,7 +22,7 @@ export async function StoryTeaser({ locale }: { locale: Locale }) {
           {t("roots")}
         </p>
       </div>
-      <Img photo={photo} locale={locale} sizes="(min-width: 768px) 50vw, 100vw" className="h-60 w-full rounded-card object-cover md:h-72" />
+      <Img photo={photo} locale={locale} sizes="(min-width: 768px) 50vw, 100vw" className="h-60 w-full rounded-card object-cover object-[50%_15%] md:h-72" />
     </section>
   );
 }
