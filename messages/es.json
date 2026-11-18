@@ -90,6 +90,8 @@
   "menu": {
     "title": "Nuestro menú",
     "priceNote": "Precios en el restaurante; en las apps de domicilio pueden variar.",
+    "pdfLink": "Ver o descargar el menú (PDF)",
+    "newTab": "(se abre en una pestaña nueva)",
     "chipsLabel": "Categorías del menú",
     "searchLabel": "Buscar en el menú…",
     "swipeHint": "Desliza para ver más categorías",

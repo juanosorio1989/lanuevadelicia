@@ -32,6 +32,7 @@ CI is `.github/workflows/ci.yml` (Node 22): `npm run ci`, `npx lhci autorun`, `n
 
 - `serve.json`: `serve` only resolves `/es/` to `es/index.html` with `cleanUrls` at its default, so it is not set to `false`.
 - `public/_redirects` and `public/_headers` are Cloudflare Pages files, copied to `out/`.
+- `public/la-nueva-delicia-menu.pdf` is the owner's menu PDF (linked from `/es/menu/` and `/en/menu/`; `/menu` redirects to `/es/menu/`).
 
 ## Site chrome
 

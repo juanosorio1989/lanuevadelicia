@@ -90,6 +90,8 @@
   "menu": {
     "title": "Our menu",
     "priceNote": "In-restaurant prices; delivery app prices may differ.",
+    "pdfLink": "View or download the menu (PDF)",
+    "newTab": "(opens in a new tab)",
     "chipsLabel": "Menu categories",
     "searchLabel": "Search the menu…",
     "swipeHint": "Swipe to see more categories",

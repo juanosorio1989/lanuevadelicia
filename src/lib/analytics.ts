@@ -12,6 +12,7 @@ export type EventParams = {
   view_menu_category: { category: string };
   click_instagram: { location: TrackLocation };
   search: { search_term: string };
+  view_menu_pdf: { location: TrackLocation };
 };
 
 export type AnalyticsEvent = keyof EventParams;

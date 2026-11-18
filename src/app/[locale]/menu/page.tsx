@@ -6,6 +6,7 @@ import { MenuToolbar } from "@/components/menu/MenuToolbar";
 import { MenuCategorySection } from "@/components/menu/MenuCategorySection";
 import { categories, menuItems } from "@/data/menu";
 import { restaurant } from "@/data/restaurant";
+import { TrackedLink } from "@/components/layout/TrackedLink";
 import { telHref } from "@/lib/links";
 import type { Locale } from "@/types/content";
 
@@ -35,6 +36,19 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <div className="mx-auto max-w-6xl px-4 pt-6 pb-3 md:px-8 md:pt-8">
         <h1 className="text-[1.75rem] md:text-4xl">{t("title")}</h1>
         <p className="mt-1.5 text-muted-600">{t("priceNote")}</p>
+        <p className="mt-2">
+          <TrackedLink
+            href="/la-nueva-delicia-menu.pdf"
+            event="view_menu_pdf"
+            params={{ location: "menu" }}
+            external
+            type="application/pdf"
+            className="font-bold text-green-900 underline underline-offset-4 hover:text-terra-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-green-900"
+          >
+            {t("pdfLink")}
+            <span className="sr-only"> {t("newTab")}</span>
+          </TrackedLink>
+        </p>
       </div>
       <MenuToolbar
         chips={ordered.map((c) => ({ id: c.id, label: c.name[locale] }))}
