@@ -17,9 +17,9 @@ Updated 2026-11-17.
 - 2026-11-17: "Inicio / Home" added as the first nav item (header, mobile panel, footer); in `main`, merged 2026-11-17.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-menu-descriptions-design/`): 12 menu descriptions filled from Uber
   Eats (sides, desserts, three drinks); 48 of 138 items now have one. Owner proof list: `docs/content/menu-review.md`.
-- 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-root-rewrite-design/`, branch `root-rewrite`): `/` serves the
+- 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-root-rewrite-design/`): `/` serves the
   Spanish home with a 200 rewrite instead of a 302 (saves ~1.5 s LCP); nav and language switch treat `/` as `/es/`.
-  Verified on the branch preview.
+  Verified on the branch preview; merged 2026-11-17.
 - `npm run ci` green; Lighthouse mobile budgets met.
 
 ## Deployed
@@ -36,6 +36,8 @@ Updated 2026-11-17.
 2. When the owner has a domain: add it in Pages > Custom domains and change `NEXT_PUBLIC_SITE_URL` (Production)
    to it, then redeploy.
 3. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
+   No component render test for NavLinks/LanguageSwitch on `/` (helper `src/i18n/pathname.ts` is unit-tested; preview
+   checked EN link and aria-current); any new `usePathname()` caller must use `localizedPathname`.
 
 ## Open questions (owner)
 
