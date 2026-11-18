@@ -190,8 +190,14 @@ const antojitos: Row[] = [
     name: t("Costillas de cerdo", "Pork ribs"),
     description: t("Costillas de cerdo con tostones o arepa.", "Pork ribs with green plantain, or corn cake"),
     price: 19,
+    image: "dishes/costillas-de-cerdo",
   },
-  { id: "choricriolla", name: t("Choricriolla", "Creole yellow potatoes with sausage"), price: 17 },
+  {
+    id: "choricriolla",
+    name: t("Choricriolla", "Creole yellow potatoes with sausage"),
+    price: 17,
+    image: "dishes/choricriolla",
+  },
   {
     id: "guacamole-con-tostones",
     name: t("Guacamole con tostones", "Guacamole with green plantain"),
@@ -201,8 +207,14 @@ const antojitos: Row[] = [
     id: "guacamole-con-tostones-y-chicharron",
     name: t("Guacamole con tostones y chicharrón", "Guacamole with green plantain and fried pork skin"),
     price: 20,
+    image: "dishes/guacamole-con-tostones-y-chicharron",
   },
-  { id: "combo-empanaditas", name: t("Combo empanaditas", "Little Colombian empanadas"), price: 7.99 },
+  {
+    id: "combo-empanaditas",
+    name: t("Combo empanaditas", "Little Colombian empanadas"),
+    price: 7.99,
+    image: "dishes/combo-empanaditas",
+  },
   {
     id: "maduro-con-queso",
     name: t("Maduro con queso", "Sweet plantain with cheese"),
@@ -248,7 +260,12 @@ const ricuras: Row[] = [
     price: 32,
     image: "dishes/churrasco-a-la-parrilla",
   },
-  { id: "entrana", name: t("Entraña", "Skirt steak"), price: 35 },
+  {
+    id: "entrana",
+    name: t("Entraña", "Skirt steak"),
+    price: 35,
+    image: "dishes/entrana",
+  },
   { id: "sobrebarriga-a-la-parrilla", name: t("Sobrebarriga a la parrilla", "Grilled top flank steak"), price: 25 },
   {
     id: "sobrebarriga-en-salsa-criolla",
@@ -313,6 +330,7 @@ const pollo: Row[] = [
       "Breaded chicken breast, mixed salad, sweet plantain, rice and beans",
     ),
     price: 23,
+    image: "dishes/pechuga-empanizada",
   },
   {
     id: "pechuga-a-la-parrilla-en-salsa-con-champinon",
@@ -535,12 +553,14 @@ const infantil: Row[] = [
     name: t("Tiritas de pollo", "Chicken strips"),
     description: t("Tiritas de pollo con papas fritas.", "Chicken strips & french fries"),
     price: 13,
+    image: "dishes/tiritas-de-pollo",
   },
   {
     id: "salchipapas",
     name: t("Salchipapas", "Salchipapas"),
     description: t("Papas fritas, salchicha frita y huevo duro.", "French fries, fried sausage & hard-boiled egg"),
     price: 13,
+    image: "dishes/salchipapas",
   },
 ];
 
@@ -593,6 +613,7 @@ const postres: Row[] = [
     id: "mazamorra-con-panela",
     name: t("Mazamorra con panela", "Colombian corn pudding"),
     price: 8,
+    image: "dishes/mazamorra-con-panela",
     options: [opt("Con bocadillo", "With guava paste", 8.5)],
     description: t("Postre tradicional colombiano de maíz con panela.", "Traditional Colombian corn pudding sweetened with panela (cane sugar)."),
   },
@@ -600,6 +621,7 @@ const postres: Row[] = [
     id: "ensalada-de-fruta",
     name: t("Ensalada de fruta", "Fruit salad"),
     price: 13,
+    image: "dishes/ensalada-de-fruta",
     description: t("Mezcla de frutas frescas de temporada.", "A mix of fresh seasonal fruit."),
   },
   {
@@ -613,12 +635,14 @@ const postres: Row[] = [
     id: "brevas-con-arequipe-y-queso",
     name: t("Brevas con arequipe y queso", "Figs with arequipe & cheese"),
     price: 10,
+    image: "dishes/brevas-con-arequipe-y-queso",
   },
   { id: "brownie-con-helado", name: t("Brownie con helado", "Brownie with ice cream"), price: 10 },
   {
     id: "flan-con-caramelo",
     name: t("Flan con caramelo", "Flan with caramel"),
     price: 7,
+    image: "dishes/flan-con-caramelo",
     description: t("Flan cremoso bañado en caramelo.", "Creamy custard topped with caramel."),
   },
 ];

@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const groups: GalleryGroup[] = [
     { id: "food", label: t("food"), photos: pick("dishes") },
     { id: "drinks", label: t("drinks"), photos: pick("drinks") },
-    // "El restaurante" appears only once restaurant photos exist (spec 06).
+    // "El restaurante" appears once restaurant photos exist (spec 06); they arrived 2026-11-17.
     { id: "restaurant", label: t("restaurant"), photos: pick("restaurant") },
   ].filter((g) => g.photos.length > 0);
 

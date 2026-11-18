@@ -24,8 +24,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations({ locale, namespace: "story" });
   const s = await getTranslations({ locale, namespace: "home.story" });
   const cta = await getTranslations({ locale, namespace: "cta" });
-  // A dish photo stands in until restaurant photos exist (spec 06).
-  const photo = getPhoto("dishes/picada-doble");
+  const photo = getPhoto("restaurant/fachada-noche");
   const expect = [0, 1, 2].map((i) => ({ title: t(`expect.${i}.title`), body: t(`expect.${i}.body`) }));
 
   return (
@@ -40,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             {s("roots")}
           </p>
         </div>
-        <Img photo={photo} locale={locale} sizes="(min-width: 768px) 50vw, 100vw" className="h-64 w-full rounded-card object-cover md:h-96" />
+        <Img photo={photo} locale={locale} sizes="(min-width: 768px) 50vw, 100vw" className="h-64 w-full rounded-card object-cover object-[50%_15%] md:h-96" />
       </div>
 
       <section aria-labelledby="expect-title" className="bg-sand-100">

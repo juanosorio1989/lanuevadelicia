@@ -47,6 +47,11 @@ function bar(source: string, id: string, es: string, en: string): ManifestEntry 
   };
 }
 
+/** A restaurant photo (storefront, interior). */
+function place(source: string, id: string, es: string, en: string): ManifestEntry {
+  return { source, id: `restaurant/${id}`, group: "restaurant", alt: { es, en } };
+}
+
 function flyer(day: string, es: string, en: string, esDay: string, enDay: string, file: string): ManifestEntry {
   return {
     source: `especiales de la semana/${file}`,
@@ -58,6 +63,10 @@ function flyer(day: string, es: string, en: string, esDay: string, enDay: string
 
 export const entries: ManifestEntry[] = [
   // ANTOJITOS
+  item("dishes", "ANTOJITOS/choricriolla.jpg", "choricriolla"),
+  item("dishes", "ANTOJITOS/costillas.jpg", "costillas-de-cerdo"),
+  item("dishes", "ANTOJITOS/EMPANADITAS.jpg", "combo-empanaditas"),
+  item("dishes", "ANTOJITOS/Guacamole con tostones y chicharron.jpg", "guacamole-con-tostones-y-chicharron"),
   item("dishes", "ANTOJITOS/Chicharron con arepa con queso.jpg", "chicharron-con-arepa-con-queso"),
   item("dishes", "ANTOJITOS/Chorizo con arepita.jpg", "chorizo-con-arepita"),
   item("dishes", "ANTOJITOS/Maduro con queso.jpg", "maduro-con-queso"),
@@ -87,6 +96,9 @@ export const entries: ManifestEntry[] = [
   // Ensaladas
   item("dishes", "Ensaladas/ensalada con Camrones.JPG", "ensalada-con-camarones"),
   item("dishes", "Ensaladas/Ensalada con pechuga de Pollo.JPG", "ensalada-con-pechuga-de-pollo"),
+  // MENU INFANTIL
+  item("dishes", "MENU INFANTIL/DeditosPollo.jpg", "tiritas-de-pollo"),
+  item("dishes", "MENU INFANTIL/Salchipapa.jpg", "salchipapas"),
   // PESCADOS Y MARISCOS
   item("dishes", "PESCADOS Y MARISCOS/Arroz a la Marinera.JPG", "arroz-a-la-marinera"),
   item("dishes", "PESCADOS Y MARISCOS/camarones en salsa Criolla.JPG", "camarones-en-salsa-criolla"),
@@ -95,17 +107,26 @@ export const entries: ManifestEntry[] = [
   item("dishes", "PESCADOS Y MARISCOS/pechuga en salsa Marinera.jpg", "pechuga-en-salsa-a-la-marinera"),
   item("dishes", "PESCADOS Y MARISCOS/Sopa Marinera.jpg", "sopa-marinera"),
   // POLLO
+  item("dishes", "POLLO/PechugaEmpanizada.jpg", "pechuga-empanizada"),
   item("dishes", "POLLO/Arroz con pollo.jpg", "arroz-con-pollo"),
   item("dishes", "POLLO/Pechuga en Champinones.JPG", "pechuga-a-la-parrilla-en-salsa-con-champinon"),
   item("dishes", "POLLO/Pechuga Hawaiana.jpg", "pechuga-hawaiana"),
   // POSTRES
+  item("dishes", "POSTRES/Brevas.jpg", "brevas-con-arequipe-y-queso"),
+  item("dishes", "POSTRES/Flan.jpg", "flan-con-caramelo"),
+  item("dishes", "POSTRES/FruitSalad.jpg", "ensalada-de-fruta"),
+  item("dishes", "POSTRES/Mazamorra.JPG", "mazamorra-con-panela"),
   item("dishes", "POSTRES/Arroz con leche.jpg", "arroz-con-leche"),
   // Ricuras de la casa
+  item("dishes", "Ricuras de la casa/Entrana.jpg", "entrana"),
   item("dishes", "Ricuras de la casa/Bandeja Paisa.jpg", "bandeja-paisa"),
   item("dishes", "Ricuras de la casa/Chuleta de cerdo a la parrilla.JPG", "chuleta-de-cerdo-a-la-parrilla-o-empanizada"),
   item("dishes", "Ricuras de la casa/Chuleton a Caballo.jpg", "chuleton-a-caballo"),
   item("dishes", "Ricuras de la casa/Churrasco a la Parrilla.jpg", "churrasco-a-la-parrilla"),
   item("dishes", "Ricuras de la casa/Lengua a la Parrilla.jpg", "lengua-a-la-parrilla"),
+  // Fachada
+  place("Fachada/fachadaDia.jpeg", "fachada-dia", "Fachada de La Nueva Delicia en Jackson Heights, de día", "La Nueva Delicia storefront in Jackson Heights, by day"),
+  place("Fachada/fachadaNoche.jpeg", "fachada-noche", "Fachada de La Nueva Delicia en Jackson Heights, de noche", "La Nueva Delicia storefront in Jackson Heights, at night"),
   // Weekly specials flyers (text baked in)
   flyer("lunes", "Sopa de cebada con pollo al horno", "Barley soup with oven-baked chicken", "lunes", "Monday", "lunes.jpg"),
   flyer("martes", "Ajiaco con arroz con pollo", "Ajiaco with chicken and rice", "martes", "Tuesday", "Martes.jpg"),

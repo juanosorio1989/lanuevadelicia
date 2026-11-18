@@ -15,6 +15,10 @@ const excluded = [
   "PESCADOS Y MARISCOS/Spaguetti a la Marinera.jpg",
   "POLLO/Spaguetti en crema de Pollo.jpg",
   "Ricuras de la casa/Lomo Empanizado.jpg",
+  // same photo as POLLO/PechugaEmpanizada.jpg; owner: no pork loin photo until a real one exists (spec 2026-11-17)
+  "Ricuras de la casa/Lomo de cerdo empanizado.jpg",
+  // owner: the video is not used
+  "Fachada/videofachada.mp4",
   "PESCADOS Y MARISCOS/Mojarra Frita.jpg",
   "PESCADOS Y MARISCOS/Mojarra a la Marinera.jpg",
   "Ricuras de la casa/Higado Encebollado.jpg",
@@ -30,9 +34,10 @@ describe("photo manifest", () => {
   it("no source is in the excluded list", () => {
     for (const e of entries) expect(excluded).not.toContain(e.source);
   });
-  it("has 40 dish and drink photos, 7 flyers and the logo", () => {
+  it("has 52 dish and drink photos, 2 restaurant photos, 7 flyers and the logo", () => {
     const n = (g: string) => entries.filter((e) => e.group === g).length;
-    expect(n("dishes") + n("drinks")).toBe(40);
+    expect(n("dishes") + n("drinks")).toBe(52);
+    expect(n("restaurant")).toBe(2);
     expect(n("specials")).toBe(7);
     expect(n("brand")).toBe(1);
   });
