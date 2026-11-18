@@ -16,7 +16,7 @@ simple in a static export). `trailingSlash: true`.
 | Privacy (GA4 disclosure) | `/es/privacy/` | `/en/privacy/` | yes (short page; Claude's call) |
 | Catering | — | — | phase 2 |
 
-`/` redirects to `/es/` (302, via hosting redirect rules; see [07-technical.md](07-technical.md)). A single bilingual
+`/` serves the Spanish home through a rewrite (200, via hosting rules; see [07-technical.md](07-technical.md) and [root-rewrite design](../2026-11-17-root-rewrite-design/README.md)): no redirect hop; the canonical URL of the home stays `/es/`. A single bilingual
 404 page (real 404 status) links to Menu and Visit in both languages.
 
 Nav labels (ES / EN): Inicio / Home (added 2026-11-17) · Menú / Menu · Especiales / Specials · Nuestra historia / Our story ·

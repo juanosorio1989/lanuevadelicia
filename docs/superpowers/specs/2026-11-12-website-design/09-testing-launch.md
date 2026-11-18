@@ -8,7 +8,8 @@
   data files (every item has `es` and `en` names; prices are positive; featured items exist and have images; every
   `image` id exists in `photos.ts`; every special has a flyer).
 - **End-to-end (Playwright, against the built `out/` served statically):**
-  - `/` lands on `/es/` (via `out/index.html` locally; via `_redirects` on the preview deploy). The language switch
+  - `/` ends on the Spanish home (locally: `out/index.html` meta refresh to `/es/`; on the preview deploy: the
+    `_redirects` 200 rewrite, URL stays `/`). The language switch
     keeps the page (`/es/menu/` ↔ `/en/menu/`).
   - On the preview deploy, an unknown URL (`/es/nope/`) returns **status 404** with the bilingual 404 page, not a 200
     redirect.

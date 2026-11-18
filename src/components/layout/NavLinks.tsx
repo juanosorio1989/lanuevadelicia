@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { localizedPathname } from "@/i18n/pathname";
 import { NAV_ITEMS, type NavLabels } from "./nav-items";
 
 /** Desktop nav; client only to mark the current page with aria-current. */
 export function NavLinks({ locale, labels }: { locale: string; labels: NavLabels }) {
-  const pathname = usePathname();
+  const pathname = localizedPathname(usePathname());
   return (
     <nav aria-label={labels.main} className="hidden flex-1 items-center gap-1 lg:flex">
       {NAV_ITEMS.map((item) => {

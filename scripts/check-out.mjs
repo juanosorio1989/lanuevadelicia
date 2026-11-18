@@ -21,7 +21,7 @@ requireFile("out/404.html", "Página no encontrada", "Page not found");
 requireFile("out/sitemap.xml", "<urlset", "/es/menu/");
 requireFile("out/robots.txt", "Sitemap:");
 if (!existsSync("out/og/home.jpg")) errors.push("missing out/og/home.jpg");
-requireFile("out/_redirects", "/ /es/ 302");
+requireFile("out/_redirects", "/ /es/ 200");
 requireFile(
   "out/_headers",
   "/_next/static/*",

@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { localizedPathname } from "@/i18n/pathname";
 import { routing, type Locale } from "@/i18n/routing";
 import { track } from "@/lib/analytics";
 
@@ -8,7 +9,7 @@ const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
 
 /** ES | EN. Links to the same page in the other locale; the current locale is bold and not a link. */
 export function LanguageSwitch({ current, label }: { current: Locale; label: string }) {
-  const pathname = usePathname();
+  const pathname = localizedPathname(usePathname());
 
   return (
     <div data-testid="lang-switch" role="group" aria-label={label} className="flex items-center text-sm">

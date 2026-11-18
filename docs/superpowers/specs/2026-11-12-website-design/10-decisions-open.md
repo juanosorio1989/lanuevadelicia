@@ -16,7 +16,7 @@
 ## Calls made by Claude (the owner can override)
 
 - Same English path segments for both locales (`/es/our-story/`).
-- `/` → `/es/` redirect. `x-default` → Spanish.
+- `/` serves the Spanish home via a 200 rewrite (not a redirect). `x-default` → Spanish.
 - Rating shown as "450+ reseñas" (rounded down).
 - A privacy page for the GA4 disclosure. No cookie banner.
 - `priceRange: "$$"`.
@@ -42,7 +42,7 @@
 | Q8 | One-line OK that the dafotografia photos may be used on the website | **Answered 2026-11-15:** the owner confirmed they have permission to use the photos on the website |
 | Q9 | A vector (SVG/AI) logo? `logo2.pdf` (T-shirt stamp, 2026-11-12) has a raster center plaque, so it does not answer this; the stamp is T-shirt only, not for the site (owner). | Use the PNG |
 | Q11 | A contact for the privacy page | **Claude's call:** `info@lanuevadelicia.com` on the privacy page only (not shown elsewhere unless the owner asks) |
-| Q12 | Simulated (PageSpeed Insights-style) LCP on /es/ is ~3.1-3.4 s locally. Lantern simulates from an unthrottled trace where first paint and LCP land at ~123 ms, so it attributes all JS chunks, the logo and below-the-fold images to LCP; this is a local-measurement artefact. Re-measure with PageSpeed Insights on the preview deploy and fix before launch checklist item 8. | Ship if the real-device and devtools-throttled LCP stay under 2.5 s |
+| Q12 | Simulated (PageSpeed Insights-style) LCP on /es/ is ~3.1-3.4 s locally. Lantern simulates from an unthrottled trace where first paint and LCP land at ~123 ms, so it attributes all JS chunks, the logo and below-the-fold images to LCP; this is a local-measurement artefact. 2026-11-17, live site, local Lighthouse mobile (PSI API quota was exhausted): the `/` → `/es/` 302 cost ~1.5 s of LCP; replaced by a 200 rewrite (verified on the `root-rewrite` preview: `/` 200, no redirect audit, perf 81-92, LCP 2.8-4.3 s). Local runs vary a lot with network (production `/es/` perf 60-87 in three runs). Re-measure with PageSpeed Insights on the preview deploy and fix before launch checklist item 8. | Ship if the real-device and devtools-throttled LCP stay under 2.5 s |
 
 ## Resolved after the builder check (owner, 2026-11-12)
 
