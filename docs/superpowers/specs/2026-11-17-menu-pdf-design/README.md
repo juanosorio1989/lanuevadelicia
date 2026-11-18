@@ -10,8 +10,11 @@ still point to it.
 
 ## Decisions
 
-1. **`/menu` and `/menu/` → 301 to `/es/menu/`** (Cloudflare Pages `_redirects`). The old link lands on the web menu,
-   which stays the primary menu (spec 08: never only a PDF). Keep these lines permanently.
+1. **`/menu` and `/menu/` → 302 to `/la-nueva-delicia-menu.pdf`** (Cloudflare Pages `_redirects`). The owner's printed
+   QR code points to `lanuevadelicia.com/menu` and must open the PDF. 302, not 301: browsers cache 301s permanently
+   and the QR target may change later. The web menu stays the primary menu (spec 08: never only a PDF) and is
+   reached from the site navigation. Keep these lines; the QR code depends on them.
+   Changed 2026-11-17 (owner): first shipped as 301 → `/es/menu/`.
 2. **The PDF is served at `/la-nueva-delicia-menu.pdf`**, copied unchanged from the owner's
    `assets-inbox/menu.pdf` (2 pages, tabloid, InDesign, April 2026, 2.4 MB; already compressed: Ghostscript
    `/ebook` saves nothing). Cache: one day, like images.
@@ -35,5 +38,5 @@ still point to it.
 ## Acceptance
 
 - `npm run ci` green (unit, e2e, build, `check:out`).
-- On the branch preview: `/menu` and `/menu/` answer 301 → `/es/menu/`; `/la-nueva-delicia-menu.pdf` answers 200
+- On the branch preview: `/menu` and `/menu/` answer 302 → `/la-nueva-delicia-menu.pdf`; `/la-nueva-delicia-menu.pdf` answers 200
   `application/pdf`; the link shows on both locales and opens the PDF.

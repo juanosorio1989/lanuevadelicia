@@ -84,5 +84,5 @@ Branch: `website-mvp`, off `website-design`. Commit per task. `origin` is on Git
    nav, menu chip and CTA still works as a plain link. Pinned in Task 8 and Task 9 e2e (`javaScriptEnabled: false`).
 4. **A deep link to a menu section** (`/en/menu/#cocteles`): the section heading is not hidden under the sticky
    header and chips. Pinned in Task 9 e2e (heading top ≥ the sticky stack's height).
-5. **Unknown or wrong URLs** (`/fr/`, `/es/nope/`, `/menu/` without a locale): a real 404 page, not a crash, a 200
-   or a redirect loop. Pinned in Task 1 (build output check) and Task 13 (e2e on the served `out/`).
+5. **Unknown or wrong URLs** (`/fr/`, `/es/nope/`, `/visit/` without a locale): a real 404 page, not a crash, a 200
+   or a redirect loop. Pinned in Task 1 (build output check) and Task 13 (e2e on the served `out/`). (`/menu` and `/menu/` are redirected to the menu PDF by `_redirects` on Cloudflare; see `docs/superpowers/specs/2026-11-17-menu-pdf-design/`)

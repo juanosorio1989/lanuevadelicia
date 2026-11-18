@@ -104,8 +104,38 @@ prints nothing. Commit: `feat: menu PDF link and /menu redirect`.
 **Acceptance:** `npm test` and `npx playwright test tests/e2e/menu.spec.ts` pass; `grep -c "^| [0-9]" docs/content/menu-review.md`
 counts the menu table rows consistently (last menu row numbered 139). Commit: `feat: add Baileys Brownie Martini to desserts`.
 
-## Task 3: preview verification (Opus)
+## Task 3: preview verification (Opus) (superseded by the Follow-up below)
 
 Push `menu-pdf`; on the preview URL: `curl -I` `/menu` and `/menu/` → 301 `location: /es/menu/`;
 `/la-nueva-delicia-menu.pdf` → 200 `application/pdf`; check the link on `/es/menu/` and `/en/menu/`. Then final
 branch review, `npm run ci`, merge to `main`, push, verify on production.
+
+## Follow-up (2026-11-17, owner): the printed QR code opens the PDF
+
+The owner's printed QR code points to `lanuevadelicia.com/menu` and must open the PDF, not the web menu. Branch
+`menu-qr-pdf`.
+
+| Task | What | Implementer | Reviewer | Why |
+|------|------|-------------|----------|-----|
+| 4 | `/menu` → PDF (302), check script, docs | implementer-sonnet | reviewer-opus | Two-line change, fully specified |
+| 5 | Preview + production check, merge | Opus 5.5 (main) | — | Needs push and judgment |
+
+### Task 4
+
+- `public/_redirects`: replace the two `/menu` lines with
+  ```
+  /menu /la-nueva-delicia-menu.pdf 302
+  /menu/ /la-nueva-delicia-menu.pdf 302
+  ```
+  (`/ /es/ 200` stays first). 302, not 301: browsers cache 301s permanently, and the QR target may change later.
+- `scripts/check-out.mjs` line 24: require `"/menu /la-nueva-delicia-menu.pdf 302"` and
+  `"/menu/ /la-nueva-delicia-menu.pdf 302"` instead of the `/es/menu/ 301` strings.
+- Spec `docs/superpowers/specs/2026-11-17-menu-pdf-design/README.md`: decision 1 becomes "`/menu` and `/menu/` → 302
+  to `/la-nueva-delicia-menu.pdf`" with the reason (printed QR code; 302 so the target can change); add a dated line
+  "Changed 2026-11-17 (owner): first shipped as 301 → `/es/menu/`". Update the Acceptance bullet to match.
+- `docs/handoff.md` line ~26 (menu-pdf Done entry): say `/menu` and `/menu/` 302 to the PDF (the owner's printed QR
+  code), and note "keep these lines; the QR code depends on them". README.md: update if it mentions the `/menu`
+  redirect.
+
+**Acceptance:** `npm run build && npm run check:out` pass; `npm test` passes; `grep -c "la-nueva-delicia-menu.pdf 302" public/_redirects`
+prints 2. Commit: `feat: /menu opens the menu PDF for the printed QR code`.

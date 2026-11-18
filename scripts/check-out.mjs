@@ -21,7 +21,7 @@ requireFile("out/404.html", "Página no encontrada", "Page not found");
 requireFile("out/sitemap.xml", "<urlset", "/es/menu/");
 requireFile("out/robots.txt", "Sitemap:");
 if (!existsSync("out/og/home.jpg")) errors.push("missing out/og/home.jpg");
-requireFile("out/_redirects", "/ /es/ 200", "/menu /es/menu/ 301", "/menu/ /es/menu/ 301");
+requireFile("out/_redirects", "/ /es/ 200", "/menu /la-nueva-delicia-menu.pdf 302", "/menu/ /la-nueva-delicia-menu.pdf 302");
 if (!existsSync("out/la-nueva-delicia-menu.pdf")) errors.push("missing out/la-nueva-delicia-menu.pdf");
 requireFile(
   "out/_headers",
