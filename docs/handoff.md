@@ -42,8 +42,8 @@ Updated 2026-11-17.
 1. On https://lanuevadelicia.com: owner COPY-REVIEW (`docs/content/copy-review.md`,
    including the privacy/GA4 wording, now mentioning menu searches).
 2. Google Search Console (domain property, DNS TXT in Cloudflare) and submit `https://lanuevadelicia.com/sitemap.xml`;
-   set the Google Business Profile website to `https://lanuevadelicia.com/es/` (spec 08). Optional cleanup: the `ftp`
-   A record (proxied, points to the old Hostinger host) can go once WordPress is retired at Hostinger.
+   set the Google Business Profile website to `https://lanuevadelicia.com/es/` (spec 08). The `ftp` DNS record was
+   deleted 2026-11-17 (it pointed to the old Hostinger host and could not carry FTP while proxied).
 3. Deferred nits: 80px logo: smallest srcset entry is 384w, enough up to DPR 4 (needs 320w); acceptable; mazamorra option price not in Menu JSON-LD (ruled out for now).
    No component render test for NavLinks/LanguageSwitch on `/` (helper `src/i18n/pathname.ts` is unit-tested; preview
    checked EN link and aria-current); any new `usePathname()` caller must use `localizedPathname`.
