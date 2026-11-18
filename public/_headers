@@ -7,6 +7,9 @@
 /nextImageExportOptimizer/*
   Cache-Control: public, max-age=86400
 
+/la-nueva-delicia-menu.pdf
+  Cache-Control: public, max-age=86400
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

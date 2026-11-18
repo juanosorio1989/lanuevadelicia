@@ -15,6 +15,8 @@ Copy that Claude wrote and the owner has **not** reviewed yet. Menu items and pr
 | `story.expect.2.body` | Aquí te sientes como en casa. | Here you feel at home. |
 | `map.hint` | El mapa se carga solo al tocar el botón. | The map loads only when you tap the button. |
 | `specials.seeMenu` | Ver el menú completo | See the full menu |
+| `menu.pdfLink` | Ver o descargar el menú (PDF) | View or download the menu (PDF) |
+| `menu.newTab` (screen readers only) | (se abre en una pestaña nueva) | (opens in a new tab) |
 
 ## Home hero and story
 

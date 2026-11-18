@@ -19,6 +19,19 @@ test("13 chips in spec order and 13 matching sections", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
 });
 
+for (const l of ["es", "en"]) {
+  test(`${l}: menu PDF link and file`, async ({ page }) => {
+    await page.goto(`/${l}/menu/`);
+    const link = page.getByRole("link", { name: /\(PDF\)/ });
+    await expect(link).toHaveAttribute("href", "/la-nueva-delicia-menu.pdf");
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", /noopener/);
+    const res = await page.request.get("/la-nueva-delicia-menu.pdf");
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toContain("application/pdf");
+  });
+}
+
 test("every available item appears once; photo cards come before rows", async ({ page }) => {
   await page.goto("/es/menu/");
   await expect(page.locator("main [data-item]")).toHaveCount(available.length);

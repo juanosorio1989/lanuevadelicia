@@ -23,6 +23,10 @@ Updated 2026-11-17.
 - `npm run ci` green; Lighthouse mobile budgets met.
 - 2026-11-17: PageSpeed Insights mobile on production: `/` perf 99 (LCP 2.3 s), `/es/menu/` perf 100 (LCP 1.0 s);
   Q12 closed. Local Lighthouse is too noisy on the home network to judge LCP; use PSI.
+- 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-menu-pdf-design/`): `/menu` and `/menu/` 301 to
+  `/es/menu/` (the old Wix menu link); the owner's PDF (`menu.pdf`, April 2026) is served at
+  `/la-nueva-delicia-menu.pdf` and linked from both menu pages (GA4 `view_menu_pdf`); Baileys Brownie Martini added
+  to Postres (menu now 139 items). Verified on the branch preview; merged 2026-11-17.
 
 ## Deployed
 
@@ -66,6 +70,7 @@ file in assets-inbox shows the breaded chicken breast.
 
 ## Notes
 
+- To update the menu PDF, replace `public/la-nueva-delicia-menu.pdf` with the owner's new file (same name).
 - `assets-inbox/` (~300 MB raw photos and the menu PDFs) and `.superpowers/` (mockups, SDD ledger) are gitignored
   and local only.
 - Talk to the user in Spanish (they switch to English sometimes). Code and docs are English.

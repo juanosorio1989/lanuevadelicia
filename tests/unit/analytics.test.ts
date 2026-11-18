@@ -39,6 +39,14 @@ describe("track", () => {
     expect(gtag).toHaveBeenCalledWith("event", "search", { locale: "es", search_term: "bandeja" });
   });
 
+  it("sends the menu PDF view", () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("window", { gtag });
+    vi.stubGlobal("document", { documentElement: { lang: "es" } });
+    track("view_menu_pdf", { location: "menu" });
+    expect(gtag).toHaveBeenCalledWith("event", "view_menu_pdf", { locale: "es", location: "menu" });
+  });
+
   it("still sends the event when document is unavailable", () => {
     const gtag = vi.fn();
     vi.stubGlobal("window", { gtag });
