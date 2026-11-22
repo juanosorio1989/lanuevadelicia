@@ -52,18 +52,20 @@ export function DishDialog({ dishes, closeLabel, actions }: { dishes: DishDispla
         if (e.target === ref.current) ref.current?.close();
       }}
       aria-labelledby="dish-dialog-title"
-      className="m-auto w-[min(92vw,40rem)] overflow-hidden rounded-card bg-cream-50 p-0 backdrop:bg-black/70"
+      className="m-auto max-h-[92vh] w-[min(92vw,40rem)] overflow-hidden rounded-card bg-cream-50 p-0 backdrop:bg-black/70"
     >
-      <div className="relative max-h-[92vh] overflow-y-auto">
-        <button
-          ref={closeBtn}
-          type="button"
-          onClick={() => ref.current?.close()}
-          aria-label={closeLabel}
-          className="absolute top-2 right-2 inline-flex size-11 items-center justify-center rounded-full bg-green-900 text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50"
-        >
-          <X aria-hidden="true" size={20} />
-        </button>
+      <div className="relative max-h-[inherit] overflow-y-auto">
+        <div className="sticky top-0 z-10 h-0">
+          <button
+            ref={closeBtn}
+            type="button"
+            onClick={() => ref.current?.close()}
+            aria-label={closeLabel}
+            className="absolute top-2 right-2 inline-flex size-11 items-center justify-center rounded-full bg-green-900 text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-cream-50"
+          >
+            <X aria-hidden="true" size={20} />
+          </button>
+        </div>
         {dish && (
           <>
             <ExportedImage

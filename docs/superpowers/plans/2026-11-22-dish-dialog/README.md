@@ -67,6 +67,11 @@ props: {
 }
 ```
 
+Structure: `dialog` with `max-h-[92vh] overflow-hidden`; inside it `div.relative max-h-[inherit] overflow-y-auto`
+(both caps always match); the close button comes first, wrapped in `div.sticky.top-0.z-10.h-0` so it stays pinned
+while a tall dialog scrolls. After `showModal()` the close button is focused explicitly with `.focus()` (the scroll
+div is focusable in Chrome, so `showModal` would focus it instead).
+
 `actions` renders inside the dish content (hydration safe: dish is null on server and first client render).
 
 **Server order block** — `src/components/dish/DishActions.tsx` (async server component, `{ locale }`): a `p` with
