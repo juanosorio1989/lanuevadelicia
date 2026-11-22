@@ -1,15 +1,19 @@
 import { getTranslations } from "next-intl/server";
+import { DishActions } from "@/components/dish/DishActions";
+import { DishDialog } from "@/components/dish/DishDialog";
 import { DishCard } from "@/components/shared/DishCard";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { menuItems } from "@/data/menu";
 import { restaurant } from "@/data/restaurant";
+import { toDishDisplay } from "@/lib/dish";
 import { formatTime } from "@/lib/hours";
 import { getPhoto } from "@/lib/photo";
 import type { Locale } from "@/types/content";
 
 export async function Favorites({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.favorites" });
+  const td = await getTranslations({ locale, namespace: "dish" });
   const featured = menuItems
     .filter((i) => i.featured && i.image)
     .sort((a, b) => (a.featuredOrder ?? 99) - (b.featuredOrder ?? 99));
@@ -40,10 +44,12 @@ export async function Favorites({ locale }: { locale: Locale }) {
               locale={locale}
               note={notes[item.id]}
               sizes="(min-width: 768px) 25vw, 176px"
+              openLabel={td.raw("open") as string}
             />
           </li>
         ))}
       </ul>
+      <DishDialog dishes={featured.map((i) => toDishDisplay(i, locale))} closeLabel={td("close")} actions={<DishActions locale={locale} />} />
       <div className="mt-5">
         <Button href={`/${locale}/menu/`} variant="outline">
           {t("all")}

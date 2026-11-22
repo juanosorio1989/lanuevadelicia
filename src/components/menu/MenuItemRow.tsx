@@ -2,7 +2,8 @@ import { formatPrice } from "@/lib/format";
 import { searchText } from "@/lib/search";
 import type { Locale, MenuItem } from "@/types/content";
 
-export type MenuLabels = { favorite: string };
+/** `open` is a template with a {name} placeholder ("Ver {name}"). */
+export type MenuLabels = { favorite: string; open: string };
 export type ItemHeading = "h3" | "h4";
 
 /** Priced options as lines ("En leche $7"), unpriced options as one neutral list (flavors, grill/breaded...). */

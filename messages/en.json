@@ -191,5 +191,11 @@
       "title": "Privacy | La Nueva Delicia",
       "description": "What data this site collects and why: anonymous usage statistics, no ads and no remarketing."
     }
+  },
+  "dish": {
+    "open": "View {name}",
+    "close": "Close",
+    "order": "Order delivery",
+    "call": "Call"
   }
 }
