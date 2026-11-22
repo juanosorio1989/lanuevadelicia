@@ -7,7 +7,8 @@ import type { DishDisplay } from "@/lib/dish";
 
 /**
  * One native <dialog> per page. Cards stay server components: any click on `a[data-dish="<id>"]` opens that dish
- * (event delegation). Modified clicks keep the default (the link goes to the photo file).
+ * (event delegation). Modified clicks keep the default (the link goes to the photo file). The dialog gets a
+ * `data-ready` attribute once the click listener is attached, so e2e tests can wait for hydration.
  */
 export function DishDialog({ dishes, closeLabel, actions }: { dishes: DishDisplay[]; closeLabel: string; actions: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -16,6 +17,7 @@ export function DishDialog({ dishes, closeLabel, actions }: { dishes: DishDispla
   const [dish, setDish] = useState<DishDisplay | null>(null);
 
   useEffect(() => {
+    const dialogEl = ref.current;
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const anchor = (e.target as Element | null)?.closest<HTMLAnchorElement>("a[data-dish]");
@@ -27,7 +29,11 @@ export function DishDialog({ dishes, closeLabel, actions }: { dishes: DishDispla
       setDish(found);
     };
     document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    dialogEl?.setAttribute("data-ready", ""); // e2e: the click listener is attached
+    return () => {
+      document.removeEventListener("click", onClick);
+      dialogEl?.removeAttribute("data-ready");
+    };
   }, [dishes]);
 
   useEffect(() => {

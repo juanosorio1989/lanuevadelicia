@@ -1,8 +1,13 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 import { restaurant } from "../../src/data/restaurant";
 
+async function gotoReady(page: Page, url: string) {
+  await page.goto(url);
+  await expect(page.locator("dialog[data-ready]")).toBeAttached();
+}
+
 test("menu: card opens the dish dialog with photo and order buttons; Escape closes and returns focus", async ({ page }) => {
-  await page.goto("/es/menu/");
+  await gotoReady(page, "/es/menu/");
   const card = page.locator("[data-item='card']").first();
   const heading = (await card.locator("h3, h4").first().innerText()).trim();
   const link = card.locator("a[data-dish]");
@@ -25,7 +30,7 @@ test("menu: card opens the dish dialog with photo and order buttons; Escape clos
 });
 
 test("menu: backdrop click closes the dialog", async ({ page }) => {
-  await page.goto("/es/menu/");
+  await gotoReady(page, "/es/menu/");
   await page.locator("[data-item='card']").first().click();
   await expect(page.locator("dialog[open]")).toBeVisible();
   await page.mouse.click(2, 2);
@@ -33,7 +38,7 @@ test("menu: backdrop click closes the dialog", async ({ page }) => {
 });
 
 test("home (en): Favorites card opens the dialog; close button closes it", async ({ page }) => {
-  await page.goto("/en/");
+  await gotoReady(page, "/en/");
   const card = page.locator("#favorites article").first();
   const name = (await card.locator("h3").innerText()).trim();
   await card.click();
@@ -54,8 +59,7 @@ test("menu: card links point to the photo with JS off", async ({ browser }) => {
 });
 
 test("menu: ricuras dish dialog shows the category note", async ({ page }) => {
-  await page.goto("/es/menu/");
-  await page.waitForLoadState("networkidle");
+  await gotoReady(page, "/es/menu/");
   await page.locator("a[data-dish='entrana']").first().click();
   await expect(page.locator("dialog[open]")).toContainText("Todos vienen con arroz");
 });
