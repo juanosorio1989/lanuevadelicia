@@ -13,6 +13,8 @@ Main session: **Opus 5.5** (orchestrates).
 |------|------|-------------|----------|-----|
 | 1 | Gallery masonry + storefront photos at natural height | implementer-sonnet | reviewer-opus | Class changes given exactly |
 | 2 | Dish dialog (menu + Favorites) | implementer-sonnet | reviewer-opus | Files, props and tests given below |
+| 3 | Category note in the dish dialog | implementer-sonnet | reviewer-opus | One field, one line of markup |
+| 4 | Food descriptions | implementer-sonnet | reviewer-opus | Texts given verbatim in `descriptions.md` |
 
 ## Task 1: gallery masonry and storefront photos
 
@@ -120,3 +122,34 @@ Steps:
 - [ ] Implement. `npm run ci`: pass (paste counts).
 - [ ] Docs: spec 03 menu section and Favorites line mention "tap opens the dish dialog (2026-11-22-dish-dialog-design)".
 - [ ] Commit `feat: dish dialog with full photo and order buttons`.
+
+## Task 3: category note in the dish dialog
+
+Spec: [`descriptions.md`](../../specs/2026-11-22-dish-dialog-design/descriptions.md) "Category notes in the dish dialog".
+
+- `src/lib/dish.ts`: `DishDisplay` gains `note?: string`; `toDishDisplay` sets it from
+  `categories.find(c => c.id === item.category)?.note?.[locale]` (`categories` from `src/data/menu.ts`).
+- `src/components/dish/DishDialog.tsx`: render `{dish.note && <p className="mt-2 text-sm text-muted-600">{dish.note}</p>}`
+  right after the description (before options).
+- `tests/unit/dish.test.ts`: a ricuras item gets the ricuras note (es and en); an item whose category has no note
+  (antojitos) has `note` undefined.
+- `tests/e2e/dish.spec.ts`: on `/es/menu/`, open a ricuras card (e.g. `entrana`, via `a[data-dish="entrana"]`) and
+  expect the dialog to contain "Todos vienen con arroz".
+- [ ] `npm run ci` passes. Commit `feat: dish dialog shows the category note`.
+
+## Task 4: food descriptions
+
+Spec and exact texts: [`descriptions.md`](../../specs/2026-11-22-dish-dialog-design/descriptions.md).
+
+- `src/data/menu.ts`: for every row of the Texts table set `description: t(es, en)` exactly as written (copy the
+  strings; do not reword). `bandeja-paisa` and `mini-bandeja-paisa` replace their current description. Nothing else
+  changes (names, prices, options, other descriptions).
+- `tests/unit/menu-content.test.ts`: new `describe("food descriptions (2026-11-22)")` with an `it.each` over all
+  43 rows (id, es, en) like the 2026-11-17 block; update the count test "48 items have a description" to the new
+  total (48 + 41 new = 89; bandeja and mini were already described) and rename it accordingly. If the total differs,
+  stop and report.
+- `docs/content/menu-review.md`: new section "Food descriptions (2026-11-22)" before "Needs owner check": say the
+  picada, empanaditas and choricriolla lines come from the owner, the bandeja paisa from Uber Eats, the rest are
+  Claude's flavor lines for the owner to check; link `descriptions.md` instead of copying the table. Remove from
+  "Needs owner check" any line asking for descriptions of these items (keep drinks/cocktails questions).
+- [ ] `npm run ci` passes. Commit `content: food descriptions`.
