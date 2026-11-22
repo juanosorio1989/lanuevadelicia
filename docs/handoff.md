@@ -1,6 +1,6 @@
 # Handoff
 
-Updated 2026-11-17.
+Updated 2026-11-22.
 
 ## Done
 
@@ -16,7 +16,7 @@ Updated 2026-11-17.
   scroll anchoring while the header shrinks; hours title is now a table caption, hidden on `/visit/`.
 - 2026-11-17: "Inicio / Home" added as the first nav item (header, mobile panel, footer); in `main`, merged 2026-11-17.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-menu-descriptions-design/`): 12 menu descriptions filled from Uber
-  Eats (sides, desserts, three drinks); 48 of 138 items now have one. Owner proof list: `docs/content/menu-review.md`.
+  Eats (sides, desserts, three drinks); 48 of 138 items had one then (88 of 139 since 2026-11-22). Owner proof list: `docs/content/menu-review.md`.
 - 2026-11-17 (spec `docs/superpowers/specs/2026-11-17-root-rewrite-design/`): `/` serves the
   Spanish home with a 200 rewrite instead of a 302 (saves ~1.5 s LCP); nav and language switch treat `/` as `/es/`.
   Verified on the branch preview; merged 2026-11-17.
@@ -27,6 +27,12 @@ Updated 2026-11-17.
   the PDF (the owner's printed QR code; keep these lines, the QR code depends on them); the owner's PDF (`menu.pdf`, April 2026) is served at
   `/la-nueva-delicia-menu.pdf` and linked from both menu pages (GA4 `view_menu_pdf`); Baileys Brownie Martini added
   to Postres (menu now 139 items). Verified on the branch preview; merged 2026-11-17.
+- `dish-dialog` (merged into `main` 2026-11-22; spec `docs/superpowers/specs/2026-11-22-dish-dialog-design/`, plan
+  `docs/superpowers/plans/2026-11-22-dish-dialog/`): tapping a menu or home Favorites photo card opens a dialog with
+  the full photo, description, category note, delivery buttons and call; gallery (still hidden) is a masonry of
+  uncropped photos; storefront photos at natural height; 42 food descriptions (picada, empanaditas, choricriolla and
+  bandeja paisa from the owner, the rest Claude's flavor lines for the owner to check). Drinks and cocktails
+  descriptions wait for the owner. Verified on the branch preview; owner approved.
 
 ## Deployed
 

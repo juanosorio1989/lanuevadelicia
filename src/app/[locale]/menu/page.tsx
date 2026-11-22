@@ -8,6 +8,9 @@ import { categories, menuItems } from "@/data/menu";
 import { restaurant } from "@/data/restaurant";
 import { TrackedLink } from "@/components/layout/TrackedLink";
 import { telHref } from "@/lib/links";
+import { DishActions } from "@/components/dish/DishActions";
+import { DishDialog } from "@/components/dish/DishDialog";
+import { toDishDisplay } from "@/lib/dish";
 import type { Locale } from "@/types/content";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -23,7 +26,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const locale = raw as Locale;
   const t = await getTranslations({ locale, namespace: "menu" });
   const ordered = [...categories].sort((a, b) => a.order - b.order);
-  const labels = { favorite: t("favorite") };
+  const td = await getTranslations({ locale, namespace: "dish" });
+  const labels = { favorite: t("favorite"), open: td.raw("open") as string };
 
   return (
     // All in rem so they follow the browser font size like the header and chips do.
@@ -73,6 +77,11 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           />
         ))}
       </div>
+      <DishDialog
+        dishes={menuItems.filter((i) => i.image && i.available !== false).map((i) => toDishDisplay(i, locale))}
+        closeLabel={td("close")}
+        actions={<DishActions locale={locale} />}
+      />
     </div>
   );
 }

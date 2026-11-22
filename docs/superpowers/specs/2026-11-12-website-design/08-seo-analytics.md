@@ -50,8 +50,8 @@ Custom events (`lib/analytics.ts`, one typed `track()` function):
 | Event | When | Params |
 |-------|------|--------|
 | `click_directions` | Any Cómo llegar / Get Directions | `location` (hero, header, bottom_bar, visit, footer, story), `locale` |
-| `click_call` | Any `tel:` link | `location` (same values plus `menu`, the no-results phone link), `locale` |
-| `click_delivery` | A delivery app link | `app` (ubereats, doordash, grubhub), `location` |
+| `click_call` | Any `tel:` link | `location` (same values plus `menu`, the no-results phone link, and `dish`, the dish dialog), `locale` |
+| `click_delivery` | A delivery app link | `app` (ubereats, doordash, grubhub), `location` (includes `dish`) |
 | `click_reviews` | Read / Leave review | `action` (read, write) |
 | `load_map` | Map card clicked | `page` (home, visit) |
 | `switch_language` | Language switch | `from`, `to` |

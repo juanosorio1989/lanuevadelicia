@@ -34,9 +34,9 @@ export function GalleryGrid({
           <h2 id={`gallery-${group.id}`} className="text-2xl">
             {group.label}
           </h2>
-          <ul className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="mt-4 columns-2 gap-3 md:columns-3 lg:columns-4">
             {group.photos.map((photo) => (
-              <li key={photo.src}>
+              <li key={photo.src} className="mb-3 break-inside-avoid">
                 <a
                   href={photo.src}
                   aria-label={openLabel.replace("{alt}", photo.alt)}
@@ -54,7 +54,7 @@ export function GalleryGrid({
                     height={photo.height}
                     sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition-transform hover:scale-105"
+                    className="h-auto w-full transition-transform hover:scale-105"
                   />
                 </a>
               </li>

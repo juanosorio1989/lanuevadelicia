@@ -48,7 +48,7 @@ In order:
 2. **Favorites of the house:** eyebrow "Los favoritos de la casa", H2 "Platos que nos piden una y otra vez", and 4
    cards with photo, name, short line and price: Bandeja Paisa ($23), Calentado con chuleta ($12.99, "Desayuno hasta
    la 1 p.m."), Arroz a la marinera ($28), Picada doble ($65, "Para compartir"). The list is driven by the `featured`
-   flag in menu data. On mobile the cards scroll horizontally. Link: "Ver el menú completo →".
+   flag in menu data. On mobile the cards scroll horizontally. Tapping a card opens the dish dialog (2026-11-22-dish-dialog-design). Link: "Ver el menú completo →".
 3. **Today's special:** sand-colored band showing today's weekday flyer, its dish name as real text, the price and
    "Pregunta también por el especial alternativo", plus a link to the specials page. The weekday is computed in
    `America/New_York` on the client. The static HTML (and the no-JS view) shows a neutral teaser with **no dish and no
@@ -96,6 +96,8 @@ Rules are in [04-menu.md](04-menu.md). Layout:
   horizontal card with a 104×92 thumbnail on the left), then a **text list** of the rest (name, short description,
   price aligned right, dotted separator; 2 columns on desktop, 1 on mobile).
 - A "Favorito" tag on featured items.
+- Tapping a photo card opens the dish dialog: full photo, price, description, delivery buttons and a call button
+  ([2026-11-22-dish-dialog-design](../2026-11-22-dish-dialog-design/README.md)).
 - The search box and the swipe hint are specified in the [menu-search design](../2026-11-15-menu-search-design/README.md).
 
 ## Weekly specials
@@ -113,7 +115,7 @@ cálida. CTA band at the end: Cómo llegar + Ver menú.
 
 ## Gallery
 
-A CSS grid of approved photos grouped by Comida, Bebidas, and El restaurante (the last only once photos exist). Tap
+CSS columns (masonry, natural aspect ratio; see [dish-dialog design](../2026-11-22-dish-dialog-design/README.md)) of approved photos grouped by Comida, Bebidas, and El restaurante (the last only once photos exist). Tap
 opens the larger image in a native `<dialog>`. No lightbox library. The images lazy-load.
 
 ## Visit us

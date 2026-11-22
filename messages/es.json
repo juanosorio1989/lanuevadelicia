@@ -191,5 +191,11 @@
       "title": "Privacidad | La Nueva Delicia",
       "description": "Qué datos recoge este sitio y por qué: estadísticas de uso anónimas, sin anuncios ni remarketing."
     }
+  },
+  "dish": {
+    "open": "Ver {name}",
+    "close": "Cerrar",
+    "order": "Pide a domicilio",
+    "call": "Llamar"
   }
 }
