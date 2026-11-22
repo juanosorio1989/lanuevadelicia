@@ -6,7 +6,8 @@ dessert `baileys-brownie-martini` waits with them). Extras (`aguacate`, `arroz`,
 
 Sources:
 - Picada, empanaditas and choricriolla: the owner, in chat, 2026-11-22.
-- Bandeja paisa: the Uber Eats line (with its duplicated avocado removed).
+- Bandeja paisa: the Uber Eats line (duplicated avocado removed), plus chorizo and the mini's difference from the
+  owner, 2026-11-22.
 - Everything else: short flavor lines written by Claude, at the owner's request ("descripciones cortas de sabores").
   They describe only what the dish name already says, plus taste words. Owner check:
   `docs/content/menu-review.md`.
@@ -24,8 +25,8 @@ fríjoles"), the salads their base, and breakfast its hours, without repeating t
 
 | id | es | en |
 |----|----|----|
-| `bandeja-paisa` | Carne asada o molida, arroz, fríjoles, chicharrón, huevo, aguacate, maduro y arepa. | Grilled or ground beef, rice, beans, fried pork skin, egg, avocado, sweet plantain and corn cake. |
-| `mini-bandeja-paisa` | La bandeja paisa en porción más pequeña, sin aguacate. | A smaller bandeja paisa, without avocado. |
+| `bandeja-paisa` | Carne asada o molida, chorizo, chicharrón, huevo, arroz, fríjoles, aguacate, maduro y arepa. | Grilled or ground beef, sausage, fried pork skin, egg, rice, beans, avocado, sweet plantain and corn cake. |
+| `mini-bandeja-paisa` | Lo mismo que la bandeja paisa, con porciones de carne más pequeñas y sin aguacate. | Same as the bandeja paisa, with smaller portions of meat and no avocado. |
 | `arepa-con-queso-y-carne-asada` | Arepa con queso derretido y carne asada jugosa. | Corn cake with melted cheese and juicy grilled beef. |
 | `huevos-al-gusto-arroz-y-arepita` | Huevos a tu gusto con arroz y una arepita crocante. | Eggs your way with rice and a crispy little corn cake. |
 | `huevos-al-gusto-con-arepa-con-queso` | Huevos a tu gusto con arepa y queso derretido. | Eggs your way with a corn cake and melted cheese. |
