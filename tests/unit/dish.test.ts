@@ -21,9 +21,9 @@ describe("toDishDisplay", () => {
 
   it("maps options with formatted prices", () => {
     const item = menuItems.find((i) => i.image && i.options?.length);
-    if (!item) return;
-    const d = toDishDisplay(item, "en");
-    expect(d.options).toEqual(item.options!.map((o) => ({ label: o.label.en, price: o.price === undefined ? undefined : formatPrice(o.price) })));
+    expect(item).toBeDefined();
+    const d = toDishDisplay(item!, "en");
+    expect(d.options).toEqual(item!.options!.map((o) => ({ label: o.label.en, price: o.price === undefined ? undefined : formatPrice(o.price) })));
   });
 
   it("throws for an item without an image", () => {

@@ -24,7 +24,7 @@ export function MenuItemCard({ item, locale, labels, heading: H = "h3" }: { item
       <div className="min-w-0 flex-1 py-2 pr-2.5 pl-3 text-sm md:p-3">
         <div className="flex items-baseline justify-between gap-2">
           <H className="font-display text-[0.9375rem] font-bold md:text-base">
-            <a href={photo.src} data-dish={item.id} aria-label={labels.open.replace("{name}", item.name[locale])} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-solid focus-visible:after:outline-green-900 focus-visible:after:rounded-card">
+            <a href={photo.src} data-dish={item.id} aria-label={labels.open.replace("{name}", item.name[locale])} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-solid focus-visible:after:outline-green-900 focus-visible:after:rounded-card focus-visible:after:-outline-offset-2">
               {item.name[locale]}
             </a>
             {item.featured && <FavoriteTag label={labels.favorite} />}

@@ -9,6 +9,7 @@ test("menu: card opens the dish dialog with photo and order buttons; Escape clos
   await card.click();
   const dialog = page.locator("dialog[open]");
   await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("button", { name: "Cerrar" })).toBeFocused();
   await expect(dialog.locator("h2")).toContainText(heading.replace(/\s*Favorito$/, ""));
   await expect(dialog.locator("img").first()).toBeVisible();
   expect(await dialog.locator("img").first().getAttribute("alt")).toBeTruthy();

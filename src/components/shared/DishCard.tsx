@@ -10,7 +10,7 @@ export function DishCard({ item, photo, locale, note, sizes, openLabel }: { item
       <Img photo={photo} locale={locale} sizes={sizes} className="h-36 w-full object-cover" />
       <div className="p-3 text-sm">
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="font-display text-base font-bold"><a href={photo.src} data-dish={item.id} aria-label={openLabel.replace("{name}", item.name[locale])} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-solid focus-visible:after:outline-green-900 focus-visible:after:rounded-card">
+          <h3 className="font-display text-base font-bold"><a href={photo.src} data-dish={item.id} aria-label={openLabel.replace("{name}", item.name[locale])} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-solid focus-visible:after:outline-green-900 focus-visible:after:rounded-card focus-visible:after:-outline-offset-2">
               {item.name[locale]}
             </a>
           </h3>

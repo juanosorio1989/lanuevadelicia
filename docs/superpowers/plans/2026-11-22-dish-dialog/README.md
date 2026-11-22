@@ -67,6 +67,8 @@ props: {
 }
 ```
 
+`actions` renders inside the dish content (hydration safe: dish is null on server and first client render).
+
 **Server order block** — `src/components/dish/DishActions.tsx` (async server component, `{ locale }`): a `p` with
 `t("dish.order")`, then `<DeliveryLinks locale={locale} location="dish" variant="buttons" className="mt-2 gap-y-2" />`
 (existing component: outline buttons, new tab, `click_delivery`), then
@@ -88,7 +90,7 @@ needed; drop `newTab` from the messages list.
 
 **Cards** — clickable via a stretched link on the name:
 - `src/components/menu/MenuItemCard.tsx`: `li` gets `relative`; the heading text is wrapped in
-  `<a href={photo.src} data-dish={item.id} aria-label={openLabel.replace("{name}", name)} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-solid focus-visible:after:outline-green-900 focus-visible:after:rounded-card">`.
+  `<a href={photo.src} data-dish={item.id} aria-label={openLabel.replace("{name}", name)} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-solid focus-visible:after:outline-green-900 focus-visible:after:rounded-card focus-visible:after:-outline-offset-2">`.
   The FavoriteTag stays outside the link. `MenuLabels` gains `open: string`; pass it from `menu/page.tsx` via
   `MenuCategorySection` (only cards use it).
 - `src/components/shared/DishCard.tsx`: same pattern (`article` `relative`), new prop `openLabel`.
