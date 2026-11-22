@@ -198,7 +198,8 @@ keeps the printed line until you confirm.
 ### Items still without a description (your call)
 
 - Cocktails, beers, wines and shots (the source does not cover them).
-- Chicken and seafood: the Uber Eats line is the same as the item's English name, so nothing was added. The meats and appetizers got flavor lines on 2026-11-22 (see below).
+- The drinks with cheese (Chocolate con queso, Milo y queso, Aguapanela con queso) and Jugos naturales: do you want a description for any of these?
+- Meats, appetizers, breakfast items, salads and two desserts got flavor lines on 2026-11-22 (see below).
 - Left without one on purpose because the name says it all: water, soda, coffee, tea, rice, avocado, cheese, fries, Milo, Pony Malta, natural lemonade, "any meat from the
   specials", large extra soup.
 
