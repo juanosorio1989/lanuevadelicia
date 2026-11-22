@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { menuItems } from "@/data/menu";
+import { categories, menuItems } from "@/data/menu";
 import { formatPrice } from "@/lib/format";
 import { getPhoto } from "@/lib/photo";
 import { toDishDisplay } from "@/lib/dish";
@@ -29,5 +29,18 @@ describe("toDishDisplay", () => {
   it("throws for an item without an image", () => {
     const item = menuItems.find((i) => !i.image)!;
     expect(() => toDishDisplay(item, "es")).toThrow();
+  });
+
+  it("sets the category note when the category has one", () => {
+    const item = menuItems.find((i) => i.category === "ricuras" && i.image)!;
+    const note = categories.find((c) => c.id === "ricuras")!.note!;
+    expect(toDishDisplay(item, "es").note).toBe(note.es);
+    expect(toDishDisplay(item, "en").note).toBe(note.en);
+    expect(toDishDisplay(item, "es").note).toContain("Todos vienen con arroz");
+  });
+
+  it("leaves note undefined when the category has none", () => {
+    const item = menuItems.find((i) => i.category === "antojitos" && i.image)!;
+    expect(toDishDisplay(item, "es").note).toBeUndefined();
   });
 });

@@ -52,3 +52,10 @@ test("menu: card links point to the photo with JS off", async ({ browser }) => {
   expect(href).toMatch(/^\/images\/.+\.jpg$/);
   await ctx.close();
 });
+
+test("menu: ricuras dish dialog shows the category note", async ({ page }) => {
+  await page.goto("/es/menu/");
+  await page.waitForLoadState("networkidle");
+  await page.locator("a[data-dish='entrana']").first().click();
+  await expect(page.locator("dialog[open]")).toContainText("Todos vienen con arroz");
+});

@@ -84,6 +84,7 @@ export function DishDialog({ dishes, closeLabel, actions }: { dishes: DishDispla
                 {dish.price && <span className="shrink-0 font-bold text-terra-700">{dish.price}</span>}
               </div>
               {dish.description && <p className="mt-1 text-muted-600">{dish.description}</p>}
+              {dish.note && <p className="mt-2 text-sm text-muted-600">{dish.note}</p>}
               <DishOptions options={dish.options} />
               <div className="mt-4 border-t border-sand-100 pt-4">{actions}</div>
             </div>
