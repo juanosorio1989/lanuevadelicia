@@ -198,11 +198,22 @@ keeps the printed line until you confirm.
 ### Items still without a description (your call)
 
 - Cocktails, beers, wines and shots (the source does not cover them).
-- Most meats, chicken, seafood and appetizers: the Uber Eats line is the same as the item's English name, so nothing was added.
-- Combo empanaditas, Maduro con queso, Choricriolla, Chuletón a caballo, Brevas con arequipe y queso, Brownie con
-  helado, and the drinks with cheese: do you want a description for any of these?
+- Chicken and seafood: the Uber Eats line is the same as the item's English name, so nothing was added. The meats and appetizers got flavor lines on 2026-11-22 (see below).
 - Left without one on purpose because the name says it all: water, soda, coffee, tea, rice, avocado, cheese, fries, Milo, Pony Malta, natural lemonade, "any meat from the
   specials", large extra soup.
+
+## Food descriptions (2026-11-22)
+
+At the owner's request, 42 food items got a one-sentence description in both languages (the 2 bandeja paisa
+descriptions were replaced, 40 are new). Sources:
+
+- Picada doble and sencilla, empanaditas and choricriolla: the owner, in chat.
+- Bandeja paisa: the Uber Eats line, plus the chorizo and the mini's difference from the owner.
+- Everything else: short flavor lines written by Claude. Please check them and tell us what to change.
+
+The full list of texts is in
+[`descriptions.md`](../superpowers/specs/2026-11-22-dish-dialog-design/descriptions.md). Drinks, beers, wines, shots
+and cocktails (and Baileys Brownie Martini) still have no description and wait for a later pass.
 
 ## Needs owner check
 
@@ -266,8 +277,7 @@ Salchipapas, Cola y pola, Pony Malta, Milo, Alexander, Q' Delicia).
 Every `description.es` is Claude's: the printed menu has the descriptions in English only. They use the menu's own
 terms: "green plantain" → tostones, "little corn cake" → arepita, "corn cake" → arepa, "sweet plantain" → maduro,
 "homemade sauce" → salsa criolla, "seafood chowder" → crema de mariscos. Items: the four calentados, Carne guisada
-en salsa criolla, Caldo de costilla, Consomé de menudencias, Costillas de cerdo, Bandeja Paisa ("Plato
-colombiano"), Mini Bandeja Paisa ("Sin aguacate"), all six Pollo items, all Pescados y mariscos items with a
+en salsa criolla, Caldo de costilla, Consomé de menudencias, Costillas de cerdo, all six Pollo items, all Pescados y mariscos items with a
 description, Tiritas de pollo, Salchipapas.
 
 ### Notes and labels Claude wrote
