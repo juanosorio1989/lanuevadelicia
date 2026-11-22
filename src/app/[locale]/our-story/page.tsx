@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             {s("roots")}
           </p>
         </div>
-        <Img photo={photo} locale={locale} sizes="(min-width: 768px) 50vw, 100vw" className="h-64 w-full rounded-card object-cover object-[50%_15%] md:h-96" />
+        <Img photo={photo} locale={locale} sizes="(min-width: 768px) 50vw, 100vw" className="h-auto w-full rounded-card" />
       </div>
 
       <section aria-labelledby="expect-title" className="bg-sand-100">

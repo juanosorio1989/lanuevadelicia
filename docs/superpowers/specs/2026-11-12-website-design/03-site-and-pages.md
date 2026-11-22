@@ -113,7 +113,7 @@ cálida. CTA band at the end: Cómo llegar + Ver menú.
 
 ## Gallery
 
-A CSS grid of approved photos grouped by Comida, Bebidas, and El restaurante (the last only once photos exist). Tap
+CSS columns (masonry, natural aspect ratio; see [dish-dialog design](../2026-11-22-dish-dialog-design/README.md)) of approved photos grouped by Comida, Bebidas, and El restaurante (the last only once photos exist). Tap
 opens the larger image in a native `<dialog>`. No lightbox library. The images lazy-load.
 
 ## Visit us
