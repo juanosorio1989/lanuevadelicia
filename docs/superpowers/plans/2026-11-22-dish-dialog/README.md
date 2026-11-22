@@ -145,8 +145,8 @@ Spec and exact texts: [`descriptions.md`](../../specs/2026-11-22-dish-dialog-des
   strings; do not reword). `bandeja-paisa` and `mini-bandeja-paisa` replace their current description. Nothing else
   changes (names, prices, options, other descriptions).
 - `tests/unit/menu-content.test.ts`: new `describe("food descriptions (2026-11-22)")` with an `it.each` over all
-  43 rows (id, es, en) like the 2026-11-17 block; update the count test "48 items have a description" to the new
-  total (48 + 41 new = 89; bandeja and mini were already described) and rename it accordingly. If the total differs,
+  42 rows (id, es, en) like the 2026-11-17 block; update the count test "48 items have a description" to the new
+  total (48 + 40 new = 88; bandeja and mini were already described) and rename it accordingly. If the total differs,
   stop and report.
 - `docs/content/menu-review.md`: new section "Food descriptions (2026-11-22)" before "Needs owner check": say the
   picada, empanaditas and choricriolla lines come from the owner, the bandeja paisa from Uber Eats, the rest are
